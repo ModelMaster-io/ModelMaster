@@ -42,6 +42,10 @@
     .sprd_meu_funs ul li a{
         color: #fff;
     }
+    select.sheet_font_sz {
+        float: left;
+        width: 50px;
+    }
 
     /* Spreadsheet right click panel */
     .custom-menu {

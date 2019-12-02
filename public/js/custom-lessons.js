@@ -47,8 +47,32 @@ jQuery(document).ready(function () {
 	
 	
 	
-		/* JS code for spreadsheet */
-		$('#model_master_spreadsheet').ip_Grid({ rows: 10000,  cols: 26 });
-	
+	/* JS code for spreadsheet */
+	$('#model_master_spreadsheet').ip_Grid({ rows: 10000,  cols: 26 });
+
+	jQuery.contextMenu({
+		selector: '.ip_grid_cell', 
+		callback: function(key, options) {
+			var m = "clicked: " + key;
+			window.console && console.log(m) || alert(m); 
+		},
+		items: {
+			"edit": {name: "Edit", icon: "edit"},
+			"cut": {name: "Cut", icon: "cut"},
+		   copy: {name: "Copy", icon: "copy"},
+			"paste": {name: "Paste", icon: "paste"},
+			"delete": {name: "Delete", icon: "delete"},
+			"sep1": "---------",
+			"quit": {name: "Quit", icon: function(){
+				return 'context-menu-icon context-menu-icon-quit';
+			}}
+		}
 	});
+
+	// jQuery('.ip_grid_cell').on('click', function(e){
+	// 		console.log('clicked', this);
+	// });
+	
+	
+});
 	

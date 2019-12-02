@@ -921,6 +921,125 @@ button.owl-prev:after {
     width:100%;
     height:100%;
 }
+.gridContainer {
+        width:100%;
+        height:100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+#model_master_spreadsheet {
+    width:100%;
+    height:100%;
+}
+.lesson-contant-left-editar{
+    position: relative;
+    overflow: hidden;
+}
+.sprd_meu_funs ul li {
+    display: inline-block;
+    background: #29b473;
+    color: #fff;
+    margin: 0 5px;
+    width: 30px;
+    text-align: center;
+}
+.sprd_meu_funs ul li:first-child {
+    margin-left: 0;
+}
+.sprd_meu_funs ul li a{
+    color: #fff;
+}
+select.sheet_font_sz {
+    float: left;
+    width: 50px;
+}
+
+/* Spreadsheet right click panel */
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+.custom-menu li:hover {
+    background-color: #DEF;
+}
+.gridContainer {
+    width:100%;
+    height:100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+#model_master_spreadsheet {
+    width:100%;
+    height:100%;
+}
+.lesson-contant-left-editar{
+    position: relative;
+    overflow: hidden;
+}
+.sprd_meu_funs ul li {
+    display: inline-block;
+    background: #29b473;
+    color: #fff;
+    margin: 0 5px;
+    width: 30px;
+    text-align: center;
+}
+.sprd_meu_funs ul li:first-child {
+    margin-left: 0;
+}
+.sprd_meu_funs ul li a{
+    color: #fff;
+}
+select.sheet_font_sz {
+    float: left;
+    width: 50px;
+}
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.custom-menu li:hover {
+    background-color: #DEF;
+}
 /* End Styles for spreadsheet */
 
 /*responsive*/

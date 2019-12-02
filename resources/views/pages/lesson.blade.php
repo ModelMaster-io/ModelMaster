@@ -197,18 +197,6 @@
         <div class="gridContainer">
             <div id="model_master_spreadsheet"></div>
         </div>
-        {{-- <div class="lcle-editar">
-
-        </div> --}}
-        {{-- <ul class='custom-menu'>
-            <li data-action="first">First thing</li>
-            <li data-action="second">Second thing</li>
-            <li data-action="third">Third thing</li>
-        </ul> --}}
-        {{-- <div class="lcle-btn">
-            <a href="javascript:void(0)" class="previous-btn"><i class="fa fa-angle-left"></i> Previous</a>
-            <a href="javascript:void(0)" class="next-btn">Next <i class="fa fa-angle-right"></i></a>
-        </div>  --}}
 
     </div>
 </div>

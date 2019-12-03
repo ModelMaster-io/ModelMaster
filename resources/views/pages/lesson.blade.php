@@ -1,14 +1,15 @@
 @extends('app')
 
 @section('scripts_and_styles')
-<link href="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+
+<link href="css/ip.grid.css" rel="stylesheet" />
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.min.js"></script>    
 <script src="js/ip.grid.js"></script>
+
+<!-- JS for lesson page -->
 <script src="js/custom-lessons.js"></script>
-<script src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js" type="text/javascript"></script>
-<script src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.ui.position.min.js" type="text/javascript"></script>
-<link href="css/ip.grid.css" rel="stylesheet" />
 
 @endsection
 
@@ -64,7 +65,13 @@
         <div class="gridContainer">
             <div id="model_master_spreadsheet"></div>
         </div>
-
+        <ul class='spreadsheet-context-menu'>
+            <li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li>
+            <li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li>
+            <li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li>
+            <li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li>
+            <li>Font Size:<select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li>
+        </ul>
     </div>
 </div>
 </div>

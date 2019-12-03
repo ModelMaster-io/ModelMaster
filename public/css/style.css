@@ -958,29 +958,6 @@ select.sheet_font_sz {
 }
 
 /* Spreadsheet right click panel */
-.custom-menu {
-    display: none;
-    z-index: 1000;
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid #CCC;
-    white-space: nowrap;
-    font-family: sans-serif;
-    background: #FFF;
-    color: #333;
-    border-radius: 5px;
-    padding: 0;
-}
-.custom-menu li {
-    padding: 8px 12px;
-    cursor: pointer;
-    list-style-type: none;
-    transition: all .3s ease;
-    user-select: none;
-}
-.custom-menu li:hover {
-    background-color: #DEF;
-}
 .gridContainer {
     width:100%;
     height:100%;
@@ -1016,7 +993,9 @@ select.sheet_font_sz {
     float: left;
     width: 50px;
 }
-.custom-menu {
+
+/* Style for Right Click Context Menu */
+.spreadsheet-context-menu {
     display: none;
     z-index: 1000;
     position: absolute;
@@ -1029,17 +1008,22 @@ select.sheet_font_sz {
     border-radius: 5px;
     padding: 0;
 }
-.custom-menu li {
+.spreadsheet-context-menu li a {
     padding: 8px 12px;
     cursor: pointer;
     list-style-type: none;
     transition: all .3s ease;
     user-select: none;
+    display: block;
 }
-
-.custom-menu li:hover {
+.spreadsheet-context-menu li a:hover {
     background-color: #DEF;
 }
+.spreadsheet-context-menu .sheet_font_sz {
+    margin: 10px 0;
+    float: right;
+}
+
 /* End Styles for spreadsheet */
 
 /*responsive*/

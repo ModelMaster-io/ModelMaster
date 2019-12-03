@@ -1,5 +1,6 @@
 jQuery(document).ready(function () {
 	
+	//JS for top of the spreadsheet option panel
 	jQuery(document).on('click', '.spread_steps_clk li a', function() {
 		var stp = jQuery(this).data('step');
 		jQuery('.spread_steps_clk li a').removeClass('active');
@@ -46,33 +47,35 @@ jQuery(document).ready(function () {
 	});
 	
 	
-	
 	/* JS code for spreadsheet */
 	$('#model_master_spreadsheet').ip_Grid({ rows: 10000,  cols: 26 });
 
-	jQuery.contextMenu({
-		selector: '.ip_grid_cell', 
-		callback: function(key, options) {
-			var m = "clicked: " + key;
-			window.console && console.log(m) || alert(m); 
-		},
-		items: {
-			"edit": {name: "Edit", icon: "edit"},
-			"cut": {name: "Cut", icon: "cut"},
-		   copy: {name: "Copy", icon: "copy"},
-			"paste": {name: "Paste", icon: "paste"},
-			"delete": {name: "Delete", icon: "delete"},
-			"sep1": "---------",
-			"quit": {name: "Quit", icon: function(){
-				return 'context-menu-icon context-menu-icon-quit';
-			}}
-		}
+	// Trigger action when the contexmenu is about to be shown
+	jQuery('.gridContainer').bind("contextmenu", function (event) {
+		
+		// Avoid the real one
+		event.preventDefault();
+		var x = jQuery('.gridContainer').offset();
+		// Show contextmenu
+		jQuery(".spreadsheet-context-menu").finish().toggle(100).
+		css({
+			top: (event.pageY - x.top) + "px",
+			left: (event.pageX - x.left) + "px"
+		});
+		
 	});
 
-	// jQuery('.ip_grid_cell').on('click', function(e){
-	// 		console.log('clicked', this);
-	// });
-	
+
+	// If the document is clicked somewhere
+	jQuery('.gridContainer').bind("mousedown", function (e) {
+		
+		// If the clicked element is not the menu
+		if (!jQuery(e.target).parents(".spreadsheet-context-menu").length > 0) {
+			
+			// Hide it
+			jQuery(".spreadsheet-context-menu").hide(100);
+		}
+	});
 	
 });
 	

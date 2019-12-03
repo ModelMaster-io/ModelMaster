@@ -2,7 +2,9 @@
 
 @section('scripts_and_styles')
 <script>
-    $('.owl-carousel').owlCarousel({
+jQuery(document).ready(function() {
+   
+    jQuery('.owl-carousel').owlCarousel({
         loop:true,
         nav:true,
         items:3,
@@ -21,8 +23,9 @@
         }
         
         }
-        
     });
+
+});
 </script>
 @endsection
 

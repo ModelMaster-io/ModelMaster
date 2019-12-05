@@ -1,5 +1,3 @@
-//(C) 2016 Michael Roberg all rights reserved
-
 //----- GLOBALS ------------------------------------------------------------------------------------------------------------------------------------
 
 var ip_GridProps = {}; //new Array();
@@ -8,8 +6,6 @@ var defaultColWidth = 100;    //Default column width
 var loadedRowsThreshold = { min: 40, max: 110 }; //Defines how many row may be directly loaded without loss of performance in the browser. Anything beyond this value will result in slower performance.
 var loadedColsThreshold = { min: 15, max: 40 };
 var thisBrowser = ip_Browser();
-
-//----- PLUGIN ------------------------------------------------------------------------------------------------------------------------------------
 
 (function ($) {
 
@@ -5453,7 +5449,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
 
@@ -17931,12 +17927,116 @@ $(document).ready(function() {
         $('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
     });
 
-    $(document).on('change', '.sheet_font_sz', function() {
+    $(document).on('change', '.sheet_font_sz', function() { 
         var fontSize = $(this).val();
         var GridID = 'model_master_spreadsheet';
         var formatObject = ip_EnabledFormats(GridID);
+        
         $('#' + GridID).ip_FormatCell({ style: (formatObject.fontsize ? 'font-size:;' : 'font-size:'+fontSize+'px;') });
     });
+
+    setTimeout(function() {
+        /* JS code for color picker */
+        const pickr = Pickr.create({
+            el: '.color-picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+            appClass: 'fnclrcls',
+            swatches: [
+                'rgba(244, 67, 54, 1)',
+                'rgba(233, 30, 99, 0.95)',
+                'rgba(156, 39, 176, 0.9)',
+                'rgba(103, 58, 183, 0.85)',
+                'rgba(63, 81, 181, 0.8)',
+                'rgba(33, 150, 243, 0.75)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(0, 188, 212, 0.7)',
+                'rgba(0, 150, 136, 0.75)',
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(139, 195, 74, 0.85)',
+                'rgba(205, 220, 57, 0.9)',
+                'rgba(255, 235, 59, 0.95)',
+                'rgba(255, 193, 7, 1)'
+            ],
+        
+            components: {
+        
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+        
+                // Input / output Options
+                interaction: {
+                    hex: false,
+                    rgba: false,
+                    hsla: false,
+                    hsva: false,
+                    cmyk: false,
+                    input: true,
+                    clear: false,
+                    save: false
+                }
+            }
+        });
+
+
+        const bg_pickr = Pickr.create({
+            el: '.bg-color-picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+            appClass: 'bgcellcls',
+            swatches: [
+                'rgba(244, 67, 54, 1)',
+                'rgba(233, 30, 99, 0.95)',
+                'rgba(156, 39, 176, 0.9)',
+                'rgba(103, 58, 183, 0.85)',
+                'rgba(63, 81, 181, 0.8)',
+                'rgba(33, 150, 243, 0.75)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(0, 188, 212, 0.7)',
+                'rgba(0, 150, 136, 0.75)',
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(139, 195, 74, 0.85)',
+                'rgba(205, 220, 57, 0.9)',
+                'rgba(255, 235, 59, 0.95)',
+                'rgba(255, 193, 7, 1)'
+            ],
+        
+            components: {
+        
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+        
+                // Input / output Options
+                interaction: {
+                    hex: false,
+                    rgba: false,
+                    hsla: false,
+                    hsva: false,
+                    cmyk: false,
+                    input: true,
+                    clear: false,
+                    save: false
+                }
+            }
+        });
+        
+        pickr.on('change', (color, instance) => {
+            var fntclr = $('.fnclrcls').find('.pcr-result').val();
+            var GridID = 'model_master_spreadsheet';
+            var formatObject = ip_EnabledFormats(GridID);
+            $('#' + GridID).ip_FormatCell({ style: (formatObject.color ? 'color:;' : 'color:'+fntclr+';') });
+        });
+
+        bg_pickr.on('change', (color, instance) => {
+            var fntbgclr = $('.bgcellcls').find('.pcr-result').val();
+            var GridID = 'model_master_spreadsheet';
+            var formatObject = ip_EnabledFormats(GridID);
+            $('#' + GridID).ip_FormatCell({ style: (formatObject.backgroundcolor ? 'background-color:;' : 'background-color:'+fntbgclr+';') });
+        });
+
+    }, 1000);
 
 });
 

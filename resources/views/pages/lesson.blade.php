@@ -3,9 +3,10 @@
 @section('scripts_and_styles')
 
 <link href="css/ip.grid.css" rel="stylesheet" />
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/jquery-ui-1.9.2.custom.min.js"></script>    
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>    
 <script src="js/ip.grid.js"></script>
 
 <!-- JS for lesson page -->

@@ -17897,7 +17897,7 @@ function ip_GeneratePublicKey() {
     return GUID;
 }
 
-/* Customized JS By Gaurang Sondagar */
+/* JS code for spreadsheet top options */
 $(document).ready(function() {
     $(document).on('click', '.model-style-effect', function() {
         var fontStyle = $(this).data('effect');
@@ -17931,7 +17931,7 @@ $(document).ready(function() {
         var fontSize = $(this).val();
         var GridID = 'model_master_spreadsheet';
         var formatObject = ip_EnabledFormats(GridID);
-        
+
         $('#' + GridID).ip_FormatCell({ style: (formatObject.fontsize ? 'font-size:;' : 'font-size:'+fontSize+'px;') });
     });
 

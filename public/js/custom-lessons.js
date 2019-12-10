@@ -55,6 +55,7 @@ jQuery(document).ready(function () {
 		
 		// Avoid the real one
 		event.preventDefault();
+
 		var x = jQuery('.gridContainer').offset();
 		// Show contextmenu
 		jQuery(".spreadsheet-context-menu").finish().toggle(100).
@@ -64,6 +65,111 @@ jQuery(document).ready(function () {
 		});
 		
 	});
+
+	setTimeout(function() {
+		/* JS code for color picker */
+		const pickr = Pickr.create({
+			el: '.color-picker',
+			theme: 'nano', // or 'monolith', or 'nano'
+			appClass: 'rgfnclrcls',
+			swatches: [
+				'rgba(244, 67, 54, 1)',
+				'rgba(233, 30, 99, 0.95)',
+				'rgba(156, 39, 176, 0.9)',
+				'rgba(103, 58, 183, 0.85)',
+				'rgba(63, 81, 181, 0.8)',
+				'rgba(33, 150, 243, 0.75)',
+				'rgba(255, 255, 255, 1)',
+				'rgba(0, 188, 212, 0.7)',
+				'rgba(0, 150, 136, 0.75)',
+				'rgba(76, 175, 80, 0.8)',
+				'rgba(139, 195, 74, 0.85)',
+				'rgba(205, 220, 57, 0.9)',
+				'rgba(255, 235, 59, 0.95)',
+				'rgba(255, 193, 7, 1)'
+			],
+		
+			components: {
+		
+				// Main components
+				preview: true,
+				opacity: true,
+				hue: true,
+		
+				// Input / output Options
+				interaction: {
+					hex: false,
+					rgba: false,
+					hsla: false,
+					hsva: false,
+					cmyk: false,
+					input: true,
+					clear: false,
+					save: false
+				}
+			}
+		});
+
+
+		const bg_pickr = Pickr.create({
+			el: '.bg-color-picker',
+			theme: 'nano', // or 'monolith', or 'nano'
+			appClass: 'rgbgcellcls',
+			swatches: [
+				'rgba(244, 67, 54, 1)',
+				'rgba(233, 30, 99, 0.95)',
+				'rgba(156, 39, 176, 0.9)',
+				'rgba(103, 58, 183, 0.85)',
+				'rgba(63, 81, 181, 0.8)',
+				'rgba(33, 150, 243, 0.75)',
+				'rgba(255, 255, 255, 1)',
+				'rgba(0, 188, 212, 0.7)',
+				'rgba(0, 150, 136, 0.75)',
+				'rgba(76, 175, 80, 0.8)',
+				'rgba(139, 195, 74, 0.85)',
+				'rgba(205, 220, 57, 0.9)',
+				'rgba(255, 235, 59, 0.95)',
+				'rgba(255, 193, 7, 1)'
+			],
+		
+			components: {
+		
+				// Main components
+				preview: true,
+				opacity: true,
+				hue: true,
+		
+				// Input / output Options
+				interaction: {
+					hex: false,
+					rgba: false,
+					hsla: false,
+					hsva: false,
+					cmyk: false,
+					input: true,
+					clear: false,
+					save: false
+				}
+			}
+		});
+		
+		pickr.on('change', (color, instance) => {
+			var fntclr = $('.rgfnclrcls').find('.pcr-result').val();
+			var GridID = 'model_master_spreadsheet';
+			var formatObject = ip_EnabledFormats(GridID);
+			$('#' + GridID).ip_FormatCell({ style: (formatObject.color ? 'color:;' : 'color:'+fntclr+';') });
+		});
+
+		bg_pickr.on('change', (color, instance) => {
+			var fntbgclr = $('.rgbgcellcls').find('.pcr-result').val();
+			var GridID = 'model_master_spreadsheet';
+			var formatObject = ip_EnabledFormats(GridID);
+			$('#' + GridID).ip_FormatCell({ style: (formatObject.backgroundcolor ? 'background-color:;' : 'background-color:'+fntbgclr+';') });
+			var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : '#00000033';
+			$('#' + GridID).ip_FormatCell({ style: (formatObject.bordercolor ? 'border-color:;' : 'border-color:'+brdclr+';') });
+		});
+
+	}, 500);
 
 
 	// If the document is clicked somewhere

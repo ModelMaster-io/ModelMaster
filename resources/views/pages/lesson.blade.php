@@ -72,6 +72,14 @@
             <li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li>
             <li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li>
             <li>Font Size:<select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li>
+            <li><a href="javascript:void(0)" class="font-color-pick">Font color<span class="color-picker"></span></a></li>
+            <li><a href="javascript:void(0)" class="font-color-pick">BG Color<span class="bg-color-picker"></span></a></li>
+            <li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li>
+            <li><a href="javascript:void(0)" class="insert_row">Insert Row</a></li>
+            <li><a href="javascript:void(0)" class="delete_row">Delete Row</a></li>
+            <li><a href="javascript:void(0)" class="insert_column">Insert Column</a></li>
+            <li><a href="javascript:void(0)" class="delete_column">Delete Column</a></li>
+            {{-- <li><a href="javascript:void(0)" class="test_fun">Testing</a></li> --}}
         </ul>
     </div>
 </div>

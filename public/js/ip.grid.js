@@ -5449,7 +5449,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
 
@@ -5963,6 +5963,13 @@ function ip_SetupEvents(GridID) {
                 $('#' + GridID).ip_SelectCell({ cell: this });
             }
         }
+
+        $(".insert_row").attr("rownum", (row + 1));
+        $(".delete_row").attr("rownum", (row + 1));
+
+        $(".insert_column").attr("colnum", (col + 1));
+        $(".delete_column").attr("colnum", (col + 1));
+
     });
     
     //Deals with: setting the current hovered over cell & adjusting the range
@@ -5981,7 +5988,17 @@ function ip_SetupEvents(GridID) {
         }
         
 
-        
+    });
+
+    $('#' + GridID).on('click', '.ip_grid_cell, .ip_grid_rowSelecterCell.selected, .ip_grid_columnSelectorCell.selected', function (e) {
+        var crrw = parseInt($(this).attr('row'));
+        var crcl = parseInt($(this).attr('col'));
+
+        $(".insert_row").attr("rownum", crrw);
+        $(".delete_row").attr("rownum", crrw);
+
+        $(".insert_column").attr("colnum", crcl);
+        $(".delete_column").attr("colnum", crcl);
 
     });
        
@@ -6108,6 +6125,9 @@ function ip_SetupEvents(GridID) {
         var shitClick = e.shiftKey;
         var ctrlClick = e.ctrlKey;
         var row = parseInt($(this).attr('row'));
+
+        $(".insert_row").attr("rownum", row);
+        $(".delete_row").attr("rownum", row);
         
         if (ip_GridProps['index'].browser.name == 'ie' && shitClick == null) {
 
@@ -6186,6 +6206,11 @@ function ip_SetupEvents(GridID) {
         
         var resizeActiveCell = null;
         var frozenActiveCell = null;
+
+        var col = parseInt($(this).attr('col'));
+
+        $(".insert_column").attr("colnum", col);
+        $(".delete_column").attr("colnum", col);
         
         if (!ip_GridProps[GridID].resizing) {
 
@@ -9773,7 +9798,10 @@ function ip_RemoveCol(GridID, options) {
 
 
     //Validate count
-    if ((options.col + options.count) > ip_GridProps[GridID].cols) { options.count = ip_GridProps[GridID].cols - options.col; }
+    //if ((options.col + options.count) > ip_GridProps[GridID].cols) { options.count = ip_GridProps[GridID].cols - options.col; }
+
+    options.count = 1;
+    console.log('count='+options.count);
 
     if (options.mode == 'hide') {
 
@@ -17897,11 +17925,13 @@ function ip_GeneratePublicKey() {
     return GUID;
 }
 
-/* JS code for spreadsheet top options */
+/* JS code for spreadsheet options */
 $(document).ready(function() {
+
+    var GridID = 'model_master_spreadsheet';
+
     $(document).on('click', '.model-style-effect', function() {
         var fontStyle = $(this).data('effect');
-        var GridID = 'model_master_spreadsheet';
         var formatObject = ip_EnabledFormats(GridID);
         style_key = '';
         switch (fontStyle) {
@@ -17927,12 +17957,34 @@ $(document).ready(function() {
         $('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
     });
 
-    $(document).on('change', '.sheet_font_sz', function() { 
+    $(document).on('change', '.sheet_font_sz', function() {
         var fontSize = $(this).val();
-        var GridID = 'model_master_spreadsheet';
         var formatObject = ip_EnabledFormats(GridID);
-
         $('#' + GridID).ip_FormatCell({ style: (formatObject.fontsize ? 'font-size:;' : 'font-size:'+fontSize+'px;') });
+    });
+
+    $(document).on('click', '.undo_spreadsheet', function() {
+        $('#'+GridID).ip_Undo();
+    });
+
+    $(document).on('click', '.insert_row', function() {
+        var currow = $(this).attr('rownum');
+        $('#'+GridID).ip_InsertRow({ row: currow, appendTo: 'before', count: 1 });
+    });
+
+    $(document).on('click', '.delete_row', function() {
+        var currow = $(this).attr('rownum');
+        $('#'+GridID).ip_RemoveRow({ row: currow, count:1, mode: 'destroy' });
+    });
+
+    $(document).on('click', '.insert_column', function() {
+        var curcol = $(this).attr('colnum');
+        $('#'+GridID).ip_InsertCol({ col: curcol, appendTo: 'before', count: 1 });
+    });
+
+    $(document).on('click', '.delete_column', function() {
+        var curcol = $(this).attr('colnum');
+        $('#'+GridID).ip_RemoveCol({ col: curcol, count:1, mode: 'destroy' });
     });
 
     setTimeout(function() {
@@ -18024,16 +18076,16 @@ $(document).ready(function() {
         
         pickr.on('change', (color, instance) => {
             var fntclr = $('.fnclrcls').find('.pcr-result').val();
-            var GridID = 'model_master_spreadsheet';
             var formatObject = ip_EnabledFormats(GridID);
             $('#' + GridID).ip_FormatCell({ style: (formatObject.color ? 'color:;' : 'color:'+fntclr+';') });
         });
 
         bg_pickr.on('change', (color, instance) => {
             var fntbgclr = $('.bgcellcls').find('.pcr-result').val();
-            var GridID = 'model_master_spreadsheet';
             var formatObject = ip_EnabledFormats(GridID);
             $('#' + GridID).ip_FormatCell({ style: (formatObject.backgroundcolor ? 'background-color:;' : 'background-color:'+fntbgclr+';') });
+            var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : '#00000033';
+            $('#' + GridID).ip_FormatCell({ style: (formatObject.bordercolor ? 'border-color:;' : 'border-color:'+brdclr+';') });
         });
 
     }, 1000);

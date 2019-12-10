@@ -936,7 +936,7 @@ button.owl-prev:after {
 }
 .lesson-contant-left-editar{
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .sprd_meu_funs ul li {
     display: inline-block;
@@ -973,7 +973,7 @@ select.sheet_font_sz {
 }
 .lesson-contant-left-editar{
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .sprd_meu_funs ul li {
     display: inline-block;
@@ -1022,6 +1022,9 @@ select.sheet_font_sz {
 .spreadsheet-context-menu .sheet_font_sz {
     margin: 10px 0;
     float: right;
+}
+.spreadsheet-context-menu .pickr{
+    display: inline;
 }
 
 /* End Styles for spreadsheet */

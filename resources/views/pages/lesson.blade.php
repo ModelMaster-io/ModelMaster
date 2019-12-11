@@ -79,7 +79,6 @@
             <li><a href="javascript:void(0)" class="delete_row">Delete Row</a></li>
             <li><a href="javascript:void(0)" class="insert_column">Insert Column</a></li>
             <li><a href="javascript:void(0)" class="delete_column">Delete Column</a></li>
-            {{-- <li><a href="javascript:void(0)" class="test_fun">Testing</a></li> --}}
         </ul>
     </div>
 </div>

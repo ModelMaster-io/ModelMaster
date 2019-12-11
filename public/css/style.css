@@ -993,6 +993,10 @@ select.sheet_font_sz {
     float: left;
     width: 50px;
 }
+select.math_options {
+    float: left;
+    width: 120px;
+}
 
 /* Style for Right Click Context Menu */
 .spreadsheet-context-menu {
@@ -1026,6 +1030,7 @@ select.sheet_font_sz {
 .spreadsheet-context-menu .pickr{
     display: inline;
 }
+
 
 /* End Styles for spreadsheet */
 

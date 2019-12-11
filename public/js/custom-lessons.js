@@ -165,7 +165,7 @@ jQuery(document).ready(function () {
 			var GridID = 'model_master_spreadsheet';
 			var formatObject = ip_EnabledFormats(GridID);
 			$('#' + GridID).ip_FormatCell({ style: (formatObject.backgroundcolor ? 'background-color:;' : 'background-color:'+fntbgclr+';') });
-			var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : '#00000033';
+			var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : 'transparent';
 			$('#' + GridID).ip_FormatCell({ style: (formatObject.bordercolor ? 'border-color:;' : 'border-color:'+brdclr+';') });
 		});
 

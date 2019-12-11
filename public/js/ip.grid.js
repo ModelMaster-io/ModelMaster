@@ -2560,7 +2560,10 @@ var thisBrowser = ip_Browser();
                     var carret = ip_GetCursorPos(GridID, editToolInput);
                     var text = ip_GridProps[GridID].editing.editTool.text();
                     ip_GridProps[GridID].editing.carret = carret;
-                    ip_EditToolHelp(GridID, text, carret, 0, true, true, true);                     
+
+                    ip_EditToolHelp(GridID, text, carret, 0, true, true, true); 
+                    
+                    
     
 
                 });
@@ -3610,7 +3613,6 @@ var thisBrowser = ip_Browser();
             example: null,
 
         }, options);
-
 
         var GridID = $(this).attr('id');
         var functionName = options.functionName;
@@ -5449,10 +5451,10 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
-
+ 
         GridTools += '<textarea id="' + options.id + '_selectTool" cols="50" rows="10" style="position:absolute;z-index:0;"></textarea>';
 
         GridTools += '<div id="' + options.id + '_fBar" class="ip_grid_fbar" style="line-height:' + ip_GridProps[options.id].dimensions.fBarHeight + 'px;height:' + ip_GridProps[options.id].dimensions.fBarHeight + 'px;"><div class="ip_grid_fbar_title"><span class="ip_grid_fbar_f">f</span><span class="ip_grid_fbar_x">x</span></div><div class="ip_grid_fbar_text"></div></div>';
@@ -6650,10 +6652,12 @@ function ip_SetupFx(GridID) {
     $('#' + GridID).ip_AddFormula({ formulaName: 'range', functionName: 'ip_fxRange', tip: 'Specifies a range of cells, by default the first cell in range is returned.', inputs: '[row][col]:[row][col]', example: 'A1 or A1:B5' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'count', functionName: 'ip_fxCount', tip: 'Counts the number of cells which have numberic values. Ignores cells that are empty or text.', inputs: '(range1, range2, ... )', example: 'count( a1, b1:b5, a3 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'sum', functionName: 'ip_fxSum', tip: 'Adds the numbers in a range. Ignores cells that are empty or text.', inputs: '( range1, range2, ... )', example: 'sum( a1, b1:b5, a3 )' });
+    $('#' + GridID).ip_AddFormula({ formulaName: 'avg', functionName: 'ip_fxAvg', tip: 'Average the numbers in a range. Ignores cells that are empty or text.', inputs: '( range1, range2, ... )', example: 'avg( a1, b1:b5, a3 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'concat', functionName: 'ip_fxConcat', tip: 'Joins the values of cells into one text string.', inputs: '( range1, range2, ... )', example: 'concat( a1, b1:b5, a3 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'dropdown', functionName: 'ip_fxDropDown', tip: 'Fetches a range and returns the values as a dropdown object', inputs: '( range1, range2, ... )', example: 'dropdown( a1, b1:b5, a3 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'gantt', functionName: 'ip_fxGantt', tip: 'Returns true or false if the base date falls within start and end date ranges', inputs: '( BaseDate, StartDate, EndDate, TaskName, ProjectName (optional) )', example: '<br/>gantt( 2014-07-15, 2014-07-01, 2014-07-31, Cost of sales report, General Management )<br/>gantt( today(0), a1, a2, Cost of sales report, General Management )' });
-    $('#' + GridID).ip_AddFormula({ formulaName: 'max', functionName: 'ip_fxMax', tip: 'Returns the largest number in a range. Ignores cells that are empty or text.', inputs: '( range1, range2, ... )', example: 'sum( a1, b1:b5, a3 )' });
+    $('#' + GridID).ip_AddFormula({ formulaName: 'max', functionName: 'ip_fxMax', tip: 'Returns the largest number in a range. Ignores cells that are empty or text.', inputs: '( range1, range2, ... )', example: 'max( a1, b1:b5, a3 )' });
+    $('#' + GridID).ip_AddFormula({ formulaName: 'min', functionName: 'ip_fxMin', tip: 'Returns the smallest number in a range. Ignores cells that are empty or text.', inputs: '( range1, range2, ... )', example: 'min( a1, b1:b5, a3 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'today', functionName: 'ip_fxToday', tip: 'Returns todays date', inputs: '(increment in days)', example: '<br/>today( 0 )<br/>today( -1 )<br/>today( 1 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'date', functionName: 'ip_fxDate', tip: 'Returns the current date', inputs: '(increment in days)', example: '<br/>date( 0 )<br/>date( -1 )<br/>date( 1 )' });
     $('#' + GridID).ip_AddFormula({ formulaName: 'day', functionName: 'ip_fxDay', tip: 'Returns the calendar day in month', inputs: '(increment in days)', example: '<br/>day( 0 )<br/>day( -1 )<br/>day( 1 )' });
@@ -9801,7 +9805,6 @@ function ip_RemoveCol(GridID, options) {
     //if ((options.col + options.count) > ip_GridProps[GridID].cols) { options.count = ip_GridProps[GridID].cols - options.col; }
 
     options.count = 1;
-    console.log('count='+options.count);
 
     if (options.mode == 'hide') {
 
@@ -15807,6 +15810,64 @@ function ip_fxSum(GridID, row, col, fxRanges) {
 
 }
 
+/**
+ * Added function for get Average value on spreadsheet
+ * @param {*} GridID 
+ * @param {*} row 
+ * @param {*} col 
+ * @param {*} fxRanges 
+ */
+function ip_fxAvg(GridID, row, col, fxRanges) {
+    
+    //fxRanges is an array of ranges e.g. ip_rangeObject or simply a number, and sums up the numebers in that range, ignoring other datatypes
+    if (arguments.length < 4) { throw ip_fxException('1', "Missing input paramiters", 'avg', row, col); }
+
+    var tmp = null;
+    var value = 0;
+    var type = '';
+    
+    GridID = arguments[0];
+    row = arguments[1];
+    col = arguments[2];
+    fxRanges = Array.prototype.slice.call(arguments).splice(3);
+    var ln = 0;
+    for (var i = 0; i  < fxRanges.length; i ++) {        
+
+        if (typeof(fxRanges[i]) == 'object') {
+
+            var range = fxRanges[i];
+
+            if (typeof (range) == 'string') { range = ip_fxRangeObject(GridID, row, col, range); }
+
+            for (var r = range.startRow; r <= range.endRow; r++) {
+                                
+                if (ip_GridProps[GridID].rowData[r].loading) { throw ip_fxException('1', 'Row data not loaded', 'avg', row, col); }
+
+                for (var c = range.startCol; c <= range.endCol; c++) {
+
+                    if (r == row && c == col) { throw ip_fxException('1', "Circular dependency detected, your formula range may not include the cell that contains the formula", 'avg', row, col); }
+                    
+                    var val = ip_CellDataType(GridID, r, c, true);
+                    
+                    if (val.value != null && ip_fxValidateCellHashTags(GridID, r, c, range.hashtags)) {
+                        if (!isNaN(parseFloat(val.value))) { value += parseFloat(val.value); ln++; }
+                    }
+                    
+                }
+
+            }
+
+        }
+        else if (typeof (tmp = ip_fxCalculate(GridID, fxRanges[i])) == 'number') { value += tmp; ln++; }
+        else if (!isNaN(parseFloat(fxRanges[i]))) { value += parseFloat(fxRanges[i]); ln++; }        
+        else { throw ip_fxException('1', "Inputs are incorrect, they must be numbers or ranges", 'avg', row, col); }
+
+    }
+
+    return ((value/ln).toFixed(2));
+
+}
+
 function ip_fxConcat(GridID, row, col,  fxRanges) {
 
 
@@ -16011,7 +16072,9 @@ function ip_fxMax(GridID, row, col, fxRanges) {
                     var val = ip_CellDataType(GridID, r, c, true);
                     if (val.value != null && ip_fxValidateCellHashTags(GridID, r, c, range.hashtags)) {
                         
-                        if (value == null || val.value > value) { value = val.value; }
+                        if (value == null || val.value > value) { 
+                            value = val.value;
+                        }
                         
                     }
                 }
@@ -16021,6 +16084,57 @@ function ip_fxMax(GridID, row, col, fxRanges) {
         }
         else if (tmp == null || fxRanges[i] > tmp) { tmp = fxRanges[i]; }
         else { throw ip_fxException('1', "Inputs are incorrect, they must be numbers or ranges", 'max', row, col); }
+
+    }
+
+    return value;
+
+}
+
+function ip_fxMin(GridID, row, col, fxRanges) {
+
+    if (arguments.length < 4) { throw ip_fxException('1', "Missing input paramiters", 'min', row, col); }
+
+    var value = null;
+    var type = '';
+
+    GridID = arguments[0];
+    row = arguments[1];
+    col = arguments[2];
+    increment = arguments[3];
+
+    if (typeof (fxRanges) == 'string') { fxRanges = [ip_fxRangeObject(GridID, row, col, fxRanges)]; }
+    if (fxRanges.length == undefined) { fxRanges = [fxRanges]; }
+
+    for (var i = 0; i < fxRanges.length; i++) {
+
+        if (typeof (fxRanges[i]) == 'object') {
+
+            var range = fxRanges[i];
+
+            for (var r = range.startRow; r <= range.endRow; r++) {
+
+                if (ip_GridProps[GridID].rowData[r].loading) { throw ip_fxException('1', 'Row data not loaded', 'range', row, col); }
+
+                for (var c = range.startCol; c <= range.endCol; c++) {
+
+                    if (r == row && c == col) { throw ip_fxException('1', "Circular dependency detected, your formula range may not include the cell that contains the formula", 'min', row, col); }
+
+                    var val = ip_CellDataType(GridID, r, c, true);
+                    if (val.value != null && ip_fxValidateCellHashTags(GridID, r, c, range.hashtags)) {
+                        
+                        if (value == null || val.value < value) {
+                            value = val.value; 
+                        }
+                        
+                    }
+                }
+
+            }
+
+        }
+        else if (tmp == null || fxRanges[i] > tmp) { tmp = fxRanges[i]; }
+        else { throw ip_fxException('1', "Inputs are incorrect, they must be numbers or ranges", 'min', row, col); }
 
     }
 
@@ -17987,6 +18101,28 @@ $(document).ready(function() {
         $('#'+GridID).ip_RemoveCol({ col: curcol, count:1, mode: 'destroy' });
     });
 
+    $(document).on('change', '.math_options', function() {
+        var math_option = $(this).val();
+
+        if(math_option == ''){
+            return false;
+        }
+
+        var strtrw =  $('.ip_grid_cell_rangeHighlight_activecell').attr('startrow');
+        var strtcl =  $('.ip_grid_cell_rangeHighlight_activecell').attr('startcol');
+
+        $('#'+GridID).ip_CellInput({ value:'='+math_option, row: strtrw, col: strtcl });
+        $('#'+GridID).ip_SelectCell({ row:strtrw, col:strtcl });
+        $(".spreadsheet-context-menu").hide(100);
+        var model_sp_id = 'model_master_spreadsheet';
+        var highlight_cl = $('.ip_grid_cell_rangeHighlight_activecell').offset();
+        ip_ShowEditToolHelpToolTip(model_sp_id, ip_fxInfo(model_sp_id, math_option));
+        $('#ip_modal').css('left', highlight_cl.left+'px');
+        $('#ip_modal').css('top', (highlight_cl.top+30)+'px');
+        //editToolInput.focus();
+
+    });
+
     setTimeout(function() {
         /* JS code for color picker */
         const pickr = Pickr.create({
@@ -18084,7 +18220,7 @@ $(document).ready(function() {
             var fntbgclr = $('.bgcellcls').find('.pcr-result').val();
             var formatObject = ip_EnabledFormats(GridID);
             $('#' + GridID).ip_FormatCell({ style: (formatObject.backgroundcolor ? 'background-color:;' : 'background-color:'+fntbgclr+';') });
-            var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : '#00000033';
+            var brdclr = (fntbgclr == '#FFFFFF') ? '#e5e5e5' : 'transparent';
             $('#' + GridID).ip_FormatCell({ style: (formatObject.bordercolor ? 'border-color:;' : 'border-color:'+brdclr+';') });
         });
 

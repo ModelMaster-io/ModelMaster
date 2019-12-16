@@ -943,7 +943,7 @@ button.owl-prev:after {
     background: #29b473;
     color: #fff;
     margin: 0 5px;
-    width: 50px;
+    min-width: 50px;
     text-align: center;
 }
 .sprd_meu_funs ul li:first-child {
@@ -980,7 +980,7 @@ select.sheet_font_sz {
     background: #29b473;
     color: #fff;
     margin: 0 5px;
-    width: 50px;
+    min-width: 50px;
     text-align: center;
 }
 .sprd_meu_funs ul li:first-child {
@@ -1029,6 +1029,10 @@ select.math_options {
 }
 .spreadsheet-context-menu .pickr{
     display: inline;
+}
+select.brdr_option, select.border_style_options {
+    float: left;
+    width: 120px;
 }
 
 

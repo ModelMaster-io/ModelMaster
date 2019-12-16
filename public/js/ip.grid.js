@@ -3259,7 +3259,9 @@ var thisBrowser = ip_Browser();
                         
                         var hashTags = $('#' + GridID + '_HashTags')[0].val(); 
                         var formula = '=' + fxName + '(' + ($(validationValue).hasClass('tooltip') ? '' : inputs) + ')';
+
                         var controlType = ip_GetCellControlType(GridID, formula, null, null, null);
+
                         var dataTypes = $('#' + GridID + '_DataType').attr('key').replace(/default/gi, '').split('~');
                         var mask = $('#' + GridID + '_Mask').attr('key');
                         var recalculate = false;
@@ -5451,7 +5453,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
  
@@ -13637,6 +13639,8 @@ function ip_GetCellControlType(GridID, formula, fxIndex, row, col) {
 
             if (!fx.functions) { fx.functions = ['']; }
             if (fx.formula == '=()') { fx.formula = fx.formula.replace('=()', '') }
+
+            console.log(fx.formula);
         
             var returnObj = {
                 controlType: null,
@@ -13666,6 +13670,7 @@ function ip_GetCellControlType(GridID, formula, fxIndex, row, col) {
                     returnObj.validation.validationCriteria = '';
                     return returnObj;
             }
+
         }
 
     }
@@ -18039,7 +18044,9 @@ function ip_GeneratePublicKey() {
     return GUID;
 }
 
-/* JS code for spreadsheet options */
+/**
+ *  JS code for spreadsheet options
+ */ 
 $(document).ready(function() {
 
     var GridID = 'model_master_spreadsheet';
@@ -18071,36 +18078,63 @@ $(document).ready(function() {
         $('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
     });
 
+
+    /**
+     * JS code for change font-size on spreadsheet
+     */
     $(document).on('change', '.sheet_font_sz', function() {
         var fontSize = $(this).val();
         var formatObject = ip_EnabledFormats(GridID);
         $('#' + GridID).ip_FormatCell({ style: (formatObject.fontsize ? 'font-size:;' : 'font-size:'+fontSize+'px;') });
     });
 
+
+    /**
+     * JS code for undo spreadsheet activity
+     */
     $(document).on('click', '.undo_spreadsheet', function() {
         $('#'+GridID).ip_Undo();
     });
 
+
+    /**
+     * JS code for insert new row on spreadsheet
+     */
     $(document).on('click', '.insert_row', function() {
         var currow = $(this).attr('rownum');
         $('#'+GridID).ip_InsertRow({ row: currow, appendTo: 'before', count: 1 });
     });
 
+
+    /**
+     * JS code for delete specific row on spreadsheet
+     */
     $(document).on('click', '.delete_row', function() {
         var currow = $(this).attr('rownum');
         $('#'+GridID).ip_RemoveRow({ row: currow, count:1, mode: 'destroy' });
     });
 
+
+    /**
+     * JS code for add new column on spreadsheet
+     */
     $(document).on('click', '.insert_column', function() {
         var curcol = $(this).attr('colnum');
         $('#'+GridID).ip_InsertCol({ col: curcol, appendTo: 'before', count: 1 });
     });
 
+
+    /**
+     * JS code for delete specific column on spreadsheet
+     */
     $(document).on('click', '.delete_column', function() {
         var curcol = $(this).attr('colnum');
         $('#'+GridID).ip_RemoveCol({ col: curcol, count:1, mode: 'destroy' });
     });
 
+    /**
+     * JS code for mathematical functions on spreadsheet
+     */
     $(document).on('change', '.math_options', function() {
         var math_option = $(this).val();
 
@@ -18122,6 +18156,43 @@ $(document).ready(function() {
         //editToolInput.focus();
 
     });
+
+    /**
+     * JS code for cell border functionality 
+     */
+    $(document).on('change', '.brdr_option', function() {
+        var border_option = $(this).val();
+
+        if(border_option == ''){
+            return false;
+        }
+
+        $('#'+GridID).ip_Border({ borderPlacement:border_option });
+
+    });
+
+    /**
+     * JS code for cell border style functionality 
+     */
+    $(document).on('change', '.border_style_options', function() {
+        var border_style_option = $(this).val();
+        var border_placement = $('.brdr_option').val();
+        var brdopt = 1;
+
+        if(border_style_option == '' || border_placement == ''){
+            return false;
+        }
+
+        if(border_style_option == 'double'){
+            brdopt = 2;
+        }
+        
+
+        $('#'+GridID).ip_Border({ borderStyle:border_style_option, borderPlacement:border_placement, borderSize:brdopt });
+
+
+    });
+
 
     setTimeout(function() {
         /* JS code for color picker */

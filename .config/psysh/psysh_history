@@ -1,0 +1,9 @@
+_HiStOrY_V2_
+$user\040=\040\134App\134User;
+Use\040App\134User;
+$user\040=\040new\040User([\012'name'\040=>\040'John',\012'email'\040=>\040'john@example.com'\012]);
+$user->password\040=\040bcrypt('example');
+$user->save();
+echo\040'hello\040world';
+cls
+exit

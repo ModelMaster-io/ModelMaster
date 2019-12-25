@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Socialite;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -63,10 +64,207 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'service_provider' => 'normal',
         ]);
     }
+
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+            // echo '<pre>';print_r($user);die;
+        $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
+         // print_r($isUssserLogin);die;
+        if(!$isUserLogin) {
+
+        $users = new User;
+        $users->name = $user->getName();
+        $users->email = $user->getEmail();
+        $users->provider_id = $user->getId();
+        $users->service_provider ='facebook';
+        $users->password = '';
+        $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
+        $users->save();
+
+            if(!isset($users->id)) {
+               return redirect('/');
+
+            }
+
+        $login_user = User::where(['id' => $users->id])->first();
+          \Auth::login($login_user);
+          
+
+        } else {
+           
+        $login_user = User::where(['provider_id' => $user->getId()])->first();
+         
+            \Auth::login($login_user);
+        }    
+
+
+            return redirect('/');
+
+
+        } catch (Exception $e) {
+
+
+            return redirect('auth/facebook');
+
+
+        }
+    }
+
+
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+
+        // $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
+        $isUserLogin = User::where(['provider_id' => $user->getId(),'service_provider' => 'google'])->first();
+
+        if(!$isUserLogin) {
+
+        $users = new User;
+        $users->name = $user->getName();
+        $users->email = $user->getEmail();
+        $users->provider_id = $user->getId();
+        $users->service_provider ='google';
+        $users->password = '';
+        $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
+        $users->save();
+
+            if(!isset($users->id)) {
+
+               return redirect('/');
+
+            }
+
+        $login_user = User::where(['id' => $users->id])->first();
+          \Auth::login($login_user);
+          
+
+        } else {
+             
+        $login_user = User::where(['provider_id' => $user->getId()])->first();
+         
+            \Auth::login($login_user);
+        }    
+
+     
+         
+
+            return redirect('/');
+
+
+        } catch (Exception $e) {
+
+
+            return redirect('auth/google');
+
+
+        }
+    }
+
+
+
+        public function redirectToLinkedin()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleLinkedinCallback()
+    {
+        try {
+            $user = Socialite::driver('linkedin')->user();
+           // echo '<pre>'; print_r($user);die;
+        $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
+
+        if(!$isUserLogin) {
+
+        $users = new User;
+        $users->name = $user->first_name.' ' . $user->last_name;
+        $users->email = $user->email;
+        $users->provider_id = $user->id;
+        $users->service_provider ='linkedin';
+        $users->password = '';
+        $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
+        $users->save();
+
+            if(!isset($users->id)) {
+
+               return redirect('/');
+
+            }
+
+        $login_user = User::where(['id' => $users->id])->first();
+          \Auth::login($login_user);
+          
+
+        } else {
+             
+        $login_user = User::where(['provider_id' => $user->getId()])->first();
+         
+            \Auth::login($login_user);
+        }    
+
+     
+         
+
+            return redirect('/');
+
+
+        } catch (Exception $e) {
+
+
+            return redirect('auth/google');
+
+
+        }
+    }
+
+
+
+    public function userProfile(){
+        
+       return view('userprofile');
+    }
+
+
 }

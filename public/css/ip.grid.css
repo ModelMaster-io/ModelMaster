@@ -10,7 +10,7 @@
     padding:0px;
     white-space:nowrap;
     overflow:visible;
-    font-family:Verdana;
+    font-family:sans-serif;
     font-size:11px;
     background-color:#393939;
 }
@@ -218,7 +218,7 @@
 .ip_grid_cell {
     /*#f1f1f1;*/
 
-    font-family:Verdana;
+    font-family:sans-serif;
     font-size:11px;
     border-collapse:collapse;
     /*border:solid 1px red;*/
@@ -1324,7 +1324,7 @@ box-shadow: 0px 0px 3px 0px black;
 
     text-align:center;
     /*border-top:solid 1px #47660e;*/
-    font-family:Verdana;
+    font-family:sans-serif;
     font-size:11px;
     font-weight:bold;
     color:black;

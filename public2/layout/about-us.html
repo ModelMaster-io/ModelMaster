@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
+<title>Model Master</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function () {
+    jQuery(document).on('click', '.spread_steps_clk li a', function() {
+        var stp = jQuery(this).data('step');
+        jQuery('.spread_steps_clk li a').removeClass('active');
+        jQuery(this).addClass('active');
+
+        jQuery('.lesson-contant-left-tab-contant .lcltc1').hide();
+        jQuery('.lesson-contant-left-tab-contant #'+stp).show();
+    });
+
+    if(jQuery('.spread_steps_clk li:first-child a').hasClass('active')){
+        jQuery('.previous-btn').addClass('disabled');
+    }
+
+    if(jQuery('.spread_steps_clk li:last-child a').hasClass('active')){
+        jQuery('.next-btn').addClass('disabled');
+    }
+
+    jQuery(document).on('click', '.next-btn', function() {
+
+        if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
+            jQuery('.next-btn').addClass('disabled');
+            jQuery('.previous-btn').removeClass('disabled');
+        } else {
+            jQuery('.next-btn').removeClass('disabled');
+            jQuery('.previous-btn').removeClass('disabled');
+        }
+
+        var curr_active = jQuery('.spread_steps_clk li .active');
+        jQuery(curr_active).closest('li').next('li').find('a').trigger('click');
+    });
+
+
+    jQuery(document).on('click', '.previous-btn', function() {
+        if(jQuery('.spread_steps_clk li:nth-child(2) a').hasClass('active')){
+            jQuery('.previous-btn').addClass('disabled');
+            jQuery('.next-btn').removeClass('disabled');
+        } else {
+            jQuery('.previous-btn').removeClass('disabled');
+            jQuery('.next-btn').removeClass('disabled');
+        }
+
+        var curr_active = jQuery('.spread_steps_clk li .active');
+        jQuery(curr_active).closest('li').prev('li').find('a').trigger('click');
+    });
+
+});
+</script>
+
+</head>
+
+<body>
+<div class="wapper">
+
+<div class="header">
+    <div class="header-in">
+        <div class="header-in-left">
+            <a href="home.html"><img src="images/logo.png" /></a>
+        </div>
+        <div class="header-in-right">
+
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="index.html">Lesson</a></li>
+                    <li><a href="about-us.html" class="active">About Us</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="topnav">
+                <div id="myLinks" style="display:none;">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>  
+                        <li><a href="index.html">Lesson</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="#">Login</a></li>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="about-us-blog">
+
+<div class="about-us-banner">
+    <img src="images/about-us-banner.jpg" /></a>
+    <h1>About Us</h1>
+</div>
+<div class="about-us-our-mission">
+    <h2>Our Mission</h2>
+    <p>Our mission is to make it easy for anyone to learn analysis in excel.</p>
+
+    <p>For individuals, we're building a better way to learn modeling. This
+        platform can help you, no matter the stage in your career. In college,
+        trying to land a top internship or full time job? Started a new role and
+        need to improve your skills? Looking to move to a new job that requires
+        more analytical skills than your current job? No matter which applies to
+    you, our lessons will give you the skills you need.</p>
+
+    <p>For companies, we're building a platform that will give you more
+        visibility in to the skills of your employees and give you the tools you
+    need to improve those skills across your company.</p>
+</div>
+
+</div>
+
+<div class="footer">
+<!-- Begin Mailchimp Signup Form -->
+<link
+href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css"
+rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px
+        Helvetica,Arial,sans-serif; width:100%;}
+/* Add your own Mailchimp form style overrides in your site stylesheet
+or in this style block.
+We recommend moving this block and the preceding CSS link to the HEAD of
+your HTML file. */
+</style>
+<div id="mc_embed_signup" class="signup-box">
+<form
+action="https://gmail.us5.list-manage.com/subscribe/post?u=5424cd9dcd7373ef5fba31bcf&amp;id=90de1a44aa"
+method="post" id="mc-embedded-subscribe-form"
+name="mc-embedded-subscribe-form" class="validate" target="_blank"
+novalidate>
+<div id="mc_embed_signup_scroll">
+<label for="mce-EMAIL">Sign up
+for our mailing list</label>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+placeholder="Enter Email address" required>
+<!-- real people should not fill this in and expect good things - do not
+remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;"
+aria-hidden="true"><input type="text"
+name="b_5424cd9dcd7373ef5fba31bcf_90de1a44aa" tabindex="-1" value=""></div>
+
+<div class="clear"><input type="submit" value="Subscribe"
+name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+
+<div class="contact_us">
+<label>contact us</label>
+<div class="footer_contact_link">
+<a href=""><i class="fa fa-phone"></i>(805)315-1072</a>
+</div>
+<div class="footer_contact_link">
+<a href="mailto:contact@modelmaster.io" target="_top"><i class="fa fa-envelope-o" aria-hidden="true"></i>contact@modelmaster.io
+</a>
+</div>
+<div class="footer_contact_link">
+<a href="https://modelmaster.io/"><i class="fa fa-globe"></i>modelmaster.io</a>
+</div>
+</div>
+<div class="copyright">
+@copyright 2019 Model Master.
+</div>
+</div>
+
+</div>
+
+<script>
+function myFunction() {
+var x = document.getElementById("myLinks");
+if (x.style.display === "block") {
+    x.style.display = "none";
+} else {
+    x.style.display = "block";
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
+<title>Model Master</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function () {
+jQuery(document).on('click', '.spread_steps_clk li a', function() {
+    var stp = jQuery(this).data('step');
+    jQuery('.spread_steps_clk li a').removeClass('active');
+    jQuery(this).addClass('active');
+
+    jQuery('.lesson-contant-left-tab-contant .lcltc1').hide();
+    jQuery('.lesson-contant-left-tab-contant #'+stp).show();
+});
+
+if(jQuery('.spread_steps_clk li:first-child a').hasClass('active')){
+    jQuery('.previous-btn').addClass('disabled');
+}
+
+if(jQuery('.spread_steps_clk li:last-child a').hasClass('active')){
+    jQuery('.next-btn').addClass('disabled');
+}
+
+jQuery(document).on('click', '.next-btn', function() {
+
+    if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
+        jQuery('.next-btn').addClass('disabled');
+        jQuery('.previous-btn').removeClass('disabled');
+    } else {
+        jQuery('.next-btn').removeClass('disabled');
+        jQuery('.previous-btn').removeClass('disabled');
+    }
+
+    var curr_active = jQuery('.spread_steps_clk li .active');
+    jQuery(curr_active).closest('li').next('li').find('a').trigger('click');
+});
+
+
+jQuery(document).on('click', '.previous-btn', function() {
+    if(jQuery('.spread_steps_clk li:nth-child(2) a').hasClass('active')){
+        jQuery('.previous-btn').addClass('disabled');
+        jQuery('.next-btn').removeClass('disabled');
+    } else {
+        jQuery('.previous-btn').removeClass('disabled');
+        jQuery('.next-btn').removeClass('disabled');
+    }
+
+    var curr_active = jQuery('.spread_steps_clk li .active');
+    jQuery(curr_active).closest('li').prev('li').find('a').trigger('click');
+});
+
+});
+</script>
+
+</head> 
+
+<body class="home">
+
+<div class="wapper">
+
+
+<div class="header">
+<div class="header-in">
+    <div class="header-in-left">
+        <a href="home.html"><img src="images/logo.png" /></a>
+    </div>
+    <div class="header-in-right">
+
+        <div class="menu">
+            <ul>
+                <li><a href="home.html">Home</a></li> 
+                <li><a href="index.html" class="active">Lesson</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="topnav">
+            <div id="myLinks" style="display:none;">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="index.html">Lesson</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="#">Login</a></li>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="title">Lesson 1</div> 
+
+<div class="lesson">
+<div class="lesson-contant">
+<div class="lesson-contant-left">
+    <span class="lc-title">Instructions</span>
+    <div class="lesson-contant-left-tab">
+
+        <div class="lesson-contant-left-tab-menu">
+            <ul class="lesson-menu spread_steps_clk">
+                <li><a href="javascript:void(0)" class="active" data-step="step1">1</a></li>
+                <li><a href="javascript:void(0)" data-step="step2">2</a></li>
+                <li><a href="javascript:void(0)" data-step="step3">3</a></li>
+                <li><a href="javascript:void(0)" data-step="step4">4</a></li>
+            </ul>
+        </div>
+
+        <div class="lcltc-in">
+            <div class="lesson-contant-left-tab-contant">
+
+                <div class="lcltc1" id="step1" style="display:block">
+                    <span class="lcltc1-title">Step 1</span>
+                    <span class="lcltc1-contant">Starting in cell G3, put column headings for 7 years starting two years before the current year.</span>
+                </div>
+
+                <div class="lcltc1" id="step2" style="display:none">
+                    <span class="lcltc1-title">Step 2</span>
+                </div>
+
+                <div class="lcltc1" id="step3" style="display:none">
+                    <span class="lcltc1-title">Step 3</span>
+                </div>
+
+                <div class="lcltc1" id="step4" style="display:none">
+                    <span class="lcltc1-title">Step 4</span>
+                    <span class="lcltc1-contant">Now that you've input historical Subscription and License Revenue, sum them up to calculate total revenue for 2017 and 2018</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="lesson-contant-right">
+    <span class="lc-title">Income Statement</span>
+    <div class="lesson-contant-left-editar">
+
+        <div class="lcle-editar">
+
+        </div>
+
+        <div class="lcle-btn">
+            <a href="javascript:void(0)" class="previous-btn"><i class="fa fa-angle-left"></i> Previous</a>
+            <a href="javascript:void(0)" class="next-btn">Next <i class="fa fa-angle-right"></i></a>
+        </div> 
+
+    </div>
+</div>
+</div>
+</div>
+<div class="footer">
+<!-- Begin Mailchimp Signup Form -->
+<link
+href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css"
+rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:14px
+    Helvetica,Arial,sans-serif; width:100%;}
+/* Add your own Mailchimp form style overrides in your site stylesheet
+or in this style block.
+We recommend moving this block and the preceding CSS link to the HEAD of
+your HTML file. */
+</style>
+<div id="mc_embed_signup" class="signup-box">
+<form
+action="https://gmail.us5.list-manage.com/subscribe/post?u=5424cd9dcd7373ef5fba31bcf&amp;id=90de1a44aa"
+method="post" id="mc-embedded-subscribe-form"
+name="mc-embedded-subscribe-form" class="validate" target="_blank"
+novalidate>
+<div id="mc_embed_signup_scroll">
+<label for="mce-EMAIL">Sign up
+for our mailing list</label>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+placeholder="Enter Email address" required>
+<!-- real people should not fill this in and expect good things - do not
+remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;"
+aria-hidden="true"><input type="text"
+name="b_5424cd9dcd7373ef5fba31bcf_90de1a44aa" tabindex="-1" value=""></div>
+
+<div class="clear"><input type="submit" value="Subscribe"
+name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+
+<div class="contact_us">
+<label>contact us</label>
+<div class="footer_contact_link">
+<a href=""><i class="fa fa-phone"></i>(805)315-1072</a>
+</div>
+<div class="footer_contact_link">
+<a href="mailto:contact@modelmaster.io" target="_top"><i class="fa fa-envelope-o" aria-hidden="true"></i>contact@modelmaster.io
+</a>
+</div>
+<div class="footer_contact_link">
+<a href="https://modelmaster.io/"><i class="fa fa-globe"></i>modelmaster.io</a>
+</div>
+</div>
+<div class="copyright">
+@copyright 2019 Model Master.
+</div>
+</div>
+</div>
+
+
+<script>
+function myFunction() {
+var x = document.getElementById("myLinks");
+if (x.style.display === "block") {
+x.style.display = "none";
+} else {
+x.style.display = "block";
+}
+}
+</script>
+
+</body>
+</html>

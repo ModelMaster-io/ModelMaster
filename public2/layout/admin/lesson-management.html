@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
+<title>Model Master</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<!--  jQuery 1.7+  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<!-- Important Owl stylesheet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<!-- Default Theme -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+<link href="css/admin-style.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+<!-- Include js plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+
+</head>
+
+<body>
+	<div class="wapper">
+		<div class="ad-nav">
+			<div class="home-btn"><a href="#"><img src="image/model-admin.png"/>Model Master Administration</a></div>
+			<div class="login-btn"><a href="#">Hello, Admin<img src="image/user.png"/></a></div>
+		</div>
+		<div class="admin-sidebar">
+			<ul>
+                <li><a href="#"><img src="image/user-profile.png"/> my profile</a></li>
+                <li class="active"><a href="#"><img src="image/lesson.png"/> lesson management</a></li>
+                <li><a href="#"> add lesson</a></li>
+                <li><a href="#"><img src="image/oder.png"/> order management</a></li>
+                <li><a href="#"><img src="image/user-management.png"/> user management</a></li>
+            </ul>
+		</div>
+		<div class="admin-content">
+			<div class="title"><h4>lesson management</h4><button><span>+</span> add lesson</button></div>
+			<table id="lesson-data" class="table table-striped" style="width:100%">
+				<div class="price">
+					<select>
+					<option>price</option>
+					<option>$12.22</option>
+					<option>$12.22</option>
+					<option>$12.22</option>
+				</select>
+			</div>
+				  <thead>
+            <tr>
+                <th>No</th>
+                <th>lesson name</th>
+                <th>lesson uploaded url </th>
+                <th>price </th>
+                <th>action</th>
+            </tr>
+        </thead>
+         <tbody>
+            <tr>
+                <td>1</td>
+                <td>The principles of scientific management</td>
+                <td><a>http://thoughttless-rabbit.w6.wpsandbox.pro</a></td>
+                <td>$26.55</td>
+               <td>
+                <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>2</td>
+                <td>Swim with the sharks without being eaten alive</td>
+                <td><a>https://api.uploadcare.com/convert/document</a></td>
+                <td>$25.45</td>
+                <td>
+                	<a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>3</td>
+                <td>Leadership and self deception</td>
+                <td><a>https://upload.uploadcare.com/from_url</a></td>
+                <td>$20.25</td>
+                 <td>
+                	<a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>4</td>
+                <td>The five dysfunctions of a team</td>
+                <td><a>http://document/format/jpg/-/page/1</a></td>
+                <td>$35.65</td>
+             <td>
+                	<a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+               <tr>
+                <td>5</td>
+                <td>Competing for the future</td>
+                <td><a>https://upload.uploadcare.com/from_url/status</a></td>
+                <td>$26.55</td>
+                <td>
+                	<a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>The principles of scientific management</td>
+                <td><a>http://thoughttless-rabbit.w6.wpsandbox.pro</a></td>
+                <td>$26.55</td>
+               <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>7</td>
+                <td>Swim with the sharks without being eaten alive</td>
+                <td><a>https://api.uploadcare.com/convert/document</a></td>
+                <td>$25.45</td>
+                <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>8</td>
+                <td>Leadership and self deception</td>
+                <td><a>https://upload.uploadcare.com/from_url</a></td>
+                <td>$20.25</td>
+                 <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>9</td>
+                <td>The five dysfunctions of a team</td>
+                <td><a>http://document/format/jpg/-/page/1</a></td>
+                <td>$35.65</td>
+             <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+               <tr>
+                <td>10</td>
+                <td>Competing for the future</td>
+                <td><a>https://upload.uploadcare.com/from_url/status</a></td>
+                <td>$26.55</td>
+                <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>The principles of scientific management</td>
+                <td><a>http://thoughttless-rabbit.w6.wpsandbox.pro</a></td>
+                <td>$26.55</td>
+               <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>12</td>
+                <td>Swim with the sharks without being eaten alive</td>
+                <td><a>https://api.uploadcare.com/convert/document</a></td>
+                <td>$25.45</td>
+                <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>13</td>
+                <td>Leadership and self deception</td>
+                <td><a>https://upload.uploadcare.com/from_url</a></td>
+                <td>$20.25</td>
+                 <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+              <tr>
+                <td>14</td>
+                <td>The five dysfunctions of a team</td>
+                <td><a>http://document/format/jpg/-/page/1</a></td>
+                <td>$35.65</td>
+             <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+               <tr>
+                <td>15</td>
+                <td>Competing for the future</td>
+                <td><a>https://upload.uploadcare.com/from_url/status</a></td>
+                <td>$26.55</td>
+                <td>
+                    <a class="btn-action"><i class="fa fa-pencil" aria-hidden="true"></i></a><span class="divider">|</span>  <a class="btn-action"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#lesson-data').DataTable( {
+   language: { search: '', searchPlaceholder: "Search..." }
+	});
+
+} );
+</script>
+</html>

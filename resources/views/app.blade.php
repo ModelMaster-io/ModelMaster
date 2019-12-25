@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="google-site-verification" content="0GMdqT4QwQwBM1GrXB4qu1mpBCkV0dfm4Kl5d-p_W2U" />
     <meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
     <title>Model Master</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -42,7 +43,15 @@
                             <li><a href="{{ url('/lessons') }}" class="{{ request()->is('lessons') ? 'active' : '' }}">Lesson</a></li>
                             <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li> @if(\Auth::check())
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            @else
+                            <a href="{{ route('login') }}">Login</a>
+                            @endif</li>
                         </ul>
                     </div>
 
@@ -53,7 +62,18 @@
                                 <li><a href="{{ url('/lessons') }}" class="{{ request()->is('lessons') ? 'active' : '' }}">Lesson</a></li>
                                 <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
                                 <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li>
+                                @if(\Auth::check())
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                            @else
+                            <a href="{{ route('login') }}">Login</a>
+                            @endif
+                            </li>
                             </ul>
                         </div>
                         <a href="javascript:void(0);" class="icon" onclick="myFunction()">

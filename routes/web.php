@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    // print_r(\Auth::user());die;
     // return view('pages.spreadsheet_demo');
     // return view('admin.pages.user_management');
     return view('pages.home');
@@ -40,6 +41,17 @@ Route::get('/contact', function () {
 });
 
 
+Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
+
+
+Route::get('auth/google', 'Auth\RegisterController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\RegisterController@handleGoogleCallback');
+
+
+Route::get('auth/linkedin', 'Auth\RegisterController@redirectToLinkedin');
+Route::get('auth/linkedin/callback', 'Auth\RegisterController@handleLinkedinCallback');
+
 
 Route::group(['prefix' => '/admin'], function () {
 
@@ -66,3 +78,10 @@ Route::group(['prefix' => '/admin'], function () {
 
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/userprofile', 'Auth\RegisterController@userProfile')->name('userprofile');
+
+

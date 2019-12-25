@@ -23,7 +23,7 @@ var thisBrowser = ip_Browser();
             inQuotes: /("(.*?)")/gi,
             words: /[\w\s"']+/gi,
             nonWords: /[^\w\s]/gi,
-            fx: /(\w+)(?=\()/gi,            
+            fx: /(\w+)(?=\()/gi,    
             //operator: /([=%*/+-,]+\(\))/gi,
             operator: /\+|,|.|-|\*|\/|=|>|<|>=|<=|&|\||%|!|\^|\(|\)/,
             hashtag: /(\#\w*)/gi,
@@ -3636,6 +3636,7 @@ var thisBrowser = ip_Browser();
     }
 
     $.fn.ip_AddMask = function (options) {
+        
         //Registers a custom masks with ip sheets
         var options = $.extend({
 
@@ -3649,6 +3650,7 @@ var thisBrowser = ip_Browser();
         
 
         var GridID = $(this).attr('id');
+
         var input = options.input;
         var output = options.output;
         var dataType = options.dataType.toLowerCase();
@@ -3661,7 +3663,8 @@ var thisBrowser = ip_Browser();
 
         for (var i = 0; i < ip_GridProps[GridID].mask[dataType].length; i++) {
 
-            if (ip_GridProps[GridID].mask[dataType][i].mask == mask) { newMask = ip_GridProps[GridID].mask[dataType][i]; break; }
+            if (ip_GridProps[GridID].mask[dataType][i].mask == mask) { newMask = ip_GridProps[GridID].mask[dataType][i];
+            break; }
 
         }
 
@@ -5419,6 +5422,7 @@ function ip_CreateGrid(options) {
     ip_SetupFx(options.id);
     ip_SetupMask(options.id);
 
+
     return $Quads;
 }
 
@@ -5453,7 +5457,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li><li><select class="change_decimal_points"><option value="">Decimal</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
  
@@ -5651,7 +5655,8 @@ function ip_CreateGridQuadCell(options, tableColumnsArray) {
     else if(row >= 0 && col >= 0) {
 
         //Standard Cell         
-        var CellData = ip_CellData(options.GridID, row, col, true);      
+        var CellData = ip_CellData(options.GridID, row, col, true); 
+        
         TableColumns = '<td cellType="Cell" class="ip_grid_cell' + CellData.css + '" id="' + options.GridID + '_cell_' + row + '_' + col + '"  quadrant="' + options.Quad + '" col="' + col + '" row="' + row + '" style="' + CellData.style + '" ' + CellData.rowSpan + ' ' + CellData.colSpan + ' >' +
                             ip_CellBorder(options.GridID, row, col, CellData) +
                             ip_CellOuter(options.GridID, row, col, CellData) +
@@ -6671,6 +6676,7 @@ function ip_SetupMask(GridID) {
     $('#' + GridID).ip_AddMask({
         title: 'Short Date', dataType: 'date', mask: 'yyyy-mm-dd',
         input: function (value) {
+            
             var date = ip_parseDate(value, 'yyyy-mm-dd');
             if (!date) { date = ip_parseDate(value); }
             return date;
@@ -6683,9 +6689,11 @@ function ip_SetupMask(GridID) {
 
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Short Date/Time', dataType: 'date', mask: 'yyyy-mm-dd hh:mm',
         input: function (value) {
+            
             var date = ip_parseDate(value, 'yyyy-mm-dd hh:mm');
             if (!date) { date = ip_parseDate(value); }
             return date;
@@ -6698,9 +6706,11 @@ function ip_SetupMask(GridID) {
 
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Short Date/Time/Seconds', dataType: 'date', mask: 'yyyy-mm-dd hh:mm:ss',
         input: function (value) {
+            
             var date = ip_parseDate(value, 'yyyy-mm-dd hh:mm:ss');
             if (!date) { date = ip_parseDate(value); }
             return date;
@@ -6713,9 +6723,11 @@ function ip_SetupMask(GridID) {
 
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Long Date', dataType: 'date', mask: 'dd-mon-yyyy',
         input: function (value) {
+            
             var date = ip_parseDate(value, 'dd-mon-yyyy');
             if (!date) { date = ip_parseDate(value); }
             return date;
@@ -6728,14 +6740,17 @@ function ip_SetupMask(GridID) {
 
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Full Date', dataType: 'date', mask: 'Wed Jul 01 2015 00:00:00 GMT+0200 (US Standard Time)',
         input: function (value) {
+            
             var date = ip_parseDate(value, 'full');
             if (!date) { date = ip_parseDate(value); }
             return date;
         },
         output: function (value, oldMask) {
+            
             var date = ip_formatDate(GridID, value, oldMask, 'full');
             if (date == false && typeof (date) == "boolean") { return value; }
             return date;
@@ -6745,53 +6760,62 @@ function ip_SetupMask(GridID) {
     $('#' + GridID).ip_AddMask({
         title: 'Standard', dataType: 'number', mask: '123',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[\s,]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
+            
             var number = ip_formatNumber(GridID, value, oldMask, '123', decimals);
             if (number == false && typeof (number) == "boolean") { return value; }
             return number;
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'International', dataType: 'number', mask: '1 000 000.00',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[\s,]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
+            
             var number = ip_formatNumber(GridID, value, oldMask, '1 000 000.00', decimals);
             if (number == false && typeof (number) == "boolean") { return value; }
             return number;
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'US Number', dataType: 'number', mask: '1,000,000.00',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[^0-9.]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
-
+            
             var number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
             if (number == false && typeof (number) == "boolean") { return value; }
             return number;
             
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Test number', dataType: 'Test Number', mask: '1#000#000.00',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[^0-9.]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
-
+            
             if (value == null) return null;
             var number = value.toString().replace(/[\s,]/gi, '');
             number = ip_formatNumber(GridID, number, oldMask, '1,000,000.00', decimals);
@@ -6807,25 +6831,31 @@ function ip_SetupMask(GridID) {
     $('#' + GridID).ip_AddMask({
         title: 'US Dollar', dataType: 'currency', mask: '$1 000.00',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[^0-9.]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
+            
             if (value == null || value == '') { return value }
             var currency = ip_formatCurrency(GridID, value, oldMask, '$1,000,000.00', decimals);
             if (currency == false && typeof (currency) == "boolean") { return value; }
             return currency
         }
     });
+
     $('#' + GridID).ip_AddMask({
         title: 'Rand', dataType: 'currency', mask: 'R1 000.00',
         input: function (value) {
+            
             if (value == null) return null;
             var number = value.toString().replace(/[^0-9.]/gi, '');
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
+            
+            
             if (value == null || value == '') { return value }
             var currency = ip_formatCurrency(GridID, value, oldMask, 'R1,000,000.00', decimals);
             if (currency == false && typeof (currency) == "boolean") { return value; }
@@ -7020,7 +7050,7 @@ function ip_CalculateRangeDimensions(GridID, Range, rangeIndex, mouseArgs, axis,
         }
         
 
-    }
+    } 
 
     if (axis != 'Y') {
 
@@ -13308,6 +13338,9 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
 
             if (error == null || (error && error.errorCode == '')) {
                 dataType = ip_CellDataType(GridID, row, col, true, value, oldMask);
+
+                console.log(dataType);
+
                 if (dataType.valid) { formatted = dataType.output(); }
                 else { formatted = value; }
             }
@@ -13318,6 +13351,7 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
 
             ip_GridProps[GridID].rowData[row].cells[col].value = dataType.value;
             ip_GridProps[GridID].rowData[row].cells[col].display = formatted;
+
         }
 
         return true;
@@ -13478,15 +13512,18 @@ function ip_SetCellFormat(GridID, options) {
                         if (options.decimalsInc != null) {
 
                             var decimals = cell.decimals;
+
                             if (decimals == null && !PropertyAppendModes.colnotnull) {
                                 decimals = ip_GetEnabledDecimals(GridID, null, r, c, true);
                                 if (decimals == null) { decimals = 0; }
                             }
                             if (decimals != null) { cell.decimals = (decimals + options.decimalsInc); }
 
+
                         }
 
-                        if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals); }
+                        if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals); 
+                            console.log('decimal1='+cell.decimals);}
                         if (cell.decimals < 0) { cell.decimals = null; }
                         if (options.decimals || options.decimalsInc) { setvalue = true; }
                                                 
@@ -13503,11 +13540,15 @@ function ip_SetCellFormat(GridID, options) {
                         }
 
                         if (setvalue) {
+
+                            console.log('GridId='+GridID+'||row='+r+'||col='+c+'||oldmask='+oldMask);
+
                             ip_SetValue(GridID, r, c, undefined, oldMask);
                         }
 
 
                         formatObject = ip_GetEnabledFormats(GridID, formatObject, r, c);
+
                     }
                 }
             }                
@@ -13639,8 +13680,6 @@ function ip_GetCellControlType(GridID, formula, fxIndex, row, col) {
 
             if (!fx.functions) { fx.functions = ['']; }
             if (fx.formula == '=()') { fx.formula = fx.formula.replace('=()', '') }
-
-            console.log(fx.formula);
         
             var returnObj = {
                 controlType: null,
@@ -15835,6 +15874,9 @@ function ip_fxAvg(GridID, row, col, fxRanges) {
     row = arguments[1];
     col = arguments[2];
     fxRanges = Array.prototype.slice.call(arguments).splice(3);
+
+    console.log(fxRanges);
+
     var ln = 0;
     for (var i = 0; i  < fxRanges.length; i ++) {        
 
@@ -15924,6 +15966,7 @@ function ip_fxConcat(GridID, row, col,  fxRanges) {
     return value;
 
 }
+
 
 function ip_fxDropDown(GridID, row, col, fxRanges) {
 
@@ -17396,6 +17439,7 @@ function ip_parseDate(value, mask) {
 }
 
 function ip_parseNumber(value, decimals) {
+
     if (value == null) { return NaN; }
     if (typeof (value) == 'string' && value.match(/[^.0-9%]/)) { return NaN }
 
@@ -17535,7 +17579,14 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
 
     if (newMask == '$1,000,000.00') {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
-        if (number == false) { return false; } else { number = '$' + number; }
+        if (number == false) { return false; } else {
+            /*if(number < 0){
+                console.log(number+'=number is negetive');
+            } else {
+                console.log(number+'=number is positive');
+            }*/
+            number = '$' + number;
+        }
     }
     if (newMask == 'R1,000,000.00') {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
@@ -18075,7 +18126,9 @@ $(document).ready(function() {
             default:
                 style_key = '';
         }
+
         $('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
+
     });
 
 
@@ -18094,6 +18147,10 @@ $(document).ready(function() {
      */
     $(document).on('click', '.undo_spreadsheet', function() {
         $('#'+GridID).ip_Undo();
+    });
+
+    $(document).on('click', '.dollar_spreadsheet', function() {
+        console.log('dollor sign...');
     });
 
 
@@ -18194,6 +18251,37 @@ $(document).ready(function() {
     });
 
 
+    
+    /**
+     * JS code for cell decimal number functionality 
+     */
+    $(document).on('change', '.change_decimal_points', function() {
+        var decimal_num = $(this).val();
+
+        if(decimal_num == ''){
+            return false;
+        }
+
+        $('#' + GridID).ip_FormatCell({ decimals: decimal_num });
+
+    });
+
+
+    /**
+     * JS code for converts numbers into currency format 
+     */
+    $(document).on('click', '.change_to_currency', function() {
+
+        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', decimals: 2 });
+
+        //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
+
+    });
+
+
+    /**
+     * JS code for color picker option on spreadsheet
+     */
     setTimeout(function() {
         /* JS code for color picker */
         const pickr = Pickr.create({

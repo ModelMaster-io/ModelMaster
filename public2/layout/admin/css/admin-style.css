@@ -1,0 +1,636 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'Conv_lato.regular';
+	src: url('../fonts/lato.regular.eot');
+	src: local('☺'), url('../fonts/lato.regular.woff') format('woff'), url('../fonts/lato.regular.ttf') format('truetype'), url('../fonts/lato.regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_lato.light';
+	src: url('../fonts/lato.light.eot');
+	src: local('☺'), url('../fonts/lato.light.woff') format('woff'), url('../fonts/lato.light.ttf') format('truetype'), url('../fonts/lato.light.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+body, html {
+	margin: 0px;
+	padding: 0px;
+	font-size: 18px;
+	font-weight: normal;
+	background: #FFF;
+	font-family: 'Lato', sans-serif !important;
+	line-height: 24px;
+}
+p, h1, h2, h3, h4, h5, h6, ul, li, ol { 
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Lato', sans-serif !important;
+}
+div {
+	box-sizing: border-box;
+}
+a{
+	color: #eee !important;
+	cursor: pointer;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	color: #70cda2 !important;
+	text-decoration: none;
+}
+a:active {
+	color: #70cda2;
+	text-decoration: none;
+}
+a, a img, :focus {
+	outline: 0;
+}
+ol, ul {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	border: 0px;
+}
+p {
+	margin-bottom:20px;
+}
+i.fa.fa-home {
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+}
+
+
+.admin-content .title button:hover,
+.admin-content .title button{
+	transition: all 0.5s ease;
+}
+.ad-nav, .admin-sidebar {
+	color: #fff;
+}
+.ad-nav{
+	background-color: #23282C;
+}
+.ad-nav {
+	float: left;
+	width: 100%;
+	line-height: 32px;
+	text-transform: capitalize;
+}
+.home-btn, .login-btn {
+	width: 50%;
+	float: left;
+	padding: 0 8px 0 7px;
+	color: #eee;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-size: 13px;
+}
+
+.admin-sidebar {
+	width: 175px;
+	position: absolute;
+	height: 100%;
+	background-color: #353743;
+	top: 31px;
+	text-transform: capitalize;
+}
+.admin-content {
+	margin-left: 175px;
+	padding: 0 20px;
+}
+.login-btn {
+	text-align: right;
+}
+.login-btn img {
+	width: auto;
+	height: 16px;
+	padding: 0;
+	border: 1px solid #82878c;
+	background: #eee;
+	line-height: 1.84615384;
+	vertical-align: middle;
+	margin: -3px 0 0 6px;
+	float: none;
+	display: inline;
+}
+td a {
+	color: #2579c1 !important;
+}
+.admin-sidebar li {
+	padding: 6px 10px;
+	font-size: 13px;
+	border-bottom: 1px solid #4D5055;
+	text-transform: capitalize;
+	padding-left: 40px;
+	position: relative;
+}
+.admin-sidebar img {
+	height: 16px;
+	position: absolute;
+	left: 11px;
+	top: 10px;
+}
+.admin-sidebar i {
+	font-size: 20px;
+	margin-right: 5px;
+}
+.admin-sidebar li.active {
+	background: #29B473;
+}
+.title {
+	clear: both;
+	width: 100%;
+	padding: 20px 0;
+	display: inline-block;
+}
+.admin-content .row{
+	margin:0;
+}
+.admin-content .col-sm-12 {
+	padding: 0;
+}
+.admin-content .title button, .add-lesson-btn {
+	background-color: #29B473 !important;
+	padding: 8px 12px !important;
+	color: #fff !important;
+	text-transform: capitalize;
+	font-size: 15px !important;
+	line-height: 16px !important;
+	display: inline-block !important;
+	font-family: 'Conv_lato.regular',Sans-Serif;
+	border: none!important;
+	vertical-align: top;
+	float: right;
+	border-radius: 50px;
+		transition: all 0.5s ease;
+}
+.admin-sidebar img {
+	height: 16px;
+}
+.home-btn img {
+	margin-right: 7px;
+	position: relative;
+	top: -1px;
+	height: 16px;
+}
+.admin-content .title button i.fa.fa-plus {
+	margin-right: 5px;
+	position: relative;
+	top: 1px;
+}
+.admin-content .title h4 {
+	float: left;
+	text-transform: capitalize;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after{
+	display: none;
+}
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after{
+	display: none;
+}
+table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before{
+	display: none;
+}
+i.fa.fa-pencil {
+	margin-right: 10px;
+}
+div#lesson-data_length {
+	display: none;
+}
+select {
+	position: absolute;
+	padding: 5px 15px;
+	border-radius: 15px;
+	border-color: #B6B6B6;
+	color: #8D8D8D;
+	text-transform: capitalize;
+	width: 12%;
+	font-weight: 400;
+	z-index: 9;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url(../image/drop-down-arrow.png);
+	background-repeat: no-repeat;
+	background-position: 130px;
+	-webkit-box-shadow: 0 8px 6px -6px #E6E6E6;
+	-moz-box-shadow: 0 8px 6px -6px #E6E6E6;
+	box-shadow: 0 8px 6px -6px #E6E6E6;
+}
+#lesson-data_filter input.form-control.form-control-sm {
+	border-radius: 50px;
+	background: url(../image/searchh.png);
+	background-repeat: no-repeat;
+	background-position: 199px;
+	padding-right: 40px !important;
+	margin: 0;
+	padding: 0px 17px;
+	-webkit-box-shadow: 0 8px 6px -6px #E6E6E6;
+	-moz-box-shadow: 0 8px 6px -6px #E6E6E6;
+	box-shadow: 0 8px 6px -6px #E6E6E6;
+	z-index: 9;
+	position: relative;
+}
+#lesson-data_filter input.form-control.form-control-sm:focus{
+	box-shadow: none!important;
+	border: 1px solid #ced4da!important;
+}
+.admin-content .title button:hover,
+.add-lesson-btn:hover{
+	background-color: #505260 !important;
+		transition: all 0.5s ease;
+}
+.title span {
+    margin-right: 4px;
+}
+#lesson-data th {
+	text-transform: capitalize;
+}
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: none;
+}
+table.dataTable {
+	border: 1px solid #DBDBDB!important;
+	border-top: none !important;
+}
+#lesson-data th {
+	text-transform: uppercase;
+	color: #010101;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 13px !important;
+}
+table#lesson-data tr th:first-child ,
+table#lesson-data tr td:first-child {
+	text-align: center;
+}
+table#lesson-data tr th:last-child ,
+table#lesson-data tr td:last-child {
+	text-align: center;
+}
+.table th, .table td {
+	padding: 13px !important;
+	color: #373741;
+	font-size: 15px;
+}
+
+a.btn-action {
+	color: #7F7F7F !important;
+}
+a.btn-action:hover {
+	color: #29B473 !important;
+}
+td.pending {
+	color: #BAA576;
+}
+td.received {
+	color: #29B473;
+}
+.divider {
+	width: 22px;
+	padding-right: 7px;
+	height: 11px;
+	color: #D6D6D6;
+}
+.order-management-table span.divider {
+	padding: 0 7px;
+}
+div#lesson-data_info {
+	display: none;
+}
+.page-item.active .page-link {
+	z-index: 1;
+	color: #fff !important;
+	background-color: #29B473;
+	border-color: #29B473;
+}
+.page-item.active .page-link:hover {
+	color: #fff !important;
+}
+a.page-link {
+	height: 33px;
+	width: 33px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-left: 10px;
+	font-size: 15px;
+	color: #000 !important;
+	border-color: #CCCCCC;
+}
+li#lesson-data_previous a:before {
+	position: absolute;
+	font-family: FontAwesome;
+	content: "\f104";
+	font-size: 22px;
+	color: #29B473;
+}
+li#lesson-data_next a:before {
+	position: absolute;
+	font-family: FontAwesome;
+	content: "\f105";
+	font-size: 22px;
+	color: #29B473;
+}
+li#lesson-data_previous a, li#lesson-data_next a {
+	font-size: 0;
+}
+ul.pagination {
+	margin: 20px 0 40px!important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FAFAFA!important;
+}
+.page-link:focus{
+	box-shadow: none;
+}
+.admin-content .title button:focus {
+	outline: none;
+}
+div#lesson-data_filter label:before {
+	content: '';
+	background: #EFEFEF;
+	width: 40px;
+	height: 33px;
+	position: absolute;
+	right: 1px;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	top: 1px;
+}
+
+.Payment-Status select {
+	width: 15% !important;
+	background-position: 170px;
+}
+
+.order-management-table  thead th:first-child {
+	width: 100px !important;
+}
+
+.order-management-table th, 
+.order-management-table td {
+	text-align: center;
+}
+.order-management-table th.sorting:nth-child(2), 
+.order-management-table td:nth-child(2) {
+	text-align: left;
+}
+.toggle-group .btn {
+    border: 1px solid #DBDBDB;
+    background: transparent;
+    color: #565656;
+    border-radius: 50px;
+}
+.btn-primary:hover {
+    background-color: transparent!important;
+    border-color: #DBDBDB!important;
+}
+.btn-primary {
+    background-color: transparent!important;
+    border-color: #DBDBDB!important;
+}
+.btn-primary{
+	border: none;
+}
+.toggle-handle {
+    background: #29B473 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+.off .toggle-handle {
+    background: #DCDCDC !important;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.toggle-handle {
+    padding: 40px;
+}
+.toggle-off.btn {
+    padding-left: 50px!important;
+}
+
+.toggle-on.btn {
+    padding-right: 50px !important;
+}
+.btn {
+    border-radius: 50px;
+    line-height: 1.4;
+}
+.admin-sidebar li.active a {
+    color: #fff !important;
+}
+
+li.active.add-lesson a {
+    color: #29B473 !important;
+}
+li.active.add-lesson {
+    background: transparent;
+}
+
+.add-lesson-block {
+    width: 100%;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0px 0 12px #e4eae5;
+    margin-bottom: 30px;
+}
+.form-group.form-check:last-child {
+    margin-bottom: 0;
+}
+.add-lesson-form, .add-lesson-info {
+    width: 50%;
+    float: left;
+    padding: 30px;
+}
+.add-lesson-info-inner:last-child {
+    margin-bottom: 0;
+}
+.add-lesson-form input {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    background: #fff !important;
+    border-radius: 50px;
+    padding: 10px 15px;
+    width: 100%;
+    border: none !important;
+    padding-left: 50px;
+}
+.form-group.form-check img {
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    z-index: 9;
+    height: 18px;
+}
+.add-lesson-title h4 {
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+.add-lesson-form {
+    background: url(../image/form-back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.add-lesson-info h4 {
+    float: left;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.add-lesson-form textarea {
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    border-radius: 17px;
+    height: 215px;
+   	padding: 15px 15px 15px 50px;
+}
+.form-group.form-check img {
+    position: absolute;
+    left: 17px;
+    top: 11px;
+    z-index: 9;
+    height: 18px;
+}
+.form-group.form-check.text-area img {
+    top: 19px;
+}
+.form-check {
+    padding-left: 0;
+}
+.add-lesson-info-count {
+    height: 45px;
+    width: 45px;
+    border: 1px solid #D6E1DD;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    box-shadow: 0px 2px 12px #d4d8d5;
+    z-index: 9;
+    position: relative;
+    background: #fff;
+    line-height: 21px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+.submit_btn {
+    clear: both;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+.submit_btn button {
+    background-color: #29B473 !important;
+    padding: 10px 35px !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 15px !important;
+    line-height: 16px !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    border: none!important;
+    vertical-align: top;
+    float: none;
+    border-radius: 50px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+}
+.submit_btn button:hover {
+    background-color: #505260 !important;
+    transition: all 0.5s ease;
+}
+.add-lesson-info_des {
+    box-shadow: 0px 2px 12px #d4d8d5;
+    padding: 7px 15px;
+    border-radius: 15px;
+    float: left;
+    width: 90%;
+    font-size: 16px;
+}
+.add-lesson-info-inner {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+}
+
+.file_upload_field input[type='file']{
+   font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.btn_file {
+    color: gray;
+    background-color: #ECF0EF;
+    padding: 4px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 14px;
+}
+.file_upload_field{
+	 position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.form-group.form-check.file_upload_field {
+    position: relative;
+    display: block;
+    background: #fff !important;
+    border-radius: 50px;
+    padding: 8px 15px;
+    width: 100%;
+    border: none !important;
+    padding-left: 50px;
+}
+button:focus{
+	outline: none;
+
+}
+.form-group.form-check.file_upload_field img {
+    position: absolute;
+    left: 17px;
+    top: 15px;
+}
+
+.add-lesson-info_des textarea {
+    height: 44px !important;
+    border: none;
+    resize: none;
+    line-height: 20px;
+    width: 100%;
+}

@@ -1035,6 +1035,10 @@ select.brdr_option, select.border_style_options {
     width: 120px;
 }
 
+.err{
+    font-weight: bold;
+ color: red;
+}
 
 /* End Styles for spreadsheet */
 

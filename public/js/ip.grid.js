@@ -5457,7 +5457,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li><li><select class="change_decimal_points"><option value="">Decimal</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li><li><a href="javascript:void(0)" class="change_to_number">num</a></li><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li><li><select class="change_decimal_points"><option value="">Decimal</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
  
@@ -13014,7 +13014,8 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
     var OldMask = oldMask;
     var Mask = ip_GetMaskObj(GridID, row, col, adviseDefault);
     var Decimals = ip_GetEnabledDecimals(GridID, null, row, col, true);
-    var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('default'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('default'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
+    var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('text'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('text'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
+
     
     if (row < 0) {
 
@@ -13075,13 +13076,20 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
             }
             else if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'currency') && !isNaN(ip_parseCurrency(DataType.value))) {
                 DataType.dataType.dataType = 'currency';
+
                 DataType.value = ip_parseCurrency(DataType.value);
+
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
             }
             else if ((DataType.expectedDataType.dataType == 'text')) {
                 DataType.dataType.dataType = 'text';
                 DataType.value = ip_parseString(DataType.value);
+
+                /*if(DataType.value < 0){
+                    DataType.value = '(' + DataType.value + ')';
+                }*/
+
                 DataType.valid = true;
             }
             else if ((DataType.expectedDataType.dataType == 'default')) {
@@ -13339,14 +13347,24 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
             if (error == null || (error && error.errorCode == '')) {
                 dataType = ip_CellDataType(GridID, row, col, true, value, oldMask);
 
-                console.log(dataType);
-
-                if (dataType.valid) { formatted = dataType.output(); }
-                else { formatted = value; }
+                if (dataType.valid) { 
+                    formatted = dataType.output(); 
+                }
+                else { 
+                    formatted = value; 
+                }
+                
             }
             else {
                 dataType.value = value;
                 formatted = value;
+            }
+
+            console.log('original value'+dataType.value);
+            console.log('formatted value'+formatted);
+
+            if(formatted < 0){
+                formatted = '('+formatted+')';
             }
 
             ip_GridProps[GridID].rowData[row].cells[col].value = dataType.value;
@@ -13523,7 +13541,7 @@ function ip_SetCellFormat(GridID, options) {
                         }
 
                         if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals); 
-                            console.log('decimal1='+cell.decimals);}
+                            }
                         if (cell.decimals < 0) { cell.decimals = null; }
                         if (options.decimals || options.decimalsInc) { setvalue = true; }
                                                 
@@ -15875,7 +15893,7 @@ function ip_fxAvg(GridID, row, col, fxRanges) {
     col = arguments[2];
     fxRanges = Array.prototype.slice.call(arguments).splice(3);
 
-    console.log(fxRanges);
+    
 
     var ln = 0;
     for (var i = 0; i  < fxRanges.length; i ++) {        
@@ -17440,12 +17458,17 @@ function ip_parseDate(value, mask) {
 
 function ip_parseNumber(value, decimals) {
 
+
     if (value == null) { return NaN; }
     if (typeof (value) == 'string' && value.match(/[^.0-9%]/)) { return NaN }
 
     value = parseFloat(value);
 
+
     if (decimals != null) { return value.toFixed(decimals); }
+
+
+    
 
     return value;
 
@@ -17580,12 +17603,14 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
     if (newMask == '$1,000,000.00') {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else {
-            /*if(number < 0){
-                console.log(number+'=number is negetive');
+            if(number < 0){
+                console.log('num is negetive');
+                number = '($' + number + ')';
             } else {
-                console.log(number+'=number is positive');
-            }*/
-            number = '$' + number;
+                number = '$' + number;
+                console.log('num is positive');
+            }
+            //number = '$' + number;
         }
     }
     if (newMask == 'R1,000,000.00') {
@@ -18149,11 +18174,6 @@ $(document).ready(function() {
         $('#'+GridID).ip_Undo();
     });
 
-    $(document).on('click', '.dollar_spreadsheet', function() {
-        console.log('dollor sign...');
-    });
-
-
     /**
      * JS code for insert new row on spreadsheet
      */
@@ -18275,6 +18295,16 @@ $(document).ready(function() {
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', decimals: 2 });
 
         //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
+
+    });
+
+
+    /**
+     * JS code for converts numbers into currency format 
+     */
+    $(document).on('click', '.change_to_number', function() {
+
+        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'number', dataTypeName: 'number'}, mask:'123' });
 
     });
 

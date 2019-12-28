@@ -5446,7 +5446,7 @@ function ip_CreateGridTools(options) {
 
                         '<div class="ip_grid_cell_rangeselector_key"></div>' +
 
-                     '</div>'; 
+                     '</div>';
 
         GridTools += '<div id="' + options.id + '_editTool" class="ip_grid_EditTool"><div contenteditable="true" tabindex="0" class="ip_grid_EditTool_Input" ></div><div tabindex="0"  class="ip_grid_EditTool_DropDown"></div></div>';
 
@@ -5457,7 +5457,7 @@ function ip_CreateGridTools(options) {
 
         GridTools += '<div id="' + options.id + '_columnResizer"  class="ip_grid_columnSelectorResizeTool"><div id="' + options.id + '_columnLine" class="ip_grid_columnSelectorResizeLine"></div></div>';
 
-        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li><li><a href="javascript:void(0)" class="change_to_number">num</a></li><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li><li><select class="change_decimal_points"><option value="">Decimal</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
+        GridTools += '<div class="sprd_meu_funs"><ul><li><a href="javascript:void(0)" class="change_to_percentage">%</a></li><li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li><li><a href="javascript:void(0)" class="change_to_number">num</a></li><li><a href="javascript:void(0)" data-effect="bold" class="model-style-effect">B</a></li><li><a href="javascript:void(0)"  data-effect="italic" class="model-style-effect">I</a></li><li><a href="javascript:void(0)"  data-effect="underline" class="model-style-effect">U</a></li><li><a href="javascript:void(0)"  data-effect="line-through" class="model-style-effect">$</a></li><li><select class="sheet_font_sz"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option selected>11</option><option>12</option><option>14</option><option>18</option><option>24</option><option>36</option></select></li><li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li><li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li><li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li><li><select class="math_options"><option value="" selected>Math Functions</option><option value="sum">SUM</option><option value="avg">AVG</option><option value="max">MAX</option><option value="min">MIN</option><option value="count">COUNT</option><option value="concat">CONCAT</option></select></li><li><select class="brdr_option"><option value="">Select Border</option><option value="all">All</option><option value="top">Border Top</option><option value="bottom">Border Bottom</option><option value="left">Border Left</option><option value="right">Border Right</option><option value="inner">Border Inner</option><option value="outer">Border Outer</option><option value="horizontal">Border Horizontal</option><option value="vertical">Border Vertical</option><option value="none">Remove Border</option></select></li><li><select class="border_style_options"><option value="" selected>Border Styles</option><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="double">Double</option></select></li><li><select class="change_decimal_points"><option value="">Decimal</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></li></ul></div><div id="' + options.id + '_rowResizer"  class="ip_grid_rowSelectorResizeTool"><div id="' + options.id + '_rowLine" class="ip_grid_rowSelectorResizeLine"></div></div>';
 
         GridTools += '<span id="' + options.id + '_cellContentWidthTool"  class="ip_grid_cell" style="display:none;position:absolute;"></span>';
  
@@ -6833,7 +6833,9 @@ function ip_SetupMask(GridID) {
         input: function (value) {
             
             if (value == null) return null;
+            
             var number = value.toString().replace(/[^0-9.]/gi, '');
+            
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
@@ -6842,6 +6844,23 @@ function ip_SetupMask(GridID) {
             var currency = ip_formatCurrency(GridID, value, oldMask, '$1,000,000.00', decimals);
             if (currency == false && typeof (currency) == "boolean") { return value; }
             return currency
+        }
+    });
+
+    $('#' + GridID).ip_AddMask({
+        title: 'Percentage', dataType: 'percentage', mask: '1 0.00%',
+        input: function (value) {
+            
+            if (value == null) return null;
+            var number = value.toString().replace(/[^0-9.]/gi, '');
+            return ip_parseNumber(number);
+        },
+        output: function (value, oldMask, decimals) {
+            
+            if (value == null || value == '') { return value }
+            var percentage = ip_formatPercentage(GridID, value, oldMask, '1 0.00%', decimals);
+            if (percentage == false && typeof (percentage) == "boolean") { return value; }
+            return percentage
         }
     });
 
@@ -13014,7 +13033,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
     var OldMask = oldMask;
     var Mask = ip_GetMaskObj(GridID, row, col, adviseDefault);
     var Decimals = ip_GetEnabledDecimals(GridID, null, row, col, true);
-    var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('text'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('text'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
+    var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('default'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('default'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
 
     
     if (row < 0) {
@@ -13023,10 +13042,13 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
         DataType.expectedDataType.dataTypeName = ip_GridProps[GridID].colData[col].dataType.dataTypeName;
         DataType.dataType.dataType = ip_GridProps[GridID].colData[col].dataType.dataType;
         DataType.dataType.dataTypeName = ip_GridProps[GridID].colData[col].dataType.dataTypeName;
+
+
         return DataType;
 
     }
     else {
+
 
         var Cell = ip_CellData(GridID, row, col);
 
@@ -13034,6 +13056,8 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
         DataType.value = (value != null ? value : Cell.value);
 
         if (Mask != null) {
+
+
 
             DataType.mask = Mask;
             try {
@@ -13049,6 +13073,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
             //Check cell data type
             if (Cell.dataType.dataType != null) {
+
                 DataType.expectedDataType.dataType = (!Cell.dataType.dataType ? 'default' : Cell.dataType.dataType.toLowerCase());
                 DataType.expectedDataType.dataTypeName = (!Cell.dataType.dataTypeName ? null : Cell.dataType.dataTypeName.toLowerCase());
                 DataType.dataType.dataTypeName = DataType.expectedDataType.dataTypeName;
@@ -13056,6 +13081,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
             //Check column data type
             if (adviseDefault) {
+
                 if (DataType.expectedDataType.dataType.toLowerCase() == 'default' && ip_GridProps[GridID].colData[col].dataType.dataType != null) {
                     DataType.expectedDataType.dataType = (!ip_GridProps[GridID].colData[col].dataType.dataType ? 'default' : ip_GridProps[GridID].colData[col].dataType.dataType.toLowerCase());
                     DataType.expectedDataType.dataTypeName = (!ip_GridProps[GridID].colData[col].dataType.dataTypeName ? null : ip_GridProps[GridID].colData[col].dataType.dataTypeName.toLowerCase());
@@ -13064,12 +13090,14 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
             
             if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'number') && !isNaN(ip_parseNumber(DataType.value))) {
+                
                 DataType.dataType.dataType = 'number';
                 DataType.value = ip_parseNumber(DataType.value);
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
             }
             else if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'date') && !isNaN(ip_parseDate(DataType.value))) {
+                
                 DataType.dataType.dataType = 'date';
                 DataType.value = ip_parseDate(DataType.value);
                 DataType.valid = true;
@@ -13078,6 +13106,14 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                 DataType.dataType.dataType = 'currency';
 
                 DataType.value = ip_parseCurrency(DataType.value);
+
+                if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
+                DataType.valid = true;
+            }
+            else if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'percentage') && !isNaN(ip_parsePercentage(DataType.value))) {
+                DataType.dataType.dataType = 'percentage';
+
+                DataType.value = ip_parsePercentage(DataType.value);
 
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
@@ -13101,8 +13137,11 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                     DataType.value = ip_parseAny(GridID, DataType.value);
                     DataType.dataType.dataType = typeof (DataType.value);
 
-                    if (DataType.dataType.dataType == 'string') { DataType.dataType.dataType = 'text' }
-                    else if (DataType.dataType.dataType == 'object' && typeof DataType.value.getMonth === 'function') { DataType.dataType.dataType = 'date' }
+                    console.log('after parse database value='+DataType.value)
+
+                    if (DataType.value < 0) { DataType.dataType.dataType = 'number'; DataType.value = ip_parseNumber(DataType.value); }
+                    else if (DataType.dataType.dataType == 'string') { DataType.dataType.dataType = 'text' }
+                    else if (DataType.dataType.dataType == 'object' && typeof DataType.value.getMonth === 'function') { DataType.dataType.dataType = 'number' }
 
                     DataType.valid = true;
                 }
@@ -13326,7 +13365,8 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
     //All instances of 'ip_GridProps[GridID].rowData[row].cells[col].value =' must do this.
     //Returns true if the value actually changed
     //oldMask should typically only be used if the mask has changed - it is rare that we need to populate this
-    var oldValue = ip_GridProps[GridID].rowData[row].cells[col].value;    
+    var oldValue = ip_GridProps[GridID].rowData[row].cells[col].value;  
+
 
     if (oldValue != value) {
 
@@ -13346,6 +13386,8 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
 
             if (error == null || (error && error.errorCode == '')) {
                 dataType = ip_CellDataType(GridID, row, col, true, value, oldMask);
+
+                //console.log(dataType);
 
                 if (dataType.valid) { 
                     formatted = dataType.output(); 
@@ -17460,7 +17502,7 @@ function ip_parseNumber(value, decimals) {
 
 
     if (value == null) { return NaN; }
-    if (typeof (value) == 'string' && value.match(/[^.0-9%]/)) { return NaN }
+    //if (typeof (value) == 'string' && value.match(/[^.0-9%]/)) { return NaN }
 
     value = parseFloat(value);
 
@@ -17490,6 +17532,22 @@ function ip_parseCurrency(value, decimals) {
     return numberVal;
 }
 
+function ip_parsePercentage(value, decimals) {
+
+    if (value == null) { return null; }
+
+    var processedVal = value;
+
+    if (typeof (value) == 'string') {
+        var processedVal = value.replace(/[R%]/gi, ''); //symbole for percentage    
+        if (processedVal.match(/[^.0-9]/)) { return NaN }
+    }
+
+    var numberVal = ip_parseNumber(processedVal, decimals);
+
+    return numberVal;
+}
+
 function ip_parseString(value) {
     if (value == null) { return ''; }
     return value.toString();
@@ -17507,12 +17565,16 @@ function ip_parseAny(GridID, value) {
     var val = null;
 
     if (value == null) { return value; }
-    else if (val = ip_parseDate(value)) { return val; }
+    //else if (val = ip_parseDate(value)) { return val; }
     else if (val = ip_parseBool(value)) { return val; }
     else if (val = ip_parseNumber(value)) { return val; }
     else if (val = ip_parseRange(GridID, value)) { return val; }
 
-    return ip_parseString(value);
+    if(value < 0){
+        return value;
+    } else {
+        return ip_parseString(value);
+    }
 
 }
 
@@ -17606,6 +17668,7 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
             if(number < 0){
                 console.log('num is negetive');
                 number = '($' + number + ')';
+
             } else {
                 number = '$' + number;
                 console.log('num is positive');
@@ -17616,6 +17679,29 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
     if (newMask == 'R1,000,000.00') {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else { number = 'R' + number; }
+    }
+
+    return number; 
+
+}
+
+function ip_formatPercentage(GridID, value, oldMask, newMask, decimals) {
+
+    var number = value;
+
+    if (newMask == '1 0.00%') {
+        number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
+        if (number == false) { return false; } else {
+            if(number < 0){
+                console.log('num is negetive');
+                number = '(' + number + '%)';
+            } else {
+                //number = number + '%';
+                number = number/100;
+                console.log('num is positive');
+            }
+            //number = '$' + number;
+        }
     }
 
     return number; 
@@ -18293,6 +18379,17 @@ $(document).ready(function() {
     $(document).on('click', '.change_to_currency', function() {
 
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', decimals: 2 });
+
+        //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
+
+    });
+
+    /**
+     * JS code for converts numbers into percentage format 
+     */
+    $(document).on('click', '.change_to_percentage', function() {
+
+        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'percentage', dataTypeName: 'percentage'}, mask:'1 0.00%', decimals: 2 });
 
         //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
 

@@ -5,9 +5,9 @@
     <meta name="google-site-verification" content="0GMdqT4QwQwBM1GrXB4qu1mpBCkV0dfm4Kl5d-p_W2U" />
     <meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
     <title>Model Master</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{ URL::asset('images/favicon.png') }}" />
     <!-- Important Owl stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
 
@@ -21,7 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
     <!-- Common JS for pages -->
-    <script src="js/custom-script.js"></script>
+    <script src="{{ URL::asset('js/custom-script.js') }}"></script>
 
     @yield('scripts_and_styles')
 
@@ -33,7 +33,7 @@
         <div class="header">
             <div class="header-in">
                 <div class="header-in-left">
-                    <a href="{{ url('/') }}"><img src="images/logo.png" /></a>
+                    <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo.png') }}" /></a>
                 </div>
                 <div class="header-in-right">
 

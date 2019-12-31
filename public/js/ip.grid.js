@@ -19,7 +19,7 @@ var thisBrowser = ip_Browser();
             range: /(?=[^"]*(?:"[^"]*"[^"]*)*$)(([$a-z]+[$0-9]+:[$a-z]+[$0-9]+)|([$a-z]+[$0-9]+))(\#\w*)?/gi,
             notInBrackets: /(?![^(]*[,)])/gi,
             notInTags: /(?![^<]*[>])/gi,
-            notInQuotes: /(?=[^"]*(?:"[^"]*"[^"]*)*$)/gi,
+            notInQuotes: /(?=[^"]*(?:"[^"]*"[^"]*)*$)/gi, 
             inQuotes: /("(.*?)")/gi,
             words: /[\w\s"']+/gi,
             nonWords: /[^\w\s]/gi,
@@ -13090,8 +13090,8 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
             
             if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'number') && !isNaN(ip_parseNumber(DataType.value))) {
-                
                 DataType.dataType.dataType = 'number';
+
                 DataType.value = ip_parseNumber(DataType.value);
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
@@ -13137,7 +13137,6 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                     DataType.value = ip_parseAny(GridID, DataType.value);
                     DataType.dataType.dataType = typeof (DataType.value);
 
-                    console.log('after parse database value='+DataType.value)
 
                     if (DataType.value < 0) { DataType.dataType.dataType = 'number'; DataType.value = ip_parseNumber(DataType.value); }
                     else if (DataType.dataType.dataType == 'string') { DataType.dataType.dataType = 'text' }
@@ -13387,7 +13386,7 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
             if (error == null || (error && error.errorCode == '')) {
                 dataType = ip_CellDataType(GridID, row, col, true, value, oldMask);
 
-                //console.log(dataType);
+                console.log(dataType);
 
                 if (dataType.valid) { 
                     formatted = dataType.output(); 
@@ -13406,6 +13405,9 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
             console.log('formatted value'+formatted);
 
             if(formatted < 0){
+                //formatted = '('+formatted+')';
+                formatted = ip_parseString(formatted);
+                formatted = formatted.replace(/\-/g, '');
                 formatted = '('+formatted+')';
             }
 
@@ -15829,6 +15831,8 @@ function ip_fxCount(GridID, row, col, fxRanges) {
     col = arguments[2];
     fxRanges = Array.prototype.slice.call(arguments).splice(3);
 
+    console.log(fxRanges);
+
     for (var i = 0; i < fxRanges.length; i++) {
 
         if (typeof (fxRanges[i]) == 'object') {
@@ -17504,6 +17508,7 @@ function ip_parseNumber(value, decimals) {
     if (value == null) { return NaN; }
     //if (typeof (value) == 'string' && value.match(/[^.0-9%]/)) { return NaN }
 
+
     value = parseFloat(value);
 
 
@@ -17543,7 +17548,9 @@ function ip_parsePercentage(value, decimals) {
         if (processedVal.match(/[^.0-9]/)) { return NaN }
     }
 
+
     var numberVal = ip_parseNumber(processedVal, decimals);
+
 
     return numberVal;
 }
@@ -17666,12 +17673,10 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else {
             if(number < 0){
-                console.log('num is negetive');
                 number = '($' + number + ')';
 
             } else {
                 number = '$' + number;
-                console.log('num is positive');
             }
             //number = '$' + number;
         }
@@ -17693,14 +17698,12 @@ function ip_formatPercentage(GridID, value, oldMask, newMask, decimals) {
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else {
             if(number < 0){
-                console.log('num is negetive');
                 number = '(' + number + '%)';
             } else {
                 //number = number + '%';
-                number = number/100;
-                console.log('num is positive');
+                number = (number*100)+'%';
             }
-            //number = '$' + number;
+            
         }
     }
 
@@ -18378,7 +18381,7 @@ $(document).ready(function() {
      */
     $(document).on('click', '.change_to_currency', function() {
 
-        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', decimals: 2 });
+        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00'});
 
         //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
 
@@ -18389,7 +18392,7 @@ $(document).ready(function() {
      */
     $(document).on('click', '.change_to_percentage', function() {
 
-        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'percentage', dataTypeName: 'percentage'}, mask:'1 0.00%', decimals: 2 });
+        $('#' + GridID).ip_FormatCell({ dataType: {dataType:'percentage', dataTypeName: 'percentage'}, mask:'1 0.00%' });
 
         //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
 

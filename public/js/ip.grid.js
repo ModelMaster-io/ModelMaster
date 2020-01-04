@@ -23,7 +23,7 @@ var thisBrowser = ip_Browser();
             inQuotes: /("(.*?)")/gi,
             words: /[\w\s"']+/gi,
             nonWords: /[^\w\s]/gi,
-            fx: /(\w+)(?=\()/gi,    
+            fx: /(\w+)(?=\()/gi,
             //operator: /([=%*/+-,]+\(\))/gi,
             operator: /\+|,|.|-|\*|\/|=|>|<|>=|<=|&|\||%|!|\^|\(|\)/,
             hashtag: /(\#\w*)/gi,
@@ -13119,6 +13119,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                 DataType.valid = true;
             }
             else if ((DataType.expectedDataType.dataType == 'text')) {
+
                 DataType.dataType.dataType = 'text';
                 DataType.value = ip_parseString(DataType.value);
 
@@ -13135,6 +13136,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                 else {
                     //Determine the UKNOWN datatype of the cell                
                     DataType.value = ip_parseAny(GridID, DataType.value);
+
                     DataType.dataType.dataType = typeof (DataType.value);
 
 
@@ -13178,6 +13180,7 @@ function ip_CellData(GridID, row, col, withControls) {
     //WithControls will return the cell with all its appropriate properties
 
     if (ip_GridProps[GridID].rowData.length > row && row >= 0) {
+
         if (ip_GridProps[GridID].rowData[row].cells.length > col && col >= 0) {
             
             var cell = ip_GridProps[GridID].rowData[row].cells[col];
@@ -13289,6 +13292,7 @@ function ip_CellInput(GridID, options) {
     var rIndex = 0;
 
     if (options.range == null) { options.range = [ip_rangeObject(options.row, options.col, options.row, options.col)] }
+
     else if (!options.range.length) { options.range = [options.range]; }
 
     for (var rng = 0; rng < options.range.length; rng++) {
@@ -15722,14 +15726,27 @@ function ip_fxCalculate(GridID, fxString, row, col) {
 
     try {
 
-        //
-        var rxRootRanges = new RegExp(ip_GridProps['index'].regEx.notInBrackets.source + ip_GridProps['index'].regEx.range.source, 'gi');  // /(?=[^"]*(?:"[^"]*"[^"]*)*$)(?![^(]*[,)])[a-z]\d+(:\w+)?/gi; ///(?![^("]*[)"])(([a-z]+[0-9]+[:][a-z]+[0-9]+)|([a-z]+[0-9]+))/gi;
+        var rxRootRanges = '';
+
+        var sm = "sum(";
+        var avg = "avg(";
+        var mx = "max(";
+        var mn = "min(";
+        var cnt = "count(";
+        var cnct = "concat(";
+        if(fxString.indexOf(sm) != -1 || fxString.indexOf(avg) != -1 || fxString.indexOf(mx) != -1 || fxString.indexOf(mn) != -1 || fxString.indexOf(cnt) != -1 || fxString.indexOf(cnct) != -1){
+            rxRootRanges = new RegExp(ip_GridProps['index'].regEx.notInBrackets.source + ip_GridProps['index'].regEx.range.source, 'gi');  // /(?=[^"]*(?:"[^"]*"[^"]*)*$)(?![^(]*[,)])[a-z]\d+(:\w+)?/gi; ///(?![^("]*[)"])(([a-z]+[0-9]+[:][a-z]+[0-9]+)|([a-z]+[0-9]+))/gi;
+        } else {
+            rxRootRanges = new RegExp('(?![^{]*[,}])' + ip_GridProps['index'].regEx.range.source, 'gi');  // /(?=[^"]*(?:"[^"]*"[^"]*)*$)(?![^(]*[,)])[a-z]\d+(:\w+)?/gi; ///(?![^("]*[)"])(([a-z]+[0-9]+[:][a-z]+[0-9]+)|([a-z]+[0-9]+))/gi;
+        }
         
+
         ip_fxValidate(GridID, fxString, row, col);
 
         fxString = fxString.replace(rxRootRanges, function (arg) { return 'ip_fxRange("' + GridID + '",' + row + ',' + col + ',"' + arg + '")'; }); //regular expression to replace ranges with quotes
         fxString = fxString.replace(ip_GridProps['index'].regEx.range, function (arg) { return 'ip_fxRangeObject("' + GridID + '",' + row + ',' + col + ',"' + arg + '")'; });
 
+        
         for (var key in ip_GridProps[GridID].fxList) {
                         
             fxString = fxString.replace(new RegExp('\\b' + key + '\\(\\)', 'gi'), ip_GridProps[GridID].fxList[key].fxName + '("' + GridID + '",' + row + ',' + col + ')');
@@ -15831,7 +15848,6 @@ function ip_fxCount(GridID, row, col, fxRanges) {
     col = arguments[2];
     fxRanges = Array.prototype.slice.call(arguments).splice(3);
 
-    console.log(fxRanges);
 
     for (var i = 0; i < fxRanges.length; i++) {
 
@@ -15880,6 +15896,7 @@ function ip_fxSum(GridID, row, col, fxRanges) {
     row = arguments[1];
     col = arguments[2];
     fxRanges = Array.prototype.slice.call(arguments).splice(3);
+
 
     for (var i = 0; i  < fxRanges.length; i ++) {        
 
@@ -18317,6 +18334,7 @@ $(document).ready(function() {
         var model_sp_id = 'model_master_spreadsheet';
         var highlight_cl = $('.ip_grid_cell_rangeHighlight_activecell').offset();
         ip_ShowEditToolHelpToolTip(model_sp_id, ip_fxInfo(model_sp_id, math_option));
+
         $('#ip_modal').css('left', highlight_cl.left+'px');
         $('#ip_modal').css('top', (highlight_cl.top+30)+'px');
         //editToolInput.focus();

@@ -58,11 +58,45 @@ jQuery(document).ready(function () {
 
 		var x = jQuery('.gridContainer').offset();
 		// Show contextmenu
+
+		menuWidth = jQuery('.spreadsheet-context-menu').width();
+    	menuHeight = jQuery('.spreadsheet-context-menu').height();
+
+	    var left = 0;
+	    var top = 0;
+
+		//positionMenu(event);
+		//jQuery(".spreadsheet-context-menu").show();
+
+		windowWidth = window.innerWidth;
+	    windowHeight = window.innerHeight;
+
+	    if ( (windowWidth - event.pageX) < menuWidth ) {
+	      left = windowWidth - (menuWidth + 35);
+	    } else {
+	      left = event.pageX;
+	    }
+
+	    if ( (windowHeight - event.pageY) < menuHeight ) {
+	      top = windowHeight - (menuHeight + 35);
+	    } else {
+	      top = event.pageY;
+	    }
+
 		jQuery(".spreadsheet-context-menu").finish().toggle(100).
 		css({
-			top: (event.pageY - x.top) + "px",
-			left: (event.pageX - x.left) + "px"
+			top: (top - x.top) + 'px',
+			left: (left - x.left) + 'px'
 		});
+
+		// jQuery(".spreadsheet-context-menu").show();
+		
+		// jQuery(".spreadsheet-context-menu").css({
+		// 	top: top + "px",
+		// 	left: left + "px"
+		// });
+
+
 		
 	});
 

@@ -1013,7 +1013,7 @@ select.math_options {
     padding: 0;
 }
 .spreadsheet-context-menu li a {
-    padding: 8px 12px;
+    padding: 3px 12px;
     cursor: pointer;
     list-style-type: none;
     transition: all .3s ease;

@@ -5656,6 +5656,8 @@ function ip_CreateGridQuadCell(options, tableColumnsArray) {
 
         //Standard Cell         
         var CellData = ip_CellData(options.GridID, row, col, true); 
+
+        console.log(CellData.cell.value);
         
         TableColumns = '<td cellType="Cell" class="ip_grid_cell' + CellData.css + '" id="' + options.GridID + '_cell_' + row + '_' + col + '"  quadrant="' + options.Quad + '" col="' + col + '" row="' + row + '" style="' + CellData.style + '" ' + CellData.rowSpan + ' ' + CellData.colSpan + ' >' +
                             ip_CellBorder(options.GridID, row, col, CellData) +
@@ -6839,10 +6841,13 @@ function ip_SetupMask(GridID) {
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
+
+            console.log('before val='+value);
             
             if (value == null || value == '') { return value }
             var currency = ip_formatCurrency(GridID, value, oldMask, '$1,000,000.00', decimals);
             if (currency == false && typeof (currency) == "boolean") { return value; }
+            console.log('after val='+currency);
             return currency
         }
     });
@@ -13032,6 +13037,8 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
     // value: lets you override the test for cells current value with a potential future value
     var OldMask = oldMask;
     var Mask = ip_GetMaskObj(GridID, row, col, adviseDefault);
+
+
     var Decimals = ip_GetEnabledDecimals(GridID, null, row, col, true);
     var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('default'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('default'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
 
@@ -13105,7 +13112,27 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
             else if (((DataType.value != null && DataType.expectedDataType.dataType == 'default') || DataType.expectedDataType.dataType == 'currency') && !isNaN(ip_parseCurrency(DataType.value))) {
                 DataType.dataType.dataType = 'currency';
 
+
+                console.log('value first='+DataType.value);
+
                 DataType.value = ip_parseCurrency(DataType.value);
+
+                //DataType.value = DecVal.toFixed(DataType.decimals);
+
+                //console.log(Mask);
+
+                // var output_prev = function () {
+                //     return this.decimals == null ? this.value : this.value.toFixed(this.decimals); 
+                // };
+
+                // DataType.output = function () {
+                //     return ip_parseCurrency(output_prev()); 
+                // };
+                
+
+                console.log('this is test===='+DataType.value);
+
+                console.log('dec===='+DataType.value.toFixed(DataType.decimals));
 
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
@@ -13418,6 +13445,12 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
             ip_GridProps[GridID].rowData[row].cells[col].value = dataType.value;
             ip_GridProps[GridID].rowData[row].cells[col].display = formatted;
 
+            if(dataType.dataType.dataType == '' ||dataType.dataType.dataType == 'text'){
+                ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:left;padding-left:2px;';
+            } else {
+                ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:right;padding-right:2px;';
+            }
+
         }
 
         return true;
@@ -13581,14 +13614,18 @@ function ip_SetCellFormat(GridID, options) {
 
                             if (decimals == null && !PropertyAppendModes.colnotnull) {
                                 decimals = ip_GetEnabledDecimals(GridID, null, r, c, true);
+
+                                console.log('get decimals='+decimals);
+
                                 if (decimals == null) { decimals = 0; }
                             }
-                            if (decimals != null) { cell.decimals = (decimals + options.decimalsInc); }
+                            if (decimals != null) { cell.decimals = (decimals + options.decimalsInc);}
 
 
                         }
 
                         if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals); 
+                            console.log('cell decimals='+cell.decimals);
                             }
                         if (cell.decimals < 0) { cell.decimals = null; }
                         if (options.decimals || options.decimalsInc) { setvalue = true; }
@@ -17549,7 +17586,13 @@ function ip_parseCurrency(value, decimals) {
         if (processedVal.match(/[^.0-9]/)) { return NaN }
     }
 
+    console.log('decimal point'+ decimals);
+
+    console.log('Process val='+processedVal);
+
     var numberVal = ip_parseNumber(processedVal, decimals);
+
+    console.log('number val='+numberVal);
 
     return numberVal;
 }
@@ -17686,7 +17729,14 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
 
     var number = value;
 
+    console.log('before val number='+number);
+
+    console.log('before val decimal='+decimals);
+
     if (newMask == '$1,000,000.00') {
+
+        console.log('my method is called...'+newMask);
+
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else {
             if(number < 0){
@@ -18411,8 +18461,6 @@ $(document).ready(function() {
     $(document).on('click', '.change_to_percentage', function() {
 
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'percentage', dataTypeName: 'percentage'}, mask:'1 0.00%' });
-
-        //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
 
     });
 

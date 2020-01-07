@@ -254,8 +254,9 @@
     
     background-color:transparent;
     /*white-space:nowrap;*/
-    padding:0px;
-    margin:4px;
+    padding:1px 0 0 0;
+    /*margin:4px;*/
+    margin:0;
     display:inline-block;
     visibility:inherit;
     text-decoration:inherit;

@@ -5656,8 +5656,6 @@ function ip_CreateGridQuadCell(options, tableColumnsArray) {
 
         //Standard Cell         
         var CellData = ip_CellData(options.GridID, row, col, true); 
-
-        console.log(CellData.cell.value);
         
         TableColumns = '<td cellType="Cell" class="ip_grid_cell' + CellData.css + '" id="' + options.GridID + '_cell_' + row + '_' + col + '"  quadrant="' + options.Quad + '" col="' + col + '" row="' + row + '" style="' + CellData.style + '" ' + CellData.rowSpan + ' ' + CellData.colSpan + ' >' +
                             ip_CellBorder(options.GridID, row, col, CellData) +
@@ -6841,13 +6839,9 @@ function ip_SetupMask(GridID) {
             return ip_parseNumber(number);
         },
         output: function (value, oldMask, decimals) {
-
-            console.log('before val='+value);
-            
             if (value == null || value == '') { return value }
             var currency = ip_formatCurrency(GridID, value, oldMask, '$1,000,000.00', decimals);
             if (currency == false && typeof (currency) == "boolean") { return value; }
-            console.log('after val='+currency);
             return currency
         }
     });
@@ -13035,6 +13029,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
     // Tests cell value and returns the cell dataType.
     // adviseDefault: returns the columns data type if the cells datatype is null
     // value: lets you override the test for cells current value with a potential future value
+
     var OldMask = oldMask;
     var Mask = ip_GetMaskObj(GridID, row, col, adviseDefault);
 
@@ -13042,7 +13037,6 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
     var Decimals = ip_GetEnabledDecimals(GridID, null, row, col, true);
     var DataType = { output: function () { return this.value.toString() }, mask: null, dataType: ip_dataTypeObject('default'), display:null, value: null, valid: false, expectedDataType: ip_dataTypeObject('default'), decimals:Decimals } //{ dataType: 'default', defaultAlign:'center', value:Cell.value }
 
-    
     if (row < 0) {
 
         DataType.expectedDataType.dataType = ip_GridProps[GridID].colData[col].dataType.dataType;
@@ -13059,6 +13053,7 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
         var Cell = ip_CellData(GridID, row, col);
 
+
         DataType.display = Cell.display;
         DataType.value = (value != null ? value : Cell.value);
 
@@ -13068,9 +13063,34 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
             DataType.mask = Mask;
             try {
+
+                console.log('top condition is called');
+
                 var mValue = Mask.input(DataType.value);
                 DataType.value = (isNaN(mValue) ? DataType.value : mValue);
-                DataType.output = function () { return this.mask.output(value, OldMask, Decimals); }
+                //DataType.output = function () { return this.mask.output(value, OldMask, Decimals); }
+
+                console.log('running datatype======'+DataType.dataType.dataType);
+                
+                if(DataType.mask.mask == '$1 000.00') {
+
+                    DataType.output = function () { return this.decimals == null ? '$'+this.value : '$'+ip_parseCurrency(this.value, this.decimals); };
+                } else if (DataType.mask.mask == '1 0.00%') {
+                    DataType.output = function () {
+
+                        if(this.value < 0){
+                            number = '(' + this.value +')';
+                        } else {
+                            number = (this.value*100);
+                        }
+                        return this.decimals == null ? number+'%' : ip_parsePercentage(number, this.decimals)+'%'; };                   
+                } else {
+                    DataType.output = function () { return this.mask.output(value, OldMask, Decimals); }                    
+                }
+
+
+                console.log(DataType.output());
+
             }
             catch (ex) { DataType.value = (value ? value : Cell.value); }
 
@@ -13113,26 +13133,11 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                 DataType.dataType.dataType = 'currency';
 
 
-                console.log('value first='+DataType.value);
-
                 DataType.value = ip_parseCurrency(DataType.value);
 
                 //DataType.value = DecVal.toFixed(DataType.decimals);
 
-                //console.log(Mask);
-
-                // var output_prev = function () {
-                //     return this.decimals == null ? this.value : this.value.toFixed(this.decimals); 
-                // };
-
-                // DataType.output = function () {
-                //     return ip_parseCurrency(output_prev()); 
-                // };
-                
-
-                console.log('this is test===='+DataType.value);
-
-                console.log('dec===='+DataType.value.toFixed(DataType.decimals));
+                //console.log('dec===='+DataType.value.toFixed(DataType.decimals));
 
                 if (!Mask) { DataType.output = function () { return this.decimals == null ? this.value : this.value.toFixed(this.decimals); }; }
                 DataType.valid = true;
@@ -13420,7 +13425,7 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
                 console.log(dataType);
 
                 if (dataType.valid) { 
-                    formatted = dataType.output(); 
+                    formatted = dataType.output();
                 }
                 else { 
                     formatted = value; 
@@ -13615,8 +13620,6 @@ function ip_SetCellFormat(GridID, options) {
                             if (decimals == null && !PropertyAppendModes.colnotnull) {
                                 decimals = ip_GetEnabledDecimals(GridID, null, r, c, true);
 
-                                console.log('get decimals='+decimals);
-
                                 if (decimals == null) { decimals = 0; }
                             }
                             if (decimals != null) { cell.decimals = (decimals + options.decimalsInc);}
@@ -13624,8 +13627,7 @@ function ip_SetCellFormat(GridID, options) {
 
                         }
 
-                        if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals); 
-                            console.log('cell decimals='+cell.decimals);
+                        if (options.decimals != null) { cell.decimals = (PropertyAppendModes.colnotnull ? null : options.decimals);
                             }
                         if (cell.decimals < 0) { cell.decimals = null; }
                         if (options.decimals || options.decimalsInc) { setvalue = true; }
@@ -17586,13 +17588,7 @@ function ip_parseCurrency(value, decimals) {
         if (processedVal.match(/[^.0-9]/)) { return NaN }
     }
 
-    console.log('decimal point'+ decimals);
-
-    console.log('Process val='+processedVal);
-
     var numberVal = ip_parseNumber(processedVal, decimals);
-
-    console.log('number val='+numberVal);
 
     return numberVal;
 }
@@ -17718,7 +17714,11 @@ function ip_formatNumber(GridID, value, oldMask, newMask, decimals) {
     
     if (newMask == '123') { return number[0] + decimal; }
     else if (newMask == '1 000 000.00') { return number[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ") + decimal; }
-    else if (newMask == '1,000,000.00') { return number[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + decimal; }
+    else if (newMask == '1,000,000.00') { 
+    return number[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + decimal; 
+    }
+
+
 
     return value;
 
@@ -17729,13 +17729,7 @@ function ip_formatCurrency(GridID, value, oldMask, newMask, decimals) {
 
     var number = value;
 
-    console.log('before val number='+number);
-
-    console.log('before val decimal='+decimals);
-
     if (newMask == '$1,000,000.00') {
-
-        console.log('my method is called...'+newMask);
 
         number = ip_formatNumber(GridID, value, oldMask, '1,000,000.00', decimals);
         if (number == false) { return false; } else {
@@ -18468,7 +18462,7 @@ $(document).ready(function() {
     /**
      * JS code for converts numbers into currency format 
      */
-    $(document).on('click', '.change_to_number', function() {
+    $(document).on('click', '.change_to_number', function() { 
 
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'number', dataTypeName: 'number'}, mask:'123' });
 

@@ -78,6 +78,10 @@ Route::group(['prefix' => '/admin'], function () {
 
 
 });
+
+/**
+ * Code for login and Register Route
+ */
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

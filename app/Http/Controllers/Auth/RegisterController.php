@@ -88,10 +88,11 @@ class RegisterController extends Controller
     public function handleFacebookCallback()
     {
         try {
-            $user = Socialite::driver('facebook')->user();
-            // echo '<pre>';print_r($user);die;
+            
+        $user = Socialite::driver('facebook')->user();
+            
         $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
-         // print_r($isUssserLogin);die;
+         
         if(!$isUserLogin) {
 
         $users = new User;
@@ -103,10 +104,10 @@ class RegisterController extends Controller
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
 
-            if(!isset($users->id)) {
-               return redirect('/');
+        if(!isset($users->id)) {
+           return redirect('/');
 
-            }
+        }
 
         $login_user = User::where(['id' => $users->id])->first();
           \Auth::login($login_user);
@@ -148,7 +149,8 @@ class RegisterController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            $user = Socialite::driver('google')->user();
+
+        $user = Socialite::driver('google')->user();
 
         // $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
         $isUserLogin = User::where(['provider_id' => $user->getId(),'service_provider' => 'google'])->first();
@@ -164,15 +166,15 @@ class RegisterController extends Controller
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
 
-            if(!isset($users->id)) {
+        if(!isset($users->id)) {
 
-               return redirect('/');
+           return redirect('/');
 
-            }
+        }
 
         $login_user = User::where(['id' => $users->id])->first();
           \Auth::login($login_user);
-          
+
 
         } else {
              
@@ -184,13 +186,13 @@ class RegisterController extends Controller
      
          
 
-            return redirect('/');
+        return redirect('/');
 
 
         } catch (Exception $e) {
 
 
-            return redirect('auth/google');
+        return redirect('auth/google');
 
 
         }
@@ -212,7 +214,11 @@ class RegisterController extends Controller
     public function handleLinkedinCallback()
     {
         try {
-            $user = Socialite::driver('linkedin')->user();
+            
+        $user = Socialite::driver('linkedin')->user();
+
+             dd($user);
+
            // echo '<pre>'; print_r($user);die;
         $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
 
@@ -227,11 +233,11 @@ class RegisterController extends Controller
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
 
-            if(!isset($users->id)) {
+        if(!isset($users->id)) {
 
-               return redirect('/');
+           return redirect('/');
 
-            }
+        }
 
         $login_user = User::where(['id' => $users->id])->first();
           \Auth::login($login_user);
@@ -247,7 +253,7 @@ class RegisterController extends Controller
      
          
 
-            return redirect('/');
+        return redirect('/');
 
 
         } catch (Exception $e) {

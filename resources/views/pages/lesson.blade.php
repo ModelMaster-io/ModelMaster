@@ -64,6 +64,8 @@
     <span class="lc-title">Income Statement</span>
     <div class="sprd_meu_funs">
    <ul>
+      <li><a href="javascript:void(0)" class="indendation_left">Indend(>)</a></li>
+      <li><a href="javascript:void(0)" class="indendation_right">Indend(<)</a></li>
       <li><a href="javascript:void(0)" class="change_to_percentage">%</a></li>
       <li><a href="javascript:void(0)" class="change_to_currency">dlr</a></li>
       <li><a href="javascript:void(0)" class="change_to_number">num</a></li>

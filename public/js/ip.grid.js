@@ -3187,11 +3187,11 @@ var thisBrowser = ip_Browser();
         if (Error != '') { ip_RaiseEvent(GridID, 'warning', null, Error); }
     }
 
-    $.fn.ip_FormatCell = function (options) {
+    $.fn.ip_FormatCell = function (options, indendation = null) {
 
         var GridID = $(this).attr('id');
 
-        return ip_SetCellFormat(GridID, options);
+        return ip_SetCellFormat(GridID, options, indendation);
 
     }
 
@@ -13464,7 +13464,7 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
     return false;
 }
 
-function ip_SetCellFormat(GridID, options) {
+function ip_SetCellFormat(GridID, options, indendation = null) {
     //This is physically different to SetCellValue because it accepts formatting options and applies it to the entire range, this single value for the entire range then syncs
     //this offers more performance, but has the limitation of not being able to update indevidual rowdata/celldata with the server
     //If indevidual row/cell data is required, SetCellValue should be used rather.
@@ -13578,9 +13578,42 @@ function ip_SetCellFormat(GridID, options) {
                         var validate = false;
 
                         if (options.createUndo) { ip_AddUndoTransactionData(GridID, CellUndoData, ip_CloneCell(GridID, r, c)); }
+
+                        var data =$('#date').text();
+                        var arr = data.split('/');
+
+                        var old_cell_style = ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style);
+                        var arr_style = old_cell_style.split(';');
+                        var arr_style_padd = arr_style[1].split(':');
+                        var pad_px = arr_style_padd[1].replace("px", "");
+
+                        var inc_pd = 2;
+
+                        if(indendation == 'left-indendation'){
+                            if(arr_style_padd[0] == 'padding-right'){
+                                inc_pd = parseInt(pad_px) - 2;
+                                options.style = 'padding-right:'+inc_pd+'px';
+                            } else{
+                                inc_pd = parseInt(pad_px) + 2;
+                                options.style = 'padding-left:'+inc_pd+'px';
+                            }
+                            
+                        } else if(indendation == 'right-indendation'){
+
+                            if(arr_style_padd[0] == 'padding-left'){
+                                inc_pd = parseInt(pad_px) - 2;
+                                options.style = 'padding-left:'+inc_pd+'px';
+                            } else{
+                                inc_pd = parseInt(pad_px) + 2;
+                                options.style = 'padding-right:'+inc_pd+'px';
+                            }
+
+                        }
                         
                         if (options.style != null) { cell.style = (options.style == '' ? null : (PropertyAppendModes.stylappend ? ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style) : options.style)); }
 
+
+                        
                         if (options.controlType != null) { cell.controlType = (options.controlType == '' || PropertyAppendModes.colnotnull ? null : options.controlType); }
 
                         if (options.hashTags != null) { cell.hashTags = (options.hashTags == '' || PropertyAppendModes.colnotnull ? null : options.hashTags); }
@@ -18444,6 +18477,28 @@ $(document).ready(function() {
     $(document).on('click', '.change_to_currency', function() {
 
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00'});
+
+        //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
+
+    });
+
+    /**
+     * JS code for left side indendation 
+     */
+    $(document).on('click', '.indendation_left', function() {
+
+        $('#' + GridID).ip_FormatCell({ style:''}, 'left-indendation');
+
+        //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
+
+    });
+
+     /**
+     * JS code for right side indendation
+     */
+    $(document).on('click', '.indendation_right', function() {
+
+        $('#' + GridID).ip_FormatCell({ style:''}, 'right-indendation');
 
         //ip_formatCurrency(GridID, 120000.5025, '', '$1,000,000.00', 2);
 

@@ -87,9 +87,10 @@ class RegisterController extends Controller
      */
     public function handleFacebookCallback()
     {
+
         try {
             
-        $user = Socialite::driver('facebook')->user();
+        $user = Socialite::driver('facebook')->stateless()->user();
             
         $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
          
@@ -97,7 +98,7 @@ class RegisterController extends Controller
 
         $users = new User;
         $users->name = $user->getName();
-        $users->email = $user->getEmail();
+        $users->email = (($user->getEmail() != null) ? $user->getEmail() : '');
         $users->provider_id = $user->getId();
         $users->service_provider ='facebook';
         $users->password = '';
@@ -148,6 +149,7 @@ class RegisterController extends Controller
      */
     public function handleGoogleCallback()
     {
+
         try {
 
         $user = Socialite::driver('google')->user();
@@ -213,6 +215,7 @@ class RegisterController extends Controller
      */
     public function handleLinkedinCallback()
     {
+        
         try {
             
         $user = Socialite::driver('linkedin')->user();

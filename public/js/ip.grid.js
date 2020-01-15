@@ -13395,7 +13395,7 @@ function ip_CellInput(GridID, options) {
 
 }
 
-function ip_SetValue(GridID, row, col, value, oldMask) {
+function ip_SetValue(GridID, row, col, value, oldMask, indendation = null) {
     //This is the central point for setting a cell value, handles the mask, decimal places
     //All instances of 'ip_GridProps[GridID].rowData[row].cells[col].value =' must do this.
     //Returns true if the value actually changed
@@ -13450,11 +13450,15 @@ function ip_SetValue(GridID, row, col, value, oldMask) {
             ip_GridProps[GridID].rowData[row].cells[col].value = dataType.value;
             ip_GridProps[GridID].rowData[row].cells[col].display = formatted;
 
+            console.log('indendation='+indendation);
+
+
             if(dataType.dataType.dataType == '' ||dataType.dataType.dataType == 'text'){
                 ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:left;padding-left:2px;';
             } else {
                 ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:right;padding-right:2px;';
             }
+
 
         }
 
@@ -13491,6 +13495,8 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
         createUndo: true
 
     }, options);
+
+    console.log(options);
 
     //Validate if we have formatting 
     if (options.dataType == null && options.style == null && options.validation == null && options.controlType == null && options.hashTags == null
@@ -13582,33 +13588,74 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
                         var data =$('#date').text();
                         var arr = data.split('/');
 
-                        var old_cell_style = ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style);
-                        var arr_style = old_cell_style.split(';');
-                        var arr_style_padd = arr_style[1].split(':');
-                        var pad_px = arr_style_padd[1].replace("px", "");
+                        /*var combinedStyleArray = [];
 
-                        var inc_pd = 2;
-
-                        if(indendation == 'left-indendation'){
-                            if(arr_style_padd[0] == 'padding-right'){
-                                inc_pd = parseInt(pad_px) - 2;
-                                options.style = 'padding-right:'+inc_pd+'px';
-                            } else{
-                                inc_pd = parseInt(pad_px) + 2;
-                                options.style = 'padding-left:'+inc_pd+'px';
-                            }
-                            
-                        } else if(indendation == 'right-indendation'){
-
-                            if(arr_style_padd[0] == 'padding-left'){
-                                inc_pd = parseInt(pad_px) - 2;
-                                options.style = 'padding-left:'+inc_pd+'px';
-                            } else{
-                                inc_pd = parseInt(pad_px) + 2;
-                                options.style = 'padding-right:'+inc_pd+'px';
-                            }
-
+                        if (options.style != null) { 
+                            cell.style = (options.style == '' ? null : (PropertyAppendModes.stylappend ? ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style) : options.style));
                         }
+
+                        var old_cell_style = cell.style;
+                        
+                        console.log(cell.style);*/
+
+                        old_cell_style = ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style); 
+
+                        //if(typeof old_cell_style != 'undefined'){
+
+                           // if(old_cell_style.indexOf('padding-left') != -1 || old_cell_style.indexOf('padding-right') != -1){
+                                var arr_style = old_cell_style.split(';');
+                                var keysArrayLength = arr_style.length;
+
+                                if(arr_style[1].indexOf('padding-left') != -1 || arr_style[1].indexOf('padding-right') != -1){
+                                
+                                var arr_style_padd = arr_style[1].split(':');
+
+                                /*for (var i = 0; i < keysArrayLength; i++) 
+                                {  
+                                     combinedStyleArray.push({
+                                     key: arr_style_padd[i], 
+                                     value: arr_style_padd[i]
+                                     });  
+                                }*/
+
+
+                                /*var result = $.grep(arr_style, function(e){ return e.key == 'padding-left'; });
+
+                                console.log('result....');
+                                console.log(result);*/
+                                var pad_px = arr_style_padd[1].replace("px", "");
+
+                                var inc_pd = 6;
+
+                                if(indendation != null){
+
+                                    if(indendation == 'left-indendation'){
+                                        if(arr_style_padd[0] == 'padding-right'){
+                                            inc_pd = parseInt(pad_px) - 6;
+                                            options.style = 'padding-right:'+inc_pd+'px';
+                                        } else{
+                                            inc_pd = parseInt(pad_px) + 6;
+                                            options.style = 'padding-left:'+inc_pd+'px';
+                                        }
+                                    
+                                    } else if(indendation == 'right-indendation'){
+
+                                        if(arr_style_padd[0] == 'padding-left'){
+                                            inc_pd = parseInt(pad_px) - 6;
+                                            options.style = 'padding-left:'+inc_pd+'px';
+                                        } else{
+                                            inc_pd = parseInt(pad_px) + 6;
+                                            options.style = 'padding-right:'+inc_pd+'px';
+                                        }
+
+                                    }
+
+                                }
+                            }
+
+                           /*}
+
+                        }*/
                         
                         if (options.style != null) { cell.style = (options.style == '' ? null : (PropertyAppendModes.stylappend ? ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style) : options.style)); }
 
@@ -13681,7 +13728,7 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
 
                             console.log('GridId='+GridID+'||row='+r+'||col='+c+'||oldmask='+oldMask);
 
-                            ip_SetValue(GridID, r, c, undefined, oldMask);
+                            ip_SetValue(GridID, r, c, undefined, oldMask, indendation);
                         }
 
 

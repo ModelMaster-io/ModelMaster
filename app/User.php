@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public static function getUserProvider($id){
+        return User::select('service_provider')->where('id', $id)->pluck('service_provider')->first();
+    }
+
+
 }

@@ -11,6 +11,8 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
     // print_r(\Auth::user());die;
     // return view('pages.spreadsheet_demo');
@@ -83,6 +85,29 @@ Route::group(['prefix' => '/admin'], function () {
  * Code for login and Register Route
  */
 Auth::routes();
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/change-password', function () {
+
+        $user_id = \Auth::user()->id;
+
+        if(User::getUserProvider($user_id) == 'normal'){
+            return view('pages.changepassword');
+        } else {
+            return Redirect::to('/'); 
+        }
+
+    });
+
+    /**
+     * Pages for normal logged in users
+     */
+    //Route::get('/change-password','UserProfile@showChangePasswordForm');
+    Route::post('/change-password','UserProfile@changePassword')->name('changePassword');
+
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 

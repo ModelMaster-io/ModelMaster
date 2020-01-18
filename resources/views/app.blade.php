@@ -4,6 +4,7 @@
 <head>
     <meta name="google-site-verification" content="0GMdqT4QwQwBM1GrXB4qu1mpBCkV0dfm4Kl5d-p_W2U" />
     <meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Model Master</title>
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,7 +44,10 @@
                             <li><a href="{{ url('/lessons') }}" class="{{ request()->is('lessons') ? 'active' : '' }}">Lesson</a></li>
                             <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
                             <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
-                            <li> @if(\Auth::check())
+                            @if(\Auth::check())
+                            <li class="my-profile-link "><a href="{{ url('/user-profile') }}" class="{{ request()->is('/user-profile') ? 'active' : '' }}">My Profile</a></li>
+                            @endif
+                            <li class="logout_btn"> @if(\Auth::check())
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -136,7 +140,7 @@
                 </div>
             </div>
             <div class="copyright">
-                @copyright 2019 Model Master.
+                @copyright 2020 Model Master.
             </div>
         </div>
 

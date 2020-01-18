@@ -89,7 +89,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/change-password', function () {
+    /*Route::get('/change-password', function () {
 
         $user_id = \Auth::user()->id;
 
@@ -99,13 +99,19 @@ Route::group(['middleware' => 'auth'], function () {
             return Redirect::to('/'); 
         }
 
-    });
+    });*/
+
 
     /**
      * Pages for normal logged in users
      */
-    //Route::get('/change-password','UserProfile@showChangePasswordForm');
+
     Route::post('/change-password','UserProfile@changePassword')->name('changePassword');
+
+    Route::get('/user-profile', function() {
+        $user = \Auth::user();
+        return view('pages.user-profile', compact('user'));
+    });
 
 });
 

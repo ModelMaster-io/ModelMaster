@@ -156,16 +156,39 @@ ul.lesson-menu li a:hover,
     font-family: 'Conv_lato.regular',Sans-Serif;
 }
 .menu ul li .active {
-    color: #237346;
+    color: #29B473;
 }
 .menu ul li .active:after {
     height: 2px;
     width: 100%;
-    background: #237346;
+    background: #29B473;
     content: '';
     position: absolute;
     bottom: -10px;
     left: 0;
+}
+.logout_btn a{
+    background-color: #29B473 !important;
+    padding: 12px 25px !important;
+    color: #fff !important;
+    text-transform: capitalize;
+    font-size: 17px !important;
+    line-height: 13px !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    vertical-align: top;
+    float: none;
+    border-radius: 50px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    border: 2px solid #29B473;
+    position: relative;
+    top: -7px;
+}
+.logout_btn a:hover{
+    background-color: transparent!important;
+    color:  #29B473!important;
 }
 .menu ul li a:hover {
     color: #237346;
@@ -1040,10 +1063,472 @@ select.brdr_option, select.border_style_options {
  color: red;
 }
 
+
 /* End Styles for spreadsheet */
+
+/*user profile*/
+#lesson-md .table td:first-child {
+    text-align: center!important;
+}
+#lesson-md .table th:first-child {
+    text-align: center!important;
+}
+#lesson-md td{
+  text-align: left!important
+}
+#lesson-md th:nth-child(2) {
+    width: 60%;
+}
+#lesson-md th {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 15px;
+    border:none!important;
+    text-align: left!important;
+}
+#lesson-md table {
+    margin: 0;
+}
+#lesson-md .table td, .table th {
+    border-top: 1px solid #ECF0EF;
+    text-align: left !important;
+    font-weight: 400 !important;
+    font-size: 16px;
+}
+#lesson-md .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FAFAFA;
+}
+#lesson-md button:focus{
+    outline: none;
+}
+#lesson-md button {
+    background-color: transparent;
+    padding: 6px 17px !important;
+    color: #29B473 !important;
+    text-transform: capitalize;
+    font-size: 15px !important;
+    line-height: 15px !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    vertical-align: top;
+    float: none;
+    border-radius: 50px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    border: 2px solid #29B473 !important;
+}
+.title_main {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 100%;
+    line-height: 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 20px 0 60px!important;
+}
+div#myTabContentMD {
+    width: 80%;
+    float: right;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.wapper.change-password {
+    background: #F0F5F1;
+}
+.user-sidebar li a img {
+    height: 23px;
+    left: 11px;
+    top: 10px;
+}
+.user-sidebar {
+    width: 20%;
+    height: 100%;
+    background-color: #29B473;
+    text-transform: capitalize;
+    float: left;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.user-sidebar li a {
+    color: #fff;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: left;
+}
+.user-content {
+    padding: 0 20px;
+    width: 80%;
+    float: left;
+    text-align: center;
+}
+.sign_in_feild {
+    width: 45%;
+    margin: 0 auto;
+}
+.sign_in_feild  img {
+    position: absolute;
+    left: 24px;
+    top: 11px;
+    z-index: 9;
+    height: 23px;
+}
+.user-input {
+    position: relative;
+}
+.wapper.user_profile .sign_in_feild label {
+    text-align: left;
+    width: 100%;
+    color: #000;
+    text-transform: capitalize;
+    margin: 0 0 5px !important;
+    padding: 0 20px;
+}
+.sign_in_feild .button {
+    margin-top: 15px !important;
+}
+.wapper.login_page.registration_page .sign_in_block {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.sign_in_side_block {
+    background-image: url(../images/login_side_back.png);
+    width: 33%;
+    float: left;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 13rem 0;
+        background-size: cover;
+}
+.wapper.login_page.f-pass .sign_inner {
+    padding: 90px 0;
+}
+.main_login_content {
+    text-align: center;
+    border-radius: 20px;
+}
+.sign_in_side_block h1, .sign_in_side_block p {
+    color: #fff;
+}
+.main_login_content .sign_in_side_block .button {
+    border: 2px solid #fff !important;
+    margin-top: 20px;
+}
+.sign_in_side_block p {
+    font-size: 20px;
+    line-height: 32px;
+}
+.main_login_content {
+    text-align: center;
+    display: inline-block;
+    width: 75%;
+    box-shadow: 0px 2px 12px #d4d8d5;
+    border-radius: 20px;
+        background: #fff;
+        position: relative;
+}
+.sign_in_block {
+    width: 67%;
+    float: left;
+    background: #fff;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 20px;
+}
+.wapper.login_page.f-pass .sign_in_block {
+    padding: 20px;
+}
+.main_login_content h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    display: inline-block;
+    line-height: 50px;
+    margin-bottom: 25px;
+}
+.email_feild img {
+    height: 16px;
+}
+.sign_in_feild label {
+    margin: 30px 0 20px;
+    display: inline-block;
+    color: #A9A9A9;
+        font-size: 17px;
+}
+.main_login_content .sign_in_side_block .button:hover {
+    background-color: #fff !important;
+    color: #29B473 !important;
+    border-color: #29B473;
+}
+.breadcrumb a {
+    color: #111;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+li.cart-link {
+    border-bottom: 2px solid #29b473;
+    padding-bottom: 7px;
+}
+.main_login_content .button:hover, .payment_btn:hover {
+    background-color: transparent !important;
+    color: #29B473 !important;
+}
+.main_login_content .button:hover a, .payment_btn:hover a{
+ color: #29B473 !important;
+}
+.main_login_content .button a{
+    color: #fff !important;
+}
+.main_login_content .button{
+    background-color: #29B473 !important;
+    padding: 14px 45px !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 15px !important;
+    line-height: 16px !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    vertical-align: top;
+    float: none;
+    border-radius: 50px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    border: 2px solid #29B473;
+}
+.wapper.user_profile .sign_in_feild input.error{
+    border-color: #f00 !important;
+}
+.wapper.user_profile .sign_in_feild label.error{
+    color: #f00 !important;
+}
+.wapper.user_profile .sign_in_feild input {
+    background: transparent!important;
+    padding: 12px;
+    border: 1px solid #CCDBD6 !important;
+    padding-left: 62px;
+}
+#my-profile .sign_in_feild input {
+    padding: 8px;
+    padding-left: 62px;
+}
+.sign_in_feild input {
+    position: relative;
+    display: block;
+    background: #F0F5F1!important;
+    border-radius: 50px;
+    padding: 16px;
+    width: 100%;
+    border: none !important;
+    padding-left: 62px;
+    font-size: 16px;
+    margin: 0 auto!important;
+    box-sizing: border-box;
+}
+.user-detail.ft {
+    border-left: 1px solid #E0E5E1;
+}
+#my-profile .sign_in_feild img {
+    height: 20px;
+}
+#my-profile .sign_in_feild .user-input.email img {
+    top: 13px!important;
+    height: 16px!important;
+}
+.form-check {
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+}
+.sign_inner {
+    padding: 49px 0;
+}
+.wapper {
+    background: #F0F5F1;
+    width: 100%;
+}
+.login_page {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.social_icon a {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: #000;
+    text-align: center;
+    margin: 0 3px;
+    font-size: 16px;
+    border: 1px solid #D6E1DD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#my-profile .user-img img {
+    position: relative;
+    left: auto;
+    top: auto;
+    height: auto !important;
+}
+li.order_head {
+    color: #373644;
+    font-weight: 600 !important;
+    text-transform: capitalize;
+    font-size: 17px;
+    padding-bottom: 10px;
+}
+#my-profile .sign_in_feild {
+    width: 100%;
+    padding: 55px 30px 60px;
+}
+#my-profile .sign_inner {
+    padding: 0;
+}
+#my-profile  .sign_in_feild .button {
+    margin-top: 15px !important;
+}
+.user-detail {
+    width: 65%;
+    float: left;
+    padding-left: 20px;
+}
+.user-detail .form-block {
+    display: inline-block;
+    width: 100%;
+}
+.form-block .form-group.form-check {
+    float: left;
+    display: inline-block;
+    width: 50%;
+    padding-right: 10px;
+}
+.form-block .form-group.form-check:last-child {
+    padding: 0 0 0 10px !important;
+}
+.user-detail .form-group.form-check {
+    float: left;
+    display: inline-block;
+    width: 50%;
+    padding-right: 10px;
+    padding-left: 0;
+}
+.form-block.country_block .form-group.form-check:first-child {
+    padding-right: 20px !important;
+}
+.form-block.country_block .form-group.form-check {
+    width: 33.33%;
+}
+.user-detail .form-group.form-check:last-child {
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+}
+.social_icon  li {
+    display: inline-block;
+}
+.user-img {
+    width: 35%;
+    float: left;
+    padding-right: 20px;
+}
+.wapper.user_profile {
+    padding: 40px 15% 70px;
+    text-align: center;
+}
+.user-sidebar li img {
+    height: 32px;
+    position: absolute;
+    left: 11px;
+    top: 12px;
+
+}
+.user-sidebar li {
+    padding: 15px 10px;
+    font-size: 13px;
+    border-bottom: 1px solid #209A61;
+    text-transform: capitalize;
+    padding-left: 50px;
+    position: relative;
+    width: 100%;
+    text-align: left;
+
+}
+.user-sidebar li.nav-item a.active {
+    background: #35966D;
+}
+.user-sidebar li a:focus,
+.user-sidebar li a:hover {
+    text-decoration: none;
+}
+
+
+/*order*/
+.order-block {
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #E4EAE8;
+    float: left;
+}
+.checkout_page.sign_in_feild .order-block {
+    width: 32%;
+        padding: 0 0 0 29px;
+    border-bottom: none;
+}
+.order-block ul{
+    margin:0;
+}
+.order-invoice img {
+    height: 18px;
+}
+.order-date img {
+    height: 18px;
+    padding-right: 10px;
+    top: -2px;
+    position: relative;
+}
+.order-name {
+    float: left;
+    width: 60%;
+    text-align: left;
+    color: #29B473;
+    text-transform: capitalize;
+}
+.wapper.newfuture_block_main {
+    padding: 60px 6%;
+}
+.wapper.newfuture_block_main .title_main {
+    margin: 0 0 10px 0 !important;
+    text-align: left;
+}
+.order-date {
+    float: left;
+    width: 30%;
+    text-align: left;
+}
+.order-invoice {
+    width: 10%;
+    float: left;
+}
 
 /*responsive*/
 @media only screen and (max-width: 1440px) {
+    .wapper.invoice_block {
+    width: 60%;
+}
     .testimonial_block_main {
         padding: 80px 40px;
     }
@@ -1099,6 +1584,10 @@ select.brdr_option, select.border_style_options {
     }
 }
 @media only screen and (max-width: 1366px) {
+    .invoice_block_add_right {
+    width: 33%;
+}
+    
     .home_new_future_block_img img {
         min-height: 450px;
     }
@@ -1126,7 +1615,47 @@ select.brdr_option, select.border_style_options {
         font-size: 16px;
     }
 }
+@media only screen and (max-width: 1280px) {
+.login_page {
+    height: 100vh;
+}
+.main_login_content {
+    width: 90%;
+ }
+}
+
 @media only screen and (max-width: 1024px) {
+    .sign_in_feild {
+    width: 60%;
+}
+.main_login_content {
+    width: 100%;
+    }
+.sign_in_side_block p {
+    font-size: 17px;
+    line-height: 25px;
+    }
+.wapper.invoice_block {
+    width: 75%;
+}
+       .order-block {
+        width: 35%;
+    }
+        .item-name {
+        width: 65%;
+    }
+    .itiem_price {
+        width: 35%;
+    }
+    .billibg_add {
+        width: 65%;
+    }
+    #my-profile .sign_in_feild {
+        padding: 55px 15px 60px;
+    }
+    .wapper.user_profile {
+    padding: 40px 5% 70px;
+}
     .contact_us {
         width: 22%;
     }
@@ -1193,15 +1722,18 @@ select.brdr_option, select.border_style_options {
     .home-banner-right {
         padding: 22px 1.5rem 1rem 1.5rem;
     }
+    .wapper.login_page.registration_page .sign_inner {
+    padding: 40px 0;
+}
 }
 
 @media only screen and (max-width: 999px) {
     .header-in-left img {
         width: 180px;
-    }	
+    }   
     .menu {
         display: none;
-    }	
+    }   
 
     .mobile-container {
         max-width: 480px;
@@ -1241,7 +1773,7 @@ select.brdr_option, select.border_style_options {
     }
     .about-us-banner h1 {
         font-size: 42px;
-    }	
+    }   
 
     .menu {
         margin-top: 0;
@@ -1271,6 +1803,136 @@ select.brdr_option, select.border_style_options {
 }
 
 @media only screen and (max-width: 768px) {
+    .wapper.login_page.registration_page .sign_inner {
+    padding: 35px 0;
+}
+    .wapper.login_page.f-pass .sign_inner {
+    padding: 28% 0;
+}
+    .checkout_page.sign_in_feild .order-block {
+    width: 40%;
+    padding: 0 20px;
+}
+.wapper.login_page.registration_page    .main_login_content h1 {
+    font-size: 28px;
+}
+
+.wapper.login_page.registration_page    .sign_in_side_block p {
+    font-size: 15px;
+    line-height: 20px;
+}
+.wapper.cart_page_main table {
+    width: 800px;
+}
+
+.invoice_block_table table {
+    width: 600px;
+}   
+    .invoice_block_add_right {
+    width: 40%;
+}
+    .wapper.invoice_block {
+    width: 100%;
+    padding: 0 30px;
+}
+    .cart_title {
+    font-weight: 500;
+    font-size: 15px;
+}
+p.cart_des {
+    font-size: 15px;
+    }
+    .billibg_add {
+    width: 60%;
+}
+.order-summery {
+    margin-bottom: 22px;
+    }
+.order-summery ,.billibg_add{
+    padding-top: 15px;
+}
+.order-block {
+    width: 40%;
+        padding-left: 20px;
+}
+.wapper.user_profile .sign_in_feild input[type="checkbox"] {
+    top: 7px;
+    }
+
+.payment-block {
+    padding: 15px 15px 0 15px;
+    }
+    .buy_now_btn {
+    bottom: 22px;
+}
+.ckeckbox-confirm {
+    font-size: 15px;
+}
+    .des_new_title {
+       font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+
+.buy_now_btn {
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+    }
+.des_new_price {
+    font-size: 20px;
+}
+.user-detail {
+    padding: 0 15px !important;
+}
+.order-invoice {
+    width: 15%;
+}
+li.order_head {
+    font-size: 14px;
+    }
+.order-block {
+    padding: 0;
+    }
+.order-date {
+    width: 35%;
+    font-size: 14px;
+}
+.order-invoice img {
+    height: 17px;
+    position: relative;
+    top: -4px;
+}
+.order-name {
+    width: 50%;
+    }
+.user-detail .form-group.form-check {
+    width: 100%;
+    padding-right: 0;
+}
+.user-detail .form-group.form-check:last-child {
+    padding-left: 0!important;
+    padding-right: 0 !important;
+}
+    .wapper.user_profile {
+    padding: 40px 15px 70px;
+}
+ .sign_in_feild {
+    width: 74%;
+}
+.sign_in_side_block {
+    background-image: url(../images/login_side_back.png);
+    width: 38%;
+}
+.sign_in_block {
+    width: 62%;
+}
+.sign_in_feild label {
+    font-size: 15px;
+}
+#my-profile .sign_in_feild {
+    width: 100%;
+    padding: 55px 0 60px;
+}
     .contact_us {
         width: 28%;
     }
@@ -1354,6 +2016,104 @@ select.brdr_option, select.border_style_options {
     }
 }
 @media only screen and (max-width: 750px) {
+    .header-in {
+    padding: 10px;}
+    .checkout_page.sign_in_feild .order-block {
+    width: 100%;
+    padding: 20px 0;
+}
+    #lesson-md table {
+    margin: 0;
+    width: 500px;
+}
+#lesson-md th:nth-child(2) {
+    width: 42%;
+    padding-right: 30px !important;
+}
+#lesson-md td:nth-child(2) {
+    width: 42%;
+    padding-right: 30px !important;
+}
+    .form-block .form-group.form-check:last-child {
+    padding: 0 !important;
+}
+.form-block.drop_block .form-group.form-check {
+    width: 50%;
+    padding-right: 15px;
+}
+.form-block .form-group.form-check {
+    width: 100%;
+    padding-right: 0;
+}
+    .billibg_add {
+    width: 100%;
+}
+.form-block.country_block .form-group.form-check:first-child {
+    padding-right: 0!important;
+}
+.form-block.country_block .form-group.form-check {
+    width: 80%;
+    padding: 0 !important;
+}
+.ckeckbox-confirm {
+    margin: 0 0 10px;
+    }
+    .checkout_page.sign_in_feild {
+    padding: 0;
+}
+  .order-block {
+    width: 100%;
+    padding: 15px 0;
+}
+    .new_future_block_inner {
+    width: 100%;
+    float: left;
+}
+.wapper.newfuture_block_main {
+    padding: 60px 15px;
+}
+.buy_now_btn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    }
+.newfuture_block {
+    margin: 20px 0 !important;
+}
+.top_block_des {
+    position: relative;
+    padding: 8px;
+}
+    .user-sidebar {
+    width: 100%;
+    float: left;
+    position: relative;
+    top: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.user-img {
+    width: 100%;
+    float: left;
+    padding-right: 20px;
+    padding: 0 30px !important;
+    margin-bottom: 30px;
+}
+.user-detail {
+    width: 100%;
+    float: left;
+    padding-left: 0;
+}
+.user-detail.ft {
+    border-left: none;
+    padding: 0 !important;
+}
+div#myTabContentMD {
+    width: 100%;
+    float: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 20px;
+}
     .new_future_block {
         width: 100%;
         padding: 15px 0;
@@ -1399,20 +2159,20 @@ select.brdr_option, select.border_style_options {
     h2 {
         font-size: 24px;
         margin-bottom: 15px;
-    }	
+    }   
     .about-us-banner h1 {
         font-size: 30px;
         top: 38%;
-    }	
+    }   
     .about-us-our-mission {
         margin: 30px auto 10px auto;
-    }	
+    }   
     .contact-us-blog {
         background-size: contain;
-    }	
+    }   
     .contact-socil-icon {
         margin-top: 50px;
-    }	
+    }   
     .contact-us-blog-in {
         display: table;
         margin: 23% auto 40px auto; 
@@ -1422,10 +2182,14 @@ select.brdr_option, select.border_style_options {
     }
     .contact-us-blog-in-right {
         width: 100%; 
+            border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     }
     .menu ul li a {
         font-size: 15px;
-    }	
+    }   
     .menu ul li {
         margin: 10px 14px;
     }
@@ -1454,9 +2218,34 @@ select.brdr_option, select.border_style_options {
         font-size: 24px;
         margin-right: 20px;
     }
-
+.login_page {
+    height: 100%;
+}
 }
 @media only screen and (max-width: 500px) {
+    .sign_in_block, .sign_in_side_block {
+    width: 100%;
+}
+.login_page {
+    padding: 40px 20px;
+
+}
+.sign_in_side_block.registration_back {
+    border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+.sign_in_block {
+   border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.sign_in_feild {
+    width: 100%;
+    padding: 0 15px;
+}
+.sign_in_side_block {
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
     .copyright {
     margin-top: 15px;
 }
@@ -1515,6 +2304,25 @@ select.brdr_option, select.border_style_options {
     }
 }
 @media only screen and (max-width: 320px) {
+    .form-block.country_block .form-group.form-check {
+    width: 100%;
+}
+    .user-img {
+    padding: 0 15px !important;
+}
+.user-detail {
+    padding: 0 10px !important;
+}
+.order-date {
+    width: 35%;
+    font-size: 12px;
+}
+.order-name {
+    width: 48%;
+}
+.order-invoice {
+    width: 17%;
+}
     .contact-us-blog-in-left {
         padding: 15px;
     }

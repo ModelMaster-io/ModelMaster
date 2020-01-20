@@ -21,6 +21,16 @@
     <!-- Include js plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
+    <script type="text/javascript">
+  
+    jQuery.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    </script>
+
     <!-- Common JS for pages -->
     <script src="{{ URL::asset('js/custom-script.js') }}"></script>
 

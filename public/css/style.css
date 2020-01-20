@@ -1346,7 +1346,8 @@ li.cart-link {
     height: 16px!important;
 }
 .form-check {
-    position: relative;
+    /*position: relative;*/
+    position: inherit !important;
     display: block;
     margin-bottom: 20px;
 }

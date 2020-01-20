@@ -10,69 +10,7 @@
 
 <script type="text/javascript">
   
-jQuery.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
 jQuery(document).ready(function() {
-
-  jQuery("#frm_changeuserpassword").validate({
-        rules: {
-            current_password: {
-                required: true
-            },
-            new_password: {
-                required: true,
-                minlength: 8
-            },
-            new_password_confirmation: {
-                required: true,
-                equalTo: "#new_password"
-            }
-        },
-        messages: {
-             password: {
-                required: "Please enter Password",
-                minlength: "Please enter at least 8 characters."
-            }
-        },
-        submitHandler: function(form) {
-
-        jQuery.ajax({
-            url: form.action,
-            type: form.method,
-            data: jQuery(form).serialize(),
-            beforeSend: function(){
-                jQuery('.change-pwd-submit').prop('disabled', true);
-                jQuery('.change-pwd-submit').find('i').show();
-            },
-            success: function(response) {
-              
-              jQuery('.change-pwd-submit').find('i').hide();
-              jQuery('.change-pwd-submit').prop('disabled', false);
-
-              if(response.status == 1){
-                  toastr.success(response.success);
-                  jQuery("#frm_changeuserpassword")[0].reset()
-              } else {
-                  toastr.error(response.error);
-              }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                toastr.error('Something Goes Wrong!');
-
-                jQuery('.change-pwd-submit').find('i').hide();
-                jQuery('.change-pwd-submit').prop('disabled', false);
-            },
-            complete: function(){
-            } 
-
-        });
-    }
-
-    });
 
   //toastr.error('Please select an artist');
   //toastr.success('Please select an artist');
@@ -239,6 +177,9 @@ jQuery(document).ready(function() {
         <div class="tab-pane fade show active" id="my-profile" role="tabpanel" aria-labelledby="my-profile-md">
           <div class="sign_inner">
             <div class="sign_in_feild">
+
+              <form id="frm_udpateuser" class="form-horizontal" method="POST" action="{{ route('userprofile.update', $user) }}">
+              {{ method_field('patch') }}
               <div class="user-img"><img src="{{ ( ! empty($user->image) ? $user->image : '../images/user-img.png') }}"/></div>
               <div class="user-detail ft">
 
@@ -276,17 +217,22 @@ jQuery(document).ready(function() {
                 <div class="form-block">
                   <div class="form-group form-check">
                     <label>cell phone:</label>
-                    <div class="user-input"><img src="../images/call.png"/><input type="text" name="cellphone" value="{{ ( ! empty($user->cellphone) ? $user->cellphone : '') }}"></div>
+                    <div class="user-input"><img src="../images/call.png"/><input type="number" name="cellphone" value="{{ ( ! empty($user->cellphone) ? $user->cellphone : '') }}"><input type="hidden" name="provider_id" value="{{ ( ! empty($user->provider_id) ? $user->provider_id : '') }}"></div>
                   </div>
                   <div class="form-group form-check">
                     <label>office phone:</label>
-                    <div class="user-input"><img src="../images/call.png"/><input type="text" name="officephone" value="{{ ( ! empty($user->officephone) ? $user->officephone : '') }}"></div>
+                    <div class="user-input"><img src="../images/call.png"/><input type="number" name="officephone" value="{{ ( ! empty($user->officephone) ? $user->officephone : '') }}"></div>
                   </div>
                 </div>
 
               </div>
 
-              <div class="button">submit</div>
+              <div class="form-group form-check">
+                <button class="button update-usr-submit">Update<i class="fa fa-spinner fa-spin" style="font-size:18px;display:none;"></i></button>
+            </div>
+
+          </form>
+
             </div>
           </div>
         </div>
@@ -333,7 +279,7 @@ jQuery(document).ready(function() {
             <div class="order-date">
               <ul>
                 <li class="order_head">date </li>
-                <li><img src="../images/date.png"/>27/11/19</li>
+                <li><img src="../images/date.png"/>11/27/19</li>
               </ul>
             </div>
 
@@ -356,7 +302,7 @@ jQuery(document).ready(function() {
             <div class="order-date">
               <ul>
                 <li class="order_head">date </li>
-                <li><img src="../images/date.png"/>27/11/19</li>
+                <li><img src="../images/date.png"/>11/127/19</li>
               </ul>
             </div>
 
@@ -379,7 +325,7 @@ jQuery(document).ready(function() {
             <div class="order-date">
               <ul>
                 <li class="order_head">date </li>
-                <li><img src="../images/date.png"/>27/11/19</li>
+                <li><img src="../images/date.png"/>11/27/19</li>
               </ul>
             </div>
 

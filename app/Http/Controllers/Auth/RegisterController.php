@@ -220,8 +220,6 @@ class RegisterController extends Controller
             
         $user = Socialite::driver('linkedin')->user();
 
-             dd($user);
-
            // echo '<pre>'; print_r($user);die;
         $isUserLogin = User::where(['provider_id' => $user->getId()])->first();
 

@@ -113,6 +113,10 @@ Route::group(['middleware' => 'auth'], function () {
         return view('pages.user-profile', compact('user'));
     });
 
+    //Route::post('/edit-profile','UserProfile@updateuser')->name('editprofile');
+
+    Route::patch('userprofile/{user}/updateuser',  ['as' => 'userprofile.update', 'uses' => 'UserProfile@updateuser']);
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

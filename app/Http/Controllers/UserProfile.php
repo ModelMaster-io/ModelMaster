@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use File;
 use App\User;
 use Auth;
 use Hash;
@@ -52,7 +53,7 @@ class UserProfile extends Controller
 
 
     public function updateuser(User $user, Request $request)
-    {
+    { 
 
 
         $val = $request->validate([
@@ -62,16 +63,11 @@ class UserProfile extends Controller
 
         if((Auth::user()->email == $request->get('email')) && (Auth::user()->service_provider == 'normal')) {
 
-            
-
         } else if((Auth::user()->service_provider != 'normal') && (Auth::user()->provider_id == $request->get('provider_id'))){
-
             // code for social users
             $user->password = '';
-
         }
 
-       // $file = Input::file('profile_image');
 
         //$user = User::findOrFail(auth()->user()->id);
 
@@ -81,29 +77,30 @@ class UserProfile extends Controller
         $user->email = $request->get('email');
         $user->website = $request->get('website');
         $user->cellphone = $request->get('cellphone');
-        $user->officephone = $request->get('officephone');
+        $user->officephone = $request->get('officephone'); 
 
-        /*if (Input::hasFile('profile_image')) {
+        if ($files = $request->file('profile_image')) {
 
 
-            $filename = Input::file('profile_image')->getClientOriginalName();
+            $filename = 'mm_'.uniqid().'_'.$files->getClientOriginalName();
+
             //$extension = Input::file('profile_image')->getClientOriginalExtension();
 
 
-            $destinationPath = public_path('/profile_images');
-            $filename = 'plylstrs_'.uniqid().'_'.$filename;
+            $destinationPath = public_path('/images/profile_images');
+            //$filename = 'mm_'.uniqid().'_'.$filename;
 
-                //Input::file('profile_image')->move($destinationPath, $filename);
+            //Input::file('profile_image')->move($destinationPath, $filename);
 
-            Image::make(Input::file('profile_image'))
+            Image::make($files)
             ->fit(150, 150)
             ->save($destinationPath.'/'.$filename, 80);
 
-                //update model
-            $oldAvatar = isset($user->profile_image) ? $user->profile_image : '';
-                //$user->update(['profile_image' => $filename]);
+            //update model
+            $oldAvatar = isset($user->image) ? $user->image : '';
+            //$user->update(['profile_image' => $filename]);
 
-            $user->profile_image = $filename;
+            $user->image = $filename;
 
                 // delete old image
 
@@ -114,7 +111,7 @@ class UserProfile extends Controller
             }
 
 
-        }*/
+        }
 
         $user->save();
 

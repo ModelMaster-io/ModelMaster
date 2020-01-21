@@ -13395,7 +13395,7 @@ function ip_CellInput(GridID, options) {
 
 }
 
-function ip_SetValue(GridID, row, col, value, oldMask, indendation = null) {
+function ip_SetValue(GridID, row, col, value, oldMask, indendation = null, stl = null) {
     //This is the central point for setting a cell value, handles the mask, decimal places
     //All instances of 'ip_GridProps[GridID].rowData[row].cells[col].value =' must do this.
     //Returns true if the value actually changed
@@ -13452,12 +13452,17 @@ function ip_SetValue(GridID, row, col, value, oldMask, indendation = null) {
 
             console.log('indendation='+indendation);
 
+            if(stl != null){
+                ip_GridProps[GridID].rowData[row].cells[col].style = stl;
+            } else {
 
             if(dataType.dataType.dataType == '' ||dataType.dataType.dataType == 'text'){
                 ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:left;padding-left:2px;';
             } else {
                 ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:right;padding-right:2px;';
             }
+
+        }
 
 
         }
@@ -13658,8 +13663,6 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
                         }*/
                         
                         if (options.style != null) { cell.style = (options.style == '' ? null : (PropertyAppendModes.stylappend ? ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style) : options.style)); }
-
-
                         
                         if (options.controlType != null) { cell.controlType = (options.controlType == '' || PropertyAppendModes.colnotnull ? null : options.controlType); }
 
@@ -13728,7 +13731,7 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
 
                             console.log('GridId='+GridID+'||row='+r+'||col='+c+'||oldmask='+oldMask);
 
-                            ip_SetValue(GridID, r, c, undefined, oldMask, indendation);
+                            ip_SetValue(GridID, r, c, undefined, oldMask, indendation, cell.style);
                         }
 
 

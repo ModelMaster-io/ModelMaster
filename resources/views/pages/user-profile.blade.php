@@ -5,12 +5,136 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 <script type="text/javascript">
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function(e) {
+        $('#user_profile_preview').attr('src', e.target.result);
+      }
+      
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  jQuery(document).ready(function () {
+     $("#profile_image").change(function() {
+            readURL(this);
+    });
+  });
   
 jQuery(document).ready(function() {
+
+  jQuery("#frm_changeuserpassword").validate({
+        rules: {
+            current_password: {
+                required: true
+            },
+            new_password: {
+                required: true,
+                minlength: 8
+            },
+            new_password_confirmation: {
+                required: true,
+                equalTo: "#new_password"
+            }
+        },
+        messages: {
+             password: {
+                required: "Please enter Password",
+                minlength: "Please enter at least 8 characters."
+            }
+        },
+        submitHandler: function(form) {
+
+        jQuery.ajax({
+            url: form.action,
+            type: form.method,
+            data: jQuery(form).serialize(),
+            beforeSend: function(){
+                jQuery('.change-pwd-submit').prop('disabled', true);
+                jQuery('.change-pwd-submit').find('i').show();
+            },
+            success: function(response) {
+              
+              jQuery('.change-pwd-submit').find('i').hide();
+              jQuery('.change-pwd-submit').prop('disabled', false);
+
+              if(response.status == 1){
+                  toastr.success(response.success);
+                  jQuery("#frm_changeuserpassword")[0].reset()
+              } else {
+                  toastr.error(response.error);
+              }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('Something Goes Wrong!');
+
+                jQuery('.change-pwd-submit').find('i').hide();
+                jQuery('.change-pwd-submit').prop('disabled', false);
+            },
+            complete: function(){
+            } 
+
+        });
+    }
+
+    });
+
+
+    jQuery("#frm_udpateuser").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+        },
+
+        submitHandler: function(form) {
+
+        var formData = new FormData(form);
+
+        jQuery.ajax({
+            url: form.action,
+            type: form.method,
+            cache:false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            beforeSend: function(){
+                jQuery('.update-usr-submit').prop('disabled', true);
+                jQuery('.update-usr-submit').find('i').show();
+            },
+            success: function(response) {
+              
+              jQuery('.update-usr-submit').find('i').hide();
+              jQuery('.update-usr-submit').prop('disabled', false);
+
+              if(response.status == 1){
+                  toastr.success(response.success);
+              } else {
+                  toastr.error(response.error);
+              }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              var err = jQuery.parseJSON(jqXHR.responseText);
+              if(err.errors.email != undefined) {
+                toastr.error(err.errors.email);
+              }
+                jQuery('.update-usr-submit').find('i').hide();
+                jQuery('.update-usr-submit').prop('disabled', false);
+            },
+            complete: function(){
+            } 
+
+        });
+    }
+
+    });
 
   //toastr.error('Please select an artist');
   //toastr.success('Please select an artist');
@@ -180,7 +304,9 @@ jQuery(document).ready(function() {
 
               <form id="frm_udpateuser" class="form-horizontal" method="POST" action="{{ route('userprofile.update', $user) }}">
               {{ method_field('patch') }}
-              <div class="user-img"><img src="{{ ( ! empty($user->image) ? $user->image : '../images/user-img.png') }}"/></div>
+              <div class="user-img"><img id="user_profile_preview" src="{{ ( ! empty($user->image) ? $user->image : '../images/user-img.png') }}"/>
+                <input type="file" name="profile_image" id="profile_image">
+              </div>
               <div class="user-detail ft">
 
                 <div class="form-block">

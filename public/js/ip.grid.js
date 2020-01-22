@@ -13053,7 +13053,6 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
 
         var Cell = ip_CellData(GridID, row, col);
 
-
         DataType.display = Cell.display;
         DataType.value = (value != null ? value : Cell.value);
 
@@ -13069,8 +13068,6 @@ function ip_CellDataType(GridID, row, col, adviseDefault, value, oldMask) {
                 var mValue = Mask.input(DataType.value);
                 DataType.value = (isNaN(mValue) ? DataType.value : mValue);
                 //DataType.output = function () { return this.mask.output(value, OldMask, Decimals); }
-
-                console.log('running datatype======'+DataType.dataType.dataType);
                 
                 if(DataType.mask.mask == '$1 000.00') {
 
@@ -13405,7 +13402,9 @@ function ip_SetValue(GridID, row, col, value, oldMask, indendation = null, stl =
 
     if (oldValue != value) {
 
-        if (typeof value == 'undefined') { value = ip_GridProps[GridID].rowData[row].cells[col].value; }
+        if (typeof value == 'undefined') { 
+
+            value = ip_GridProps[GridID].rowData[row].cells[col].value; }
 
         if (value == null) {
 
@@ -13450,17 +13449,20 @@ function ip_SetValue(GridID, row, col, value, oldMask, indendation = null, stl =
             ip_GridProps[GridID].rowData[row].cells[col].value = dataType.value;
             ip_GridProps[GridID].rowData[row].cells[col].display = formatted;
 
-            console.log('indendation='+indendation);
-
             if(stl != null){
                 ip_GridProps[GridID].rowData[row].cells[col].style = stl;
             } else {
 
-            if(dataType.dataType.dataType == '' ||dataType.dataType.dataType == 'text'){
-                ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:left;padding-left:2px;';
-            } else {
-                ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:right;padding-right:2px;';
+            if (dataType.display == '') { 
+
+                if(dataType.dataType.dataType == '' ||dataType.dataType.dataType == 'text'){
+                    ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:left;padding-left:2px;';
+                } else {
+                    ip_GridProps[GridID].rowData[row].cells[col].style = 'text-align:right;padding-right:2px;';
+                }
+
             }
+
 
         }
 
@@ -13500,8 +13502,6 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
         createUndo: true
 
     }, options);
-
-    console.log(options);
 
     //Validate if we have formatting 
     if (options.dataType == null && options.style == null && options.validation == null && options.controlType == null && options.hashTags == null
@@ -13661,9 +13661,10 @@ function ip_SetCellFormat(GridID, options, indendation = null) {
                            /*}
 
                         }*/
+
                         
                         if (options.style != null) { cell.style = (options.style == '' ? null : (PropertyAppendModes.stylappend ? ip_AppendCssStyle(GridID, ip_GridProps[GridID].rowData[r].cells[c].style, options.style) : options.style)); }
-                        
+
                         if (options.controlType != null) { cell.controlType = (options.controlType == '' || PropertyAppendModes.colnotnull ? null : options.controlType); }
 
                         if (options.hashTags != null) { cell.hashTags = (options.hashTags == '' || PropertyAppendModes.colnotnull ? null : options.hashTags); }

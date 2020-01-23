@@ -8026,6 +8026,8 @@ function ip_GetRangeData(GridID, byRef, startRow, startCol, endRow, endCol, limi
 
 function ip_DragRange(GridID, options) {
 
+    console.log('range drag is selected...');
+
     var options = $.extend({
 
         range: null, // { startRow:null, startCol: null, endRow: null, endCol: null },
@@ -18572,6 +18574,20 @@ $(document).ready(function() {
 
         $('#' + GridID).ip_FormatCell({ dataType: {dataType:'number', dataTypeName: 'number'}, mask:'123' });
 
+    });
+
+    /**
+     * JS code for merge cells
+     */
+    $(document).on('click', '.merge_cells', function() {
+
+        $('#' + GridID).ip_MergeRange();
+
+    });
+
+
+    $('#' + GridID).on('ip_SelectRange', function (event, args) { 
+        console.log('range is selected...');
     });
 
 

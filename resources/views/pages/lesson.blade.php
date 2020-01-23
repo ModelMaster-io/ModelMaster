@@ -39,7 +39,34 @@
 
                 <div class="lcltc1" id="step1" style="display:block">
                     <span class="lcltc1-title">Step 1</span>
-                    <span class="lcltc1-contant">Starting in cell G3, put column headings for 7 years starting two years before the current year.</span>
+                    <span class="lcltc1-contant">
+
+                    <strong>Step 1:</strong> Throughout this lesson, you will learn the elements of a simple 3-statement financial model. The three core financial statements are the income statement, the balance sheet, and the cash flow statement. These statements are the basis for any analysis of a company. It's the starting point for valuations, comparisons against other companies, evaluation of a company’s budget, among many other things. 
+
+                    You will be building each of these statements for an illustrative software company called "FakeSoftwareCo" for an 8 year time period going from 2017 to 2024. There are 12 sections we will work through to build this model.
+
+                    The income statement shows you a company's profitability over a time period. The cash flow statement shows how cash moves in and out of the business over a time period. We'll explain in more detail later, but the two statements are different because the accounting principles that define profitability are not tied to when you pay or receive cash payment.
+
+                    The third statement, you'll learn how to build is the balance sheet. The balance sheet is different from the other two statements because it shows information at a single point in time. It shows at the end of the time period, what assets the company has and how those assets are financed. 
+                    </span>
+                    <span class="lcltc1-contant">
+                    <strong>Step 1:</strong> The first step in building out a full financial model, is to find the information you need about the company. For the sake of this course, we're going to assume that you have the information you need to build the model. For our work we're going to start by labeling the income statement.
+                    Once you have the information, you want to lay out the structure in your spreadsheet. Let’s start with the Income Statement. In cell B2, type "FakeSoftwareCo Income Statement" so that we have a header for the first statement.
+                    </span>
+                    <span class="lcltc1-contant">
+                    <strong>Step 2.</strong> Formatting is an extremely important part of financial modeling because it determines whether people can clearly understand and interpret your document. We will format the content as we go through this course. The formatting we do in this course is just one of several ways that you could format the content.
+                    Fill the background in cells B2:N2 with a dark blue fill. Then in cell B2 change the text color to white and bold the text.
+                    </span>
+                    <span class="lcltc1-contant">
+                    <strong>Step 3:</strong> Next we're going to tell people what units we're using on the model. Depending on the context, "100" could be $100, $100,000, or $100,000,000.
+                    In this model we're going to show all our numbers in millions. In cell B4, type "($ in millions)" so that anyone reading our model knows what units we're using. Italicize it so that it is clear the information doesn't impact our model.
+                    </span>
+                    <span class="lcltc1-contant">
+                    <strong>Step 4:</strong> Next, we will lay out the time periods that we are doing our analysis for. Financial models can be built on a monthly, quarterly, annually, or any other required time frame. In this model we're going show the information annually.
+                    Starting in cell G4, type the years from 2017 to 2024. Select cells B4:N4 and add a bottom border
+                    Step 5: Finally, to help with the spacing on the page, change the row height for row 3 to "5"
+                    </span>
+
                 </div>
 
                 <div class="lcltc1" id="step2" style="display:none">
@@ -91,6 +118,7 @@
       <li><a href="javascript:void(0)" class="font-color-pick">A<span class="color-picker"></span></a></li>
       <li><a href="javascript:void(0)" class="font-color-pick">BG<span class="bg-color-picker"></span></a></li>
       <li><a href="javascript:void(0)" class="undo_spreadsheet">Undo</a></li>
+      <li><a href="javascript:void(0)" class="merge_cells">&#8644;</a></li>
       <li>
          <select class="math_options">
             <option value="" selected>Math Functions</option>

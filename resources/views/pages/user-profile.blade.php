@@ -122,9 +122,9 @@ jQuery(document).ready(function() {
             },
             error: function (jqXHR, textStatus, errorThrown) {
               var err = jQuery.parseJSON(jqXHR.responseText);
-              if(err.errors.email != undefined) {
+              /*if(err.errors.email != undefined) {
                 toastr.error(err.errors.email);
-              }
+              }*/
                 jQuery('.update-usr-submit').find('i').hide();
                 jQuery('.update-usr-submit').prop('disabled', false);
             },
@@ -263,6 +263,15 @@ jQuery(document).ready(function() {
 
 @php
   $user_id = \Auth::user()->id;
+
+  $img_path = '';
+  
+  if($user->service_provider == 'normal') {
+
+    $img_path = asset('storage/profile_images');
+
+  }
+
 @endphp
 
 @section('content')
@@ -304,8 +313,17 @@ jQuery(document).ready(function() {
 
               <form id="frm_udpateuser" class="form-horizontal" method="POST" action="{{ route('userprofile.update', $user) }}">
               {{ method_field('patch') }}
-              <div class="user-img"><img id="user_profile_preview" src="{{ ( ! empty($user->image) ? $user->image : '../images/user-img.png') }}"/>
-                <input type="file" name="profile_image" id="profile_image">
+              <div class="user-img">
+                
+                @if(\App\User::getUserProvider($user_id) == 'normal')
+                  <img id="user_profile_preview" src="{{ ( ! empty($user->image) ? $img_path.'/'.$user->image : URL::asset('images/profile-default.jpg')) }}"/>
+                  <input type="file" name="profile_image" id="profile_image">
+                @else
+
+                <img src="{{ ( ! empty($user->image) ? $user->image : URL::asset('images/profile-default.jpg')) }}"/>
+
+                @endif
+
               </div>
               <div class="user-detail ft">
 
@@ -331,7 +349,7 @@ jQuery(document).ready(function() {
                 <div class="form-block">
                   <div class="form-group form-check">
                     <label>email address:</label>
-                    <div class="user-input email"><img src="../images/email.png"/><input type="text" name="email" value="{{ ( ! empty($user->email) ? $user->email : '') }}"></div>
+                    <div class="user-input email"><img src="../images/email.png"/><input disabled="" type="text" name="email" value="{{ ( ! empty($user->email) ? $user->email : '') }}"></div>
                   </div>
                   <div class="form-group form-check">
                     <label>web site:</label>

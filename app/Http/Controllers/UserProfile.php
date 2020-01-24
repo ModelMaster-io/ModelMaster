@@ -56,12 +56,12 @@ class UserProfile extends Controller
     { 
 
 
-        $val = $request->validate([
+        if((Auth::user()->email == $request->get('email')) && (Auth::user()->service_provider == 'normal')) {
+
+       $val = $request->validate([
             'email' => 'required|email|unique:users,email,'.$request->segment(2),
             'image' => 'image|mimes:jpeg,png,jpg|max:10240'
         ]);
-
-        if((Auth::user()->email == $request->get('email')) && (Auth::user()->service_provider == 'normal')) {
 
         } else if((Auth::user()->service_provider != 'normal') && (Auth::user()->provider_id == $request->get('provider_id'))){
             // code for social users
@@ -74,36 +74,37 @@ class UserProfile extends Controller
         $first_name = !empty($request->get('first_name')) ? $request->get('first_name') : '';
         $last_name = !empty($request->get('last_name')) ? $request->get('last_name') : '';
         $user->name = trim($first_name.' '.$last_name);
-        $user->email = $request->get('email');
+        //$user->email = $request->get('email');
         $user->website = $request->get('website');
         $user->cellphone = $request->get('cellphone');
         $user->officephone = $request->get('officephone'); 
 
-        if ($files = $request->file('profile_image')) {
+        if ($request->file('profile_image') && Auth::user()->service_provider == 'normal') {
 
-
-            $filename = 'mm_'.uniqid().'_'.$files->getClientOriginalName();
+            $files = $request->file('profile_image');
+            $flnm = str_replace(' ', '', $files->getClientOriginalName());
+            $filename = 'mm_'.uniqid().'_'.$flnm;
 
             //$extension = Input::file('profile_image')->getClientOriginalExtension();
 
-
-            $destinationPath = public_path('/images/profile_images');
-            //$filename = 'mm_'.uniqid().'_'.$filename;
+            $destinationPath = storage_path('app/public/profile_images');
 
             //Input::file('profile_image')->move($destinationPath, $filename);
+   
+            /* insert watermark at bottom-right corner with 10px offset
+            $img->insert(public_path('images/logo.png'), 'center', 10, 10);*/
 
+            /* Code for upload user image of 150 * 150 */
             Image::make($files)
             ->fit(150, 150)
             ->save($destinationPath.'/'.$filename, 80);
 
             //update model
             $oldAvatar = isset($user->image) ? $user->image : '';
-            //$user->update(['profile_image' => $filename]);
 
             $user->image = $filename;
 
-                // delete old image
-
+            // delete old image
             if($oldAvatar != '') {
 
                 unlink($destinationPath.'/'.$oldAvatar);

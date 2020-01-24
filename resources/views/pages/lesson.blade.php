@@ -11,6 +11,7 @@
 
 <!-- JS for lesson page -->
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 @endsection
 

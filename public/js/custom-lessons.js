@@ -45,6 +45,20 @@ jQuery(document).ready(function () {
 		var curr_active = jQuery('.spread_steps_clk li .active');
 		jQuery(curr_active).closest('li').prev('li').find('a').trigger('click');
 	});
+
+
+	/* JS code for sub steps on spreadsheet */
+	jQuery(document).on('click', '.spread_sub_steps_clk li a', function() {
+		var stp = jQuery(this).data('step');
+		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
+		
+		jQuery('#'+parent_step+' .spread_sub_steps_clk li a').removeClass('active');
+		jQuery(this).addClass('active');
+
+		jQuery('#'+parent_step+'.lcltc1 .sub-lesson-step-contant').hide();
+		jQuery('#'+parent_step+'.lcltc1 #'+stp).show();
+	});
+
 	
 	
 	/* JS code for spreadsheet */

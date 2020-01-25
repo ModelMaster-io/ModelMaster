@@ -18591,6 +18591,55 @@ $(document).ready(function() {
     });
 
 
+    /* JS code for change row heights */
+    $(document).on('click', '.change_row_height', function() {
+            
+            var strtrw =  $('.ip_grid_cell_rangeselector_selected').attr('startrow');
+            var endrow =  $('.ip_grid_cell_rangeselector_selected').attr('endrow');
+
+            Swal.fire({
+              title: 'Enter the row height in "pt"',
+              input: 'text',
+              inputAttributes: {
+                autocorrect: 'off',
+                autocapitalize: 'off',
+                maxlength: 3,
+              },
+              showCancelButton: true,
+              inputValidator: (value) => {
+                if (!value) {
+                  return 'You must need to enter the height in number format'
+                }
+              },
+              confirmButtonText: 'CONFIRM',
+              showLoaderOnConfirm: false,
+              allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+
+              var arr_rows = [];
+              var i;
+              if(strtrw == endrow){
+                    arr_rows.push(strtrw);
+              } else {
+                    for (i = strtrw; i <= endrow; i++) {
+                      arr_rows.push(i);
+                    }
+              }
+              
+              $('#' + GridID).ip_ResizeRow({ rows: arr_rows, size: result.value })
+        })
+    });
+
+    $(document).on('input', '.swal2-input', function(e)
+                                {
+      if (/\D/g.test(this.value))
+      {
+        // Filter non-digits from input value.
+        this.value = this.value.replace(/\D/g, '');
+      }
+    });
+
+
     /**
      * JS code for color picker option on spreadsheet
      */

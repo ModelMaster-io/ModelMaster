@@ -937,6 +937,25 @@ button.owl-prev:after {
 }
 
 /* Styles for spreadsheet */
+ul.spread_sub_steps_clk{
+    margin-bottom: 10px;
+}
+.spread_sub_steps_clk li {
+    display: inline-block;
+}
+.spread_sub_steps_clk li a {
+    background: #70cda2;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.4em;
+    border-radius: 50%;
+}
+.spread_sub_steps_clk li a.active {
+    background: #29b473;
+}
 .gridContainer {
 
     position:relative;

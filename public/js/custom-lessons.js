@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
 	
 	jQuery(document).on('click', '.next-btn', function() {
 	
-		if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
+		/*if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
 			jQuery('.next-btn').addClass('disabled');
 			jQuery('.previous-btn').removeClass('disabled');
 		} else {
@@ -29,7 +29,19 @@ jQuery(document).ready(function () {
 		}
 	
 		var curr_active = jQuery('.spread_steps_clk li .active');
-		jQuery(curr_active).closest('li').next('li').find('a').trigger('click');
+		jQuery(curr_active).closest('li').next('li').find('a').trigger('click');*/
+
+		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
+
+		if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
+			jQuery('.next-btn').addClass('disabled');
+			jQuery('.previous-btn').removeClass('disabled');
+		} else {
+			jQuery('.next-btn').removeClass('disabled');
+			jQuery('.previous-btn').removeClass('disabled');
+		}
+
+
 	});
 	
 	

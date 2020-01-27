@@ -65,6 +65,12 @@ img {
 p {
     margin-bottom:20px;
 }
+.sub-lesson-contant-left-tab-menu {
+    background: #FFF;
+    padding-top: 10px;
+    text-align: center;
+    padding-right: 8px;
+}
 
 .menu ul li a:hover,.menu ul li a, 
 .service_block.active .service_block_description, 
@@ -202,12 +208,12 @@ ul.lesson-menu li a:hover,
 }
 .lesson-contant-left {
     float: left;
-    width: 27%;
-    margin-right: 2%;
+    width: 21%;
+    margin-right: 1%;
 }
 .lesson-contant-right {
     float: left;
-    width: 71%;
+    width: 78%;
 }
 
 .lesson-contant-left .lc-title {
@@ -244,9 +250,18 @@ ul.lesson-menu li a:hover,
     width: 100%;
     float: left;
     /*min-height: calc(100vh - 125px);*/
-    height: calc(100vh - 125px);
-    overflow-y: scroll;
+
+    /* height: calc(100vh - 125px); */
+    /* overflow-y: scroll;*/
 }
+
+
+.lcltc1-mm {
+    overflow: auto;
+    height: calc(100vh - 216px);
+    overflow-y: scroll;
+} 
+
 ul.lesson-menu li a {
     height: 88px;
     line-height: 88px;
@@ -281,16 +296,18 @@ ul.lesson-menu li a:hover {
     font-size: 22px;
 }
 .lcltc1 {
-    padding: 12px 14px;
+    padding: 11px 0px  11px 9px;
 }
-
+.sub-lesson-step-contant {
+    padding-right: 8px;
+}
 .lcltc1-contant {
     width: 100%;
     display: table;
     color: #4b4b4b;
-    font-size: 20px;
-    line-height: 32px;
-    margin-bottom: 15px;
+    font-size: 19px;
+    line-height: 28px;
+    /*margin-bottom: 15px*/;
 }
 .lcle-btn {
     padding: 15px;
@@ -937,17 +954,15 @@ button.owl-prev:after {
 }
 
 /* Styles for spreadsheet */
-ul.spread_sub_steps_clk{
-    margin-bottom: 10px;
-}
+
 .spread_sub_steps_clk li {
     display: inline-block;
 }
 .spread_sub_steps_clk li a {
     background: #70cda2;
     color: #fff;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     display: inline-block;
     text-align: center;
     line-height: 1.4em;

@@ -18600,8 +18600,8 @@ $(document).ready(function() {
             Swal.fire({
               title: 'Enter the row height in "pt"',
               input: 'text',
+              text: "Note: Default value is 25",
               inputAttributes: {
-                autocorrect: 'off',
                 autocapitalize: 'off',
                 maxlength: 3,
               },
@@ -18625,19 +18625,21 @@ $(document).ready(function() {
                       arr_rows.push(i);
                     }
               }
+
+              console.log(arr_rows);
               
               $('#' + GridID).ip_ResizeRow({ rows: arr_rows, size: result.value })
         })
     });
 
-    $(document).on('input', '.swal2-input', function(e)
+    /*$(document).on('input', '.swal2-input', function(e)
                                 {
       if (/\D/g.test(this.value))
       {
         // Filter non-digits from input value.
         this.value = this.value.replace(/\D/g, '');
       }
-    });
+    });*/
 
 
     /**

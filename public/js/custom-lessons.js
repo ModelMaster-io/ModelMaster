@@ -1,5 +1,18 @@
 jQuery(document).ready(function () {
-	
+
+    Tipped.create('.mm-tooltip', {
+    	  skin: 'light',
+		  position: 'topleft',
+		  close: true,
+		  hideOn: false,
+		  onShow: function(content, element) {
+		    jQuery(element).addClass('highlight');
+		  },
+		  afterHide: function(content, element) {
+		    jQuery(element).removeClass('highlight');
+		  }
+    });
+
 	//JS for top of the spreadsheet option panel
 	jQuery(document).on('click', '.spread_steps_clk li a', function() {
 		var stp = jQuery(this).data('step');
@@ -68,7 +81,8 @@ jQuery(document).ready(function () {
 		jQuery(this).addClass('active');
 
 		jQuery('#'+parent_step+'.lcltc1 .sub-lesson-step-contant').hide();
-		jQuery('#'+parent_step+'.lcltc1 #'+stp).show();
+		jQuery('#'+parent_step+'.lcltc1 #'+stp).scrollTop(0).show();
+		
 	});
 
 	

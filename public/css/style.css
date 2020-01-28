@@ -192,6 +192,9 @@ ul.lesson-menu li a:hover,
     position: relative;
     top: -7px;
 }
+.tpd-has-inner-close .tpd-content-relative .tpd-content{
+    font-size: 15px;
+}
 .logout_btn a:hover{
     background-color: transparent!important;
     color:  #29B473!important;
@@ -208,12 +211,12 @@ ul.lesson-menu li a:hover,
 }
 .lesson-contant-left {
     float: left;
-    width: 21%;
+    width: 25%;
     margin-right: 1%;
 }
 .lesson-contant-right {
     float: left;
-    width: 78%;
+    width: 74%;
 }
 
 .lesson-contant-left .lc-title {
@@ -263,28 +266,32 @@ ul.lesson-menu li a:hover,
 } 
 
 ul.lesson-menu li a {
-    height: 88px;
-    line-height: 88px;
+    height: 50px;
+    line-height: 50px;
     display: inline-block;
-    background-image: url(../images/menu-bg.png);
-    width: 100%;
+    background-image: url(../images/menu-bg1.png);
+    width: 86%;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     font-size: 19px;
-    padding-left: 4px;
+    padding-left: 6px;
     box-sizing: border-box;
     text-align: center;
     color: #50525f;
+    /*color: #fff;*/
     font-family: 'Conv_lato.regular',Sans-Serif;
+    margin-bottom: 3px;
+    float: right;
+    /*background: #29b473;*/
 }
 ul.lesson-menu li .active {
     color: #FFF;
-    background-image: url(../images/menu-bg-hover.png);
+    background-image: url(../images/menu-bg1-hover.png);
 }
 
 ul.lesson-menu li a:hover {  
     color: #FFF;
-    background-image: url(../images/menu-bg-hover.png)!important;
+    background-image: url(../images/menu-bg1-hover.png)!important;
 }
 .lcltc1-title {
     padding-bottom: 12px;

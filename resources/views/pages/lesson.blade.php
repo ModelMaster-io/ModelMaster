@@ -4,14 +4,18 @@
 
 <link href="{{ URL::asset('css/ip.grid.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
+<link href="https://cdn.jsdelivr.net/tipped/4.0.10/css/tipped/tipped.css" rel="stylesheet"/>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{{ URL::asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>    
 <script src="{{ URL::asset('js/ip.grid.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/tipped/4.0.10/js/tipped/tipped.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- JS for lesson page -->
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script> -->
 
 @endsection
 
@@ -33,13 +37,11 @@
                 <li><a href="javascript:void(0)" data-step="step4">4</a></li>
                 <li><a href="javascript:void(0)" data-step="step5">5</a></li>
                 <li><a href="javascript:void(0)" data-step="step6">6</a></li>
-                 <!--<li><a href="javascript:void(0)" data-step="step7">7</a></li>
+                <li><a href="javascript:void(0)" data-step="step7">7</a></li>
                 <li><a href="javascript:void(0)" data-step="step8">8</a></li>
                 <li><a href="javascript:void(0)" data-step="step9">9</a></li>
                 <li><a href="javascript:void(0)" data-step="step10">10</a></li>
                 <li><a href="javascript:void(0)" data-step="step11">11</a></li>
-                <li><a href="javascript:void(0)" data-step="step12">12</a></li>
-                <li><a href="javascript:void(0)" data-step="step13">13</a></li> -->
             </ul>
         </div>
 
@@ -394,7 +396,7 @@
 
                         <p>Having trouble deciding which line items to sum? Click below to reveal a hint.</p>
 
-                        <p>Hint: Total Current Assets is the sum of all Current Assets. Total Assets is the sum of "Total Current Assets" and all the company’s other assets.</p>
+                        <p><span class="mm-tooltip" title="Total Current Assets is the sum of all Current Assets. Total Assets is the sum of 'Total Current Assets' and all the company’s other assets."><strong>Hint</strong></span></p>
                       </div>
 
                       <div class="sub-lesson-step-contant" id="sub5-step7" style="display:none">
@@ -404,7 +406,7 @@
                         
                         <p>Having trouble deciding which line items to bold? Click below to reveal a hint.</p>
 
-                        <p>Hint: The accounting equation is Total Assets = Total Liabilities and Equities</p>
+                        <p><span class="mm-tooltip" title="The accounting equation is Total Assets = Total Liabilities and Equities"><strong>Hint</strong></span></p>
                       </div>
 
                       <div class="sub-lesson-step-contant" id="sub5-step8" style="display:none">
@@ -500,7 +502,7 @@
 
                         <p>We didn't skip "Interest Expense". Since interest expense is based on the company’s debt balance, we're going to set the values to calculate on the balance sheet.</p>
 
-                        <p>Hint: Divide "Income Taxes" by "Taxable Income"</p>
+                        <p><span class="mm-tooltip" title="Divide 'Income Taxes' by 'Taxable Income'"><strong>Hint</strong></span></p>
                       </div>
 
                     </div>
@@ -517,6 +519,406 @@
 
                     </div>
                 </div>
+
+
+                <div class="lcltc1" id="step7" style="display:none">
+                    <span class="lcltc1-title">Balance Sheet Metrics</span>
+                    <div class="lcltc1-contant">
+
+                      <div class="lcltc1-mm">
+                    
+
+                      <div class="sub-lesson-step-contant" id="sub7-step1" style="display:block">
+                          <p>Now we're going to set up the line items that we're going to project on the Balance Sheet. For the balance sheet, we're going to put each of the metrics at the bottom of the sheet. This is a stylistic preference. You could also put the metrics next to their respective line items.</p>
+
+                          <p>First, add 8 lines below the balance sheet check. There should be a total of 9 blank lines between the balance sheet and the cash flow statement with the cash flow statement starting in row 69.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step2" style="display:none">
+                        <p>Now we can work our way down the balance sheet and add in the appropriate metrics. Starting with "Cash". Cash is directly calculated using the balance on the cash flow statement. However, we do need some metrics from the balance sheet to calculate the cash flow statement.</p>
+
+                        <p>In cell B61, type "Net working capital". If you remember when we laid out the cash flow statement, Net Working Capital is the difference between a company’s current assets and current liabilities. One thing to note, that since we're going to be using this to calculate the cash balance, we don't want to include the cash balance in the calculation.</p>
+
+                        <p>In cell C61, sum "Accounts Receivables, net" and "Other Current Assets", subtract "Total Current Liabilities". copy the formula to the right to fill in for all the historical years.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step3" style="display:none">
+                        <p>For Accounts Receivables, we want to use the average collection period. This tells you how many days, on average, it takes for a customer to pay you after you deliver something to them.</p>
+
+                        <p>In cell B62, type "Accounts receivable collection period". Italicize it. The formula to calculate accounts receivable collection period is (accounts receivables/revenue)*365. Use that formula in cell C62 to calculate the average collection period. Drag the formula to the right to fill in for historical values</p>
+
+                        <p>Format cells C62:E62 as numbers with one decimal place.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step4" style="display:none">
+                        <p>For other current assets, we're going to calculate it as a percent of sales, similar to the metric we used for OpEx. In cell B63, type "Other current assets % of sales". In cell C63, calculate the percentage of sales that current assets represents. Copy the formula to the right to fill in for the remaining historical values.</p>
+
+                        <p>Format cells C63:E63 as a percentage with one decimal place.</p>
+
+                        <p>The remaining assets are either calculated directly, in the case of PP&E, or change so infrequently, that we will use a straight-line value. These other line items can change and may need to be projected based on your need or if you know of specific events in the future that will change them. But most of the time, they will be relatively consistent from year to year.</p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub7-step5" style="display:none">
+                        <p>Starting with the liabilities, the first thing we need to project is "Accounts Payable". For this, we use a similar metric as we did for accounts receivable, "Accounts payable days outstanding". The major difference for this metric is that is based on COGS rather than revenue.</p>
+
+                        <p>In cell B64, type "Accounts payable days outstanding". In cell C64, calculate the days outstanding. Copy the formula to the right for the remaining historical years.</p>
+
+                        <p>Having trouble with the formula? Click on the hint below</p>
+
+                        <p><span class="mm-tooltip" title="(accounts payable/Cost of Goods Sold)*365"><strong>Hint</strong></span></p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step6" style="display:none">
+                        <p>For accrued liabilities, we're going to use "Accrued liabilities as a % of COGS". Type that in cell B64. In cell C64, calculate the percentage. Copy the formula to the right to fill in for the historical years. Format as a percentage with one decimal place and italicize.</p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub7-step7" style="display:none">
+                        <p>For deferred revenue, we're going to reference something on the Income Statement. Since deferred revenue is tied to prepayments for recurring revenue, we're going to use the growth in recurring revenue to project deferred revenue.</p>
+
+                        <p>Add a line above Cost of Goods Sold. In cell B10, type "% recurring growth". In cell D11:E11, calculate the growth rate of the subscription revenue. Format the same way you formatted the other metrics on the Income Statement.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step8" style="display:none">
+                        <p>For other current liabilities, we're also going to project this based on COGS. In cell B67, type "Other current liabilities as a % of COGS". In cell C67, calculate the percentage. Copy the formula to the right to fill for the historical years. Format as a percentage with two decimal places.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub7-step9" style="display:none">
+                        <p>Revolver, Long-term debt, and Total Equity are calculated directly. But this is where we will calculate the interest expense metric. In cell B68, type "Interest expense as a % of long-term debt". In cell C68, calculate the percentage. Copy to the right for historical values. Format as a percentage with one decimal place.</p>
+                      </div>
+
+
+                    </div>
+
+                      <div class="sub-lesson-contant-left-tab-menu">
+                          <ul class="sub-esson-menu spread_sub_steps_clk">
+                              <li><a href="javascript:void(0)" class="active" data-step="sub7-step1">1</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step2">2</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step3">3</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step4">4</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step5">5</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step6">6</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step7">7</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step8">8</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub7-step9">9</a></li>
+                          </ul>
+                      </div>
+
+                    </div>
+                </div>
+
+
+                <div class="lcltc1" id="step8" style="display:none">
+                    <span class="lcltc1-title">Income Statement Projection</span>
+                    <div class="lcltc1-contant">
+
+                      <div class="lcltc1-mm">
+                    
+
+                      <div class="sub-lesson-step-contant" id="sub8-step1" style="display:block">
+                          <p>Now that we've laid out all the metrics we need for the Income Statement and Balance Sheet, we can start creating the actual projection.</p>
+
+                          <p>The first step for projecting each line item is to estimate the metric for the forecast period. In this model, we're going to assume that the forecast metric is based on the average over our historical period. However, what the correct forecast is can vary drastically based on the business context. For example, instead of the revenue growth rate staying constant, you might assume that the company is going to spend more on marketing and sales to accelerate the growth rate, but also increasing the percentage of cost represented by OpEx. When building a model in a real work environment, you have to think about what your projections imply for the actual business.</p>
+
+                          <p>We're going to start with projecting overall revenue. In cell F8 type "10%". Format this as a percentage with no decimal places and italicize it. We also want to color this number blue.</p>
+
+                          <p>Now to carry that forward, in cell G8, type "=F8". Copy the formula to the right for the remaining projected years. These should be formatted as percentages, italicized, with no color. The way this model is built, only the first year of projection is a changeable assumption. That can be different based on what you are trying to analyze in the model or what you know about the future of the business.</p>
+
+                          <p>Now we can project our revenue. In cell F7, type "=E7*(1+F8)". Copy the formula to the right for the remaining years. Format it the same as the historical total revenue values.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub8-step2" style="display:none">
+                        <p>Now to calculate total recurring revenue, we're going to follow a similar process. In cell F9, input "80%". Format the same you formatted the first forecast year for total revenue. Use the same method as you did for total revenue to continue the forecasted % recurring through our entire forecast period.</p>
+
+                        <p>In cell F5, calculate the subscription revenue, using the total revenue and the % recurring. Copy the formula to the right for all the projected years. This number should be formatted with one decimal place and colored black. It's a calculated number that we would not change directly.</p>
+
+                        <p>For License Revenue, calculate the difference between "Total Revenue" and "Subscription Revenue". Copy the formula to the right for all the projected years.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub8-step3" style="display:none">
+                        <p>Since "% recurring growth" is a descriptive calculation, we can copy the formula to the right for all forecasted years. Since we're projecting the relevant metric here, let's jump down to Change in Deferred Revenue and forecast it forward.</p>
+
+                        <p>In cell F49, type "=E49*(1+F10)". Copy the formula to the right for all the forecasted years. Format this as a number with one decimal place.</p>
+
+                        <p>We're using "% recurring growth" to project deferred revenue because as we get more recurring revenue, customers will pay us more cash that we need to provide services for. To do a detailed build of Deferred Revenue, you would need to create schedules for the company’s orders and the timing of its customers cash payments.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub8-step4" style="display:none">
+                        <p>To project Cost of Goods Sold, we want to estimate the expected margin. In F14, type "77%". Format as a percentage, italicize, and make it blue. Continue the forecasted value through the projected time period.</p>
+
+                        <p>Since this number is the Gross Margin, we have to use a slightly different formula to calculate COGS directly. Use that formula to calculate COGS for the forecasted period. Then copy the formula for "Gross Margin" to the right for the forecasted period. Format both lines appropriately.</p>
+
+                        <p>Havin difficulty figuring out how to calculate Gross Margin, click on the hint below.</p>
+
+                        <p><span class="mm-tooltip" title="Revenue*(1-% margin)"><strong>Hint</strong></span></p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub8-step5" style="display:none">
+                        <p>For OpEx, we're going to set the forecasted value to "41%". Project "Operating Expenses" and "Operating Income" using the same method we did for the prior two. Format appropriately.</p>
+
+                        <p>While we're on OpEx. Let’s add a descriptive line to show the companies Operating Margin. Add a line above "Opex % of Sales". Label the row, "% Operating Margin".</p>
+
+                        <p>In cell C18, calculate the operating income margin. Drag the formula to the right for the entire time period. Format as you have the other percentage lines.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub8-step6" style="display:none">
+                        <p>For Depreciation and Amortization, we can't forecast the values until we have CapEx. But we can lay out the metric and drag the formula for "Earnings Before Interest and Tax". In Cell F23, type 50%. Bring forward for the forecasted period. Format appropriately.</p>
+
+                        <p>Copy the formula to the right for "Earnings Before Interest and Tax"</p>
+
+                        <p>We also have to wait until we forecast "Long-term debt" before we can calculate "Interest Expense". For now, copy the formula for "Taxable Income" through the forecasted period.</p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub8-step7" style="display:none">
+                        <p>For Income taxes, we want to set the forecasted tax rate to "27%". Forecast the income taxes based of the "Taxable Income". Drag the formulas to the right for "Net Income" and "Net Margin".</p>
+
+                        <p>Format all the elements appropriately. Remember that "Net Income" should be formatted as a currency with one decimal place.</p>
+                      </div>
+
+
+                    </div>
+
+                      <div class="sub-lesson-contant-left-tab-menu">
+                          <ul class="sub-esson-menu spread_sub_steps_clk">
+                              <li><a href="javascript:void(0)" class="active" data-step="sub8-step1">1</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step2">2</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step3">3</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step4">4</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step5">5</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step6">6</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub8-step7">7</a></li>
+                          </ul>
+                      </div>
+
+                    </div>
+                </div>
+
+
+                <div class="lcltc1" id="step9" style="display:none">
+                    <span class="lcltc1-title">Balance Sheet Projection</span>
+                    <div class="lcltc1-contant">
+
+                      <div class="lcltc1-mm">
+                    
+
+                      <div class="sub-lesson-step-contant" id="sub9-step1" style="display:block">
+                          <p>For the balance sheet, we can work our way down to forecast the values. Starting with "Cash", it's always going to be based on the ending balance from your cash flow statement. Even though we're going to fill in the cash flow statement later, we are going to set the formula. Set cell F37 to "=F130", the ending cash balance.</p>
+
+                          <p>Copy the formula to the right for the projected time period.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub9-step2" style="display:none">
+                        <p>For accounts receivables, we need to project the "Accounts receivable collection period". To do that we're going to set the forecast value to the average over our historical period. In cell F64, type "=avg(C64:E64)". We want to format this number as blue. Even though it's a calculation, we could have just as easily set it directly to "31". Carry forward the value for all the forecasted years.</p>
+
+                        <p>Now, in cell F38 use the inverse of the collection period formula to calculate accounts receivable. Copythe formula to the right for the remaining forecast period. Having trouble figuring out the formula? Click the hint below.</p>
+
+                        <p>For "Other Current Assets", we need to project "Other current assets % of sales". In cell F65, Use the average over the historical period to calculate the forecast value. Then extend that value through the forecast period. Format appropriately. Now calculate "Other Current Assets" over the forecast period.</p>
+
+                        <p>Finally, for current assets, copy the formula for "Total Current Assets" forward through the forecast period.</p>
+
+                        <p><span class="mm-tooltip" title="(Collection period/365)*Revenue"><strong>Hint:</strong></span></p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub9-step3" style="display:none">
+                        <p>Looking at the long-term assets, we're going to skip PPE for now because we need CapEx and D&A to calculate it. For Goodwill, Intangibles, and Other long-term assets, we're going to carry those values forward. In cells F43, F44, and F45 set the value equal to the prior year. We're going to color these cells blue because we could, theoretically, set them to different values if we had reason to believe they'd change in the first projected year.</p>
+
+                        <p>Carry those values forward for the forecast period. Then copy the formula for total assets to the right for the forecast period.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub9-step4" style="display:none">
+                        <p>Going to current liabilities, we'll start with accounts payable. In cell F66, use the average over the historical period as the forecast value for "Accounts payable days outstanding". Extend the value through the forecast period.</p>
+
+                        <p>Now use the inverse of the days outstanding formula to calculate "Accounts Payable". Click the hint below if you're having trouble figuring out the formula.</p>
+
+                        <p>For "Accrued liabilities" and "Other current liabilities", forecast using the average historical value as the basis for the metrics. Remember, these are driven off of COGS, rather than revenue.</p>
+
+                        <p>Copy the formula for "Total Current Liabilities" to the right for the forecast period. At this point, we can also bring the formula forward for "Net Working Capital"</p>
+
+                        <p><span class="mm-tooltip" title="(Days outstanding/365)*COGS"><strong>Hint:</strong></span></p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub9-step5" style="display:none">
+                        <p>The remaining line items on the balance sheet are calculated based on elements in the cash flow statement. However, we can copy the formulas forward for "Total Liabilities", "Total Liabilities & Equity", and our "Check". The check will not balance yet because we're missing several line items.</p>
+                      </div>
+
+                    </div>
+
+                      <div class="sub-lesson-contant-left-tab-menu">
+                          <ul class="sub-esson-menu spread_sub_steps_clk">
+                              <li><a href="javascript:void(0)" class="active" data-step="sub9-step1">1</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub9-step2">2</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub9-step3">3</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub9-step4">4</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub9-step5">5</a></li>
+                          </ul>
+                      </div>
+
+                    </div>
+                </div>
+
+
+                <div class="lcltc1" id="step10" style="display:none">
+                    <span class="lcltc1-title">Cashflow Statement Projection</span>
+                    <div class="lcltc1-contant">
+
+                      <div class="lcltc1-mm">
+                    
+
+                      <div class="sub-lesson-step-contant" id="sub10-step1" style="display:block">
+                          <p>Now we're going to start building out the Cashflow statement. The first line item is just Net Income. Set cell F76, equal to the company’s Net Income in cell F29. Drag the formula to the right for the forecast period. Format as a number with one decimal place.</p>
+
+                          <p>We're going to skip Depreciation and Amortization until we project CapEx.</p>
+
+                          <p>For "Change in Net Working Capital", we're going to take the difference between the prior years working capital and the current years working capital. If you're Working Capital increases from year to year, that means that you've increased the amount of assets you have more than you've increased the liabilities. An increase in assets is always going to correspond to a use of cash in a given year.</p>
+
+                          <p>In cell F78, type "=E63-E63". Notice that this is a negative number. Since the working capital increased from 2019 to 2020, you have a cash outflow in 2020. Copy and paste the formula to the right for the forecast period. Format as a number with one decimal place, and negative values in parenthesis.</p>
+
+                          <p>Calculate the difference and copy the formula to the right for the forecast period.</p>
+
+                          <p>Then for the total "Cash flow from operating activities" we take the sum of the above rows. In cell F80, calculate the total, and drag right for the forecast period. Format as a number with one decimal and negatives in parenthesis.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step2" style="display:none">
+                        <p>Now we're going to calculate CapEx. First, we need to decide what forecast metric we're going to use. In this case we're going to use "% of sales". Add a row above "Cash flow from investing activities" and type "% of sales" in cell B84. Indent and italicize it. If you had an underlying data set to pull the information from, you'd want to base the % of sales off of the historical values. In this case, we're going to set it to "0.9%" of revenue.</p>
+
+                        <p>Place that value in cell F84. Format as a percentage with one decimal place, italicize it, and color it blue. Carry it forward for the forecast period.</p>
+
+                        <p>Since CapEx is a use of cash, we want it to be a negative number. Using the forecast metric calculate CapEx over the forecast period as a negative number.</p>
+
+                        <p>Now for "Cash flow from investing activities", set it equal to capex for the entire forecast period. Format as a number with one decimal place with negative numbers in parenthesis.</p>
+
+                        <p>Now to calculate "Cash Available for Financing Activities", sum the "Cash flow from operating activities" and "Cash flow from investing activities". Carry the formula forward for the forecast period. Bold the numbers and format as a number with one decimal and negative numbers in parenthesis.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step3" style="display:none">
+                        <p>Now that we've calculated CapEx, we can go back and calculate some of the line items that depend on it. Starting with D&A. In cell F21, calculate D&A based on the capex in 2020. Remember that even though CapEx is a negative number on the Cashflow statement, D&A should be a positive number.</p>
+
+                        <p>Now that we've calculated D&A. We can reference in the operating section of our Cashflow statement. In F77, reference the D&A values for that year. Drag the formula forward for the forecast period. Format appropriately.</p>
+
+                        <p>PP&E also depends on CapEx and D&A. To calculate the PP&E balance, we want to add the CapEx for a given year and subtract the D&A. The additional CapEx is money that you're spending to buy physical goods, so it increases the value of the PP&E account. D&A decreases the PP&E account because the value of that equipment decreases over time. D&A is the amount by which the value of those items is decreasing.</p>
+
+                        <p>In cell F42, calculate the PP&E balance for the forecast period. Format as a number with one decimal place. If you're having trouble figuring out the correct formula, check the hint below.</p>
+
+                        <p><span class="mm-tooltip" title="In cell F42, type '=E42-F83-F21'. You have to subtract CapEx since we're showing it as a negative number on the Cashflow statement."><strong>Hint</strong></span></p>
+                      </div>
+
+
+                      <div class="sub-lesson-step-contant" id="sub10-step4" style="display:none">
+                        <p>Now that we have our cash available for financing activities, we can figure out whether or not we need to draw on the revolver. If you remember from the balance sheet set up, the revolver is a line of credit that the company can draw on if they don't have enough money to fund their operating activities at the end of a time period.</p>
+
+                        <p>So, the change in revolver is going to be one of 3 things:</p>
+
+                        <p>1. A source of cash, if you're cash available for financing is negative and you need to draw on it</p>
+
+                        <p>2. A use of cash, if you have a revolver balance and have to pay it down</p>
+
+                        <p>3. No change in cash, if you don't have an existing balance, and don't need to draw on it.</p>
+
+                        <p>Think about the formula you need to use to calculate the "Change in Revolver". Type that formula in cell F90. Format as a number with one decimal and negative numbers in parenthesis. If you're having trouble figuring out, click below for a hint.</p>
+
+                        <p>Now to forecast the Revolver balance in row 54, add the prior year’s revolver to the change in revolver for the current year. Copy the formula to the right for the entire forecast period.</p>
+
+                        <p><span class="mm-tooltip" title="You need to use the 'MIN' formula. Still having trouble? Check the second hint below."><strong>Hint1</strong></span></p>
+
+                        <p><span class="mm-tooltip" title="In cell F90, type '=-MIN(E54,F87)'. You are taking the minimum value between your existing revolver balance and the cash available from operating activities. If your cash flow from operating activities is negative, it will always be lower than your existing balance. But you want the revolver to be a source of cash that is equal to your operating cash outflow. If you have an existing balance on the revolver, you want to use the cash from your operating activities to pay it down."><strong>Hint2</strong></span></p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step5" style="display:none">
+                        <p>For this model, the only other cash account we're going to project is "Repayment of long term debt". The other cash accounts, "Issuance of long-term debt", "Repurchase of equity", "Dividends", and "Proceeds from options", are driven by specific actions that the company takes. If they take out an additional loan, do stock buybacks, or declare a dividend it would change these accounts, but they won't necessarily change over the normal course of business.</p>
+
+                        <p>To calculate repayment of long-term debt, we first have to add a metric for "% mandatory repayment". You may also see mandatory repayment on a loan referred to as a loan's amortization. It's a different and unrelated use of the word than "Depreciation and Amortization".</p>
+
+                        <p>Type that label in cell B105. You would find this information by looking up the terms of the company's debt agreements. In this case, we're going to use "1%" as the mandatory repayment amount. Type that in cell F105. Format as a percentage with no decimal places, and color it blue since it's a hard-coded value. Carry forward for the forecast period. Then to calculate the mandatory repayment, you need to multiply the debt balance in a given year by the mandatory repayment amount. Since the debt repayment is a use of cash, we want to show it as a negative number.</p>
+
+                        <p>In cell F92, type "=-F105*F55". Format as a number with one decimal place and negative values in parenthesis. Drag to the right for the forecast period.</p>
+
+                        <p>Now we can calculate our "Long-term debt" balance. For this account, we want to take the prior year’s value, add any new debt issued, and subtract the debt payed down. In cell F55, type "=E55+F91+F92".</p>
+
+                        <p>Copy the formulas to the right for the forecasted period. Format as a number with one decimal place.</p>
+
+                        <p>Calculate the total "Cash flow from financing activities" by summing F90:F95. Drag the formula to the right for the forecast period. Bold and format as a number with one decimal place with negatives in parenthesis.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step6" style="display:none">
+                        <p>Now that we have our debt balance calculated, we can calculate the interest we have to pay on that debt. Since you don't pay interest at a single point in time, you want to calculate the interest rate off of the average debt balance over the course of the year.</p>
+
+                        <p>First, we need to project the interest rate forward in row 69. Use the average over the historical period as the forecast value. Format as a percentage with one decimal place and color blue. Copy the value forward for the forecast period.</p>
+
+                        <p>In cell F25, we want to multiply the average debt balance by the interest rate. Carry the formula forward for the forecast period. Having trouble figuring out the formula? Click on the hint below.</p>
+
+                        <p><span class="mm-tooltip" title="=avg(E55:F55)*F69"><strong>Hint:</strong></span></p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step7" style="display:none">
+                        <p>Now we can finish off the cash flow statement. The total "Change in cash" is equal to the "Cash available for financing activities" + "Cash flow from financing activities". Put that formula in to cell F98 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place.</p>
+
+                        <p>Finally, on the cash flow statement, we want to calculate the companies cash balance at the end of a period. The beginning cash balance is based on the prior years ending balance. Set cell F101 equal to E37. Format as a number with one decimal place. Drag to the right for the forecast period.</p>
+
+                        <p>The "Change in Cash" is equal to the change in cash you just calculated. Use that formula for the projected period.</p>
+
+                        <p>Finally, the ending cash balance is equal to the sum of your "Beginning Balance" and "Change in Cash". Use that formula in cell F103 and drag to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place. Remember, that we've already set the "Cash" account on the balance sheet equal to this ending balance.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub10-step8" style="display:none">
+                        <p>The last thing we need to do is forecast the "Total Equity" account on the balance sheet. As we discussed when laying out the balance sheet, the equity account is the total value of all the profits that the company has earned over time, the value of money paid to the company by shareholders, minus any of that payments that the company makes to shareholders.</p>
+
+                        <p>In Cell F58, calculate the company's equity balance. Copy the formula to the right for the forecast period. Format appropriately. Having trouble figuring out the formula? Click to reveal the hint below.</p>
+
+                        <p>Notice that your check should now balance! If it doesn't make sure that every change on your balance sheet can be traced to a change in your cash flow statement.</p>
+
+                        <p><span class="mm-tooltip" title="=E58+F76+F93+F95"><strong>Hint:</strong></span></p>
+                      </div>
+
+                    </div>
+
+                      <div class="sub-lesson-contant-left-tab-menu">
+                          <ul class="sub-esson-menu spread_sub_steps_clk">
+                              <li><a href="javascript:void(0)" class="active" data-step="sub10-step1">1</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step2">2</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step3">3</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step4">4</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step5">5</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step6">6</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step7">7</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub10-step8">8</a></li>
+                          </ul>
+                      </div>
+
+                    </div>
+                </div>
+
+
+                <div class="lcltc1" id="step11" style="display:none">
+                    <span class="lcltc1-title">Parting Thoughts</span>
+                    <div class="lcltc1-contant">
+                      <div class="lcltc1-mm">
+
+                      <div class="sub-lesson-step-contant" id="sub11-step1" style="display:block">
+                          <p>The last thing we want to do are a few minor formatting tweaks. The first makes it clear where the delineation for the forecast and the historical period is. We want to add a left border to column F. Select cells F4:F31 add a left border. Do the same for cells F35:F61 and cells F73:F103. This is a stylistic preferences that make the model easier to read.</p>
+                      </div>
+
+                      <div class="sub-lesson-step-contant" id="sub11-step2" style="display:none">
+                        <p>Congratulations! You've now gone from a blank spreadsheet and built a fully functioning 3 statement financial model. Hopefully throughout this process, you've learned about the mechanics of how the model works and how the different statements connect to each other.</p>
+
+                        <p>As mentioned throughout, this is a very simple version of a 3-statement model. There are a lot of enhancements that could be made. It's also worth pointing out that you may have noticed several places in the process where you could have done things in a different order. This was one specific path, but you should try to find one that makes sense intuitively for you.</p>
+                      </div>
+
+                    </div>
+
+                      <div class="sub-lesson-contant-left-tab-menu">
+                          <ul class="sub-esson-menu spread_sub_steps_clk">
+                              <li><a href="javascript:void(0)" class="active" data-step="sub11-step1">1</a></li>
+                              <li><a href="javascript:void(0)" data-step="sub11-step2">2</a></li>
+                          </ul>
+                      </div>
+
+                    </div>
+                </div>
+
 
             </div>
         </div>

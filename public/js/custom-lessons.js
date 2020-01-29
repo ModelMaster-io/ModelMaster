@@ -1,5 +1,10 @@
 jQuery(document).ready(function () {
 
+	jQuery(".lcltc1-mm").niceScroll();
+
+	//var GridID = 'model_master_spreadsheet';
+	//jQuery('#'+GridID).ip_CellInput({ valueRAW:'1', range:[{ startRow:1, startCol:1, endRow:3, endCol:1 }] });
+
     Tipped.create('.mm-tooltip', {
     	  skin: 'light',
 		  position: 'topleft',
@@ -21,6 +26,7 @@ jQuery(document).ready(function () {
 	
 		jQuery('.lesson-contant-left-tab-contant .lcltc1').hide();
 		jQuery('.lesson-contant-left-tab-contant #'+stp).show();
+		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 	});
 	
 	if(jQuery('.spread_steps_clk li:first-child a').hasClass('active')){
@@ -31,44 +37,57 @@ jQuery(document).ready(function () {
 		jQuery('.next-btn').addClass('disabled');
 	}
 	
-	jQuery(document).on('click', '.next-btn', function() {
-	
-		/*if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
-			jQuery('.next-btn').addClass('disabled');
-			jQuery('.previous-btn').removeClass('disabled');
-		} else {
-			jQuery('.next-btn').removeClass('disabled');
-			jQuery('.previous-btn').removeClass('disabled');
-		}
-	
-		var curr_active = jQuery('.spread_steps_clk li .active');
-		jQuery(curr_active).closest('li').next('li').find('a').trigger('click');*/
+	jQuery(document).on('click', '.next_btn', function() {
+
+		var GridID = 'model_master_spreadsheet';
 
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
-		if(jQuery('.spread_steps_clk li:last-child').prev('li').find('a').hasClass('active')){
-			jQuery('.next-btn').addClass('disabled');
-			jQuery('.previous-btn').removeClass('disabled');
+		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
+
+		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
+
+			if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
+				jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
+				jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+			} else {
+				jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
+			}
+			
 		} else {
-			jQuery('.next-btn').removeClass('disabled');
-			jQuery('.previous-btn').removeClass('disabled');
+			jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+			jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
 		}
 
+		jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
 
 	});
 	
 	
-	jQuery(document).on('click', '.previous-btn', function() {
-		if(jQuery('.spread_steps_clk li:nth-child(2) a').hasClass('active')){
-			jQuery('.previous-btn').addClass('disabled');
-			jQuery('.next-btn').removeClass('disabled');
+	jQuery(document).on('click', '.previous_btn', function() {
+
+
+		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
+
+		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
+
+		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:nth-child(1)').find('a').hasClass('active')){
+
+			if(jQuery('.spread_steps_clk li:nth-child(1)').find('a').hasClass('active')){
+				jQuery('#'+parent_step+' .previous_btn').attr('disabled', 'disabled');
+				jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+			} else {
+				jQuery('.spread_steps_clk li .active').closest('li').prev('li').find('a').trigger('click');
+				jQuery('#'+parent_step).prev('.lcltc1').find('.spread_sub_steps_clk li:last-child').find('a').trigger('click');
+			}
+
 		} else {
-			jQuery('.previous-btn').removeClass('disabled');
-			jQuery('.next-btn').removeClass('disabled');
+			jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+			jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
 		}
-	
-		var curr_active = jQuery('.spread_steps_clk li .active');
-		jQuery(curr_active).closest('li').prev('li').find('a').trigger('click');
+
+		jQuery(current_sub_step).closest('li').prev('li').find('a').trigger('click');
+
 	});
 
 
@@ -108,6 +127,7 @@ jQuery(document).ready(function () {
 		//positionMenu(event);
 		//jQuery(".spreadsheet-context-menu").show();
 
+		
 		windowWidth = window.innerWidth;
 	    windowHeight = window.innerHeight;
 

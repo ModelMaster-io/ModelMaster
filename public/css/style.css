@@ -270,11 +270,11 @@ ul.lesson-menu li a {
     line-height: 50px;
     display: inline-block;
     background-image: url(../images/menu-bg1.png);
-    width: 86%;
+    width: 105%;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    font-size: 19px;
-    padding-left: 6px;
+    font-size: 16px;
+    padding-left: 3px;
     box-sizing: border-box;
     text-align: center;
     color: #50525f;
@@ -292,6 +292,26 @@ ul.lesson-menu li .active {
 ul.lesson-menu li a:hover {  
     color: #FFF;
     background-image: url(../images/menu-bg1-hover.png)!important;
+}
+.sub-lesson-contant-left-tab-menu > span {
+    background: #29b473;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.sub-lesson-contant-left-tab-menu > span:hover{
+    cursor: pointer;
+}
+.sub-lesson-contant-left-tab-menu .previous_btn {
+    float: left;
+}
+.sub-lesson-contant-left-tab-menu .next_btn {
+    float: right;
+}
+ul.spread_sub_steps_clk {
+    display: inline-block;;
 }
 .lcltc1-title {
     padding-bottom: 12px;
@@ -966,17 +986,19 @@ button.owl-prev:after {
     display: inline-block;
 }
 .spread_sub_steps_clk li a {
-    background: #70cda2;
-    color: #fff;
-    width: 28px;
-    height: 28px;
+    /*background: #70cda2;*/
+    color: #000;
+    /*width: 28px;*/
+    /*height: 28px;*/
     display: inline-block;
     text-align: center;
     line-height: 1.4em;
     border-radius: 50%;
+    font-weight: 600;
 }
 .spread_sub_steps_clk li a.active {
-    background: #29b473;
+    /*background: #29b473;*/
+    color: #29b473;
 }
 .gridContainer {
 

@@ -15,7 +15,7 @@
 
 <!-- JS for lesson page -->
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
 @endsection
 
@@ -94,16 +94,18 @@
 
 </div>
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
-                              <!-- <li><a href="javascript:void(0)" class="prev_btn"><</a></li> -->
+                              
                               <li><a href="javascript:void(0)" class="active" data-step="sub1-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub1-step2">2</a></li>
                               <li><a href="javascript:void(0)" data-step="sub1-step3">3</a></li>
                               <li><a href="javascript:void(0)" data-step="sub1-step4">4</a></li>
                               <li><a href="javascript:void(0)" data-step="sub1-step5">5</a></li>
                               <li><a href="javascript:void(0)" data-step="sub1-step6">6</a></li>
-                              <!-- <li><a href="javascript:void(0)" class="next_btn">></a></li> -->
+                              
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -158,6 +160,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                        <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub2-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub2-step2">2</a></li>
@@ -165,6 +168,7 @@
                               <li><a href="javascript:void(0)" data-step="sub2-step4">4</a></li>
                               <li><a href="javascript:void(0)" data-step="sub2-step5">5</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -246,6 +250,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub3-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub3-step2">2</a></li>
@@ -254,6 +259,7 @@
                               <li><a href="javascript:void(0)" data-step="sub3-step5">5</a></li>
                               <li><a href="javascript:void(0)" data-step="sub3-step6">6</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -335,6 +341,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub4-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub4-step2">2</a></li>
@@ -344,6 +351,7 @@
                               <li><a href="javascript:void(0)" data-step="sub4-step6">6</a></li>
                               <li><a href="javascript:void(0)" data-step="sub4-step7">7</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -425,6 +433,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub5-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub5-step2">2</a></li>
@@ -436,6 +445,7 @@
                               <li><a href="javascript:void(0)" data-step="sub5-step8">8</a></li>
                               <li><a href="javascript:void(0)" data-step="sub5-step9">9</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -508,6 +518,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub6-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub6-step2">2</a></li>
@@ -515,6 +526,7 @@
                               <li><a href="javascript:void(0)" data-step="sub6-step4">4</a></li>
                               <li><a href="javascript:void(0)" data-step="sub6-step5">5</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -592,6 +604,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub7-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub7-step2">2</a></li>
@@ -603,6 +616,7 @@
                               <li><a href="javascript:void(0)" data-step="sub7-step8">8</a></li>
                               <li><a href="javascript:void(0)" data-step="sub7-step9">9</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -682,6 +696,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub8-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub8-step2">2</a></li>
@@ -691,6 +706,7 @@
                               <li><a href="javascript:void(0)" data-step="sub8-step6">6</a></li>
                               <li><a href="javascript:void(0)" data-step="sub8-step7">7</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -748,6 +764,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub9-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub9-step2">2</a></li>
@@ -755,6 +772,7 @@
                               <li><a href="javascript:void(0)" data-step="sub9-step4">4</a></li>
                               <li><a href="javascript:void(0)" data-step="sub9-step5">5</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -876,6 +894,7 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub10-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub10-step2">2</a></li>
@@ -886,6 +905,7 @@
                               <li><a href="javascript:void(0)" data-step="sub10-step7">7</a></li>
                               <li><a href="javascript:void(0)" data-step="sub10-step8">8</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>
@@ -910,10 +930,12 @@
                     </div>
 
                       <div class="sub-lesson-contant-left-tab-menu">
+                          <span class="previous_btn">&laquo</span>
                           <ul class="sub-esson-menu spread_sub_steps_clk">
                               <li><a href="javascript:void(0)" class="active" data-step="sub11-step1">1</a></li>
                               <li><a href="javascript:void(0)" data-step="sub11-step2">2</a></li>
                           </ul>
+                          <span class="next_btn">&raquo</span>
                       </div>
 
                     </div>

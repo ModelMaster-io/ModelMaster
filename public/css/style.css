@@ -240,11 +240,14 @@ ul.lesson-menu li a:hover,
     font-family: 'Conv_lato.regular',Sans-Serif;
 }
 .lesson-contant-left-tab-menu {
-    width: 23px;
+    width: 0;
     position: absolute;
+    display: none;
+    float: left;
 }
 .lcltc-in {
-    padding-left: 23px;
+    /*padding-left: 23px;*/
+    padding-left: 0;
 }
 .lesson-contant-left-tab-contant {
     border: 1px solid #dbdedc;
@@ -300,6 +303,8 @@ ul.lesson-menu li a:hover {
     height: 30px;
     border-radius: 50%;
     display: inline-block;
+    font-size: 30px;
+    line-height: 22px;
 }
 .sub-lesson-contant-left-tab-menu > span:hover{
     cursor: pointer;
@@ -327,6 +332,7 @@ ul.spread_sub_steps_clk {
 }
 .sub-lesson-step-contant {
     padding-right: 8px;
+    float: left;
 }
 .lcltc1-contant {
     width: 100%;
@@ -986,19 +992,19 @@ button.owl-prev:after {
     display: inline-block;
 }
 .spread_sub_steps_clk li a {
-    /*background: #70cda2;*/
-    color: #000;
-    /*width: 28px;*/
-    /*height: 28px;*/
+    background: #29b473;
+    color: #fff;
+    width: 18px;
+    height: 26px;
     display: inline-block;
     text-align: center;
     line-height: 1.4em;
-    border-radius: 50%;
+    border-radius: 3px;
     font-weight: 600;
 }
 .spread_sub_steps_clk li a.active {
-    /*background: #29b473;*/
-    color: #29b473;
+    background: #343642;
+    color: #fff;
 }
 .gridContainer {
 

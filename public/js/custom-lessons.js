@@ -41,6 +41,8 @@ jQuery(document).ready(function () {
 
 		var GridID = 'model_master_spreadsheet';
 
+   		//$('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
+
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
@@ -60,6 +62,26 @@ jQuery(document).ready(function () {
 		}
 
 		jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
+
+		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+
+
+		//console.log(current_sub_step);
+
+		switch(current_sub_step) {
+		  case 'sub1-step1':
+	    	// code block
+	    	console.log('first step is called...');
+		    break;
+
+		  case 'sub1-step2':
+		    console.log('second step is called...');
+		  break;
+
+		  default:
+		    // code block
+		}
+
 
 	});
 	
@@ -88,6 +110,8 @@ jQuery(document).ready(function () {
 
 		jQuery(current_sub_step).closest('li').prev('li').find('a').trigger('click');
 
+		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+
 	});
 
 
@@ -101,6 +125,7 @@ jQuery(document).ready(function () {
 
 		jQuery('#'+parent_step+'.lcltc1 .sub-lesson-step-contant').hide();
 		jQuery('#'+parent_step+'.lcltc1 #'+stp).scrollTop(0).show();
+		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 		
 	});
 

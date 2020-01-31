@@ -18586,11 +18586,6 @@ $(document).ready(function() {
     });
 
 
-    $('#' + GridID).on('ip_SelectRange', function (event, args) { 
-        console.log('range is selected...');
-    });
-
-
     /* JS code for change row heights */
     $(document).on('click', '.change_row_height', function() {
             
@@ -18626,7 +18621,7 @@ $(document).ready(function() {
                     }
               }
 
-              console.log(arr_rows);
+              //console.log(arr_rows);
               
               $('#' + GridID).ip_ResizeRow({ rows: arr_rows, size: result.value })
         })

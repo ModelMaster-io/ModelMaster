@@ -65,21 +65,55 @@ jQuery(document).ready(function () {
 
 		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
+		var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
 
-		//console.log(current_sub_step);
+		//console.log(current_sub_step_data);
 
-		switch(current_sub_step) {
-		  case 'sub1-step1':
+		switch(current_sub_step_data) {
+		  
+		  case 'sub1-step2': 
+	    	
 	    	// code block
-	    	console.log('first step is called...');
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:1, startCol:1, endRow:1, endCol:1 }] });
+
 		    break;
 
-		  case 'sub1-step2':
-		    console.log('second step is called...');
+		  case 'sub1-step3':
+
+		  	//jQuery('#' + GridID).ip_ResetRange({ range: [{ startRow: 1, startCol: 1, endRow: 1, endCol: 9 }]});
+			jQuery('#' + GridID).ip_MergeRange({range:[{ startRow:1, startCol:1, endRow:1, endCol:9 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:1, startCol:1, endRow:1, endCol:9 }], style:'background-color:#143963;color:#ffffff;font-weight:bold;' });
+
 		  break;
 
-		  default:
-		    // code block
+		  case 'sub1-step4':
+
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'($ in millions)', dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', range:[{ startRow:3, startCol:1, endRow:3, endCol:1 }] });
+
+		  break;
+
+		  case 'sub1-step5':
+
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2017', range:[{ startRow:3, startCol:2, endRow:3, endCol:2 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2018', range:[{ startRow:3, startCol:3, endRow:3, endCol:3 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2019', range:[{ startRow:3, startCol:4, endRow:3, endCol:4 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2020', range:[{ startRow:3, startCol:5, endRow:3, endCol:5 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2021', range:[{ startRow:3, startCol:6, endRow:3, endCol:6 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2022', range:[{ startRow:3, startCol:7, endRow:3, endCol:7 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2023', range:[{ startRow:3, startCol:8, endRow:3, endCol:8 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2024', range:[{ startRow:3, startCol:9, endRow:3, endCol:9 }]});
+
+			jQuery('#'+GridID).ip_Border({ borderStyle:'solid', borderPlacement:'bottom', range:[{ startRow:3, startCol:1, endRow:3, endCol:9 }] });
+
+		  break;
+
+		  case 'sub1-step6':
+
+			jQuery('#' + GridID).ip_ResizeRow({ rows: [2], size: 8 });
+
+		  break;
+
+
 		}
 
 

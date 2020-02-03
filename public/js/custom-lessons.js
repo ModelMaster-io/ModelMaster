@@ -74,42 +74,42 @@ jQuery(document).ready(function () {
 		  case 'sub1-step2': 
 	    	
 	    	// code block
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:1, startCol:1, endRow:1, endCol:1 }] });
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:2, startCol:1, endRow:2, endCol:1 }] });
 
 		    break;
 
 		  case 'sub1-step3':
 
 		  	//jQuery('#' + GridID).ip_ResetRange({ range: [{ startRow: 1, startCol: 1, endRow: 1, endCol: 9 }]});
-			jQuery('#' + GridID).ip_MergeRange({range:[{ startRow:1, startCol:1, endRow:1, endCol:9 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:1, startCol:1, endRow:1, endCol:9 }], style:'background-color:#143963;color:#ffffff;font-weight:bold;' });
+			jQuery('#' + GridID).ip_MergeRange({range:[{ startRow:2, startCol:1, endRow:2, endCol:9 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'FakeSoftwareCo Income Statement', range:[{ startRow:2, startCol:1, endRow:2, endCol:9 }], style:'background-color:#143963;color:#ffffff;font-weight:bold;' });
 
 		  break;
 
 		  case 'sub1-step4':
 
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'($ in millions)', dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', range:[{ startRow:3, startCol:1, endRow:3, endCol:1 }] });
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'($ in millions)', dataType: {dataType:'currency', dataTypeName: 'currency'}, mask:'$1 000.00', range:[{ startRow:4, startCol:1, endRow:4, endCol:1 }] });
 
 		  break;
 
 		  case 'sub1-step5':
 
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2017', range:[{ startRow:3, startCol:2, endRow:3, endCol:2 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2018', range:[{ startRow:3, startCol:3, endRow:3, endCol:3 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2019', range:[{ startRow:3, startCol:4, endRow:3, endCol:4 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2020', range:[{ startRow:3, startCol:5, endRow:3, endCol:5 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2021', range:[{ startRow:3, startCol:6, endRow:3, endCol:6 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2022', range:[{ startRow:3, startCol:7, endRow:3, endCol:7 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2023', range:[{ startRow:3, startCol:8, endRow:3, endCol:8 }]});
-			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2024', range:[{ startRow:3, startCol:9, endRow:3, endCol:9 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2017', range:[{ startRow:4, startCol:2, endRow:4, endCol:2 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2018', range:[{ startRow:4, startCol:3, endRow:4, endCol:3 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2019', range:[{ startRow:4, startCol:4, endRow:4, endCol:4 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2020', range:[{ startRow:4, startCol:5, endRow:4, endCol:5 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2021', range:[{ startRow:4, startCol:6, endRow:4, endCol:6 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2022', range:[{ startRow:4, startCol:7, endRow:4, endCol:7 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2023', range:[{ startRow:4, startCol:8, endRow:4, endCol:8 }]});
+			jQuery('#' + GridID).ip_CellInput({ valueRAW:'2024', range:[{ startRow:4, startCol:9, endRow:4, endCol:9 }]});
 
-			jQuery('#'+GridID).ip_Border({ borderStyle:'solid', borderPlacement:'bottom', range:[{ startRow:3, startCol:1, endRow:3, endCol:9 }] });
+			jQuery('#'+GridID).ip_Border({ borderStyle:'solid', borderPlacement:'bottom', range:[{ startRow:4, startCol:1, endRow:4, endCol:9 }] });
 
 		  break;
 
 		  case 'sub1-step6':
 
-			jQuery('#' + GridID).ip_ResizeRow({ rows: [2], size: 8 });
+			jQuery('#' + GridID).ip_ResizeRow({ rows: [3], size: 8 });
 
 		  break;
 

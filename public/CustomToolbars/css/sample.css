@@ -107,15 +107,15 @@ table.setting td {
     display: table-cell;
 }
 .content-container {
-    position: absolute;
-    top: 98px;
+    position: relative;
+    top: 0px;
     left: 0;
     bottom: 0px;
     right: 0;
     overflow: hidden;
 }
 #inner-content-container {
-    position: absolute;
+    position: relative;
     right: 0;
     left: 0;
     border: 1px solid #ddd;

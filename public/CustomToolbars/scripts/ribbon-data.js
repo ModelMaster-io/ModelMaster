@@ -1,10 +1,6 @@
 var data = {
-    "selected": 1,
+    "selected": 0,
     "tabs": [
-        {
-            "title": "File",
-            "name": "file"
-        },
         {
             "title": "Home",
             "name": "home",

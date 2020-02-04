@@ -29,6 +29,21 @@ var isIE = navigator.userAgent.toLowerCase().indexOf('compatible') < 0 && /(trid
 var mergable = false, unmergable = false;
 var defaultParagraphSeparator = 'p';
 
+function addHistoricalValues(){
+   var sheet = spread.getActiveSheet();
+   sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
+   sheet.setArray(8,2, [[46,48.8,56.2]]);
+   sheet.setArray(11,2, [[80,91,102.6]]);
+   sheet.setArray(14,2, [[0.9,1.058823529,1]]);
+   sheet.setArray(17,2, [[12,11.94059406,11.82237036]]);
+   sheet.setArray(20,2, [[17.04,18.68415725,19.59596]]);
+   sheet.setArray(27,2, [[27,74.93052875,123.2910036],[17.26027397,18.85479452,21.40931507],[3.6,4.218,4.3956]]);
+   sheet.setArray(32,2, [[4,4.939176471,6.136976471],[150,150,150],[19,19,19],[38,37,38]]);
+   sheet.setArray(38,2, [[0.882191781,0.935890411,1.077808219],[7.176, 7.2224, 8.4862],[10, 11.3775, 12.21],[0.322, 0.3904, 0.4215]]);
+   sheet.setArray(44,2, [[0,0,0],[200, 198.019802, 196.0592099]]);
+   sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);
+}
+
 function getRichText() {
     var iterator = document.createNodeIterator(document.getElementsByClassName('rich-editor-content')[0], NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, null, false);
     var root = iterator.nextNode();// root
@@ -1523,28 +1538,28 @@ function initSpread() {
         document.getElementById('statusBar')
     );
     statusBar.bind(spread);
-    sheet.name("Welcome");
-    sheet.suspendPaint();
-    sheet.addSpan(1, 1, 1, 12);
-    sheet.addSpan(2, 1, 1, 12);
-    sheet.addSpan(4, 1, 1, 12);
-    sheet.addSpan(5, 1, 1, 12);
-    sheet.addSpan(6, 1, 1, 12);
-    sheet.setRowHeight(1, 36);
-    sheet.setRowHeight(2, 64);
-    sheet.setRowHeight(3, 25);
-    sheet.setRowHeight(4, 40);
-    sheet.setValue(1, 1, "About This Application");
-    var border = new GC.Spread.Sheets.LineBorder("rgb(0,0,0)", 5);
-    sheet.getRange(1, 1, 1, 12).borderBottom(border).foreColor("Text 1").hAlign(0).font("29.3333px Calibri");
-    sheet.setValue(2, 1, "This is a web application built with the GrapeCity SpreadJS JavaScript Spreadsheet component. It mimics much of the functionality and UI you see in with Microsoft Windows Store Excel application. This application was built to showcase the features and extensibility you will find in SpreadJS");
-    sheet.getRange(2, 1, 1, 12).hAlign(0).vAlign(2).wordWrap(true);
-    sheet.setValue(4, 1, "Using This Application");
-    sheet.getRange(4, 1, 1, 12).borderBottom(border).foreColor("Text 1").hAlign(0).font("29.3333px Calibri");
-    sheet.setValue(5, 1, "- You can create a new workbook by choosing \"New\" from the file menu.");
-    sheet.setValue(6, 1, "- This application will save and load .SSJSON or .XLSX files which are readable by SpreadJS");
-    sheet.resumePaint()
-    syncSpreadPropertyValues()
+//    sheet.name("Welcome");
+//    sheet.suspendPaint();
+//    sheet.addSpan(1, 1, 1, 12);
+//    sheet.addSpan(2, 1, 1, 12);
+//    sheet.addSpan(4, 1, 1, 12);
+//    sheet.addSpan(5, 1, 1, 12);
+//    sheet.addSpan(6, 1, 1, 12);
+//    sheet.setRowHeight(1, 36);
+//    sheet.setRowHeight(2, 64);
+//    sheet.setRowHeight(3, 25);
+//    sheet.setRowHeight(4, 40);
+//    sheet.setValue(1, 1, "About This Application");
+//    var border = new GC.Spread.Sheets.LineBorder("rgb(0,0,0)", 5);
+//    sheet.getRange(1, 1, 1, 12).borderBottom(border).foreColor("Text 1").hAlign(0).font("29.3333px Calibri");
+//    sheet.setValue(2, 1, "This is a web application built with the GrapeCity SpreadJS JavaScript Spreadsheet component. It mimics much of the functionality and UI you see in with Microsoft Windows Store Excel application. This application was built to showcase the features and extensibility you will find in SpreadJS");
+//    sheet.getRange(2, 1, 1, 12).hAlign(0).vAlign(2).wordWrap(true);
+//    sheet.setValue(4, 1, "Using This Application");
+//    sheet.getRange(4, 1, 1, 12).borderBottom(border).foreColor("Text 1").hAlign(0).font("29.3333px Calibri");
+//    sheet.setValue(5, 1, "- You can create a new workbook by choosing \"New\" from the file menu.");
+//    sheet.setValue(6, 1, "- This application will save and load .SSJSON or .XLSX files which are readable by SpreadJS");
+//    sheet.resumePaint()
+//    syncSpreadPropertyValues()
 }
 
 function getCellInfo(sheet, row, column) {

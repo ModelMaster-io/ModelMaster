@@ -173,7 +173,8 @@ ul.lesson-menu li a:hover,
     bottom: -10px;
     left: 0;
 }
-.logout_btn a{
+.logout_btn a, 
+.sub-lesson-step-contant button {
     background-color: #29B473 !important;
     padding: 12px 25px !important;
     color: #fff !important;
@@ -195,7 +196,8 @@ ul.lesson-menu li a:hover,
 .tpd-has-inner-close .tpd-content-relative .tpd-content{
     font-size: 15px;
 }
-.logout_btn a:hover{
+.logout_btn a:hover, 
+.sub-lesson-step-contant button:hover{
     background-color: transparent!important;
     color:  #29B473!important;
 }
@@ -261,10 +263,14 @@ ul.lesson-menu li a:hover,
     /* overflow-y: scroll;*/
 }
 
+.wapper > .header {
+    height: auto;
+}
+
 
 .lcltc1-mm {
     overflow: auto;
-    height: calc(100vh - 216px);
+    height: calc(100vh - 100px);
     overflow-y: scroll;
 } 
 

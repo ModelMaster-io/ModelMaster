@@ -2,9 +2,6 @@ jQuery(document).ready(function () {
 
 	jQuery(".lcltc1-mm").niceScroll();
 
-	//var GridID = 'model_master_spreadsheet';
-	//jQuery('#'+GridID).ip_CellInput({ valueRAW:'1', range:[{ startRow:1, startCol:1, endRow:3, endCol:1 }] });
-
     Tipped.create('.mm-tooltip', {
     	  skin: 'light',
 		  position: 'topleft',
@@ -41,8 +38,6 @@ jQuery(document).ready(function () {
 
 		var GridID = 'model_master_spreadsheet';
 
-   		//$('#' + GridID).ip_FormatCell({ style: (fn_obj ? style_key+':;' : style_key+':'+fontStyle+';') });
-
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
@@ -66,8 +61,6 @@ jQuery(document).ready(function () {
 		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
 		var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
-
-		//console.log(current_sub_step_data);
 
 
 	});

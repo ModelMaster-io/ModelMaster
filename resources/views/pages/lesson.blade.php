@@ -61,7 +61,7 @@
 
 
 <!-- JS for lesson page -->
-<!--<script src="{{ URL::asset('js/custom-lessons.js') }}"></script>-->
+<script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
 <style>

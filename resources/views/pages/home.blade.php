@@ -112,8 +112,8 @@ jQuery(document).ready(function() {
                         3-Statement Financial Model</div>
                         <div class="home_new_future_des">Learn the basics of the 3 financial
                         statements and build a projection for a software company.</div>
-                        <div class="home_new_future_btn">Start
-                        Learning</div>
+                        <a class="home_new_future_btn" href="/lessons">Start
+                        Learning</a>
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@ jQuery(document).ready(function() {
                         <div class="fotureblock_title">More to Come</div>
                         <div class="home_new_future_des">Have a suggestion for courses
                         you want to see, go to our contact page and let us know.</div>
-                        <div class="home_new_future_btn">Make a recommendation </div>
+                        <a class="home_new_future_btn" href="/contact">Make a recommendation </a>
                     </div>
                 </div>
             </div>

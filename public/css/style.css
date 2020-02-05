@@ -128,13 +128,14 @@ ul.lesson-menu li a:hover,
     display: table;
     width: 100%;
     background: #FFF;
-}
+    box-sizing: border-box !important;
+} 
 .header-in {
     padding: 5px 0px;
     /* max-width: 1200px; */
     margin: auto;
     display: table;
-    width:97%;
+    width:100%;
 }
 .header-in-left {
     float: left;
@@ -216,7 +217,7 @@ ul.lesson-menu li a:hover,
     /* max-width: 1200px; */
     margin: auto; 
     display: table;
-    width: 97%;
+    width: 98%;
 }
 .lesson-contant-left {
     float: left;

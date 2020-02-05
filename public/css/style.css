@@ -65,6 +65,13 @@ img {
 p {
     margin-bottom:20px;
 }
+a:focus, a:hover {
+    text-decoration: inherit!important; 
+}
+.gc-statusbar {
+    background: #29b473!important; 
+}
+
 .sub-lesson-contant-left-tab-menu {
     background: #FFF;
     padding-top: 10px;
@@ -270,8 +277,9 @@ ul.lesson-menu li a:hover,
 
 .lcltc1-mm {
     overflow: auto;
-    height: calc(100vh - 100px);
+    /* height: calc(100vh - 100px); */
     overflow-y: scroll;
+    height: 638px;
 } 
 
 ul.lesson-menu li a {
@@ -309,8 +317,8 @@ ul.lesson-menu li a:hover {
     height: 30px;
     border-radius: 50%;
     display: inline-block;
-    font-size: 30px;
-    line-height: 22px;
+    font-size: 24px;
+    line-height: 28px;
 }
 .sub-lesson-contant-left-tab-menu > span:hover{
     cursor: pointer;
@@ -322,7 +330,7 @@ ul.lesson-menu li a:hover {
     float: right;
 }
 ul.spread_sub_steps_clk {
-    display: inline-block;;
+    display: inline-block;
 }
 .lcltc1-title {
     padding-bottom: 12px;
@@ -334,7 +342,7 @@ ul.spread_sub_steps_clk {
     font-size: 22px;
 }
 .lcltc1 {
-    padding: 11px 0px  11px 9px;
+    padding: 11px 0px  0px 9px;
 }
 .sub-lesson-step-contant {
     padding-right: 8px;
@@ -344,7 +352,7 @@ ul.spread_sub_steps_clk {
     width: 100%;
     display: table;
     color: #4b4b4b;
-    font-size: 19px;
+    font-size: 18px;
     line-height: 28px;
     /*margin-bottom: 15px*/;
 }
@@ -1004,9 +1012,14 @@ button.owl-prev:after {
     height: 26px;
     display: inline-block;
     text-align: center;
-    line-height: 1.4em;
+    line-height: 27px;
     border-radius: 3px;
     font-weight: 600;
+    font-size: 16px;
+}
+.spread_sub_steps_clk li a:hover {
+    text-decoration: inherit;
+    background: #343642;
 }
 .spread_sub_steps_clk li a.active {
     background: #343642;

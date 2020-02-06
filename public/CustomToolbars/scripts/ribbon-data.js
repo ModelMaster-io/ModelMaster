@@ -426,7 +426,7 @@ var data = {
                 }
             ]
         },
-        {
+        /*{
             "title": "Insert",
             "name": "insert",
             "collapse": ["*groupInsert"],
@@ -674,7 +674,7 @@ var data = {
                     ]
                 }
             ]
-        },
+        },*/
         {
             "title": "Formulas",
             "name": "formulas",
@@ -742,7 +742,7 @@ var data = {
                 }
             ]
         },
-        {
+        /*{
             "title": "Data",
             "name": "data",
             "collapse": ["groupDetail", "groupSort", "groupGroup"],
@@ -934,7 +934,7 @@ var data = {
                     ]
                 }
             ]
-        },
+        },*/
         {
             "title": "Table",
             "hidden": false,

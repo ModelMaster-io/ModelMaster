@@ -146,6 +146,9 @@ ul.lesson-menu li a:hover,
 .header-in-left img {
     vertical-align: middle;
 }
+ul.dropdown-menu.icon-text {
+    left: 0 !important;
+}
 .title {
     background: #50525F;
     text-align: center;

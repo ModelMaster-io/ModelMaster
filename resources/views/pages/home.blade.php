@@ -40,67 +40,13 @@ jQuery(document).ready(function() {
             <div class="home-banner-right">
                 <span class="home-banner-title">Master Financial Modeling</span> 
                 <p>Learn how to build a 3-statement financial model. You'll learn how to
-                    go from a blank spreadsheet to a fully functioning model. You'll build
-                    an Income Statement, a Balance Sheet, and a Cashflow statement. You'll
-                learn how these statements relate to each other and how each one works.</p>
+                    go from a blank spreadsheet to a fully functioning model. Build
+                    an Income Statement, a Balance Sheet, and a Cashflow statement. Learn how the purpose of each statement and how they connect to each other.</p>
                 <div class="home_viewall_btn_block"><div class="home_learn_btn">Start Learning Now</div></div>
             </div>	
         </div>
         </div>
-        
-        <div class="home_service_block">
-        <div class="home_service_block_inner">
-            <div class="home_service_block_title">A better way to learn modeling</div>
-            <div class="service_block">
-                <div class="ser__count"><span>1</span></div>
-                <div class="service_block_description">
-                    <div class="service_block_des">
-                        <div class="ser_heading">Step by Step Instructions</div>
-                        <div class="ser_des">Get step by step
-                            guidance to walk you through each step of building the model. You'll
-                            learn every part of the process". The picture should be from the lesson
-                        tab with one of the instructions.</div>
-                    </div>
-                    <div class="service_block_img">
-                        <img src="images/ser1.png"/>
-                    </div>
-                </div>
-            </div>	
-            <div class="service_block active">
-                <div class="ser__count"><span>2</span></div>
-                <div class="service_block_description">
-                    <div class="service_block_des">
-                        <div class="ser_heading">Real time feedback</div>
-                        <div class="ser_des">Get feedback on your
-                            model as you're building. You don't need to wait until the end to track
-                            down a mistake". The picture should be one of the lessons with an error
-                        message.</div>
-                    </div>
-                    <div class="service_block_img">
-                        <img src="images/ser2.png"/>
-                    </div>
-                </div>
-            </div>	
-            <div class="service_block">
-                <div class="ser__count"><span>3</span></div>
-                <div class="service_block_description">
-                    <div class="service_block_des">
-                        <div class="ser_heading">Track your progress</div>
-                        <div class="ser_des">Keep track of your
-                            progress and learning so you can know which areas you need to improve".
-                            Picture should be of the streak tracker from the profile page. I'm
-                        envisioning something like the GitHub contribution tracker.</div>
-                    </div>
-                    <div class="service_block_img">
-                        <img src="images/ser3.png"/>
-                    </div>
-                </div>
-            </div>	
-            <div class="service_block_btn"><i class="fa fa-arrow-down"></i></div>
-        </div>	
-        
-        </div>
-        
+       
         <div class="home_new_future_block">
         <div class="home_new_future_block_title">Lessons</div>
         <div class="home_new_future_main_block">

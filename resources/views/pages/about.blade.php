@@ -8,9 +8,9 @@
         </div>
         <div class="about-us-our-mission">
             <h2>Our Mission</h2>
-            <p>Our mission is to make it easy for anyone to learn analysis in excel.</p>
+            <p>Our mission is to make it easy for anyone to learn analysis.</p>
         
-            <p>For individuals, we're building a better way to learn modeling. This
+            <p>We're building a better way to learn modeling. This
                 platform can help you, no matter the stage in your career. In college,
                 trying to land a top internship or full time job? Started a new role and
                 need to improve your skills? Looking to move to a new job that requires

@@ -1374,7 +1374,7 @@ li.cart-link {
     border-bottom: 2px solid #29b473;
     padding-bottom: 7px;
 }
-.main_login_content .button:hover, .payment_btn:hover {
+.main_login_content .button:hover, .payment_btn:hover, .contact-us-from-btn button:hover {
     background-color: transparent !important;
     color: #29B473 !important;
 }
@@ -1384,7 +1384,12 @@ li.cart-link {
 .main_login_content .button a{
     color: #fff !important;
 }
-.main_login_content .button{
+.contact-us-from-in .error {
+    color: #f00;
+    font-size: 17px;
+}
+.main_login_content .button, 
+.contact-us-from-btn button {
     background-color: #29B473 !important;
     padding: 14px 45px !important;
     color: #fff !important;

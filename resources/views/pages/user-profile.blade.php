@@ -291,14 +291,14 @@ jQuery(document).ready(function() {
           </li> 
           @endif
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <img src="../images/my_order.png"/><a  id="order-tab-md" data-toggle="tab" href="#order-md" role="tab" aria-controls="order-md"
             aria-selected="false">my orders</a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <img src="../images/lesson.png"/><a  id="lesson-tab-md" data-toggle="tab" href="#lesson-md" role="tab" aria-controls="lesson-md"
             aria-selected="false">my lessons</a>
-          </li>
+          </li> -->
         </ul>
 
       </div>

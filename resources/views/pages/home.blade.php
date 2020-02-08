@@ -42,7 +42,7 @@ jQuery(document).ready(function() {
                 <p>Learn how to build a 3-statement financial model. You'll learn how to
                     go from a blank spreadsheet to a fully functioning model. Build
                     an Income Statement, a Balance Sheet, and a Cashflow statement. Learn how the purpose of each statement and how they connect to each other.</p>
-                <div class="home_viewall_btn_block"><div class="home_learn_btn">Start Learning Now</div></div>
+                <div class="home_viewall_btn_block"><a class="home_learn_btn"  href="/lessons">Start Learning Now</a></div>
             </div>	
         </div>
         </div>
@@ -96,8 +96,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm1.jpg"/>
-                    <div class="auth_name">Buford Matos</div>
-                    <div class="deg_name">Private Equity Associate</div>
+                    <div class="auth_name">Private Equity</div>
+                    <div class="deg_name">Associate</div>
                     <div class="testimonial_block_des">I
                         came from a consulting background and needed to learn financial modeling
                     for my job. This is exactly the tool I wish had existed when I had to learn.</div>
@@ -107,8 +107,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm2.jpg"/>
-                    <div class="auth_name">anissa rose</div>
-                    <div class="deg_name">Defense Contractor Financial Analyst</div>
+                    <div class="auth_name">Defense Contractor</div>
+                    <div class="deg_name">Financial Analyst</div>
                     <div class="testimonial_block_des">It's fantastic that
                         someone is actually fixing this problem...breaking in to any more
                         commercial finance jobs without proper modeling experience is a real
@@ -119,8 +119,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm1.jpg"/>
-                    <div class="auth_name">Rosss Tater</div>
-                    <div class="deg_name">Private Equity Associate</div>
+                    <div class="auth_name">Private Equity</div>
+                    <div class="deg_name">Associate</div>
                     <div class="testimonial_block_des">I
                         came from a consulting background and needed to learn financial modeling
                     for my job. This is exactly the tool I wish had existed when I had to learn.</div>
@@ -130,8 +130,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm2.jpg"/>
-                    <div class="auth_name">anissa rose</div>
-                    <div class="deg_name">Defense Contractor Financial Analyst</div>
+                    <div class="auth_name">Defense Contractor</div>
+                    <div class="deg_name">Financial Analyst</div>
                     <div class="testimonial_block_des">It's fantastic that
                         someone is actually fixing this problem...breaking in to any more
                         commercial finance jobs without proper modeling experience is a real
@@ -141,8 +141,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm1.jpg"/>
-                    <div class="auth_name">Buford Matos</div>
-                    <div class="deg_name">Private Equity Associate</div>
+                    <div class="auth_name">Private Equity</div>
+                    <div class="deg_name">Associate</div>
                     <div class="testimonial_block_des">I
                         came from a consulting background and needed to learn financial modeling
                     for my job. This is exactly the tool I wish had existed when I had to learn.</div>
@@ -152,8 +152,8 @@ jQuery(document).ready(function() {
             <div class="testimonial_block_inner">
                 <div class="testimonial_block_inner_shadow">
                     <img src="images/tm1.jpg"/>
-                    <div class="auth_name">Rosss Tater</div>
-                    <div class="deg_name">Private Equity Associate</div>
+                    <div class="auth_name">Private Equity</div>
+                    <div class="deg_name">Associate</div>
                     <div class="testimonial_block_des">I
                         came from a consulting background and needed to learn financial modeling
                     for my job. This is exactly the tool I wish had existed when I had to learn.</div>

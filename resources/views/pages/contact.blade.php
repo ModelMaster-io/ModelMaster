@@ -1,4 +1,13 @@
 @extends('app')
+
+@section('scripts_and_styles')
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+@endsection
+
 @section('content')
 <div class="contact-us-blog">
 
@@ -7,23 +16,27 @@
             <span class="contact-title">Contact Us</span>
         
             <div class="contact-us-from">
-        
-                <div class="contact-us-from-in">
-                    <span class="contact-icon"><i class="fa fa-user"></i></span>
-                    <input type="text" name="username" placeholder="User name">
-                </div>
-                <div class="contact-us-from-in">
-                    <span class="contact-icon"><i class="fa fa-envelope"></i></span>
-                    <input type="text" name="email" placeholder="Email">
-                </div>
-                <div class="contact-us-from-in">
-                    <span class="contact-icon ci2"><i class="fa fa-commenting"></i></span>
-                    <textarea name="" placeholder="Message"></textarea>
-                </div>
-        
-                <div class="contact-us-from-btn">
-                    <input type="button" value="SEND">
-                </div>
+
+                <form id="frm-contact" action="{{ route('contactus') }}" method="POST">
+                    @csrf
+                    <div class="contact-us-from-in">
+                        <span class="contact-icon"><i class="fa fa-user"></i></span>
+                        <input type="text" name="username" placeholder="User name">
+                    </div>
+                    <div class="contact-us-from-in">
+                        <span class="contact-icon"><i class="fa fa-envelope"></i></span>
+                        <input type="text" name="email" placeholder="Email">
+                    </div>
+                    <div class="contact-us-from-in">
+                        <span class="contact-icon ci2"><i class="fa fa-commenting"></i></span>
+                        <textarea name="message" placeholder="Message"></textarea>
+                    </div>
+            
+                    <div class="contact-us-from-btn">
+                        <button type="submit" class="contact-usr-submit"> {{ __('SEND') }}<i class="fa fa-spinner fa-spin" style="font-size:18px;display:none;"></i></button>
+                    </div>
+
+                </form>
         
             </div>
         

@@ -43,6 +43,9 @@ Route::get('/contact', function () {
 });
 
 
+Route::post('/contactus','ContactUs@sendContact')->name('contactus');
+
+
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
 

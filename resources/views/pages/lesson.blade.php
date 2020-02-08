@@ -123,27 +123,27 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub1-step3" style="display:none">
-                                        <p>Formatting is an extremely important part of financial modeling because it determines whether people can clearly understand and interpret your document. We will format the content as we go through this course. The formatting we do in this course is just one of several ways that you could format the content.</p>
+                                        <p>Formatting is an extremely important part of financial modeling because it determines whether people can clearly understand and interpret your document. We will format the content as we go through this course. The formatting we do in this course is just one of several ways that you could format a model.</p>
 
-                                        <p>Fill the background in cells B2:J2 with a dark blue fill. Then in cell B2 change the text color to white and bold the text.</p>
+                                        <p>Fill the background in cells B2:J2 with a dark blue fill by clicking on the paint can in the menu bar and selecting dark blue. Then in cell B2, select the "A" next to the paint can to change the text color to white and  press the "B" at the far left of the menu bar to bold the text.</p>
                                     </div>
 
 
                                     <div class="sub-lesson-step-contant" id="sub1-step4" style="display:none">
                                         <p>Next we're going to tell people what units we're using on the model. Depending on the context, "100" could be $100, $100,000, or $100,000,000.</p>
 
-                                        <p>In this model we're going to show all our numbers in millions. In cell B4, type "($ in millions)" so that anyone reading our model knows what units we're using. Italicize it so that it is clear the information doesn't impact our model.</p>
+                                        <p>In this model we're going to show all our numbers in millions. In cell B4, type "($ in millions)" so that anyone reading our model knows what units we're using. Use the "I" in the menu bar next to the bold button to italicize it so that it is clear the information doesn't impact our model.</p>
                                     </div>
 
 
                                     <div class="sub-lesson-step-contant" id="sub1-step5" style="display:none">
                                         <p>Next, we will lay out the time periods that we are doing our analysis for. Financial models can be built on a monthly, quarterly, annually, or any other required time frame. In this model we're going show the information annually.</p>
 
-                                        <p>Starting in cell C4, type the years from 2017 to 2024. Select cells B4:J4 and add a bottom border</p>
+                                        <p>Starting in cell C4, type the years from 2017 to 2024. Select cells B4:J4. Add a bottom border by selecting the drop down menu next to the paint can and selecting "Bottom Border".</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub1-step6" style="display:none">
-                                        <p>Finally, to help with the spacing on the page, change the row height for row 3 to "5"</p>
+                                        <p>Finally, to help with the spacing on the page, make row 3 shorter by using your mouse to drag up the line between row labels "3" and "4" on the left side of the spreadsheet.</p>
                                     </div>
 
                                 </div>
@@ -178,7 +178,7 @@
 
                                         <p>When you're calculating revenue, how you break it down can vary based on what matters to the company. You could show it by business unit, by geography, or by customer segment. In this model, we are going to break out the revenue by whether or not it is recurring. Specifically, we will use subscription and license revenue.</p>
 
-                                        <p>Type "Subscription Revenue" in cell B5, "License Revenue" in cell B6, and "Total Revenue" in cell B7. To indicate that Subscription and License revenue are part of revenue indent cells B5 and B6. Then to show that Total Revenue is a cumulative value, select cells B7:J7 and add a top border</p>
+                                        <p>Type "Subscription Revenue" in cell B5, "License Revenue" in cell B6, and "Total Revenue" in cell B7. We want to indicate that Subscription and License revenue are part of revenue. Indent cells B5 and B6 by selecting the alignment menu to the right of the font color menu and clicking "Increase Indent" at the bottom. Then to show that Total Revenue is a cumulative value, select cells B7:J7 and add a top border</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub2-step2" style="display:none">
@@ -238,15 +238,15 @@
                                     <div class="sub-lesson-step-contant" id="sub3-step1" style="display:block">
                                         <p>Now that we've outlined our income statement. The next step is to lay out the balance sheet. As previously mentioned, the balance sheet shows you all the assets a company has and how those assets were funded at the end of a time period. It's called a balance sheet because the Assets have to balance with the liabilities and equity that the company has. This equation, A = L+E, is central to accounting.</p>
 
-                                        <p>The balance sheet is structured to match the accounting equation. First come your assets, then your liabilities, and then the Equity the company has. Within the assets and liabilities section, it is further divided in to current and long-term items. Current items are items that you are owed or owe within one year of the balance sheet date.</p>
+                                        <p>The balance sheet is structured to match the accounting equation. First come your assets, then your liabilities, and then the equity the company has. Within the assets and liabilities section, it is further divided in to current and long-term items. Current items are items that you are owed or owe within one year of the balance sheet date.</p>
 
-                                        <p>Similar to the Income Statement, the first thing we need to do label this section of our model. Instead of starting from scratch, we can copy and modify the heading we used on the Income Statement. Select and copy cells B2:J4. Paste that in cell B24. Then modify the text in cell B24 so it says "FakeSoftwareCo Balance Sheet". After that change the height of row 25 to "5".</p>
+                                        <p>Similar to the Income Statement, the first thing we need to do label this section of our model. Instead of starting from scratch, we can copy and modify the heading we used on the Income Statement. Select cells B2:J4. Use "Ctrl-C" to copy them. Then use "Ctrl-V" to paste that in cell B24. Then modify the text in cell B24 so it says "FakeSoftwareCo Balance Sheet". After that, make the height of row 25 shorter.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub3-step2" style="display:none">
                                         <p>Next we will lay out each out the line items in the balance sheet. Starting with the current assets. Usually the most important current assets for a company are Cash and Accounts Receivables. Cash is fairly self-explanatory, it's the money that the company has in its bank accounts or securities that can be immediately converted to cash. Accounts Receivables is the money you are owed from customers who you have already provided a service for. Other current assets include things like stock inventory, supplies, and prepaid expenses. Depending on your needs you may need to model different combinations of these. For this model, we're going to just have "Cash", "Accounts Receivables, net", and "Other Current Assets".</p>
 
-                                        <p>Starting in cell B28, place those three line items and then in cell B31 put "Total Current Assets". To help with spacing on the page, change the height of row 27 to "5". Format the line items so that "Total Current Assets" is a subtotal.</p>
+                                        <p>Starting in cell B28, place those three line items and then in cell B31 put "Total Current Assets". To help with spacing on the page, make row 27 shorter. Format the line items so that "Total Current Assets" is a subtotal.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub3-step3" style="display:none">
@@ -274,7 +274,7 @@
 
                                         <p>Deferred Revenue is cash that customers have paid you for items or services you have not delivered yet. For example, if you have a subscription service that people pay for at the beginning of the year. When the customer makes that payment, you have an obligation to provide the services they paid for. That obligation is captured as Deferred Revenue.</p>
 
-                                        <p>Finally, other current liabilities are any other liabilities that you have to pay for in the next year. For example, if have payroll taxes payable or if you have declared a dividend.</p>
+                                        <p>Finally, other current liabilities are any other liabilities that you have to pay for in the next year. For example, if you have payroll taxes payable or you have declared a dividend.</p>
 
                                         <p>Starting in cell B39, place those 4 line items. And then in cell B43, put "Total Current Liabilities". Format so that "Total Current Liabilities" is a subtotal.</p>
                                     </div>
@@ -292,8 +292,6 @@
 
                                     <div class="sub-lesson-step-contant" id="sub3-step6" style="display:none">
                                         <p>The next section is the equity that the company has built up. The equity in a company is a combination of Retained Earnings and Paid-in Capital.</p>
-
-                                        <p>Interest is the net gain or loss on interest earned from deposits and interest paid on debt. Net Income is the income that the company is generating for its shareholders.</p>
 
                                         <p>For this model, we're going to project equity as one line item, but it can be broken out based on what you need to show in your analysis.</p>
 
@@ -329,11 +327,11 @@
                                     <div class="sub-lesson-step-contant" id="sub4-step1" style="display:block">
                                         <p>The final statement we will lay out is the Cashflow Statement. This statement is divided into sections based on the source and use of cash in your business. The sources are "Cashflow from Operating Activities", "Cashflow from Investing Activities", and "Cashflow from Financing Activities"</p>
 
-                                        <p>As with the other two statements, the first thing we want to do is label this section of the model. Copy cells B24:J26. Paste in cell B53 and change the label to be "FakeSoftwareCo Cashflow Statement"</p>
+                                        <p>As with the other two statements, the first thing we want to do is label this section of the model. Copy cells B24:J26. Paste in cell B53 and change the label to be "FakeSoftwareCo Cashflow Statement". Shorten row B54</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub4-step2" style="display:none">
-                                        <p>The next step is to lay out the Cashflow from investing activities. We're going to label each section of the cash flow statement so that it's easy to distinguish between them. In cell B57 type "Operating Activities". Bold and underline the text. To help with spacing change the row height of row 56 to "5"</p>
+                                        <p>The next step is to lay out the Cashflow from investing activities. We're going to label each section of the cash flow statement so that it's easy to distinguish between them. In cell B57 type "Operating Activities". Bold the text. Then, underline it by selecting the "U" next to the italicize button on the menu. To help with spacing make row 56 shorter</p>
 
                                         <p>Within operating activities, you are going to show the cash flow that the company generates from running the business on a day to day basis. Within this section you start with "Net Income". Then you are going to adjust based on other operating activities that effect cash flow.</p>
 
@@ -429,7 +427,7 @@
                                     <div class="sub-lesson-step-contant" id="sub5-step2" style="display:none">
                                         <p>Now we will go through and add the subtotals for each section.</p>
 
-                                        <p>In cell C7, sum cells C5:C6. Press "Ctrll+c" to copy the formula. Then use "Ctrl+v" to paste the formula in cells D7:E7.</p>
+                                        <p>In cell C7, sum cells C5:C6. Copy the formula. Then, paste the formula in cells D7:E7.</p>
 
                                         <p>Next, we are going to calculate the Gross Margin. As previously mentioned, the Gross Margin is the difference between the company’s revenues and its Cost of Goods Sold. In cell C10 type "=C7-C9". Copy the formula and paste it to fill in the Gross Margin for the remaining historical years.</p>
 
@@ -439,13 +437,13 @@
                                     <div class="sub-lesson-step-contant" id="sub5-step3" style="display:none">
                                         <p>Now that we've incorporated the historical totals into the Income Statement, we can format all the historical values.</p>
 
-                                        <p>By convention any number that is hardcoded in a financial model is colored blue. The first formatting we're going to do is to color all the hardcoded numbers in the income statemetn blue.</p>
+                                        <p>By convention any number that is hardcoded in a financial model is colored blue. The first formatting we're going to do is to use the font color menu to color all of the hardcoded numbers in the income statement blue. These are the historical values we dropped in previously.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub5-step4" style="display:none">
-                                        <p>Next we are going to change the number format on the values in the income statement. For this model we're going to use a number format with 1 decimal and negative numbers in parenthesis. Change the number values for cells C5:E21 to that format.</p>
+                                        <p>Next we are going to change the number format on the values in the income statement. For this model we're going to use a number format with 1 decimal and negative numbers in parenthesis. Change the number values for cells C5:E21 to that format. Select the "%" in the menu bar. In the menu that appears select "Comma Style". In the same menu use the increase and decrease decimal options to set 1 decimal place..</p>
 
-                                        <p>For cells C22:E22, we're going to use a currency format. Which numbers you format as currency or normal numbers is a matter of preference. Some people like to do the first line in each statement, and some make all the numbers currency.</p>
+                                        <p>For cells C22:E22, we're going to use a currency format. In the number format drop down menu, select "Currency". Which numbers you format as currency or normal numbers is a matter of preference. Some people like to do the first line in each statement, and some make all the numbers currency.</p>
                                     </div>
 
 
@@ -472,7 +470,7 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub5-step8" style="display:none">
-                                        <p>We also want a way to make sure that our balance sheet is correct. Add a row below "Total Liabilities and Equity". In cell B52, type "Check" and italicize it. In cell C52, subtract "Total Assets" from "Total Liabilities and Equity". Drag the formula through column E. Format as a number with 3 decimals showing.</p>
+                                        <p>We also want a way to make sure that our balance sheet is correct. Add a row below "Total Liabilities and Equity" by right clicking on the row label in row "52" on the far left of the spreadsheet and selecting "Insert". In the new cell B52, type "Check" and italicize it. In cell C52, subtract "Total Assets" from "Total Liabilities and Equity". Copy the formula through column E. Format as a number with 3 decimals showing by using the number format menu.</p>
 
                                         <p>This way when we project our balance sheet, we'll be able to ensure it stays balanced.</p>
                                     </div>
@@ -519,9 +517,9 @@
 
                                         <p>The first line items, we're going to project is revenue. Insert 2 rows above row 9 so that "Cost of Goods Sold" is on line 11. In cell B8 type "% YoY Growth" and in cell B9 type "% recurring". Indent both cells.</p>
 
-                                        <p>To calculate year over year growth, for total revenue we divide the ending year by the beginning year and subtract 1. You can't calculate growth for the first year, so we're going to start in 2018. In cell D8 type "(D7/C7)-1". Drag the formula one cell to the right for 2019 as well.</p>
+                                        <p>To calculate year over year growth, for total revenue we divide the ending year by the beginning year and subtract 1. You can't calculate growth for the first year, so we're going to start in 2018. In cell D8 type "(D7/C7)-1". Copy the formula one cell to the right for 2019 as well.</p>
 
-                                        <p>Format D8:E8 as percentages. Select cells B8:E8 and italicizes them.</p>
+                                        <p>Format D8:E8 as percentages with no decimal places. Select cells B8:E8 and italicizes them.</p>
 
                                         <p>For % recurring, we're showing what percentage of the revenue is contractually renewed every year. For this company, the subscription revenue is recurring, and the license revenues are one-time sales. In cell C9, type "C5/C7". Copy the formula two cells to the right.</p>
 
@@ -531,7 +529,7 @@
                                     <div class="sub-lesson-step-contant" id="sub6-step2" style="display:none">
                                         <p>For Cost of Goods Sold, we're going to use Gross Margin Percentage to project it. In general, if something is referred to as margin, it's that value divided by revenue.</p>
 
-                                        <p>Add a row above row 14, Operating Expenses. In cell B13, type "% margin". In cell C13, type "C12/C7". Drag the formula to the right to fill in for the historical values.</p>
+                                        <p>Add a row above row 14, Operating Expenses. In cell B13, type "% margin". In cell C13, type "C12/C7". Copy the formula to the right to fill in for the historical values.</p>
 
                                         <p>Format the same way did the growth and % recurring lines.</p>
                                     </div>
@@ -611,13 +609,13 @@
                                     <div class="sub-lesson-step-contant" id="sub7-step3" style="display:none">
                                         <p>For Accounts Receivables, we want to use the average collection period. This tells you how many days, on average, it takes for a customer to pay you after you deliver something to them.</p>
 
-                                        <p>In cell B62, type "Accounts receivable collection period". Italicize it. The formula to calculate accounts receivable collection period is (accounts receivables/revenue)*365. Use that formula in cell C62 to calculate the average collection period. Drag the formula to the right to fill in for historical values</p>
+                                        <p>In cell B62, type "Accounts receivable collection period". Italicize it. The formula to calculate accounts receivable collection period is (accounts receivables/revenue)*365. Use that formula in cell C62 to calculate the average collection period. Copy the formula to the right to fill in for historical values</p>
 
                                         <p>Format cells C62:E62 as numbers with one decimal place.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub7-step4" style="display:none">
-                                        <p>For other current assets, we're going to calculate it as a percent of sales, similar to the metric we used for OpEx. In cell B63, type "Other current assets % of sales". In cell C63, calculate the percentage of sales that current assets represents. Copy the formula to the right to fill in for the remaining historical values.</p>
+                                        <p>For other current assets, we're going to calculate it as a percentage of sales, similar to the metric we used for OpEx. In cell B63, type "Other current assets % of sales". In cell C63, calculate the percentage of sales that current assets represents. Copy the formula to the right to fill in for the remaining historical values.</p>
 
                                         <p>Format cells C63:E63 as a percentage with one decimal place.</p>
 
@@ -732,7 +730,7 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub8-step6" style="display:none">
-                                        <p>For Depreciation and Amortization, we can't forecast the values until we have CapEx. But we can lay out the metric and drag the formula for "Earnings Before Interest and Tax". In Cell F23, type 50%. Bring forward for the forecasted period. Format appropriately.</p>
+                                        <p>For Depreciation and Amortization, we can't forecast the values until we have CapEx. But we can lay out the metric and copy the formula for "Earnings Before Interest and Tax". In Cell F23, type 50%. Bring forward for the forecasted period. Format appropriately.</p>
 
                                         <p>Copy the formula to the right for "Earnings Before Interest and Tax"</p>
 
@@ -781,9 +779,9 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub9-step2" style="display:none">
-                                        <p>For accounts receivables, we need to project the "Accounts receivable collection period". To do that we're going to set the forecast value to the average over our historical period. In cell F64, type "=avg(C64:E64)". We want to format this number as blue. Even though it's a calculation, we could have just as easily set it directly to "31". Carry forward the value for all the forecasted years.</p>
+                                        <p>For accounts receivables, we need to project the "Accounts receivable collection period". To do that we're going to set the forecast value to the average over our historical period. In cell F64, type "=AVERAGE(C64:E64)". We want to format this number as blue. Even though it's a calculation, we could have just as easily set it directly to "31". Carry forward the value for all the forecasted years.</p>
 
-                                        <p>Now, in cell F38 use the inverse of the collection period formula to calculate accounts receivable. Copythe formula to the right for the remaining forecast period. Having trouble figuring out the formula? Click the hint below.</p>
+                                        <p>Now, in cell F38 use the inverse of the collection period formula to calculate accounts receivable. Copy the formula to the right for the remaining forecast period. Having trouble figuring out the formula? Click the hint below.</p>
 
                                         <p>For "Other Current Assets", we need to project "Other current assets % of sales". In cell F65, Use the average over the historical period to calculate the forecast value. Then extend that value through the forecast period. Format appropriately. Now calculate "Other Current Assets" over the forecast period.</p>
 
@@ -841,17 +839,17 @@
 
 
                                     <div class="sub-lesson-step-contant" id="sub10-step1" style="display:block">
-                                        <p>Now we're going to start building out the Cashflow statement. The first line item is just Net Income. Set cell F76, equal to the company’s Net Income in cell F29. Drag the formula to the right for the forecast period. Format as a number with one decimal place.</p>
+                                        <p>Now we're going to start building out the Cashflow statement. The first line item is just Net Income. Set cell F76, equal to the company’s Net Income in cell F29. Copy the formula to the right for the forecast period. Format as a number with one decimal place.</p>
 
                                         <p>We're going to skip Depreciation and Amortization until we project CapEx.</p>
 
                                         <p>For "Change in Net Working Capital", we're going to take the difference between the prior years working capital and the current years working capital. If you're Working Capital increases from year to year, that means that you've increased the amount of assets you have more than you've increased the liabilities. An increase in assets is always going to correspond to a use of cash in a given year.</p>
 
-                                        <p>In cell F78, type "=E63-E63". Notice that this is a negative number. Since the working capital increased from 2019 to 2020, you have a cash outflow in 2020. Copy and paste the formula to the right for the forecast period. Format as a number with one decimal place, and negative values in parenthesis.</p>
+                                        <p>In cell F78, type "=E63-E63". Notice that this is a negative number. Since the working capital increased from 2019 to 2020, you have a cash outflow in 2020. Copy and paste the formula to the right for the forecast period. Format as a number with one decimal place in "Comma Style".</p>
 
                                         <p>Calculate the difference and copy the formula to the right for the forecast period.</p>
 
-                                        <p>Then for the total "Cash flow from operating activities" we take the sum of the above rows. In cell F80, calculate the total, and drag right for the forecast period. Format as a number with one decimal and negatives in parenthesis.</p>
+                                        <p>Then for the total "Cash flow from operating activities" use the formula "=sum" to take the total of the above rows. In cell F80, calculate the total, and copy right for the forecast period. Format as a number with one decimal in "Comma Style".</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step2" style="display:none">
@@ -861,9 +859,9 @@
 
                                         <p>Since CapEx is a use of cash, we want it to be a negative number. Using the forecast metric calculate CapEx over the forecast period as a negative number.</p>
 
-                                        <p>Now for "Cash flow from investing activities", set it equal to capex for the entire forecast period. Format as a number with one decimal place with negative numbers in parenthesis.</p>
+                                        <p>Now for "Cash flow from investing activities", set it equal to capex for the entire forecast period. Format as a number with one decimal place in "Comma Style".</p>
 
-                                        <p>Now to calculate "Cash Available for Financing Activities", sum the "Cash flow from operating activities" and "Cash flow from investing activities". Carry the formula forward for the forecast period. Bold the numbers and format as a number with one decimal and negative numbers in parenthesis.</p>
+                                        <p>Now to calculate "Cash Available for Financing Activities", sum the "Cash flow from operating activities" and "Cash flow from investing activities". Carry the formula forward for the forecast period. Bold the numbers and format as a number with one decimal in "Comma Style".</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step3" style="display:none">
@@ -890,13 +888,13 @@
 
                                         <p>3. No change in cash, if you don't have an existing balance, and don't need to draw on it.</p>
 
-                                        <p>Think about the formula you need to use to calculate the "Change in Revolver". Type that formula in cell F90. Format as a number with one decimal and negative numbers in parenthesis. If you're having trouble figuring out, click below for a hint.</p>
-
-                                        <p>Now to forecast the Revolver balance in row 54, add the prior year’s revolver to the change in revolver for the current year. Copy the formula to the right for the entire forecast period.</p>
+                                        <p>Think about the formula you need to use to calculate the "Change in Revolver". Type that formula in cell F90. Format as a number with one decimal in "Comma Style". If you're having trouble figuring out, click below for a hint.</p>
 
                                         <p><span class="mm-tooltip" title="You need to use the 'MIN' formula. Still having trouble? Check the second hint below."><strong>Hint1</strong></span></p>
 
                                         <p><span class="mm-tooltip" title="In cell F90, type '=-MIN(E54,F87)'. You are taking the minimum value between your existing revolver balance and the cash available from operating activities. If your cash flow from operating activities is negative, it will always be lower than your existing balance. But you want the revolver to be a source of cash that is equal to your operating cash outflow. If you have an existing balance on the revolver, you want to use the cash from your operating activities to pay it down."><strong>Hint2</strong></span></p>
+                                        
+										<p>Now to forecast the Revolver balance in row 54, add the prior year’s revolver to the change in revolver for the current year. Copy the formula to the right for the entire forecast period.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step5" style="display:none">
@@ -906,33 +904,33 @@
 
                                         <p>Type that label in cell B105. You would find this information by looking up the terms of the company's debt agreements. In this case, we're going to use "1%" as the mandatory repayment amount. Type that in cell F105. Format as a percentage with no decimal places, and color it blue since it's a hard-coded value. Carry forward for the forecast period. Then to calculate the mandatory repayment, you need to multiply the debt balance in a given year by the mandatory repayment amount. Since the debt repayment is a use of cash, we want to show it as a negative number.</p>
 
-                                        <p>In cell F92, type "=-F105*F55". Format as a number with one decimal place and negative values in parenthesis. Drag to the right for the forecast period.</p>
+                                        <p>In cell F92, type "=-F105*F55". Format as a number with one decimal place in "Comma Style". Copy to the right for the forecast period.</p>
 
                                         <p>Now we can calculate our "Long-term debt" balance. For this account, we want to take the prior year’s value, add any new debt issued, and subtract the debt payed down. In cell F55, type "=E55+F91+F92".</p>
 
                                         <p>Copy the formulas to the right for the forecasted period. Format as a number with one decimal place.</p>
 
-                                        <p>Calculate the total "Cash flow from financing activities" by summing F90:F95. Drag the formula to the right for the forecast period. Bold and format as a number with one decimal place with negatives in parenthesis.</p>
+                                        <p>Calculate the total "Cash flow from financing activities" by summing F90:F95. Copy the formula to the right for the forecast period. Bold and format as a number with one decimal place in "Comma Style".</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step6" style="display:none">
                                         <p>Now that we have our debt balance calculated, we can calculate the interest we have to pay on that debt. Since you don't pay interest at a single point in time, you want to calculate the interest rate off of the average debt balance over the course of the year.</p>
 
-                                        <p>First, we need to project the interest rate forward in row 69. Use the average over the historical period as the forecast value. Format as a percentage with one decimal place and color blue. Copy the value forward for the forecast period.</p>
+                                        <p>First, we need to project the interest rate forward in row 69. Use the average over the historical period as the forecast value. Format as a percentage with one decimal place and color blue. Project the value forward for the forecast period.</p>
 
                                         <p>In cell F25, we want to multiply the average debt balance by the interest rate. Carry the formula forward for the forecast period. Having trouble figuring out the formula? Click on the hint below.</p>
 
-                                        <p><span class="mm-tooltip" title="=avg(E55:F55)*F69"><strong>Hint:</strong></span></p>
+                                        <p><span class="mm-tooltip" title="=AVERAGE(E55:F55)*F69"><strong>Hint:</strong></span></p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step7" style="display:none">
                                         <p>Now we can finish off the cash flow statement. The total "Change in cash" is equal to the "Cash available for financing activities" + "Cash flow from financing activities". Put that formula in to cell F98 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place.</p>
 
-                                        <p>Finally, on the cash flow statement, we want to calculate the companies cash balance at the end of a period. The beginning cash balance is based on the prior years ending balance. Set cell F101 equal to E37. Format as a number with one decimal place. Drag to the right for the forecast period.</p>
+                                        <p>Finally, on the cash flow statement, we want to calculate the companies cash balance at the end of a period. The beginning cash balance is based on the prior years ending balance. Set cell F101 equal to E37. Format as a number with one decimal place. Copy to the right for the forecast period.</p>
 
-                                        <p>The "Change in Cash" is equal to the change in cash you just calculated. Use that formula for the projected period.</p>
+                                        <p>The "Change in Cash" is equal to the change in cash you just calculated. Set the formula for the projected period.</p>
 
-                                        <p>Finally, the ending cash balance is equal to the sum of your "Beginning Balance" and "Change in Cash". Use that formula in cell F103 and drag to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place. Remember, that we've already set the "Cash" account on the balance sheet equal to this ending balance.</p>
+                                        <p>Finally, the ending cash balance is equal to the sum of your "Beginning Balance" and "Change in Cash". Use that formula in cell F103 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place. Remember, that we've already set the "Cash" account on the balance sheet equal to this ending balance.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step8" style="display:none">
@@ -940,9 +938,9 @@
 
                                         <p>In Cell F58, calculate the company's equity balance. Copy the formula to the right for the forecast period. Format appropriately. Having trouble figuring out the formula? Click to reveal the hint below.</p>
 
-                                        <p>Notice that your check should now balance! If it doesn't make sure that every change on your balance sheet can be traced to a change in your cash flow statement.</p>
-
                                         <p><span class="mm-tooltip" title="=E58+F76+F93+F95"><strong>Hint:</strong></span></p>
+                                        
+										<p>Notice that your check should now balance! If it doesn't make sure that every change on your balance sheet can be traced to a change in your cash flow statement.</p>
                                     </div>
 
                                 </div>
@@ -973,7 +971,9 @@
 
                                     <div class="sub-lesson-step-contant" id="sub11-step1" style="display:block">
                                         <p>The last thing we want to do are a few minor formatting tweaks. The first makes it clear where the delineation for the forecast and the historical period is. We want to add a left border to column F. Select cells F4:F31 add a left border. Do the same for cells F35:F61 and cells F73:F103. This is a stylistic preferences that make the model easier to read.</p>
-                                    </div>
+                                    
+										<p>Select the tab for the view menu at the top of the spreadsheet, and uncheck the box next to "Gridlines". These is a stylistic preferences that make the model easier to read.</p>
+									</div>
 
                                     <div class="sub-lesson-step-contant" id="sub11-step2" style="display:none">
                                         <p>Congratulations! You've now gone from a blank spreadsheet and built a fully functioning 3 statement financial model. Hopefully throughout this process, you've learned about the mechanics of how the model works and how the different statements connect to each other.</p>

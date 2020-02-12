@@ -6,6 +6,7 @@ use App\Events\ContactSend;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Mail\ContactUs;
+use App\Mail\ContactUsAdmin;
 use Mail;
 use App\Contact;
 
@@ -37,8 +38,10 @@ class SendContactMail
         });*/
 
         $email = $event->contact->email;
-
         Mail::to($email)->send(new ContactUs($event->contact));
+
+        $admin_email = config('app.admin_email');
+        Mail::to($admin_email)->send(new ContactUsAdmin($event->contact));
 
     }
 }

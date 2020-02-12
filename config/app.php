@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'admin_email' => env('ADMIN_EMAIL', 'ss.sendbox@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Socialite;
+use Newsletter;
 
 class RegisterController extends Controller
 {
@@ -65,6 +66,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+        if ( ! Newsletter::isSubscribed($data['email']) ) {
+
+            $mc_name = (!empty($data['name'])) ? explode(' ', trim($data['name'])) : array();
+            $mc_fname = isset($mc_name[0]) ? $mc_name[0] : '';
+            $mc_lname = isset($mc_name[1]) ? $mc_name[1] : '';
+
+            Newsletter::subscribe($data['email'], ['FNAME'=>$mc_fname, 'LNAME'=>$mc_lname]);
+
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -104,6 +115,20 @@ class RegisterController extends Controller
         $users->password = '';
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
+
+        if(!empty($user->getEmail())) {
+
+            if (! Newsletter::isSubscribed($user->getEmail()) ) {
+
+                $mc_name = (!empty($user->getName())) ? explode(' ', trim($user->getName())) : array();
+                $mc_fname = isset($mc_name[0]) ? $mc_name[0] : '';
+                $mc_lname = isset($mc_name[1]) ? $mc_name[1] : '';
+
+                Newsletter::subscribe($user->getEmail(), ['FNAME'=>$mc_fname, 'LNAME'=>$mc_lname]);
+
+            }
+
+        }
 
         if(!isset($users->id)) {
            return redirect('/');
@@ -168,6 +193,20 @@ class RegisterController extends Controller
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
 
+        if(!empty($user->getEmail())) {
+
+            if (! Newsletter::isSubscribed($user->getEmail()) ) {
+
+                $mc_name = (!empty($user->getName())) ? explode(' ', trim($user->getName())) : array();
+                $mc_fname = isset($mc_name[0]) ? $mc_name[0] : '';
+                $mc_lname = isset($mc_name[1]) ? $mc_name[1] : '';
+
+                Newsletter::subscribe($user->getEmail(), ['FNAME'=>$mc_fname, 'LNAME'=>$mc_lname]);
+
+            }
+
+        }
+
         if(!isset($users->id)) {
 
            return redirect('/');
@@ -227,12 +266,22 @@ class RegisterController extends Controller
 
         $users = new User;
         $users->name = $user->first_name.' ' . $user->last_name;
-        $users->email = $user->email;
+        $users->email = (($user->email != null) ? $user->email : '');
         $users->provider_id = $user->id;
         $users->service_provider ='linkedin';
         $users->password = '';
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
+
+        if(!empty($user->email)) {
+
+            if (! Newsletter::isSubscribed($user->email) ) {
+
+                Newsletter::subscribe($user->email, ['FNAME'=>$user->first_name, 'LNAME'=>$user->last_name]);
+
+            }
+
+        }
 
         if(!isset($users->id)) {
 

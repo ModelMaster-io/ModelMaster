@@ -1,5 +1,21 @@
 jQuery(document).ready(function () {
 
+
+	var serializationOption = {
+       ignoreStyle: true, // indicate to ignore the style when convert workbook to json, default value is false
+       ignoreFormula: true, // indicate to ignore the formula when convert workbook to json, default value is false
+       rowHeadersAsFrozenColumns: true, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
+       columnHeadersAsFrozenRows: true // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
+    }
+
+    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
+
+    //spread.fromJSON(JSON.parse(jsonStr));
+	//alert(jsonStr);
+
+    console.log(jsonString);
+
 	jQuery(".lcltc1-mm").niceScroll();
 
     Tipped.create('.mm-tooltip', {

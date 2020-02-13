@@ -2,6 +2,7 @@
 
 @section('scripts_and_styles')
 
+<link href="{{ URL::asset('css/ip.grid.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 <link href="https://cdn.jsdelivr.net/tipped/4.0.10/css/tipped/tipped.css" rel="stylesheet"/>
 
@@ -25,6 +26,9 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- <script src="{{ URL::asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>     -->
+<!-- <script src="{{ URL::asset('js/ip.grid.js') }}"></script> -->
 <script src="https://cdn.jsdelivr.net/tipped/4.0.10/js/tipped/tipped.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 

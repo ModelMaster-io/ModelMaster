@@ -1,6 +1,8 @@
 jQuery(document).ready(function() {
     // Code for comman JS for all pages
 
+if(jQuery('#frm-contact').length > 0) {
+
     jQuery("#frm-contact").validate({
         rules: {
         	username: {
@@ -55,6 +57,8 @@ jQuery(document).ready(function() {
     }
 
     });
+
+}
 
 
 });

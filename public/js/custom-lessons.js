@@ -1,21 +1,6 @@
 jQuery(document).ready(function () {
 
 
-	var serializationOption = {
-       ignoreStyle: true, // indicate to ignore the style when convert workbook to json, default value is false
-       ignoreFormula: true, // indicate to ignore the formula when convert workbook to json, default value is false
-       rowHeadersAsFrozenColumns: true, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
-       columnHeadersAsFrozenRows: true // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
-    }
-
-    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
-    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
-
-    //spread.fromJSON(JSON.parse(jsonStr));
-	//alert(jsonStr);
-
-    console.log(jsonString);
-
 	jQuery(".lcltc1-mm").niceScroll();
 
     Tipped.create('.mm-tooltip', {
@@ -52,7 +37,55 @@ jQuery(document).ready(function () {
 	
 	jQuery(document).on('click', '.next_btn', function() {
 
-		var GridID = 'model_master_spreadsheet';
+		var serializationOption = {
+	       ignoreStyle: true, // indicate to ignore the style when convert workbook to json, default value is false
+	       ignoreFormula: true, // indicate to ignore the formula when convert workbook to json, default value is false
+	       rowHeadersAsFrozenColumns: true, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
+	       columnHeadersAsFrozenRows: true // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
+	    }
+
+	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+	    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
+
+	    console.log(jsonString);
+
+	    //spread.fromJSON(JSON.parse(jsonStr));
+		//alert(jsonStr);
+
+
+       /* jQuery.ajax({
+            url: form.action,
+            type: form.method,
+            cache:false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            beforeSend: function(){
+                jQuery('.contact-usr-submit').prop('disabled', true);
+                jQuery('.contact-usr-submit').find('i').show();
+            },
+            success: function(response) {
+              
+              jQuery('.contact-usr-submit').find('i').hide();
+              jQuery('.contact-usr-submit').prop('disabled', false);
+
+              if(response.status == 1){
+                  toastr.success(response.success);
+                  jQuery("#frm-contact")[0].reset()
+              } else {
+                  toastr.error(response.error);
+              }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+   
+                jQuery('.contact-usr-submit').find('i').hide();
+                jQuery('.contact-usr-submit').prop('disabled', false);
+            },
+            complete: function(){
+            } 
+
+        });*/
 
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
@@ -126,4 +159,20 @@ jQuery(document).ready(function () {
 	});
 	
 });
+
+
+function addHistoricalValues(){
+   var sheet = spread.getActiveSheet();
+   sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
+   sheet.setArray(8,2, [[46,48.8,56.2]]);
+   sheet.setArray(11,2, [[80,91,102.6]]);
+   sheet.setArray(14,2, [[0.9,1.058823529,1]]);
+   sheet.setArray(17,2, [[12,11.94059406,11.82237036]]);
+   sheet.setArray(20,2, [[17.04,18.68415725,19.59596]]);
+   sheet.setArray(27,2, [[27,74.93052875,123.2910036],[17.26027397,18.85479452,21.40931507],[3.6,4.218,4.3956]]);
+   sheet.setArray(32,2, [[4,4.939176471,6.136976471],[150,150,150],[19,19,19],[38,37,38]]);
+   sheet.setArray(38,2, [[0.882191781,0.935890411,1.077808219],[7.176, 7.2224, 8.4862],[10, 11.3775, 12.21],[0.322, 0.3904, 0.4215]]);
+   sheet.setArray(44,2, [[0,0,0],[200, 198.019802, 196.0592099]]);
+   sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);
+}
 	

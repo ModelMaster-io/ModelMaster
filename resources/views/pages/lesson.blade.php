@@ -357,7 +357,7 @@
                                         <p>The line items in this section are for investments the company is making in long term assets. Usually, it is reported as one line item, Capital Expenditure (frequently shortened to Capex). If you remember our discussion of PP&E and Depreciation, Capex is the cash the company spends to purchase those long-term assets within a time period.</p>
 
                                         
-										<p>In cell B65 add "(-) Capital Expenditures". Then in cell B66 add "Cashflow from investing activities". Indent cell B65 and add a top border to cells B66:J66.</p>
+										<p>First, in cell B64, add "Cashflow from Investing Activities". In cell B65 add "(-) Capital Expenditures". Then in cell B66 add "Cashflow from investing activities". Format B64 as you did the other label. Indent cell B65 and add a top border to cells B66:J66.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub4-step4" style="display:none">
@@ -481,7 +481,7 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub5-step8" style="display:none">
-                                        <p>We also want a way to make sure that our balance sheet is correct. Add a row below "Total Liabilities and Equity" by right clicking on the row label in row "52" on the far left of the spreadsheet and selecting "Insert". In the new cell B52, type "Check" and italicize it. In cell C52, subtract "Total Assets" from "Total Liabilities and Equity". Copy the formula through column E. Format as a number with 3 decimals showing by using the number format menu.</p>
+                                        <p>We also want a way to make sure that our balance sheet is correct. Add a row below "Total Liabilities and Equity" by right clicking on the row label in row "52" on the far left of the spreadsheet and selecting "Insert". In the new cell B52, type "Check" and italicize it. In cell C52, subtract "Total Assets" from "Total Liabilities and Equity". Copy the formula through column E. Format as a "Number" with 3 decimals showing by using the number format menu.</p>
 
                                         <p>This way when we project our balance sheet, we'll be able to ensure it stays balanced.</p>
                                     </div>
@@ -528,11 +528,11 @@
 
                                         <p>The first line items, we're going to project is revenue. Insert 2 rows above row 9 so that "Cost of Goods Sold" is on line 11. In cell B8 type "% YoY Growth" and in cell B9 type "% recurring". Indent both cells.</p>
 
-                                        <p>To calculate year over year growth, for total revenue we divide the ending year by the beginning year and subtract 1. You can't calculate growth for the first year, so we're going to start in 2018. In cell D8 type "(D7/C7)-1". Copy the formula one cell to the right for 2019 as well.</p>
+                                        <p>To calculate year over year growth, for total revenue we divide the ending year by the beginning year and subtract 1. You can't calculate growth for the first year, so we're going to start in 2018. In cell D8 type "=(D7/C7)-1". Copy the formula one cell to the right for 2019 as well.</p>
 
                                         <p>Format D8:E8 as percentages with no decimal places. Select cells B8:E8 and italicizes them.</p>
 
-                                        <p>For % recurring, we're showing what percentage of the revenue is contractually renewed every year. For this company, the subscription revenue is recurring, and the license revenues are one-time sales. In cell C9, type "C5/C7". Copy the formula two cells to the right.</p>
+                                        <p>For % recurring, we're showing what percentage of the revenue is contractually renewed every year. For this company, the subscription revenue is recurring, and the license revenues are one-time sales. In cell C9, type "=C5/C7". Copy the formula two cells to the right.</p>
 
                                         <p>Format row 9 to match the formatting of row 8.</p>
                                     </div>
@@ -567,7 +567,7 @@
                                     <div class="sub-lesson-step-contant" id="sub6-step5" style="display:none">
                                         <p>In the last step for the income statement, we're going to add Net Margin to give us an idea of how profitable the company is overall, and a tax rate to project our taxes.</p>
 
-                                        <p>Above the balance sheet, add two rows. Below "Net Income", type "% net margin". In column C, divide Net Income by Revenue. Below that line, in column B, add "% tax rate". In column C calculate the tax rate.</p>
+                                        <p>Above the balance sheet, add two rows. Below "Net Income", type "% net margin". In column C, divide Net Income by Revenue. Below that line, in column B, add "% tax rate". In column C calculate the tax rate. Copy to the right for all historical years.</p>
 
                                         <p>Format the cells as you have the other percentages.</p>
 
@@ -615,6 +615,8 @@
                                         <p>In cell B61, type "Net working capital". If you remember when we laid out the cash flow statement, Net Working Capital is the difference between a company’s current assets and current liabilities. One thing to note, that since we're going to be using this to calculate the cash balance, we don't want to include the cash balance in the calculation.</p>
 
                                         <p>In cell C61, sum "Accounts Receivables, net" and "Other Current Assets", subtract "Total Current Liabilities". copy the formula to the right to fill in for all the historical years.</p>
+										
+										<p>Italicize cell B61:E61 and format cells C61:E61 as numbers with one decimal place and italicize them.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub7-step3" style="display:none">
@@ -622,13 +624,13 @@
 
                                         <p>In cell B62, type "Accounts receivable collection period". Italicize it. The formula to calculate accounts receivable collection period is (accounts receivables/revenue)*365. Use that formula in cell C62 to calculate the average collection period. Copy the formula to the right to fill in for historical values</p>
 
-                                        <p>Format cells C62:E62 as numbers with one decimal place.</p>
+                                        <p>Format cells C62:E62 as numbers with one decimal place and italicize them.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub7-step4" style="display:none">
                                         <p>For other current assets, we're going to calculate it as a percentage of sales, similar to the metric we used for OpEx. In cell B63, type "Other current assets % of sales". In cell C63, calculate the percentage of sales that current assets represents. Copy the formula to the right to fill in for the remaining historical values.</p>
 
-                                        <p>Format cells C63:E63 as a percentage with one decimal place.</p>
+                                        <p>Format cells C63:E63 as a percentage with one decimal place. Then italicize cells B63:E63</p>
 
                                         <p>The remaining assets are either calculated directly, in the case of PP&E, or change so infrequently, that we will use a straight-line value. These other line items can change and may need to be projected based on your need or if you know of specific events in the future that will change them. But most of the time, they will be relatively consistent from year to year.</p>
                                     </div>
@@ -637,7 +639,7 @@
                                     <div class="sub-lesson-step-contant" id="sub7-step5" style="display:none">
                                         <p>Starting with the liabilities, the first thing we need to project is "Accounts Payable". For this, we use a similar metric as we did for accounts receivable, "Accounts payable days outstanding". The major difference for this metric is that is based on COGS rather than revenue.</p>
 
-                                        <p>In cell B64, type "Accounts payable days outstanding". In cell C64, calculate the days outstanding. Copy the formula to the right for the remaining historical years.</p>
+                                        <p>In cell B64, type "Accounts payable days outstanding". In cell C64, calculate the days outstanding. Copy the formula to the right for the remaining historical years. Format as you did "Accounts receivable collection period"</p>
 
                                         <p>Having trouble with the formula? Click on the hint below</p>
 
@@ -658,13 +660,13 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub7-step8" style="display:none">
-                                        <p>For other current liabilities, we're also going to project this based on COGS. In cell B67, type "Other current liabilities as a % of COGS". In cell C67, calculate the percentage. Copy the formula to the right to fill for the historical years. Format as a percentage with two decimal places.</p>
+                                        <p>For other current liabilities, we're also going to project this based on COGS. In cell B67, type "Other current liabilities as a % of COGS". In cell C67, calculate the percentage. Copy the formula to the right to fill for the historical years. Format as a percentage with two decimal places and italicize the row.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub7-step9" style="display:none">
                                         <p>Revolver, Long-term debt, and Total Equity are calculated directly. But this is where we will calculate the interest expense metric.</p>
 										
-										<p>In cell B68, type "Interest expense as a % of long-term debt". In cell C68, calculate the percentage. Copy to the right for historical values. Format as a percentage with one decimal place.</p>
+										<p>In cell B68, type "Interest expense as a % of long-term debt". In cell C68, calculate the percentage. Copy to the right for historical values. Format as a percentage with one decimal place and italicize.</p>
                                     </div>
 
 
@@ -710,21 +712,21 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub8-step2" style="display:none">
-                                        <p>Now to calculate total recurring revenue, we're going to follow a similar process. In cell F9, input "80%". Format the same you formatted the first forecast year for total revenue. Use the same method as you did for total revenue to continue the forecasted % recurring through our entire forecast period.</p>
+                                        <p>Now to calculate total recurring revenue, we're going to follow a similar process. In cell F9, input "80%". Format the same you formatted the first forecast year for total revenue. Use the same method as you did for total revenue to continue the forecasted % recurring through our entire forecast period. Format appropriately.</p>
 
                                         <p>In cell F5, calculate the subscription revenue, using the total revenue and the % recurring. Copy the formula to the right for all the projected years. This number should be formatted with one decimal place and colored black. It's a calculated number that we would not change directly.</p>
 
-                                        <p>For License Revenue, calculate the difference between "Total Revenue" and "Subscription Revenue". Copy the formula to the right for all the projected years.</p>
+                                        <p>For License Revenue, calculate the difference between "Total Revenue" and "Subscription Revenue". Copy the formula to the right for all the projected years and format appropriately.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub8-step3" style="display:none">
-                                        <p>Since "% recurring growth" is a descriptive calculation, we can copy the formula to the right for all forecasted years. Since we're projecting the relevant metric here, let's jump down to Change in Deferred Revenue and forecast it forward.</p>
+                                        <p>Since "% recurring growth" is a descriptive calculation, we can copy the formula to the right for all forecasted years and format appropriately. Since we're projecting the relevant metric here, let's jump down to Change in Deferred Revenue and forecast it forward.</p>
 
                                         <p>In cell F49, type "=E49*(1+F10)". Copy the formula to the right for all the forecasted years. Format this as a number with one decimal place.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub8-step4" style="display:none">
-                                        <p>To project Cost of Goods Sold, we want to estimate the expected margin. In F14, type "77%". Format as a percentage, italicize, and make it blue. Continue the forecasted value through the projected time period.</p>
+                                        <p>To project Cost of Goods Sold, we want to estimate the expected margin. In F14, type "77%". Format as a percentage, italicize, and make it blue. Continue the forecasted value through the projected time period. Format appropriately.</p>
 
                                         <p>Since this number is the Gross Margin, we have to use a slightly different formula to calculate COGS directly. Use that formula to calculate COGS for the forecasted period. Then copy the formula for "Gross Margin" to the right for the forecasted period. Format both lines appropriately.</p>
 
@@ -754,7 +756,7 @@
                                     <div class="sub-lesson-step-contant" id="sub8-step7" style="display:none">
                                         <p>For Income taxes, we want to set the forecasted tax rate to "27%". Forecast the income taxes based of the "Taxable Income". Drag the formulas to the right for "Net Income" and "Net Margin".</p>
 
-                                        <p>Format all the elements appropriately. Remember that "Net Income" should be formatted as a currency with one decimal place.</p>
+                                        <p>Format all the elements appropriately. Remember that "Net Income" should be formatted as a currency.</p>
                                     </div>
 
 
@@ -786,7 +788,7 @@
 
 
                                     <div class="sub-lesson-step-contant" id="sub9-step1" style="display:block">
-                                        <p>For the balance sheet, we can work our way down to forecast the values. Starting with "Cash", it's always going to be based on the ending balance from your cash flow statement. Even though we're going to fill in the cash flow statement later, we are going to set the formula. Set cell F37 to "=F130", the ending cash balance.</p>
+                                        <p>For the balance sheet, we can work our way down to forecast the values. Starting with "Cash", it's always going to be based on the ending balance from your cash flow statement. Even though we're going to fill in the cash flow statement later, we are going to set the formula. Set cell F37 to "=F102", the ending cash balance.</p>
 
                                         <p>Copy the formula to the right for the projected time period.</p>
                                     </div>
@@ -798,29 +800,33 @@
 										
 										<p><span class="mm-tooltip" title="(Collection period/365)*Revenue"><strong>Hint:</strong></span></p>
 
-                                        <p>For "Other Current Assets", we need to project "Other current assets % of sales". In cell F65, Use the average over the historical period to calculate the forecast value. Then extend that value through the forecast period. Format appropriately. Now calculate "Other Current Assets" over the forecast period.</p>
+                                        <p>For "Other Current Assets", we need to project "Other current assets % of sales". In cell F65, Use the average over the historical period to calculate the forecast value. Then extend that value through the forecast period. Now calculate "Other Current Assets" over the forecast period.</p>
 
                                         <p>Finally, for current assets, copy the formula for "Total Current Assets" forward through the forecast period.</p>
-
-                                        
+										
+										<p>Format all values appropriately</p>                                        
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub9-step3" style="display:none">
                                         <p>Looking at the long-term assets, we're going to skip PPE for now because we need CapEx and D&A to calculate it. For Goodwill, Intangibles, and Other long-term assets, we're going to carry those values forward. In cells F43, F44, and F45 set the value equal to the prior year. We're going to color these cells blue because we could, theoretically, set them to different values if we had reason to believe they'd change in the first projected year.</p>
 
                                         <p>Carry those values forward for the forecast period. Then copy the formula for total assets to the right for the forecast period.</p>
+										
+										<p>Format all values appropriately</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub9-step4" style="display:none">
                                         <p>Going to current liabilities, we'll start with accounts payable. In cell F66, use the average over the historical period as the forecast value for "Accounts payable days outstanding". Extend the value through the forecast period.</p>
 
-                                        <p>Now use the inverse of the days outstanding formula to calculate "Accounts Payable". Click the hint below if you're having trouble figuring out the formula.</p>
+                                        <p>Now use the inverse of the days outstanding formula to calculate "Accounts Payable" and carry forward through the forecast period. Click the hint below if you're having trouble figuring out the formula.</p>
 										
 										<p><span class="mm-tooltip" title="(Days outstanding/365)*COGS"><strong>Hint:</strong></span></p>
 
                                         <p>For "Accrued liabilities" and "Other current liabilities", forecast using the average historical value as the basis for the metrics. Remember, these are driven off of COGS, rather than revenue.</p>
 
                                         <p>Copy the formula for "Total Current Liabilities" to the right for the forecast period. At this point, we can also bring the formula forward for "Net Working Capital"</p>
+										
+										<p>Format all the numbers appropriately</p>
                                     </div>
 
 
@@ -862,9 +868,9 @@
 
                                         <p>Set cell F76, equal to the company’s Net Income in cell F29. Copy the formula to the right for the forecast period. Format as a number with one decimal place.</p>
 										
-										<p>In cell F78, type "=E63-E63". Notice that this is a negative number. Since the working capital increased from 2019 to 2020, you have a cash outflow in 2020. Copy and paste the formula to the right for the forecast period. Format as a number with one decimal place in "Comma Style".</p>
+										<p>In cell F78, type "=E63-F63". Notice that this is a negative number. Since the working capital increased from 2019 to 2020, you have a cash outflow in 2020. Copy and paste the formula to the right for the forecast period. Format as a number with one decimal place in "Comma Style".</p>
 
-                                        <p>Calculate the difference and copy the formula to the right for the forecast period.</p>
+                                        <p>For "(+/-) Change in other long-term assets & liabilities" calculate the difference in "Other long-term assets" and copy the formula to the right for the forecast period.</p>
 
                                         <p>Then for the total "Cash flow from operating activities" use the formula "=sum" to take the total of the above rows. In cell F80, calculate the total, and copy right for the forecast period. Format as a number with one decimal in "Comma Style".</p>
                                     </div>
@@ -874,7 +880,7 @@
 										
 										<p>Add a row above "Cash flow from investing activities" and type "% of sales" in cell B84. Indent and italicize it. If you had an underlying data set to pull the information from, you'd want to base the % of sales off of the historical values. In this case, we're going to set it to "0.9%" of revenue.</p>
 
-                                        <p>Place "0.9%" in cell F84. Format as a percentage with one decimal place, italicize it, and color it blue. Carry it forward for the forecast period.</p>
+                                        <p>Place "0.9%" in cell F84. Format as a percentage with one decimal place, italicize it, and color it blue. Carry it forward for the forecast period. Fill C84:E84 with the same gray fill you used previously</p>
 
                                         <p>Since CapEx is a use of cash, we want it to be a negative number. Using the forecast metric calculate CapEx over the forecast period as a negative number.</p>
 
@@ -884,7 +890,7 @@
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step3" style="display:none">
-                                        <p>Now that we've calculated CapEx, we can go back and calculate some of the line items that depend on it. Starting with D&A. In cell F21, calculate D&A based on the capex in 2020. Remember that even though CapEx is a negative number on the Cashflow statement, D&A should be a positive number.</p>
+                                        <p>Now that we've calculated CapEx, we can go back and calculate some of the line items that depend on it. Starting with D&A. In cell F21, calculate D&A based on the capex in 2020. Carry foward for the forcast period and format appropriately. Remember that even though CapEx is a negative number on the Cashflow statement, D&A should be a positive number.</p>
 
                                         <p>Now that we've calculated D&A. We can reference in the operating section of our Cashflow statement. In F77, reference the D&A values for that year. Drag the formula forward for the forecast period. Format appropriately.</p>
 
@@ -913,7 +919,7 @@
 
                                         <p><span class="mm-tooltip" title="In cell F90, type '=-MIN(E54,F87)'. You are taking the minimum value between your existing revolver balance and the cash available from operating activities. If your cash flow from operating activities is negative, it will always be lower than your existing balance. But you want the revolver to be a source of cash that is equal to your operating cash outflow. If you have an existing balance on the revolver, you want to use the cash from your operating activities to pay it down."><strong>Hint 2</strong></span></p>
                                         
-										<p>Now to forecast the Revolver balance in row 54, add the prior year’s revolver to the change in revolver for the current year. Copy the formula to the right for the entire forecast period.</p>
+										<p>Now to forecast the Revolver balance in row 54, add the prior year’s revolver to the change in revolver for the current year. Copy the formula to the right for the entire forecast period. Format appropriately.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step5" style="display:none">
@@ -921,7 +927,9 @@
 
                                         <p>To calculate repayment of long-term debt, we first have to add a metric for "% mandatory repayment". You may also see mandatory repayment on a loan referred to as a loan's amortization. It's a different and unrelated use of the word than "Depreciation and Amortization". You would find this information by looking up the terms of the company's debt agreements. </p>
 
-                                        <p>Type "% mandatory repayment" in cell B105. In this case, we're going to use "1%" as the mandatory repayment amount. Type that in cell F105. Format as a percentage with no decimal places, and color it blue since it's a hard-coded value. Carry forward for the forecast period. Then to calculate the mandatory repayment, you need to multiply the debt balance in a given year by the mandatory repayment amount. Since the debt repayment is a use of cash, we want to show it as a negative number.</p>
+                                        <p>Type "% mandatory repayment" in cell B105. In this case, we're going to use "1%" as the mandatory repayment amount. Type that in cell F105. Format as a percentage with no decimal places, and color it blue since it's a hard-coded value. Carry forward for the forecast period and format as you have the other forecast metrics.</p>
+										
+										<p>Then to calculate the mandatory repayment, you need to multiply the debt balance in a given year by the mandatory repayment amount. Since the debt repayment is a use of cash, we want to show it as a negative number.</p>
 
                                         <p>In cell F92, type "=-F105*F55". Format as a number with one decimal place in "Comma Style". Copy to the right for the forecast period.</p>
 
@@ -937,19 +945,21 @@
 
                                         <p>First, we need to project the interest rate forward in row 69. Use the average over the historical period as the forecast value. Format as a percentage with one decimal place and color blue. Project the value forward for the forecast period.</p>
 
-                                        <p>In cell F25, we want to multiply the average debt balance by the interest rate. Carry the formula forward for the forecast period. Having trouble figuring out the formula? Click on the hint below.</p>
+                                        <p>In cell F25, we want to multiply the average debt balance by the interest rate. Carry the formula forward for the forecast period and format appropriately.</p>
+										
+										<p>Having trouble figuring out the formula? Click on the hint below.</p>
 
                                         <p><span class="mm-tooltip" title="=AVERAGE(E55:F55)*F69"><strong>Hint:</strong></span></p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step7" style="display:none">
-                                        <p>Now we can finish off the cash flow statement. The total "Change in cash" is equal to the "Cash available for financing activities" + "Cash flow from financing activities". Put that formula in to cell F98 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place.</p>
+                                        <p>Now we can finish off the cash flow statement. The total "Change in cash" is equal to the "Cash available for financing activities" + "Cash flow from financing activities". Put that formula in to cell F98 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency.</p>
 
                                         <p>Finally, on the cash flow statement, we want to calculate the companies cash balance at the end of a period. The beginning cash balance is based on the prior years ending balance. Set cell F101 equal to E37. Format as a number with one decimal place. Copy to the right for the forecast period.</p>
 
-                                        <p>The "Change in Cash" is equal to the change in cash you just calculated. Set the formula for the projected period.</p>
+                                        <p>The "Change in Cash" is equal to the change in cash you just calculated. Set the formula for the projected period and format.</p>
 
-                                        <p>Finally, the ending cash balance is equal to the sum of your "Beginning Balance" and "Change in Cash". Use that formula in cell F103 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency with one decimal place. Remember, that we've already set the "Cash" account on the balance sheet equal to this ending balance.</p>
+                                        <p>Finally, the ending cash balance is equal to the sum of your "Beginning Balance" and "Change in Cash". Use that formula in cell F103 and copy to the right for the forecasted years. Bold this row and format the numbers as a currency. Remember, that we've already set the "Cash" account on the balance sheet equal to this ending balance.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub10-step8" style="display:none">

@@ -12,7 +12,7 @@ var devToken = '133ef583f0c32f61f04be0bcdd129b3d';
 var prodToken = 'Production Token'; 
 
 //If the hostname is anything other than your production domain, initialize the Mixpanel library with your Development Token 
-if (window.location.hostname.toLowerCase().search(productionHost) < 0) { mixpanel.init(devToken);
+if (window.location.hostname.toLowerCase() !== productionHost) { mixpanel.init(devToken);
  } else { mixpanel.init(prodToken); } ;</script><!-- end Mixpanel -->
 <head>
     <meta name="google-site-verification" content="0GMdqT4QwQwBM1GrXB4qu1mpBCkV0dfm4Kl5d-p_W2U" />

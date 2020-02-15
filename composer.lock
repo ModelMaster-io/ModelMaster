@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d4ff27538cb733459d887838760d09e",
+    "content-hash": "f5fa0208aa6745d10f5453d1e3c1ef41",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -377,6 +377,73 @@
                 "trusted proxy"
             ],
             "time": "2019-12-20T13:11:11+00:00"
+        },
+        {
+            "name": "genealabs/laravel-mixpanel",
+            "version": "0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-mixpanel.git",
+                "reference": "c80bc2b95175661862be185dba10e44f7b9e2360"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-mixpanel/zipball/c80bc2b95175661862be185dba10e44f7b9e2360",
+                "reference": "c80bc2b95175661862be185dba10e44f7b9e2360",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^5.5|^6.0",
+                "illuminate/config": "^5.5|^6.0",
+                "illuminate/console": "^5.5|^6.0",
+                "illuminate/events": "^5.5|^6.0",
+                "illuminate/http": "^5.5|^6.0",
+                "illuminate/queue": "^5.5|^6.0",
+                "illuminate/routing": "^5.5|^6.0",
+                "illuminate/support": "^5.5|^6.0",
+                "mixpanel/mixpanel-php": "^2.7",
+                "sinergi/browser-detector": "^6.1"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.8",
+                "laravel/browser-kit-testing": "^5.1",
+                "laravel/laravel": "^6.0",
+                "mockery/mockery": "^1.2",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpmd/phpmd": "^2.7",
+                "phpunit/phpunit": "^8.4",
+                "sebastian/phpcpd": "^4.1",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/thanks": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GeneaLabs\\LaravelMixpanel\\Providers\\Service"
+                    ],
+                    "alias": {
+                        "Mixpanel": "GeneaLabs\\LaravelMixpanel\\Facades\\Mixpanel"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelMixpanel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com"
+                }
+            ],
+            "description": "MixPanel wrapper for Laravel 5.",
+            "time": "2019-10-18T16:38:21+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1340,6 +1407,51 @@
             "time": "2016-08-17T00:36:58+00:00"
         },
         {
+            "name": "mixpanel/mixpanel-php",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mixpanel/mixpanel-php.git",
+                "reference": "f3a046fd392adba705870a3c1994f2614600658a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mixpanel/mixpanel-php/zipball/f3a046fd392adba705870a3c1994f2614600658a",
+                "reference": "f3a046fd392adba705870a3c1994f2614600658a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.9.*",
+                "phpunit/phpunit": "5.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/Mixpanel.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mixpanel <dev@mixpanel.com>",
+                    "homepage": "https://mixpanel.com/"
+                }
+            ],
+            "description": "The Official PHP library for Mixpanel",
+            "homepage": "https://mixpanel.com/help/reference/php",
+            "keywords": [
+                "mixpanel",
+                "mixpanel php"
+            ],
+            "time": "2019-07-08T22:38:03+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.0.2",
             "source": {
@@ -2097,6 +2209,55 @@
                 "uuid"
             ],
             "time": "2019-12-17T08:18:51+00:00"
+        },
+        {
+            "name": "sinergi/browser-detector",
+            "version": "6.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sinergi/php-browser-detector.git",
+                "reference": "e1bee473663bb82e5ff58a3a2c0bf81c8671de5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sinergi/php-browser-detector/zipball/e1bee473663bb82e5ff58a3a2c0bf81c8671de5a",
+                "reference": "e1bee473663bb82e5ff58a3a2c0bf81c8671de5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sinergi\\BrowserDetector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Schuld"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com"
+                }
+            ],
+            "description": "Detecting the user's browser, operating system and language.",
+            "keywords": [
+                "browser",
+                "detection",
+                "language",
+                "operating system",
+                "os"
+            ],
+            "time": "2016-12-28T16:31:30+00:00"
         },
         {
             "name": "spatie/laravel-newsletter",

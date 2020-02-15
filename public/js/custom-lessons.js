@@ -38,10 +38,10 @@ jQuery(document).ready(function () {
 	jQuery(document).on('click', '.next_btn', function() {
 
 		var serializationOption = {
-	       ignoreStyle: true, // indicate to ignore the style when convert workbook to json, default value is false
-	       ignoreFormula: true, // indicate to ignore the formula when convert workbook to json, default value is false
-	       rowHeadersAsFrozenColumns: true, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
-	       columnHeadersAsFrozenRows: true // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
+	       ignoreStyle: false, // indicate to ignore the style when convert workbook to json, default value is false
+	       ignoreFormula: false, // indicate to ignore the formula when convert workbook to json, default value is false
+	       rowHeadersAsFrozenColumns: false, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
+	       columnHeadersAsFrozenRows: false // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
 	    }
 
 	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
@@ -54,29 +54,40 @@ jQuery(document).ready(function () {
 
 		var curr = jQuery(this);
 
+		
+		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
+
+		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
+		
+		var parent_step_number = parseInt(parent_step.split("step").pop())
+		
+		var current_sub_step_number = parseInt(current_sub_step.text())
+				
 		var data = {
 				'lesson': jsonString,
 				'lesson_id': 1,
-				'screen': 2,
-				'step': 3,
+				'screen': parent_step_number,
+				'step': current_sub_step_number,
 				"_token": jQuery('meta[name="csrf-token"]').attr('content')
 		}
-
+		
+		mixpanel.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true})
+		
         jQuery.ajax({
             url: '/save_spreadsheet',
             type: 'POST',
             data: data,
             beforeSend: function(){
-            	jQuery('.spread_loader').show();
-                curr.prop('disabled', true);
+            	/*jQuery('.spread_loader').show();
+                curr.prop('disabled', true);*/
             },
             success: function(response) {
               
-              jQuery('.spread_loader').hide();
-              curr.prop('disabled', false);
+              /*jQuery('.spread_loader').hide();
+              curr.prop('disabled', false);*/
 
               if(response.status == 1){
-                  toastr.success(response.success);
+                  /*toastr.success(response.success);*/
               } else {
                   toastr.error(response.error);
               }
@@ -90,10 +101,6 @@ jQuery(document).ready(function () {
             } 
 
         });
-
-		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
-
-		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
 
 		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
 
@@ -162,21 +169,22 @@ jQuery(document).ready(function () {
 		
 	});
 	
+	/* JS code for adding historical values */
+	jQuery(document).on('click', '.add-historical-values', function() {
+		var sheet = spread.getActiveSheet();
+		sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
+		sheet.setArray(8,2, [[46,48.8,56.2]]);
+		sheet.setArray(11,2, [[80,91,102.6]]);
+		sheet.setArray(14,2, [[0.9,1.058823529,1]]);
+		sheet.setArray(17,2, [[12,11.94059406,11.82237036]]);
+		sheet.setArray(20,2, [[17.04,18.68415725,19.59596]]);
+		sheet.setArray(27,2, [[27,74.93052875,123.2910036],[17.26027397,18.85479452,21.40931507],[3.6,4.218,4.3956]]);
+		sheet.setArray(32,2, [[4,4.939176471,6.136976471],[150,150,150],[19,19,19],[38,37,38]]);
+		sheet.setArray(38,2, [[0.882191781,0.935890411,1.077808219],[7.176, 7.2224, 8.4862],[10, 11.3775, 12.21],[0.322, 0.3904, 0.4215]]);
+		sheet.setArray(44,2, [[0,0,0],[200, 198.019802, 196.0592099]]);
+		sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);
+		
+	});
+	
 });
-
-
-function addHistoricalValues(){
-   var sheet = spread.getActiveSheet();
-   sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
-   sheet.setArray(8,2, [[46,48.8,56.2]]);
-   sheet.setArray(11,2, [[80,91,102.6]]);
-   sheet.setArray(14,2, [[0.9,1.058823529,1]]);
-   sheet.setArray(17,2, [[12,11.94059406,11.82237036]]);
-   sheet.setArray(20,2, [[17.04,18.68415725,19.59596]]);
-   sheet.setArray(27,2, [[27,74.93052875,123.2910036],[17.26027397,18.85479452,21.40931507],[3.6,4.218,4.3956]]);
-   sheet.setArray(32,2, [[4,4.939176471,6.136976471],[150,150,150],[19,19,19],[38,37,38]]);
-   sheet.setArray(38,2, [[0.882191781,0.935890411,1.077808219],[7.176, 7.2224, 8.4862],[10, 11.3775, 12.21],[0.322, 0.3904, 0.4215]]);
-   sheet.setArray(44,2, [[0,0,0],[200, 198.019802, 196.0592099]]);
-   sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);
-}
 	

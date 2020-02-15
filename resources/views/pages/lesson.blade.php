@@ -432,7 +432,7 @@
                                     <div class="sub-lesson-step-contant" id="sub5-step1" style="display:block">
                                         <p>Now that we've laid out the structure for the entire model, we can begin pulling in information for each of the line items. For a real model you'd have to pull this information from the company’s public reports (for a public company) or data they provide (for a private company). In this model we're going to give you that information. Press the button below to fill in the historical values. <strong>Double check that your set up matches exactly what we've recommended so far. Any cells in the wrong place will be overwritten by the historical values.</strong></p>
 
-                                        <p><button onclick="addHistoricalValues()">Input historical Values</button></p>
+                                        <p><button class="add-historical-values">Input historical Values</button></p>
 
                                         <p>To clearly indicate that we are not filling in historical values on the cash flow statement, select cells C58:E84 and change the fill color to dark gray.</p>
                                     </div>

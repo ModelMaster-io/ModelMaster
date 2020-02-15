@@ -230,8 +230,26 @@ ul.dropdown-menu.icon-text {
 .lesson-contant-right {
     float: left;
     width: 74%;
+    position: relative;
+    overflow: hidden;
 }
-
+.spread_loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+    color: #fff;
+    text-align: center;
+}
+.spread_loader > i {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100%;
+}
 .lesson-contant-left .lc-title {
     padding-left: 23px;
     box-sizing: border-box;

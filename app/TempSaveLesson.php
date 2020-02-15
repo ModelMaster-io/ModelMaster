@@ -15,5 +15,5 @@ class TempSaveLesson extends Model
         'lesson_id', 'user_id', 'screen', 'step', 'lesson' 
     ];
 
-    protected $table = 'temp_save_lesson';
+    protected $table = 'temp_save_lessons';
 }

@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 <link href="https://cdn.jsdelivr.net/tipped/4.0.10/css/tipped/tipped.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 
 <!-- CSS for spreadsheet -->
 <link rel="stylesheet" href="{{ URL::asset('CustomToolbars/css/bootstrap.min.css') }}"/>
@@ -57,6 +58,7 @@
 
 
 <!-- JS for lesson page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
@@ -1031,6 +1033,8 @@
             </div>
         </div>
         <div class="lesson-contant-right">
+
+            <div class="spread_loader" style="display: none;"><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></div>
 
             <div class="toolbar" id="toolbar">
             </div>

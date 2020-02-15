@@ -52,40 +52,44 @@ jQuery(document).ready(function () {
 	    //spread.fromJSON(JSON.parse(jsonStr));
 		//alert(jsonStr);
 
+		var curr = jQuery(this);
 
-       /* jQuery.ajax({
-            url: form.action,
-            type: form.method,
-            cache:false,
-            contentType: false,
-            processData: false,
-            data: formData,
+		var data = {
+				'lesson': jsonString,
+				'lesson_id': 1,
+				'screen': 2,
+				'step': 3,
+				"_token": jQuery('meta[name="csrf-token"]').attr('content')
+		}
+
+        jQuery.ajax({
+            url: '/save_spreadsheet',
+            type: 'POST',
+            data: data,
             beforeSend: function(){
-                jQuery('.contact-usr-submit').prop('disabled', true);
-                jQuery('.contact-usr-submit').find('i').show();
+            	jQuery('.spread_loader').show();
+                curr.prop('disabled', true);
             },
             success: function(response) {
               
-              jQuery('.contact-usr-submit').find('i').hide();
-              jQuery('.contact-usr-submit').prop('disabled', false);
+              jQuery('.spread_loader').hide();
+              curr.prop('disabled', false);
 
               if(response.status == 1){
                   toastr.success(response.success);
-                  jQuery("#frm-contact")[0].reset()
               } else {
                   toastr.error(response.error);
               }
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
-   
-                jQuery('.contact-usr-submit').find('i').hide();
-                jQuery('.contact-usr-submit').prop('disabled', false);
+                jQuery('.spread_loader').hide();
+                curr.prop('disabled', false);
             },
             complete: function(){
             } 
 
-        });*/
+        });
 
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 

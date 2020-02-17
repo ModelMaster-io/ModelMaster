@@ -11,10 +11,19 @@ $mp = Mixpanel::getInstance("5724a16e07be788297a5d0a37821", array(
 	"debug"=>true
 ));
 
+<<<<<<< HEAD
 // track an event
 $mp->track("button clicked", array("label" => "sign-up"));
 
 print_r($mp);
+=======
+print_r($mp);
+// track an event
+$mp->track("button clicked", array("label" => "sign-up"));
+
+echo("event supposed to be tracked");
+
+>>>>>>> 88e4db26eabe0c14dff77f6a383570c5e92a5f0c
 // this would likely come from a database or session variable
 $user_id = 12345;
 

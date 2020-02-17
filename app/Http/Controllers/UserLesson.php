@@ -18,15 +18,22 @@ class UserLesson extends Controller
 
     public function saveTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
 
-        $temp_lesson->lesson_id = $request->get('lesson_id');
+        /*$temp_lesson->lesson_id = $request->get('lesson_id');
         $temp_lesson->user_id = Auth::user()->id;
         $temp_lesson->screen = $request->get('screen');
         $temp_lesson->step = $request->get('step');
-        $temp_lesson->lesson = serialize($request->get('lesson')); 
+        $temp_lesson->lesson = serialize($request->get('lesson'));
 
-        $temp_lesson->save();
+        $temp_lesson->save();*/
+
+        $temp_lesson_save = TempSaveLesson::updateOrCreate(
+            ['user_id' => Auth::user()->id, 'lesson_id' => $request->get('lesson_id')],
+            ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize($request->get('lesson'))]
+        );
 
         return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!']);
 
     }
+
+
 }

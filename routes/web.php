@@ -21,12 +21,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/lessons', function () {
-    return view('pages.lesson');
-    // return view('pages.spreadsheet_demo');
-});
-
-
 Route::get('/spreadsheet_demo', function () {
     // return view('pages.lesson');
     return view('pages.spreadsheet_demo');
@@ -44,8 +38,6 @@ Route::get('/contact', function () {
 
 
 Route::post('/contactus','ContactUs@sendContact')->name('contactus');
-
-Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 
 
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
@@ -121,6 +113,12 @@ Route::group(['middleware' => 'auth'], function () {
     //Route::post('/edit-profile','UserProfile@updateuser')->name('editprofile');
 
     Route::patch('userprofile/{user}/updateuser',  ['as' => 'userprofile.update', 'uses' => 'UserProfile@updateuser']);
+
+    Route::get('/lessons', function () {
+        return view('pages.lesson');
+    });
+
+    Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 
 });
 

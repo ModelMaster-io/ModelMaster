@@ -34,6 +34,7 @@ jQuery(document).ready(function () {
 	if(jQuery('.spread_steps_clk li:last-child a').hasClass('active')){
 		jQuery('.next-btn').addClass('disabled');
 	}
+
 	
 	jQuery(document).on('click', '.next_btn', function() {
 
@@ -46,11 +47,6 @@ jQuery(document).ready(function () {
 
 	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
 	    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
-
-	    console.log(jsonString);
-
-	    //spread.fromJSON(JSON.parse(jsonStr));
-		//alert(jsonStr);
 
 		var curr = jQuery(this);
 
@@ -65,7 +61,7 @@ jQuery(document).ready(function () {
 				
 		var data = {
 				'lesson': jsonString,
-				'lesson_id': 1,
+				'lesson_id': 2,
 				'screen': parent_step_number,
 				'step': current_sub_step_number,
 				"_token": jQuery('meta[name="csrf-token"]').attr('content')

@@ -16,6 +16,89 @@ jQuery(document).ready(function () {
 		  }
     });
 
+
+    setTimeout(function() {
+
+		var curr = jQuery(this);
+
+		var data = {
+			"_token": jQuery('meta[name="csrf-token"]').attr('content')
+		}
+
+		jQuery.ajax({
+	        url: '/get_spreadsheet',
+	        type: 'POST',
+	        data: data,
+	        beforeSend: function(){
+	        },
+	        success: function(response) {
+
+	          if(response.status == 1){
+
+	    		var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+	          	spread1.fromJSON(JSON.parse(response['spreadsheetData']));
+
+	          	var screen = response['screen'];
+	          	var step = response['step'];
+	          	
+	          	if(screen == 1 && step == 6){
+	          		screen = 2;
+	          		step = 1;
+	          	} else if (screen == 2 && step == 5){
+	          		screen = 3;
+	          		step = 1;
+	          	} else if (screen == 3 && step == 6){
+	          		screen = 4;
+	          		step = 1;
+	          	} else if (screen == 4 && step == 7){
+	          		screen = 5;
+	          		step = 1;
+	          	} else if (screen == 5 && step == 9){
+	          		screen = 6;
+	          		step = 1;
+	          	} else if (screen == 6 && step == 5){
+	          		screen = 7;
+	          		step = 1;
+	          	} else if (screen == 7 && step == 9){
+	          		screen = 8;
+	          		step = 1;
+	          	} else if (screen == 8 && step == 7){
+	          		screen = 9;
+	          		step = 1;
+	          	} else if (screen == 9 && step == 5){
+	          		screen = 10;
+	          		step = 1;
+	          	} else if (screen == 10 && step == 8){
+	          		screen = 11;
+	          		step = 1;
+	          	} else if (screen == 11 && step == 2){
+	          		screen = 1;
+	          		step = 1;
+	          	} else {
+	          		step += 1;
+	          	}
+
+	          	jQuery('.spread_steps_clk li a').removeClass('active');
+	          	jQuery(".spread_steps_clk li:nth-child("+screen+") a").addClass('active');
+
+	          	jQuery('.lesson-contant-left-tab-contant > .lcltc1').hide();
+	          	jQuery("#step"+screen).show();
+
+	          	jQuery("#step"+screen+" .spread_sub_steps_clk li a").removeClass('active');
+	          	jQuery("#step"+screen+" .spread_sub_steps_clk li:nth-child("+step+") a").addClass('active');
+
+	          }
+
+	        },
+	        error: function (jqXHR, textStatus, errorThrown) {
+	        },
+	        complete: function(){
+	        } 
+
+	    });
+
+    }, 500);
+
 	//JS for top of the spreadsheet option panel
 	jQuery(document).on('click', '.spread_steps_clk li a', function() {
 		var stp = jQuery(this).data('step');
@@ -61,7 +144,7 @@ jQuery(document).ready(function () {
 				
 		var data = {
 				'lesson': jsonString,
-				'lesson_id': 2,
+				'lesson_id': 1,
 				'screen': parent_step_number,
 				'step': current_sub_step_number,
 				"_token": jQuery('meta[name="csrf-token"]').attr('content')

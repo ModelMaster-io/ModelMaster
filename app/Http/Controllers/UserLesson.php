@@ -36,4 +36,23 @@ class UserLesson extends Controller
     }
 
 
+    public function getTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
+
+        $user_id = Auth::user()->id;
+
+        $l_id = TempSaveLesson::where(['user_id' => $user_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
+
+        $lesson = TempSaveLesson::where(['lesson_id' => $l_id, 'user_id' => $user_id])->get()->first();
+
+        $temo_lsn_data = $lesson->getOriginal();
+
+        $step = isset($temo_lsn_data['step']) ? $temo_lsn_data['step'] : '';
+        $screen = isset($temo_lsn_data['screen']) ? $temo_lsn_data['screen'] : '';
+        $spreadsheetData = isset($temo_lsn_data['lesson']) ? unserialize($temo_lsn_data['lesson']) : array();
+
+        return response()->json(['status'=>1,  'spreadsheetData'=>$spreadsheetData, 'screen' => $screen, 'step' => $step]);
+
+    }
+
+
 }

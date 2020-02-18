@@ -120,6 +120,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 
+    Route::post('/get_spreadsheet','UserLesson@getTempUserLesson')->name('get_spreadsheet');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

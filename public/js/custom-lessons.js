@@ -49,9 +49,14 @@ jQuery(document).ready(function () {
 
 	          	jQuery("#step"+screen+" .spread_sub_steps_clk li a").removeClass('active');
 	          	jQuery("#step"+screen+" .spread_sub_steps_clk li:nth-child("+step+") a").addClass('active');
-				
-				jQuery('.lesson-contant-left-tab-contant #'+step).show();
-				jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+                        
+                        
+                        screen_element = jQuery('#step'+screen+'.lcltc1 .sub-lesson-step-contant');
+                        screen_element.hide()
+                        
+                        step_element = jQuery('#step'+screen+'.lcltc1 #sub'+screen+'-step'+step)
+                        step_element.scrollTop(0).show();
+                        jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
 	          }
 
@@ -92,7 +97,7 @@ jQuery(document).ready(function () {
 	       ignoreFormula: false, // indicate to ignore the formula when convert workbook to json, default value is false
 	       rowHeadersAsFrozenColumns: false, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
 	       columnHeadersAsFrozenRows: false // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
-	    }
+	    };
 
 	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
 	    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
@@ -104,9 +109,9 @@ jQuery(document).ready(function () {
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
 		
-		var parent_step_number = parseInt(parent_step.split("step").pop())
+		var parent_step_number = parseInt(parent_step.split("step").pop());
 		
-		var current_sub_step_number = parseInt(current_sub_step.text())
+		var current_sub_step_number = parseInt(current_sub_step.text());
 				
 		var data = {
 				'lesson': jsonString,
@@ -114,7 +119,7 @@ jQuery(document).ready(function () {
 				'screen': parent_step_number,
 				'step': current_sub_step_number,
 				"_token": jQuery('meta[name="csrf-token"]').attr('content')
-		}
+		};
 		
 		mixpanel.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true})
 		

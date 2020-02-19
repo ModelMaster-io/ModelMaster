@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
 
 
 	jQuery(".lcltc1-mm").niceScroll();
+	mixpanel.track("Opened Lesson", {"lesson": "3-Statement Model"});
 
     Tipped.create('.mm-tooltip', {
     	  skin: 'light',
@@ -121,7 +122,7 @@ jQuery(document).ready(function () {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content')
 		};
 		
-		mixpanel.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true})
+		mixpanel.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
 		
         jQuery.ajax({
             url: '/save_spreadsheet',
@@ -157,6 +158,7 @@ jQuery(document).ready(function () {
 			if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
 				jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
 				jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+				mixpanel.track("Finished Lesson", {"lesson": "3-Statement Model"});
 			} else {
 				jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
 			}

@@ -11,6 +11,8 @@ var productionHost = 'modelmaster.io';
 var devToken = '133ef583f0c32f61f04be0bcdd129b3d'; 
 var prodToken = 'Production Token'; 
 
+console.log(window.location.hostname.toLowerCase())
+
 //If the hostname is anything other than your production domain, initialize the Mixpanel library with your Development Token 
 if (window.location.hostname.toLowerCase() !== productionHost) { mixpanel.init(devToken);
  } else { mixpanel.init(prodToken); } ;</script><!-- end Mixpanel -->

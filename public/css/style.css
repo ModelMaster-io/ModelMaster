@@ -287,7 +287,6 @@ ul.dropdown-menu.icon-text {
     width: 100%;
     float: left;
     /*min-height: calc(100vh - 125px);*/
-
     /* height: calc(100vh - 125px); */
     /* overflow-y: scroll;*/
 }
@@ -296,12 +295,18 @@ ul.dropdown-menu.icon-text {
     height: auto;
 }
 
+canvas#ssvp_vp {
+    height: calc(100vh - 329px)!important;
+}
+div#ss, div#controlPanel {
+    height: auto!important;
+}
 
 .lcltc1-mm {
     overflow: auto;
-    /* height: calc(100vh - 100px); */
+     height: calc(100vh - 250px); 
     overflow-y: scroll;
-    height: 638px;
+    /*height: 638px;*/
 } 
 
 ul.lesson-menu li a {

@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'admin_email' => env('ADMIN_EMAIL', 'ss.sendbox@gmail.com'),
+    'admin_email' => env('ADMIN_EMAIL', 'contact@modelmaster.io'),
 
     /*
     |--------------------------------------------------------------------------

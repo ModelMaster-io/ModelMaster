@@ -42,6 +42,45 @@ jQuery(document).ready(function () {
 	          	var screen = response['screen'];
 	          	var step = response['step'];
 
+	          	/* JS code for selected step if step is last of any screen */
+	          	if(screen == 1 && step == 6){	
+	          		screen = 2;	
+	          		step = 1;	
+	          	} else if (screen == 2 && step == 5){	
+	          		screen = 3;	
+	          		step = 1;	
+	          	} else if (screen == 3 && step == 6){	
+	          		screen = 4;	
+	          		step = 1;	
+	          	} else if (screen == 4 && step == 7){	
+	          		screen = 5;	
+	          		step = 1;	
+	          	} else if (screen == 5 && step == 9){	
+	          		screen = 6;	
+	          		step = 1;	
+	          	} else if (screen == 6 && step == 5){	
+	          		screen = 7;	
+	          		step = 1;	
+	          	} else if (screen == 7 && step == 9){	
+	          		screen = 8;	
+	          		step = 1;	
+	          	} else if (screen == 8 && step == 7){	
+	          		screen = 9;	
+	          		step = 1;	
+	          	} else if (screen == 9 && step == 5){	
+	          		screen = 10;	
+	          		step = 1;	
+	          	} else if (screen == 10 && step == 8){	
+	          		screen = 11;	
+	          		step = 1;	
+	          	} else if (screen == 11 && step == 2){	
+	          		screen = 1;	
+	          		step = 1;
+	          	} else {
+	          		step += 1;
+	          	}
+
+
 	          	jQuery('.spread_steps_clk li a').removeClass('active');
 	          	jQuery(".spread_steps_clk li:nth-child("+screen+") a").addClass('active');
 
@@ -69,7 +108,7 @@ jQuery(document).ready(function () {
 
 	    });
 
-    }, 500);
+    }, 100);
 
 	//JS for top of the spreadsheet option panel
 	jQuery(document).on('click', '.spread_steps_clk li a', function() {
@@ -239,4 +278,3 @@ jQuery(document).ready(function () {
 	});
 	
 });
-	

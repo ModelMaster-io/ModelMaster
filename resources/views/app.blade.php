@@ -9,9 +9,7 @@ MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mi
 
 var productionHost = 'modelmaster.io'; 
 var devToken = '133ef583f0c32f61f04be0bcdd129b3d'; 
-var prodToken = 'Production Token'; 
-
-console.log(window.location.hostname.toLowerCase())
+var prodToken = '517ed7687c685925296abb611e860ccd';
 
 //If the hostname is anything other than your production domain, initialize the Mixpanel library with your Development Token 
 if (window.location.hostname.toLowerCase() !== productionHost) { mixpanel.init(devToken);

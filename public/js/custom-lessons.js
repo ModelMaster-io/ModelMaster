@@ -42,45 +42,6 @@ jQuery(document).ready(function () {
 	          	var screen = response['screen'];
 	          	var step = response['step'];
 
-	          	/* JS code for selected step if step is last of any screen */
-	          	if(screen == 1 && step == 6){	
-	          		screen = 2;	
-	          		step = 1;	
-	          	} else if (screen == 2 && step == 5){	
-	          		screen = 3;	
-	          		step = 1;	
-	          	} else if (screen == 3 && step == 6){	
-	          		screen = 4;	
-	          		step = 1;	
-	          	} else if (screen == 4 && step == 7){	
-	          		screen = 5;	
-	          		step = 1;	
-	          	} else if (screen == 5 && step == 9){	
-	          		screen = 6;	
-	          		step = 1;	
-	          	} else if (screen == 6 && step == 5){	
-	          		screen = 7;	
-	          		step = 1;	
-	          	} else if (screen == 7 && step == 9){	
-	          		screen = 8;	
-	          		step = 1;	
-	          	} else if (screen == 8 && step == 7){	
-	          		screen = 9;	
-	          		step = 1;	
-	          	} else if (screen == 9 && step == 5){	
-	          		screen = 10;	
-	          		step = 1;	
-	          	} else if (screen == 10 && step == 8){	
-	          		screen = 11;	
-	          		step = 1;	
-	          	} else if (screen == 11 && step == 2){	
-	          		screen = 1;	
-	          		step = 1;
-	          	} else {
-	          		step += 1;
-	          	}
-
-
 	          	jQuery('.spread_steps_clk li a').removeClass('active');
 	          	jQuery(".spread_steps_clk li:nth-child("+screen+") a").addClass('active');
 
@@ -91,12 +52,12 @@ jQuery(document).ready(function () {
 	          	jQuery("#step"+screen+" .spread_sub_steps_clk li:nth-child("+step+") a").addClass('active');
                         
                         
-                        screen_element = jQuery('#step'+screen+'.lcltc1 .sub-lesson-step-contant');
-                        screen_element.hide()
-                        
-                        step_element = jQuery('#step'+screen+'.lcltc1 #sub'+screen+'-step'+step)
-                        step_element.scrollTop(0).show();
-                        jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+				screen_element = jQuery('#step'+screen+'.lcltc1 .sub-lesson-step-contant');
+				screen_element.hide()
+				
+				step_element = jQuery('#step'+screen+'.lcltc1 #sub'+screen+'-step'+step)
+				step_element.scrollTop(0).show();
+				jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
 	          }
 

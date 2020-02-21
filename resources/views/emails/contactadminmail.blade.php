@@ -1,4 +1,4 @@
-# Hello Admin,
+Hello Admin,
 <br>
 
 {{$contact->username}} sent mail to you.

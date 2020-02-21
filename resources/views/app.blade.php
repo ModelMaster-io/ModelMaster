@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<!-- Start Segment --><script>
-	!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
-	analytics.load("JuzTQA5Z7ELNa6mWuk5cQYipzqfyj08G");
-	analytics.page();
-	}}();
-	</script> <!-- End Segment -->
     <meta name="google-site-verification" content="0GMdqT4QwQwBM1GrXB4qu1mpBCkV0dfm4Kl5d-p_W2U" />
     <meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />

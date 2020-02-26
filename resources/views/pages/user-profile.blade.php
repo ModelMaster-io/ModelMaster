@@ -289,5 +289,6 @@ jQuery(document).ready(function() {
 
     </div>
   </div>
+</div>
 
 @endsection

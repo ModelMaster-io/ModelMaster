@@ -11,7 +11,7 @@
 |
 */
 
-use App\User;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     // print_r(\Auth::user());die;
@@ -107,6 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user-profile', function() {
         $user = \Auth::user();
+        
         return view('pages.user-profile', compact('user'));
     });
 
@@ -121,6 +122,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 
     Route::post('/get_spreadsheet','UserLesson@getTempUserLesson')->name('get_spreadsheet');
+    
 
 });
 

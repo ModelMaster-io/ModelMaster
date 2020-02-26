@@ -42,15 +42,22 @@ class UserLesson extends Controller
 
         $l_id = TempSaveLesson::where(['user_id' => $user_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
 
-        $lesson = TempSaveLesson::where(['lesson_id' => $l_id, 'user_id' => $user_id])->get()->first();
+        if($l_id != null){
 
-        $temo_lsn_data = $lesson->getOriginal();
+            $lesson = TempSaveLesson::where(['lesson_id' => $l_id, 'user_id' => $user_id])->get()->first();
 
-        $step = isset($temo_lsn_data['step']) ? $temo_lsn_data['step'] : '';
-        $screen = isset($temo_lsn_data['screen']) ? $temo_lsn_data['screen'] : '';
-        $spreadsheetData = isset($temo_lsn_data['lesson']) ? unserialize($temo_lsn_data['lesson']) : array();
+            $temo_lsn_data = $lesson->getOriginal();
 
-        return response()->json(['status'=>1,  'spreadsheetData'=>$spreadsheetData, 'screen' => $screen, 'step' => $step]);
+            $step = isset($temo_lsn_data['step']) ? $temo_lsn_data['step'] : '';
+            $screen = isset($temo_lsn_data['screen']) ? $temo_lsn_data['screen'] : '';
+            $spreadsheetData = isset($temo_lsn_data['lesson']) ? unserialize($temo_lsn_data['lesson']) : array();
+
+            return response()->json(['status'=>1,  'spreadsheetData'=>$spreadsheetData, 'screen' => $screen, 'step' => $step]);
+        } else {
+
+            return response()->json(['status'=>0,  'msg'=>'No any spreadsheet running...']);
+
+        }
 
     }
 

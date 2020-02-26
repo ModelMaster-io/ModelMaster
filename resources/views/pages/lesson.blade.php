@@ -62,6 +62,58 @@
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+        //var spread, activeSheet;
+
+
+        //var spread = new GcSpread.Sheets.Spread($("#ss").get(0),{sheetCount:1});
+        //var sheet = spread.getActiveSheet();
+        //sheet.getCell(0, 0).formatter("0.00_);(0.00)");
+        
+        //sheet.getCell(1, 1).text("FakeSoftwareCo Income Statement");
+
+
+         //Set values by calling SetText method
+         //var spread = new GcSpread.Sheets.Spread($("#ss").get(0),{sheetCount:3});
+         //var sheet = spread.getActiveSheet();
+         //sheet.setText(1, 1, 'FakeSoftwareCo Income Statement');
+
+        /*window.onload = function () {
+            spread = new GC.Spread.Sheets.Workbook(document.getElementById("ss"));
+            activeSheet = spread.getActiveSheet();
+            activeSheet.setValue(1, 1, "FakeSoftwareCo Income Statement");
+            var nCondition = new GC.Spread.Sheets.ConditionalFormatting.Condition(GC.Spread.Sheets.ConditionalFormatting.ConditionType.textCondition);
+            nCondition.compareType(GC.Spread.Sheets.ConditionalFormatting.TextCompareType.contains);
+            nCondition.expected("te?t");
+            nCondition.ignoreBlank(true);
+            nCondition.ignoreCase(true);
+            nCondition.useWildCards(true);
+            var validator = new GC.Spread.Sheets.DataValidation.DefaultDataValidator(nCondition);
+            validator.type(GC.Spread.Sheets.DataValidation.CriteriaType.custom);
+            activeSheet.getCell(-1, 0, GC.Spread.Sheets.SheetArea.viewport).validator(validator);
+            activeSheet.getCell(-1, 1, GC.Spread.Sheets.SheetArea.viewport).validator(validator);
+            spread.options.highlightInvalidData = true;
+            activeSheet.bind("ValidationError", vError);
+            activeSheet.bind("LeaveCell", checkError);
+    
+        } 
+        function vError(sender, args) {
+            alert("please enter- Test");
+        }
+        function checkError(sender, args) {
+            var rowCount = activeSheet.getRowCount(), colCount = activeSheet.getColumnCount();
+            for (var i = 0; i < rowCount; i++) {
+                for (var j = 0; j < colCount; j++) {
+                    if (!sheet.isValid(i, j, sheet.getValue(i, j))) {
+                        sheet.setActiveCell(i, j);
+                    }
+                }
+            }
+           
+        }*/
+
+    </script>
+
 <style>
     #ssvp_vp, #ss_tabStrip{
         width: 100% !important;

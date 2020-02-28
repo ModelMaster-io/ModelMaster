@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\TempSaveLesson;
+use App\Lesson;
 
 class UserLesson extends Controller
 {
@@ -25,6 +26,10 @@ class UserLesson extends Controller
         $temp_lesson->lesson = serialize($request->get('lesson'));
 
         $temp_lesson->save();*/
+
+        $lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
+
+        dd($lesson);
 
         $temp_lesson_save = TempSaveLesson::updateOrCreate(
             ['user_id' => Auth::user()->id, 'lesson_id' => $request->get('lesson_id')],

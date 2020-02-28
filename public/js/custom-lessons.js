@@ -127,11 +127,7 @@ jQuery(document).ready(function () {
 	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
 	    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
 
-	    console.log(jsonString);
-
-
 		var curr = jQuery(this);
-
 		
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
@@ -140,7 +136,14 @@ jQuery(document).ready(function () {
 		var parent_step_number = parseInt(parent_step.split("step").pop());
 		
 		var current_sub_step_number = parseInt(current_sub_step.text());
-				
+
+		//console.log('parent_step='+parent_step);
+		//console.log(current_sub_step);
+		//console.log('parent_step_number='+parent_step_number);
+		//console.log('current_sub_step_number='+current_sub_step_number);
+
+		//checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number);
+
 		var data = {
 				'lesson': jsonString,
 				'lesson_id': 1,
@@ -335,3 +338,68 @@ jQuery(document).ready(function () {
     return result;
 }
 */
+
+function checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number){
+
+		console.log(jsonString);
+
+		console.log('parent_step='+parent_step);
+		console.log('parent_step_number='+parent_step_number);
+		console.log('current_sub_step_number='+current_sub_step_number);
+
+		var json_user_obj = JSON.parse(jsonString);
+
+		var datatblData = json_user_obj['sheets'].Sheet1.data.dataTable;
+
+		var json_f_obj = [];
+
+		$.get( "js/lesson_json/simple3-statement/1-2.ssjson", function(data){
+ 		    json_f_obj = JSON.parse(data);
+
+ 		    var json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
+
+ 		    
+ 		    for (var k in datatblData) {
+ 		    	console.log(json_file_obj[1]);
+				console.log(datatblData[k][1]);
+			}
+
+		  	//console.log(json_file_obj);
+		});
+
+		
+
+		//jQuery.each(json_user_obj['sheets'].Sheet1.data.dataTable, function (i) {
+		    /*jQuery.each(json_user_obj['sheets'].Sheet1.data.dataTable, function (element) {
+	        	console.log(element);
+		    });*/
+
+		    //console.log(i);
+		//});
+
+		//Test Json Object
+		/*var json_obj1 = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{"1":{"1":{"value":"FakeSoftwareCo Income Statement"}}},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
+		var json_obj2 = '{"version":"13.0.0","customList":[],"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{"1":{"1":{"value":"FakeSoftwareCo Income Statement"}}},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0}}}';
+
+		json_obj1 = JSON.parse(json_obj1);
+		json_obj2 = JSON.parse(json_obj2);
+
+
+
+
+		//console.log('before loop');
+		console.log(json_obj1['sheets'].Sheet1.data.dataTable[1][1].value);
+		//console.log('after loop');
+
+		var JSONItems = [];
+		$.get( "js/lesson_json/simple3-statement/1-2.ssjson", function( data){
+		  JSONItems = JSON.parse(data);
+		  //console.log('before json read');
+		  console.log(JSONItems);
+		  //console.log('after json read');
+		});*/
+
+
+	return false;
+
+}

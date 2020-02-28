@@ -1,4 +1,4 @@
-# Hello {{$contact->username}},
+Hello {{$contact->username}},
 <br>
 
 We have received your request and we will get back you soon.

@@ -144,6 +144,9 @@ jQuery(document).ready(function () {
 
 		//checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number);
 
+
+		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","rowCount":219,"activeRow":98,"activeCol":4,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"rows":[null,null,{"size":5},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"size":5},null,{"size":5},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"size":5},null,{"size":5}],"columns":[null,{"size":307}],"leftCellIndex":0,"topCellIndex":83,"selections":{"0":{"row":98,"rowCount":1,"col":4,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"gridline":{"showHorizontalGridline":false,"showVerticalGridline":false},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
+
 		var data = {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
 				'lesson': jsonString,

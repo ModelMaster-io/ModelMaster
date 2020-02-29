@@ -31,8 +31,19 @@ class UserLesson extends Controller
 
         $lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
         $lesson = unserialize($lesson);
-        $lesson = json_decode($lesson); 
-        dd($lesson);
+        $lesson = json_decode($lesson, true); 
+
+        /*echo '<pre>';
+        print_r($lesson);
+        exit();*/
+
+
+        $c_lesson = $request->get('lesson');
+        $c_lesson = json_decode($c_lesson, true);
+        echo '<pre>';
+        print_r($lesson);
+        exit();
+        
 
         $temp_lesson_save = TempSaveLesson::updateOrCreate(
             ['user_id' => Auth::user()->id, 'lesson_id' => $request->get('lesson_id')],

@@ -145,7 +145,7 @@ jQuery(document).ready(function () {
 		//checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number);
 
 
-		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","rowCount":219,"activeRow":98,"activeCol":4,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"rows":[null,null,{"size":5},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"size":5},null,{"size":5},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"size":5},null,{"size":5}],"columns":[null,{"size":307}],"leftCellIndex":0,"topCellIndex":83,"selections":{"0":{"row":98,"rowCount":1,"col":4,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"gridline":{"showHorizontalGridline":false,"showVerticalGridline":false},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
+		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
 
 		var data = {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
@@ -254,7 +254,7 @@ jQuery(document).ready(function () {
 		
 	});
 
-	var testobj = '';
+	/*var testobj = '';
 
 	//Test Json Object
 	var json_obj1 = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{"1":{"1":{"value":"FakeSoftwareCo Income Statement"}}},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
@@ -284,7 +284,7 @@ jQuery(document).ready(function () {
 	sheet.setText(1, 1, 'FakeSoftwareCo Income Statement');
 	sheet.setValue(2, 2, 10);
 
-	sheet.getCell(2, 2).formatter("0.00_);(0.00)");
+	sheet.getCell(2, 2).formatter("0.00_);(0.00)");*/
 	//sheet.getText(1, 0) ;
 	 //sheet.getValue(1, 1));
 
@@ -297,7 +297,7 @@ jQuery(document).ready(function () {
 	spread.getActiveSheet().setDataValidator(0, 0, dv);*/
 
 
-    console.log(sheet.getCell(1, 1).text());
+    //console.log(sheet.getCell(1, 1).text());
 	
 	/* JS code for adding historical values */
 	jQuery(document).on('click', '.add-historical-values', function() {

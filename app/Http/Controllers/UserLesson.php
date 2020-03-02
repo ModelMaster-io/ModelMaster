@@ -19,35 +19,51 @@ class UserLesson extends Controller
 
     public function saveTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
 
-        /*$temp_lesson->lesson_id = $request->get('lesson_id');
-        $temp_lesson->user_id = Auth::user()->id;
-        $temp_lesson->screen = $request->get('screen');
-        $temp_lesson->step = $request->get('step');
-        $temp_lesson->lesson = serialize($request->get('lesson'));
-
-        $temp_lesson->save();*/
-
         //dd(serialize($request->get('lesson')));
 
-        $lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
-        $lesson = unserialize($lesson);
-        $lesson = json_decode($lesson, true); 
+        $user_id = Auth::user()->id;
 
-        /*echo '<pre>';
-        print_r($lesson);
-        exit();*/
+        $new_empty_lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
+
+        $old_lesson = TempSaveLesson::where(['lesson_id' => 1, 'user_id' => $user_id])->pluck('lesson')->first();
+
+        if($old_lesson != ''){
+            $lesson = $old_lesson;
+        } else {
+            $lesson = $new_empty_lesson;
+        }
 
 
-        $c_lesson = $request->get('lesson');
-        $c_lesson = json_decode($c_lesson, true);
-        echo '<pre>';
-        print_r($lesson);
-        exit();
-        
+        if($lesson != ''){
+            $lesson = unserialize($lesson);
+            $lesson = json_decode($lesson, true);
+
+            $c_lesson = $request->get('lesson');
+            
+            if($c_lesson != ''){
+
+                $c_lesson = json_decode($c_lesson, true);
+
+                //echo '<pre>';
+                //print_r($c_lesson);
+
+                for ($l=1; $l <= count($c_lesson['sheets']); $l++) {
+
+                    if(!empty($c_lesson['sheets']['Sheet'.$l]['data']['dataTable'])){
+                        $lesson['sheets']['Sheet'.$l]['data']['dataTable'] = $c_lesson['sheets']['Sheet'.$l]['data']['dataTable'];
+                    }
+
+                }
+
+            }
+
+            
+        }
+
 
         $temp_lesson_save = TempSaveLesson::updateOrCreate(
             ['user_id' => Auth::user()->id, 'lesson_id' => $request->get('lesson_id')],
-            ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize($request->get('lesson'))]
+            ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize(json_encode($lesson))]
         );
 
         return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!']);

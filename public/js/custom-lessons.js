@@ -142,7 +142,9 @@ jQuery(document).ready(function () {
 		//console.log('parent_step_number='+parent_step_number);
 		//console.log('current_sub_step_number='+current_sub_step_number);
 
-		//checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number);
+		if(checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number))
+		{
+
 
 
 		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
@@ -206,6 +208,8 @@ jQuery(document).ready(function () {
 		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
 		var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
+
+	}
 
 
 	});
@@ -361,11 +365,29 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
  		    var json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
 
- 		    
- 		    for (var k in datatblData) {
- 		    	console.log(json_file_obj[1]);
-				console.log(datatblData[k][1]);
+			// console.log(json_file_obj);
+
+ 			if (typeof datatblData === "undefined") {
+			    toastr.error('In cell B2, type "FakeSoftwareCo Income Statement"');
+			    return false;
+			} else if (datatblData[1][1].value.toLowerCase() != json_file_obj[1][1].value.toLowerCase()) {
+				toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+				return false;
 			}
+			
+			var sheet = spread.getActiveSheet();
+			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("B2=FakeSoftwareCo Income Statement");
+			dv.showInputMessage(true);
+			dv.inputMessage('In cell B2, type "FakeSoftwareCo Income Statement"');
+			dv.inputTitle("Tip");
+			sheet.getActiveSheet().setDataValidator(1, 1, dv);
+			sheet.highlightInvalidData(true);  
+
+ 			/*console.log(datatblData[1][1]);
+ 		    for (var k in datatblData) {
+ 		    	console.log(json_file_obj[k][1]);
+				console.log(datatblData[k][1]);
+			}*/
 
 		  	//console.log(json_file_obj);
 		});
@@ -403,6 +425,6 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 		});*/
 
 
-	return false;
+	return true;
 
 }

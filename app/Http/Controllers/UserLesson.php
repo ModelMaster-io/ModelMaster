@@ -25,10 +25,10 @@ class UserLesson extends Controller
 
         $new_empty_lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
 
-        $old_lesson = TempSaveLesson::where(['lesson_id' => 1, 'user_id' => $user_id])->pluck('lesson')->first();
+        $existing_lesson = TempSaveLesson::where(['lesson_id' => 1, 'user_id' => $user_id])->pluck('lesson')->first();
 
-        if($old_lesson != ''){
-            $lesson = $old_lesson;
+        if($existing_lesson != ''){
+            $lesson = $existing_lesson;
         } else {
             $lesson = $new_empty_lesson;
         }

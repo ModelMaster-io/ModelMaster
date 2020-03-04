@@ -367,21 +367,41 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
 			// console.log(json_file_obj);
 
- 			if (typeof datatblData === "undefined") {
+ 			/*if (typeof datatblData === "undefined") {
 			    toastr.error('In cell B2, type "FakeSoftwareCo Income Statement"');
 			    return false;
 			} else if (datatblData[1][1].value.toLowerCase() != json_file_obj[1][1].value.toLowerCase()) {
 				toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
 				return false;
-			}
+			}*/
+
+
+			/*var dv = GcSpread.Sheets.DefaultDataValidator.createNumberValidator(GcSpread.Sheets.ComparisonOperator.Between, "5", "20", true);  
+			dv.showInputMessage = true;  
+			dv.inputMessage = "Value must be between 5 and 20.";  
+			dv.inputTitle = "tip";  
+			activeSheet.setDataValidator(1, 1, dv); 
+			spread.highlightInvalidData(true);   */
 			
-			var sheet = spread.getActiveSheet();
-			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("B2=FakeSoftwareCo Income Statement");
+			/*var sheet = spread.getActiveSheet();
+			//var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator(B2='FakeSoftwareCo Income Statement');
+			var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator('B2=FakeSoftwareCo Income Statement');
 			dv.showInputMessage(true);
 			dv.inputMessage('In cell B2, type "FakeSoftwareCo Income Statement"');
 			dv.inputTitle("Tip");
 			sheet.getActiveSheet().setDataValidator(1, 1, dv);
-			sheet.highlightInvalidData(true);  
+			sheet.highlightInvalidData(true);*/
+
+			spread.options.highlightInvalidData = true;
+			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("A1>0");
+			//var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator("A1=Test");
+			dv.showInputMessage(true);
+			dv.inputMessage("Enter a value greater than 0 in A1.");
+			dv.inputTitle("Tip");
+			dv.showErrorMessage(true);
+			dv.errorMessage("Incorrect Value");
+			spread.getActiveSheet().setDataValidator(1, 1, dv);
+
 
  			/*console.log(datatblData[1][1]);
  		    for (var k in datatblData) {

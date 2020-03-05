@@ -385,7 +385,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			
 			/*var sheet = spread.getActiveSheet();
 			//var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator(B2='FakeSoftwareCo Income Statement');
-			var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator('B2=FakeSoftwareCo Income Statement');
+			var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator('A1>0');
 			dv.showInputMessage(true);
 			dv.inputMessage('In cell B2, type "FakeSoftwareCo Income Statement"');
 			dv.inputTitle("Tip");
@@ -393,15 +393,42 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			sheet.highlightInvalidData(true);*/
 
 			spread.options.highlightInvalidData = true;
-			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("A1>0");
-			//var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator("A1=Test");
+			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("A1=Test");
 			dv.showInputMessage(true);
 			dv.inputMessage("Enter a value greater than 0 in A1.");
 			dv.inputTitle("Tip");
 			dv.showErrorMessage(true);
-			dv.errorMessage("Incorrect Value");
+			dv.errorMessage("Enter a value greater than 0 in A1.");
 			spread.getActiveSheet().setDataValidator(1, 1, dv);
 
+
+			/*spread.getActiveSheet().setDataValidator(2, 2, createTextLengthValidator(0));
+			
+			function createTextLengthValidator(length) {
+			  var dv2 = GC.Spread.Sheets.DataValidation.createTextLengthValidator(GC.Spread.Sheets.ConditionalFormatting.ComparisonOperators.greaterThan, length);
+			  dv2.errorMessage('Please enter the value in cell');
+			  dv2.showInputMessage(true);
+			  dv2.inputTitle("tip");	
+			  return dv2;
+			}*/
+
+
+			spread.options.highlightInvalidData = true ;
+			var dv3 = GC.Spread.Sheets.DataValidation.createTextLengthValidator(GC.Spread.Sheets.ConditionalFormatting.ComparisonOperators.equalsTo, "My Test");
+			dv3.showInputMessage ( true );
+			dv3.inputMessage ( "Enter the proper value in cell" );
+			dv3.inputTitle ( "Tip" );
+			spread.getActiveSheet().setDataValidator(3, 3, dv3);
+
+			/*var dv1 = new GC.Spread.Sheets.DataValidation.createListValidator('Fruit,Vegetable,Food');
+			dv1.highlightStyle({
+			    type: GC.Spread.Sheets.DataValidation.HighlightType.circle,
+			    color: 'red'
+			});
+			var sheet = spread.getActiveSheet()
+			dv1.ignoreBlank(false);
+			sheet.setDataValidator(1, 1, dv1);
+			spread.options.highlightInvalidData = true;*/
 
  			/*console.log(datatblData[1][1]);
  		    for (var k in datatblData) {

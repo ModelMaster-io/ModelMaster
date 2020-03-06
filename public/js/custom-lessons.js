@@ -375,13 +375,6 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 				return false;
 			}*/
 
-
-			/*var dv = GcSpread.Sheets.DefaultDataValidator.createNumberValidator(GcSpread.Sheets.ComparisonOperator.Between, "5", "20", true);  
-			dv.showInputMessage = true;  
-			dv.inputMessage = "Value must be between 5 and 20.";  
-			dv.inputTitle = "tip";  
-			activeSheet.setDataValidator(1, 1, dv); 
-			spread.highlightInvalidData(true);   */
 			
 			/*var sheet = spread.getActiveSheet();
 			//var dv = GC.Spread.Sheets.DataValidation.DefaultDataValidator(B2='FakeSoftwareCo Income Statement');
@@ -392,14 +385,14 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			sheet.getActiveSheet().setDataValidator(1, 1, dv);
 			sheet.highlightInvalidData(true);*/
 
-			spread.options.highlightInvalidData = true;
+			/*spread.options.highlightInvalidData = true;
 			var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("A1=Test");
 			dv.showInputMessage(true);
 			dv.inputMessage("Enter a value greater than 0 in A1.");
 			dv.inputTitle("Tip");
 			dv.showErrorMessage(true);
 			dv.errorMessage("Enter a value greater than 0 in A1.");
-			spread.getActiveSheet().setDataValidator(1, 1, dv);
+			spread.getActiveSheet().setDataValidator(1, 1, dv);*/
 
 
 			/*spread.getActiveSheet().setDataValidator(2, 2, createTextLengthValidator(0));
@@ -413,12 +406,63 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			}*/
 
 
-			spread.options.highlightInvalidData = true ;
+			/*spread.options.highlightInvalidData = true ;
 			var dv3 = GC.Spread.Sheets.DataValidation.createTextLengthValidator(GC.Spread.Sheets.ConditionalFormatting.ComparisonOperators.equalsTo, "My Test");
 			dv3.showInputMessage ( true );
 			dv3.inputMessage ( "Enter the proper value in cell" );
 			dv3.inputTitle ( "Tip" );
-			spread.getActiveSheet().setDataValidator(3, 3, dv3);
+			spread.getActiveSheet().setDataValidator(3, 3, dv3);*/
+
+			var sheet = spread.getActiveSheet();
+			var cell = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
+			console.log(sheet.getValue(1, 1));
+
+			if(sheet.getValue(1, 1) == null){
+				toastr.error('Value can not be blank');
+			   addCellBorder(cell);
+			   return false;
+			} else if (sheet.getValue(1, 1) !== 'DecodeUp') {
+			   toastr.error('Please enter proper value');
+			   addCellBorder(cell);
+			   return false;
+			  /*var styleEmpty = new GC.Spread.Sheets.Style();
+			  styleEmpty.backColor = undefined;
+  			  styleEmpty.foreColor = undefined;
+
+			  sheet.conditionalFormats.addCellValueRule(
+			  GC.Spread.Sheets.ConditionalFormatting.ComparisonOperators.EqualsTo,
+			  0, undefined, styleEmpty,
+			  [new GC.Spread.Sheets.Range(1, 1, 1, 1)]);*/
+
+			/*var sheet = spread.getActiveSheet();
+		    spread.options.highlightInvalidData = true;
+		    var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("AND(NOT(ISBLANK((A1))),B1>10)");
+		    dv.showInputMessage(true);
+		    dv.inputMessage("Enter a value greater than 0 in A1.");
+		    dv.inputTitle("Tip");
+		    dv.showErrorMessage(true);
+		    dv.errorMessage("Incorrect Value");
+		    dv.errorStyle(GC.Spread.Sheets.DataValidation.ErrorStyle.stop);
+		    sheet.setDataValidator(1, 1, dv);
+		    sheet.setValue(1,1,"Val");*/
+
+			} else {
+			   removeCellBorder(cell);
+			   
+			}
+
+
+
+
+
+			//This example validates the cell data.
+			/*spread.options.highlightInvalidData = true;
+			var dv = new GC.Spread.Sheets.DataValidation.createTextLengthValidator(GC.Spread.Sheets.ConditionalFormatting.ComparisonOperators.greaterThan, 3);
+			dv.showInputMessage(true);
+			dv.inputMessage("Number of characters must be greater than 3.");
+			dv.inputTitle("tip");
+			spread.getActiveSheet().setDataValidator(0, 0, 1, 1, dv, GC.Spread.Sheets.SheetArea.viewport);*/
+			//spread.getActiveSheet().setValue(0, 0, "");
 
 			/*var dv1 = new GC.Spread.Sheets.DataValidation.createListValidator('Fruit,Vegetable,Food');
 			dv1.highlightStyle({
@@ -474,4 +518,35 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
 	return true;
 
+}
+
+
+// function initSpread(spread) {
+//     var self = this;
+//     var sheet = spread.getActiveSheet();
+//     spread.options.highlightInvalidData = true;
+//     var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("AND(NOT(ISBLANK((A1))),B1>10)");
+//     dv.showInputMessage(true);
+//     dv.inputMessage("Enter a value greater than 0 in A1.");
+//     dv.inputTitle("Tip");
+//     dv.showErrorMessage(true);
+//     dv.errorMessage("Incorrect Value");
+//     dv.errorStyle(GC.Spread.Sheets.DataValidation.ErrorStyle.stop);
+//     sheet.setDataValidator(1, 1, dv);
+//     sheet.setValue(1,1,"Val");
+// }
+
+
+function addCellBorder(cell) {
+   cell.borderLeft(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
+   cell.borderTop(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
+   cell.borderRight(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
+   cell.borderBottom(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
+}
+
+function removeCellBorder(cell) {
+	cell.borderLeft(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
+   cell.borderTop(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
+   cell.borderRight(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
+   cell.borderBottom(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
 }

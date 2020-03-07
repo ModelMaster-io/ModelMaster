@@ -367,13 +367,23 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
 			// console.log(json_file_obj);
 
- 			/*if (typeof datatblData === "undefined") {
-			    toastr.error('In cell B2, type "FakeSoftwareCo Income Statement"');
+ 			if (typeof datatblData === "undefined") {
+			    toastr.error('Something goes wrong! Please try again');
 			    return false;
-			} else if (datatblData[1][1].value.toLowerCase() != json_file_obj[1][1].value.toLowerCase()) {
-				toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
-				return false;
-			}*/
+			}
+			else {
+				if (typeof datatblData[1][1].value === "undefined") {
+				    toastr.error('Cell B2 Can not be blank');
+				    return false;
+				} else if (datatblData[1][1].value.toLowerCase() != json_file_obj[1][1].value.toLowerCase()) {
+					toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+					return false;
+				}
+
+			}
+
+
+			return false;
 
 			
 			/*var sheet = spread.getActiveSheet();

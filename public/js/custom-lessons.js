@@ -4,6 +4,10 @@ jQuery(document).ready(function () {
 	jQuery(".lcltc1-mm").niceScroll();
 	// analytics.track("Opened Lesson", {"lesson": "3-Statement Model"});
 
+	toastr.options = {
+	  "positionClass": "toast-bottom-right"
+	}
+
     Tipped.create('.mm-tooltip', {
     	  skin: 'light',
 		  position: 'topleft',
@@ -142,9 +146,10 @@ jQuery(document).ready(function () {
 		//console.log('parent_step_number='+parent_step_number);
 		//console.log('current_sub_step_number='+current_sub_step_number);
 
+		//var rtn = checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number);
+		//console.log('trtuenrjenr=='+rtn);
 		if(checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number))
 		{
-
 
 
 		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
@@ -348,7 +353,7 @@ jQuery(document).ready(function () {
 
 function checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number){
 
-		console.log(jsonString);
+		//console.log(jsonString);
 
 		console.log('parent_step='+parent_step);
 		console.log('parent_step_number='+parent_step_number);
@@ -372,18 +377,27 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			    return false;
 			}
 			else {
+				var sheet = spread.getActiveSheet();
+				var cell = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
 				if (typeof datatblData[1][1].value === "undefined") {
 				    toastr.error('Cell B2 Can not be blank');
+				    addCellBorder(cell);
 				    return false;
-				} else if (datatblData[1][1].value.toLowerCase() != json_file_obj[1][1].value.toLowerCase()) {
+				} else if (datatblData[1][1].value != json_file_obj[1][1].value) {
 					toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+					addCellBorder(cell);
 					return false;
+				} else {
+					removeCellBorder(cell);
+					return true;
 				}
 
 			}
 
+			});
 
-			return false;
+
+		}
 
 			
 			/*var sheet = spread.getActiveSheet();
@@ -423,7 +437,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			dv3.inputTitle ( "Tip" );
 			spread.getActiveSheet().setDataValidator(3, 3, dv3);*/
 
-			var sheet = spread.getActiveSheet();
+			/*var sheet = spread.getActiveSheet();
 			var cell = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
 			console.log(sheet.getValue(1, 1));
 
@@ -434,7 +448,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			} else if (sheet.getValue(1, 1) !== 'DecodeUp') {
 			   toastr.error('Please enter proper value');
 			   addCellBorder(cell);
-			   return false;
+			   return false;*/
 			  /*var styleEmpty = new GC.Spread.Sheets.Style();
 			  styleEmpty.backColor = undefined;
   			  styleEmpty.foreColor = undefined;
@@ -456,10 +470,10 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 		    sheet.setDataValidator(1, 1, dv);
 		    sheet.setValue(1,1,"Val");*/
 
-			} else {
+			/*} else {
 			   removeCellBorder(cell);
 			   
-			}
+			}*/
 
 
 
@@ -491,7 +505,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			}*/
 
 		  	//console.log(json_file_obj);
-		});
+		
 
 		
 
@@ -526,9 +540,6 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 		});*/
 
 
-	return true;
-
-}
 
 
 // function initSpread(spread) {

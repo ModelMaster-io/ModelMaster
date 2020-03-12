@@ -365,51 +365,71 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
 		var json_f_obj = [];
 
-		$.ajax({
-		    type: "Get",
-		    url: "js/lesson_json/simple3-statement/1-2.ssjson",
-		    dataType: "json",
-		    success: function(json_f_obj) {
-		    	//json_f_obj = JSON.parse(data);
+		var flname = parent_step_number+'-'+current_sub_step_number+'.ssjson';
 
-		    	console.log('ajax obj...');
-		    	console.log(json_f_obj);
+		//console.log('flname='+flname);
 
-		    	var json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
+		if(flname != '1-1.ssjson') {
+			var json_file_obj;
 
-	 		    if (typeof datatblData === "undefined") {
+			readTextFile(window.location.origin+"/js/lesson_json/simple3-statement/"+flname, function(text){
+			    var data = JSON.parse(text);
+			    return data;
+			});
+
+			/*$.ajax({
+			    type: "Get",
+			    url: window.location.origin+"/js/lesson_json/simple3-statement/"+flname,
+			    dataType: "json",
+			    success: function(json_f_obj) {
+			    	//json_f_obj = JSON.parse(data);
+			    	
+			    	json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
+			    	return json_file_obj;
+
+			    },
+			    error: function(){
+			        
+			    }
+			});*/
+
+			  /*if (typeof datatblData === "undefined") {
 				    toastr.error('Something goes wrong! Please try again');
 				    console.log('first if condition is called');
 				    return false;
 				}
 				else {
+
+
 					var sheet = spread.getActiveSheet();
-					var cell = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
-					if (typeof datatblData[1] === "undefined" || typeof datatblData[1][1].value === "undefined") {
-					    toastr.error('Cell B2 Can not be blank');
-					    addCellBorder(cell);
-					    console.log('second if condition is called');
-					    return false;
-					} else if (datatblData[1][1].value != json_file_obj[1][1].value) {
-						toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
-						addCellBorder(cell);
-						console.log('third if condition is called');
-						return false;
-					} else {
-						removeCellBorder(cell);
-						console.log('fourth if condition is called');
-						return true;
+
+					if(parent_step_number+'-'+current_sub_step_number == '1-2'){
+
+						var cell = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
+						if (typeof datatblData[1] === "undefined" || typeof datatblData[1][1].value === "undefined") {
+						    toastr.error('Cell B2 Can not be blank');
+						    addCellBorder(cell);
+						    console.log('second if condition is called');
+						    return false;
+						} else if (datatblData[1][1].value != json_file_obj[1][1].value) {
+							toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+							addCellBorder(cell);
+							console.log('third if condition is called');
+							return false;
+						} else {
+							removeCellBorder(cell);
+							console.log('fourth if condition is called');
+							return true;
+						}
+
 					}
 
-				}
+				}*/
 
-				return 'test';
 
-		    },
-		    error: function(){
-		        alert("json not found");
-		    }
-		});
+		}
+
+
 
 		/*$.get( "js/lesson_json/simple3-statement/1-2.ssjson", function(data){
  		    json_f_obj = JSON.parse(data);
@@ -621,4 +641,16 @@ function removeCellBorder(cell) {
    cell.borderTop(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
    cell.borderRight(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
    cell.borderBottom(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
+}
+
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
 }

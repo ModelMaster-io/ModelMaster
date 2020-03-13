@@ -146,11 +146,10 @@ jQuery(document).ready(function () {
 		//console.log('parent_step_number='+parent_step_number);
 		//console.log('current_sub_step_number='+current_sub_step_number);
 
-		console.log(checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number));
+		//console.log(checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number));
 
-		if(checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number))
+		if(mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number))
 		{
-
 
 		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
 
@@ -351,13 +350,13 @@ jQuery(document).ready(function () {
 }
 */
 
-function checkUserCorrectValue(jsonString, parent_step, parent_step_number, current_sub_step_number){
+function mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number){
 
 		//console.log(jsonString);
 
-		console.log('parent_step='+parent_step);
-		console.log('parent_step_number='+parent_step_number);
-		console.log('current_sub_step_number='+current_sub_step_number);
+		//console.log('parent_step='+parent_step);
+		//console.log('parent_step_number='+parent_step_number);
+		//console.log('current_sub_step_number='+current_sub_step_number);
 
 		var json_user_obj = JSON.parse(jsonString);
 
@@ -367,15 +366,248 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 
 		var flname = parent_step_number+'-'+current_sub_step_number+'.ssjson';
 
-		//console.log('flname='+flname);
 
-		if(flname != '1-1.ssjson') {
-			var json_file_obj;
+		var sheet = spread.getActiveSheet();
 
-			readTextFile(window.location.origin+"/js/lesson_json/simple3-statement/"+flname, function(text){
-			    var data = JSON.parse(text);
-			    return data;
-			});
+
+		if (typeof datatblData === "undefined") {
+				    toastr.error('Please fill the values in spreadsheet');
+				    return false;
+				}
+				else {
+
+					var sheet = spread.getActiveSheet();
+
+					switch (parent_step_number+'-'+current_sub_step_number) {
+
+						case '1-2':
+
+							var cell_11 = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[1] === "undefined" || typeof datatblData[1][1].value === "undefined") {
+							    toastr.error('Cell B2 Can not be blank');
+							    addCellBorder(cell_11);
+							    return false;
+							} else if (typeof datatblData[1][1].value != "string") {
+								toastr.error('Please enter only string in cell');
+								addCellBorder(cell_11);
+								return false;
+							} else if (datatblData[1][1].value.toLowerCase() != 'fakesoftwareco income statement') {
+								toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+								addCellBorder(cell_11);
+								return false;
+							} else {
+								removeCellBorder(cell_11);
+							}
+
+							break;
+
+						case '1-4': 
+
+							var cell_31 = sheet.getCell(3, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][1].value === "undefined") {
+							    toastr.error('Cell B4 Can not be blank');
+							    addCellBorder(cell_31);
+							    return false;
+							} else if (typeof datatblData[3][1].value != "string") {
+								toastr.error('Please enter only string in cell');
+								addCellBorder(cell_31);
+								return false;
+							} else if (datatblData[3][1].value.toLowerCase() != '($ in millions)') {
+								toastr.error('Please type "($ in millions)" in cell B4');
+								addCellBorder(cell_31);
+								return false;
+							} else {
+								removeCellBorder(cell_31);
+							}
+
+							break;
+
+						case '1-5':
+
+							var cell_32 = sheet.getCell(3, 2, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][2] === "undefined" || typeof datatblData[3][2].value === "undefined") {
+							    toastr.error('Cell C4 Can not be blank');
+							    addCellBorder(cell_32);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][2].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_32);
+								return false;
+							} else if (datatblData[3][2].value != '2017') {
+								toastr.error('Please type "2017" in cell C4');
+								addCellBorder(cell_32);
+								return false;
+							} else {
+								removeCellBorder(cell_32);
+							}
+
+							var cell_33 = sheet.getCell(3, 3, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][3] === "undefined" || typeof datatblData[3][3].value === "undefined") {
+							    toastr.error('Cell D4 Can not be blank');
+							    addCellBorder(cell_33);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][3].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_33);
+								return false;
+							} else if (datatblData[3][3].value != '2018') {
+								toastr.error('Please type "2018" in cell D4');
+								addCellBorder(cell_33);
+								return false;
+							} else {
+								removeCellBorder(cell_33);
+							}
+
+							var cell_34 = sheet.getCell(3, 4, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][4] === "undefined" || typeof datatblData[3][4].value === "undefined") {
+							    toastr.error('Cell E4 Can not be blank');
+							    addCellBorder(cell_34);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][4].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_34);
+								return false;
+							} else if (datatblData[3][4].value != '2019') {
+								toastr.error('Please type "2019" in cell E4');
+								addCellBorder(cell_34);
+								return false;
+							} else {
+								removeCellBorder(cell_34);
+							}
+
+							var cell_35 = sheet.getCell(3, 5, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][5] === "undefined" || typeof datatblData[3][5].value === "undefined") {
+							    toastr.error('Cell F4 Can not be blank');
+							    addCellBorder(cell_35);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][5].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_35);
+								return false;
+							} else if (datatblData[3][5].value != '2020') {
+								toastr.error('Please type "2020" in cell F4');
+								addCellBorder(cell_35);
+								return false;
+							} else {
+								removeCellBorder(cell_35);
+							}
+
+							var cell_36 = sheet.getCell(3, 6, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][6] === "undefined" || typeof datatblData[3][6].value === "undefined") {
+							    toastr.error('Cell G4 Can not be blank');
+							    addCellBorder(cell_36);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][6].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_36);
+								return false;
+							} else if (datatblData[3][6].value != '2021') {
+								toastr.error('Please type "2021" in cell G4');
+								addCellBorder(cell_36);
+								return false;
+							} else {
+								removeCellBorder(cell_36);
+							}
+
+							var cell_37 = sheet.getCell(3, 3, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][7] === "undefined" || typeof datatblData[3][7].value === "undefined") {
+							    toastr.error('Cell H4 Can not be blank');
+							    addCellBorder(cell_37);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][7].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_37);
+								return false;
+							} else if (datatblData[3][7].value != '2022') {
+								toastr.error('Please type "2022" in cell H4');
+								addCellBorder(cell_37);
+								return false;
+							} else {
+								removeCellBorder(cell_37);
+							}
+
+							var cell_38 = sheet.getCell(3, 8, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][8] === "undefined" || typeof datatblData[3][8].value === "undefined") {
+							    toastr.error('Cell I4 Can not be blank');
+							    addCellBorder(cell_38);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][8].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_38);
+								return false;
+							} else if (datatblData[3][8].value != '2023') {
+								toastr.error('Please type "2023" in cell I4');
+								addCellBorder(cell_38);
+								return false;
+							} else {
+								removeCellBorder(cell_38);
+							}
+
+							var cell_39 = sheet.getCell(3, 9, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[3] === "undefined" || typeof datatblData[3][9] === "undefined" || typeof datatblData[3][9].value === "undefined") {
+							    toastr.error('Cell J4 Can not be blank');
+							    addCellBorder(cell_39);
+							    return false;
+							} else if (!jQuery.isNumeric(datatblData[3][9].value)) {
+								toastr.error('Please enter only numbers in cell');
+								addCellBorder(cell_39);
+								return false;
+							} else if (datatblData[3][9].value != '2024') {
+								toastr.error('Please type "2024" in cell J4');
+								addCellBorder(cell_39);
+								return false;
+							} else {
+								removeCellBorder(cell_39);
+							}
+
+							break;
+
+						default:
+							console.log('default case is called!');
+					}
+
+
+						return true;
+
+				}
+
+
+
+	}
+
+			//console.log('flname='+flname);
+
+			/*if(flname != '1-1.ssjson') {
+				var json_file_obj;
+
+				readTextFile(window.location.origin+"/js/lesson_json/simple3-statement/"+flname, function(text){
+				    var data = JSON.parse(text);
+				    return data;
+				});
+
+			}*/
+
+
+			/*if(parent_step_number+'-'+current_sub_step_number == '1-2'){
+
+				var cell_11 = sheet.getCell(1, 1, GC.Spread.Sheets.SheetArea.viewport);
+				if (typeof datatblData[1] === "undefined" || typeof datatblData[1][1].value === "undefined") {
+				    toastr.error('Cell B2 Can not be blank');
+				    addCellBorder(cell_11);
+				    return false;
+				} else if (typeof datatblData[1][1].value != "string") {
+					toastr.error('Please enter only string in cell');
+					addCellBorder(cell_11);
+					return false;
+				} else if (datatblData[1][1].value.toLowerCase() != 'fakesoftwareco income statement') {
+					toastr.error('Please type "FakeSoftwareCo Income Statement" in cell B2');
+					addCellBorder(cell_11);
+					return false;
+				} else {
+					removeCellBorder(cell_11);
+				}
+
+			}*/
 
 			/*$.ajax({
 			    type: "Get",
@@ -427,7 +659,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 				}*/
 
 
-		}
+		//}
 
 
 
@@ -467,7 +699,7 @@ function checkUserCorrectValue(jsonString, parent_step, parent_step_number, curr
 			});*/
 
 
-		}
+		//}
 
 
 			

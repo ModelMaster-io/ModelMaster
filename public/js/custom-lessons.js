@@ -316,7 +316,7 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 
 			jQuery.ajax({
 			    type: "Get",
-			    url: window.location.origin+"/js/lesson_json/simple3-statement/11-1.ssjson",
+			    url: window.location.origin+"/js/lesson_json/simple3-statement/"+flname,
 			    async: false,
 			    dataType: "json",
 			    success: function(json_f_obj) {
@@ -439,6 +439,320 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 							} else {
 								removeCellBorder(cell_39);
 							}
+
+							break;
+
+
+						case '2-1':
+
+							var cell_41 = sheet.getCell(4, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[4] === "undefined" || typeof datatblData[4][1] === "undefined" || typeof datatblData[4][1].value != "string" || (datatblData[4][1].value.toLowerCase() != json_file_obj[4][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_41);
+							    return false;
+							} else {
+								removeCellBorder(cell_41);
+							}
+
+
+							var cell_51 = sheet.getCell(5, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[5] === "undefined" || typeof datatblData[5][1] === "undefined" || typeof datatblData[5][1].value != "string" || (datatblData[5][1].value.toLowerCase() != json_file_obj[5][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_51);
+							    return false;
+							} else {
+								removeCellBorder(cell_51);
+							}
+
+
+							var cell_61 = sheet.getCell(6, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[6] === "undefined" || typeof datatblData[6][1] === "undefined" || typeof datatblData[6][1].value != "string" || (datatblData[6][1].value.toLowerCase() != json_file_obj[6][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_61);
+							    return false;
+							} else {
+								removeCellBorder(cell_61);
+							}
+
+							break;
+
+						case '2-2':
+
+							var cell_81 = sheet.getCell(8, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[8] === "undefined" || typeof datatblData[8][1] === "undefined" || typeof datatblData[8][1].value != "string" || (datatblData[8][1].value.toLowerCase() != json_file_obj[8][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_81);
+							    return false;
+							} else {
+								removeCellBorder(cell_81);
+							}
+
+
+							var cell_91 = sheet.getCell(9, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[9] === "undefined" || typeof datatblData[9][1] === "undefined" || typeof datatblData[9][1].value != "string" || (datatblData[9][1].value.toLowerCase() != json_file_obj[9][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_91);
+							    return false;
+							} else {
+								removeCellBorder(cell_91);
+							}
+
+							break;
+
+						case '2-3':
+
+							var cell_111 = sheet.getCell(11, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[11] === "undefined" || typeof datatblData[11][1] === "undefined" || typeof datatblData[11][1].value != "string" || (datatblData[11][1].value.toLowerCase() != json_file_obj[11][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_111);
+							    return false;
+							} else {
+								removeCellBorder(cell_111);
+							}
+
+
+							var cell_121 = sheet.getCell(12, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[12] === "undefined" || typeof datatblData[12][1] === "undefined" || typeof datatblData[12][1].value != "string" || (datatblData[12][1].value.toLowerCase() != json_file_obj[12][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_121);
+							    return false;
+							} else {
+								removeCellBorder(cell_121);
+							}
+
+							break;
+
+						case '2-4':
+
+							var cell_141 = sheet.getCell(14, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[14] === "undefined" || typeof datatblData[14][1] === "undefined" || typeof datatblData[14][1].value != "string" || (datatblData[14][1].value.toLowerCase() != json_file_obj[14][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_141);
+							    return false;
+							} else {
+								removeCellBorder(cell_141);
+							}
+
+
+							var cell_151 = sheet.getCell(15, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[15] === "undefined" || typeof datatblData[15][1] === "undefined" || typeof datatblData[15][1].value != "string" || (datatblData[15][1].value.toLowerCase() != json_file_obj[15][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_151);
+							    return false;
+							} else {
+								removeCellBorder(cell_151);
+							}
+
+							break;
+
+						case '2-5':
+
+							var cell_171 = sheet.getCell(17, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[17] === "undefined" || typeof datatblData[17][1] === "undefined" || typeof datatblData[17][1].value != "string" || (datatblData[17][1].value.toLowerCase() != json_file_obj[17][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_171);
+							    return false;
+							} else {
+								removeCellBorder(cell_171);
+							}
+
+
+							var cell_181 = sheet.getCell(18, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[18] === "undefined" || typeof datatblData[18][1] === "undefined" || typeof datatblData[18][1].value != "string" || (datatblData[18][1].value.toLowerCase() != json_file_obj[18][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_181);
+							    return false;
+							} else {
+								removeCellBorder(cell_181);
+							}
+
+							var cell_201 = sheet.getCell(20, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[20] === "undefined" || typeof datatblData[20][1] === "undefined" || typeof datatblData[20][1].value != "string" || (datatblData[20][1].value.toLowerCase() != json_file_obj[20][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_201);
+							    return false;
+							} else {
+								removeCellBorder(cell_201);
+							}
+
+
+							var cell_211 = sheet.getCell(21, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[21] === "undefined" || typeof datatblData[21][1] === "undefined" || typeof datatblData[21][1].value != "string" || (datatblData[21][1].value.toLowerCase() != json_file_obj[21][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_211);
+							    return false;
+							} else {
+								removeCellBorder(cell_211);
+							}
+
+							break;
+
+						case '3-1':
+
+							var cell_231 = sheet.getCell(23, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[23] === "undefined" || typeof datatblData[23][1] === "undefined" || typeof datatblData[23][1].value != "string" || (datatblData[23][1].value.toLowerCase() != json_file_obj[23][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_231);
+							    return false;
+							} else {
+								removeCellBorder(cell_231);
+							}
+
+							break;
+
+
+						case '3-2':
+
+							var cell_271 = sheet.getCell(27, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[27] === "undefined" || typeof datatblData[27][1] === "undefined" || typeof datatblData[27][1].value != "string" || (datatblData[27][1].value.toLowerCase() != json_file_obj[27][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_271);
+							    return false;
+							} else {
+								removeCellBorder(cell_271);
+							}
+
+
+							var cell_281 = sheet.getCell(28, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[28] === "undefined" || typeof datatblData[28][1] === "undefined" || typeof datatblData[28][1].value != "string" || (datatblData[28][1].value.toLowerCase() != json_file_obj[28][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_281);
+							    return false;
+							} else {
+								removeCellBorder(cell_281);
+							}
+
+
+							var cell_291 = sheet.getCell(29, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[29] === "undefined" || typeof datatblData[29][1] === "undefined" || typeof datatblData[29][1].value != "string" || (datatblData[29][1].value.toLowerCase() != json_file_obj[29][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_291);
+							    return false;
+							} else {
+								removeCellBorder(cell_291);
+							}
+
+
+							var cell_301 = sheet.getCell(30, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[30] === "undefined" || typeof datatblData[30][1] === "undefined" || typeof datatblData[30][1].value != "string" || (datatblData[30][1].value.toLowerCase() != json_file_obj[30][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_301);
+							    return false;
+							} else {
+								removeCellBorder(cell_301);
+							}
+
+							break;
+
+
+						case '3-3':
+
+
+							var cell_321 = sheet.getCell(32, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[32] === "undefined" || typeof datatblData[32][1] === "undefined" || typeof datatblData[32][1].value != "string" || (datatblData[32][1].value.toLowerCase() != json_file_obj[32][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_321);
+							    return false;
+							} else {
+								removeCellBorder(cell_321);
+							}
+
+							var cell_331 = sheet.getCell(33, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[33] === "undefined" || typeof datatblData[33][1] === "undefined" || typeof datatblData[33][1].value != "string" || (datatblData[33][1].value.toLowerCase() != json_file_obj[33][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_331);
+							    return false;
+							} else {
+								removeCellBorder(cell_331);
+							}
+
+
+							var cell_341 = sheet.getCell(34, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[34] === "undefined" || typeof datatblData[34][1] === "undefined" || typeof datatblData[34][1].value != "string" || (datatblData[34][1].value.toLowerCase() != json_file_obj[34][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_341);
+							    return false;
+							} else {
+								removeCellBorder(cell_341);
+							}
+
+
+							var cell_351 = sheet.getCell(35, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[35] === "undefined" || typeof datatblData[35][1] === "undefined" || typeof datatblData[35][1].value != "string" || (datatblData[35][1].value.toLowerCase() != json_file_obj[35][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_351);
+							    return false;
+							} else {
+								removeCellBorder(cell_351);
+							}
+
+
+							var cell_361 = sheet.getCell(36, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[36] === "undefined" || typeof datatblData[36][1] === "undefined" || typeof datatblData[36][1].value != "string" || (datatblData[36][1].value.toLowerCase() != json_file_obj[36][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_361);
+							    return false;
+							} else {
+								removeCellBorder(cell_361);
+							}
+
+
+							break;
+
+
+						case '3-4':
+
+							var cell_381 = sheet.getCell(38, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[38] === "undefined" || typeof datatblData[38][1] === "undefined" || typeof datatblData[38][1].value != "string" || (datatblData[38][1].value.toLowerCase() != json_file_obj[38][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_381);
+							    return false;
+							} else {
+								removeCellBorder(cell_381);
+							}
+
+
+							var cell_391 = sheet.getCell(39, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[39] === "undefined" || typeof datatblData[39][1] === "undefined" || typeof datatblData[39][1].value != "string" || (datatblData[39][1].value.toLowerCase() != json_file_obj[39][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_391);
+							    return false;
+							} else {
+								removeCellBorder(cell_391);
+							}
+
+
+							var cell_401 = sheet.getCell(40, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[40] === "undefined" || typeof datatblData[40][1] === "undefined" || typeof datatblData[40][1].value != "string" || (datatblData[40][1].value.toLowerCase() != json_file_obj[40][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_401);
+							    return false;
+							} else {
+								removeCellBorder(cell_401);
+							}
+
+
+							var cell_411 = sheet.getCell(41, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[41] === "undefined" || typeof datatblData[41][1] === "undefined" || typeof datatblData[41][1].value != "string" || (datatblData[41][1].value.toLowerCase() != json_file_obj[41][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_411);
+							    return false;
+							} else {
+								removeCellBorder(cell_411);
+							}
+
+
+
+							var cell_421 = sheet.getCell(42, 1, GC.Spread.Sheets.SheetArea.viewport);
+							if (typeof datatblData[42] === "undefined" || typeof datatblData[42][1] === "undefined" || typeof datatblData[42][1].value != "string" || (datatblData[42][1].value.toLowerCase() != json_file_obj[42][1].value.toLowerCase())) {
+							    toastr.error('One of the cells is not showing the expected value. Double check the cells with red borders to ensure they match the instructions');
+							    addCellBorder(cell_421);
+							    return false;
+							} else {
+								removeCellBorder(cell_421);
+							}
+
+
 
 							break;
 

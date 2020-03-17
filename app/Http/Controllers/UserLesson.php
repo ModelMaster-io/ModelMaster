@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Auth;
 use App\TempSaveLesson;
@@ -21,6 +22,59 @@ class UserLesson extends Controller
 
         //dd(serialize($request->get('lesson')));
 
+
+        $lesson_id = $request->get('lesson_id');
+        $section = $request->get('screen');
+        $step = $request->get('step');
+        $curr_lesson = $request->get('lesson');
+
+        $lesson_steps = DB::table('lesson_steps')->where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->first();
+
+
+        if($lesson_steps){
+
+            $answer = isset($lesson_steps->answer) ? json_decode($lesson_steps->answer) : array();
+            $answer_datatable = $answer->sheets->Sheet1->data->dataTable;
+
+
+            if($curr_lesson){
+
+                $curr_answer = json_decode($curr_lesson);
+                $curr_answer_datatable = $curr_answer->sheets->Sheet1->data->dataTable;
+
+                foreach ($answer_datatable as $key => $value) {
+
+                    foreach ($value as $sub_key => $sub_value) {
+
+                            if(!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || ($sub_value->value != $curr_answer_datatable->$key->$sub_key->value)){
+
+                                return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message]);
+    
+                            }
+
+                            /*echo '<pre>';
+                            print_r($sub_value->value);
+                            echo $curr_answer_datatable->$key->$sub_key->value;
+                            exit();*/
+
+                    }
+                    
+
+                }
+
+
+
+
+            } else {
+                return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message]);
+            }
+
+
+        }
+
+
+        /* If above all validations are true then execute below part */
+        
         $user_id = Auth::user()->id;
 
         $new_empty_lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
@@ -93,6 +147,19 @@ class UserLesson extends Controller
             return response()->json(['status'=>0,  'msg'=>'No any spreadsheet running...']);
 
         }
+
+    }
+
+
+    public function getLessonSteps(Request $request) {
+
+        $lesson_steps = DB::table('lesson_steps')->where('lesson_id', 1)->get();
+
+        if($lesson_steps) {
+            return response()->json(['status'=>1,  'data'=>$lesson_steps]);
+        }
+
+        return response()->json(['status'=>0,  'msg'=>'Lesson Step Record Not Found!']);
 
     }
 

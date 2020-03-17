@@ -21,6 +21,29 @@ jQuery(document).ready(function () {
 		  }
     });
 
+    /*var lesson_steps;
+
+    jQuery.ajax({
+        url: '/get_lesson_steps',
+        type: 'POST',
+        data: { "_token": jQuery('meta[name="csrf-token"]').attr('content')},
+        async: false,
+        success: function(response) {
+
+          if(response.status == 1){
+
+    		lesson_steps = response.data;
+
+          }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        },
+        complete: function(){
+        } 
+
+    }); */
+
 
     setTimeout(function() {
 
@@ -73,7 +96,9 @@ jQuery(document).ready(function () {
 
 	    });
 
+
     }, 100);
+
 
 	//JS for top of the spreadsheet option panel
 	jQuery(document).on('click', '.spread_steps_clk li a', function() {
@@ -117,6 +142,9 @@ jQuery(document).ready(function () {
 		
 		var current_sub_step_number = parseInt(current_sub_step.text());
 
+
+		//console.log(lesson_steps);
+
 		//console.log('parent_step='+parent_step);
 		//console.log(current_sub_step);
 		//console.log('parent_step_number='+parent_step_number);
@@ -124,8 +152,8 @@ jQuery(document).ready(function () {
 
 		//console.log(mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number));
 
-		if(mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number))
-		{
+		//if(mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number))
+		//{
 
 		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
 
@@ -143,19 +171,13 @@ jQuery(document).ready(function () {
             url: '/save_spreadsheet',
             type: 'POST',
             data: data,
-            beforeSend: function(){
-            	/*jQuery('.spread_loader').show();
-                curr.prop('disabled', true);*/
-            },
+            async: false,
+            beforeSend: function(){},
             success: function(response) {
-              
-              /*jQuery('.spread_loader').hide();
-              curr.prop('disabled', false);*/
 
-              if(response.status == 1){
-                  /*toastr.success(response.success);*/
-              } else {
-                  toastr.error(response.error);
+              if(response.status == 0){
+                  toastr.error(response.error_msg);
+                  return false;
               }
 
             },
@@ -189,7 +211,7 @@ jQuery(document).ready(function () {
 
 		var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
 
-	}
+	//}
 
 
 	});

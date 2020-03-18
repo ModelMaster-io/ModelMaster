@@ -1083,13 +1083,14 @@
                 </div>
 
             </div>
-        </div>
+        </div> 
         <div class="lesson-contant-right">
 
             <div class="spread_loader" style="display: none;"><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></div>
 
             <div class="toolbar" id="toolbar">
             </div>
+            <input type="hidden" name="last_err_msg" class="last_err_msg">
             <div class="content-container">
                 <div id="inner-content-container">
                     <table id="formulaBar" style="width: 100%;">

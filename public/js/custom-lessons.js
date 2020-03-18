@@ -21,7 +21,7 @@ jQuery(document).ready(function () {
 		  }
     });
 
-    /*var lesson_steps;
+   var lesson_steps;
 
     jQuery.ajax({
         url: '/get_lesson_steps',
@@ -42,7 +42,10 @@ jQuery(document).ready(function () {
         complete: function(){
         } 
 
-    }); */
+    });
+
+
+    console.log(lesson_steps);
 
 
     setTimeout(function() {
@@ -142,6 +145,16 @@ jQuery(document).ready(function () {
 		
 		var current_sub_step_number = parseInt(current_sub_step.text());
 
+	    /*var i;
+		for (i = 0; i < lesson_steps.length; i++) {
+		  	if(lesson_steps[i].step == current_sub_step_number){
+		  		//console.log(lesson_steps[i].answer);
+		  		var user_json = JSON.parse(jsonString);
+		  		var answer_json = JSON.parse(lesson_steps[i].answer);
+
+		  		check_answer(user_json['sheets'].Sheet1.data.dataTable, answer_json['sheets'].Sheet1.data.dataTable);
+		  	}
+		}*/
 
 		//console.log(lesson_steps);
 
@@ -175,9 +188,51 @@ jQuery(document).ready(function () {
             beforeSend: function(){},
             success: function(response) {
 
+              var sheet = spread.getActiveSheet();
+
+              var e_rw = jQuery('.last_err_msg').attr('row');
+              var e_cl = jQuery('.last_err_msg').attr('col');
+
+
+              if(e_rw != '' && e_cl != ''){
+              	  var remove_cell = sheet.getCell(e_rw, e_cl, GC.Spread.Sheets.SheetArea.viewport);
+              	  removeCellBorder(remove_cell);
+              }
+
               if(response.status == 0){
                   toastr.error(response.error_msg);
+                  var error_cell = sheet.getCell(response.row, response.col, GC.Spread.Sheets.SheetArea.viewport);
+                  jQuery('.last_err_msg').attr('row', response.row);
+                  jQuery('.last_err_msg').attr('col', response.col);
+                  addCellBorder(error_cell);
                   return false;
+
+              } else {
+
+
+          			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
+
+					if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
+						jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
+						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+						//analytics.track("Finished Lesson", {"lesson": "3-Statement Model"});
+					} else {
+						jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
+					}
+				
+					} else {
+						jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+					}
+
+
+
+					jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
+
+					jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+
+					var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
+
               }
 
             },
@@ -190,26 +245,6 @@ jQuery(document).ready(function () {
 
         });
 
-		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
-
-			if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
-				jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
-				jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-				//analytics.track("Finished Lesson", {"lesson": "3-Statement Model"});
-			} else {
-				jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
-			}
-			
-		} else {
-			jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
-			jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-		}
-
-		jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
-
-		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
-
-		var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
 
 	//}
 
@@ -845,3 +880,24 @@ function removeCellBorder(cell) {
    cell.borderRight(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
    cell.borderBottom(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
 }
+
+
+/*
+	After this runs, wrong_cells_array should have an array of all the cells that have incorrect values.
+	This is pseduocode just meant to display the logi
+*/
+/*function check_answer(user_sheet_json, answer_json, wrong_cells_array, prior_key){
+
+		for(key in answer_json){
+			if(answer_json[key].isObject){
+					wrong_cells_array[key] = [];
+					check_answer(user_sheet_json[key], answer_json[key], wrong_cells_array[key], key);
+			}
+			else if(key === "value"){
+					if(answer_json[key] !== user_sheet_json[key]){
+						wrong_cells_array.push(prior_key)
+					}
+			}
+		}
+
+}*/

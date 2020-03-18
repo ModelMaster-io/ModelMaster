@@ -22,7 +22,6 @@ class UserLesson extends Controller
 
         //dd(serialize($request->get('lesson')));
 
-
         $lesson_id = $request->get('lesson_id');
         $section = $request->get('screen');
         $step = $request->get('step');
@@ -39,23 +38,26 @@ class UserLesson extends Controller
 
             if($curr_lesson){
 
-                $curr_answer = json_decode($curr_lesson);
-                $curr_answer_datatable = $curr_answer->sheets->Sheet1->data->dataTable;
+                $curr_answer = json_decode($curr_lesson); 
+                $curr_answer_datatable = isset($curr_answer->sheets->Sheet1->data->dataTable) ? $curr_answer->sheets->Sheet1->data->dataTable : '';
+
 
                 foreach ($answer_datatable as $key => $value) {
 
                     foreach ($value as $sub_key => $sub_value) {
 
+                        if(isset($sub_value->value)){
+
                             if(!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || ($sub_value->value != $curr_answer_datatable->$key->$sub_key->value)){
 
-                                return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message]);
+                                $row = (int)$key;
+                                $col = (int)$sub_key;
+
+                                return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message, 'row'=>$row, 'col'=>$col]);
     
                             }
 
-                            /*echo '<pre>';
-                            print_r($sub_value->value);
-                            echo $curr_answer_datatable->$key->$sub_key->value;
-                            exit();*/
+                        }
 
                     }
                     

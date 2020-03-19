@@ -29,6 +29,9 @@ class UserLesson extends Controller
 
         $lesson_steps = DB::table('lesson_steps')->where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->first();
 
+        $row_col = array();
+        $right_rc = array();
+
 
         if($lesson_steps){
 
@@ -41,7 +44,8 @@ class UserLesson extends Controller
                 $curr_answer = json_decode($curr_lesson); 
                 $curr_answer_datatable = isset($curr_answer->sheets->Sheet1->data->dataTable) ? $curr_answer->sheets->Sheet1->data->dataTable : '';
 
-
+                $row = array();
+                $col = array();
                 foreach ($answer_datatable as $key => $value) {
 
                     foreach ($value as $sub_key => $sub_value) {
@@ -53,8 +57,15 @@ class UserLesson extends Controller
                                 $row = (int)$key;
                                 $col = (int)$sub_key;
 
-                                return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message, 'row'=>$row, 'col'=>$col]);
+                                $row_col[] = array($row=>$col);
+                                //return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message, 'row'=>$row, 'col'=>$col]);
     
+                            } else {
+
+                                $rgt_row = (int)$key;
+                                $rgt_col = (int)$sub_key;
+                                $right_rc[] = array($rgt_row=>$rgt_col);
+
                             }
 
                         }
@@ -64,6 +75,17 @@ class UserLesson extends Controller
 
                 }
 
+                /*echo '<pre>';
+                print_r(json_encode($row_col));
+                exit(); */
+
+                if(!empty($row_col)){
+
+                    return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message, 'wrong_cells'=>json_encode($row_col), 'right_cells'=>json_encode($right_rc)]);
+
+                }
+
+                
 
 
 
@@ -122,7 +144,7 @@ class UserLesson extends Controller
             ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize(json_encode($lesson))]
         );
 
-        return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!']);
+        return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc)]);
 
     }
 

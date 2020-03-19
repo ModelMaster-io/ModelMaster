@@ -190,21 +190,47 @@ jQuery(document).ready(function () {
 
               var sheet = spread.getActiveSheet();
 
-              var e_rw = jQuery('.last_err_msg').attr('row');
-              var e_cl = jQuery('.last_err_msg').attr('col');
+              var rgt_cells = JSON.parse(response.right_cells);
 
+              if(rgt_cells.length > 0){
 
-              if(e_rw != '' && e_cl != ''){
-              	  var remove_cell = sheet.getCell(e_rw, e_cl, GC.Spread.Sheets.SheetArea.viewport);
-              	  removeCellBorder(remove_cell);
+              		var correct_cells;
+              		
+              		jQuery.each(rgt_cells, function(ind, rg_value) {
+
+						  jQuery.each(rg_value, function(rw, cl) {
+
+					  			correct_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
+						  		correct_cells.setBorder(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none), { all:true });
+
+						  });
+					  
+					});
+
               }
 
+
               if(response.status == 0){
+
+          	  	var wrong_cells = JSON.parse(response.wrong_cells);
+
+          	  	var error_cells;
+
+          	  	jQuery.each(wrong_cells, function(index, rc_value) {
+
+					  jQuery.each(rc_value, function(rw, cl) {
+				  			error_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
+
+				  			//if(index <= 20){		  				
+								error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick), { all:true });
+					  			return false;
+					  		//}
+
+					  });
+				  
+				});
+
                   toastr.error(response.error_msg);
-                  var error_cell = sheet.getCell(response.row, response.col, GC.Spread.Sheets.SheetArea.viewport);
-                  jQuery('.last_err_msg').attr('row', response.row);
-                  jQuery('.last_err_msg').attr('col', response.col);
-                  addCellBorder(error_cell);
                   return false;
 
               } else {
@@ -391,7 +417,7 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 	}
 
 
-	function mm_simple_3_statement_conditions(datatblData, json_file_obj, parent_step_number, current_sub_step_number){
+	/*function mm_simple_3_statement_conditions(datatblData, json_file_obj, parent_step_number, current_sub_step_number){
 
 		var sheet = spread.getActiveSheet();
 
@@ -819,7 +845,7 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 
 			return true;
 
-	}
+	}*/
 
 
 		/*spread.options.highlightInvalidData = true;
@@ -867,7 +893,7 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 	*/
 
 
-function addCellBorder(cell) {
+/*function addCellBorder(cell) {
    cell.borderLeft(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
    cell.borderTop(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
    cell.borderRight(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick));
@@ -879,7 +905,7 @@ function removeCellBorder(cell) {
    cell.borderTop(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
    cell.borderRight(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
    cell.borderBottom(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none));
-}
+}*/
 
 
 /*

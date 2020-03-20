@@ -52,7 +52,7 @@ class UserLesson extends Controller
 
                         if(isset($sub_value->value)){
 
-                            if(!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || ($sub_value->value != $curr_answer_datatable->$key->$sub_key->value)){
+                            if(!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || (str_replace("\n","",$sub_value->value) != str_replace("\n","",$curr_answer_datatable->$key->$sub_key->value))){
 
                                 $row = (int)$key;
                                 $col = (int)$sub_key;

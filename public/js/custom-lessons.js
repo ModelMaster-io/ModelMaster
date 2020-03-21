@@ -26,7 +26,10 @@ jQuery(document).ready(function () {
     jQuery.ajax({
         url: '/get_lesson_steps',
         type: 'POST',
-        data: { "_token": jQuery('meta[name="csrf-token"]').attr('content')},
+        data: { 
+        	"_token": jQuery('meta[name="csrf-token"]').attr('content'),
+        	"lesson_id": 1
+    	},
         async: false,
         success: function(response) {
 

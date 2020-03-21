@@ -177,13 +177,46 @@ class UserLesson extends Controller
 
     public function getLessonSteps(Request $request) {
 
-        $lesson_steps = DB::table('lesson_steps')->where('lesson_id', 1)->get();
+        $lesson_id = $request->get('lesson_id');
+        $lesson_sections = DB::table('lesson_steps')->select('section', 'title')->distinct()->where('lesson_id', $lesson_id)->orderBy('section', 'asc')->get();
 
-        if($lesson_steps) {
-            return response()->json(['status'=>1,  'data'=>$lesson_steps]);
+        $instructions_data = array();
+
+        if($lesson_sections){
+
+            $lesson_steps = array();
+            $i = 0;
+
+            foreach ($lesson_sections as $instructions) {
+                # code...
+
+                $instructions_data[$i]['section'] = $instructions->section;
+                $instructions_data[$i]['title'] = $instructions->title;
+
+                $lesson_steps = DB::table('lesson_steps')->select('step', 'instructions')->where(['lesson_id' => $lesson_id, 'section' => $instructions->section])->orderBy('step', 'asc')->get();
+
+                if($lesson_steps){
+                    $j=0;
+                    foreach ($lesson_steps as $stps) {
+                        $instructions_data[$i]['steps'][$j]['step_no'] = $stps->step;
+                        $instructions_data[$i]['steps'][$j]['instruction'] = $stps->instructions;
+                        $j++;
+                    }
+
+
+                }
+
+                $i++;
+            }
+
         }
 
-        return response()->json(['status'=>0,  'msg'=>'Lesson Step Record Not Found!']);
+        /*echo '<pre>';
+        print_r($instructions_data);
+        exit();*/
+
+        return view('pages.lesson', ['instructions' => $instructions_data]);
+
 
     }
 

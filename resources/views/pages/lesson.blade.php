@@ -151,7 +151,6 @@
 
                 <div class="lcltc-in">
                     <div class="lesson-contant-left-tab-contant">
-
                         <div class="lcltc1" id="step1" style="display:block">
                             <span class="lcltc1-title">Overview</span>
                             <div class="lcltc1-contant">
@@ -170,8 +169,8 @@
                                         <p>The first step in building out a full financial model, is to find the information you need about the company. For the sake of this course, we're going to assume that you have the information you need to build the model. For our work we're going to start by labeling the income statement.</p>
 
                                         <p>Once you have the information, you want to lay out the structure in your spreadsheet. Let’s start with the Income Statement.</p>
-										
-										<p>In cell B2, type "FakeSoftwareCo Income Statement" so that we have a header for the first statement. In the column label at the top of the spreadsheet, double click on the line between column B and column C so that the entire label shows.</p>
+                                        
+                                        <p>In cell B2, type "FakeSoftwareCo Income Statement" so that we have a header for the first statement. In the column label at the top of the spreadsheet, double click on the line between column B and column C so that the entire label shows.</p>
                                     </div>
 
                                     <div class="sub-lesson-step-contant" id="sub1-step3" style="display:none">
@@ -185,8 +184,8 @@
                                         <p>Next we're going to tell people what units we're using on the model. Depending on the context, "100" could be $100, $100,000, or $100,000,000.</p>
 
                                         <p>In this model we're going to show all our numbers in millions.</p>
-										
-										<p>In cell B4, type "($ in millions)" so that anyone reading our model knows what units we're using. Use the "I" in the menu bar next to the bold button to italicize it so that it is clear the information doesn't impact our model.</p>
+                                        
+                                        <p>In cell B4, type "($ in millions)" so that anyone reading our model knows what units we're using. Use the "I" in the menu bar next to the bold button to italicize it so that it is clear the information doesn't impact our model.</p>
                                     </div>
 
 

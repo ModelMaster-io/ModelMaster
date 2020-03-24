@@ -1043,6 +1043,7 @@ button.owl-prev:after {
     border-radius: 3px;
     font-weight: 600;
     font-size: 16px;
+    margin: 0 2px;
     pointer-events: none;
 }
 .spread_sub_steps_clk li a:hover {

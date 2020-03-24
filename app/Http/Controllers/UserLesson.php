@@ -178,44 +178,80 @@ class UserLesson extends Controller
     public function getLessonSteps(Request $request) {
 
         $lesson_id = $request->get('lesson_id');
+
         $lesson_sections = DB::table('lesson_steps')->select('section', 'title')->distinct()->where('lesson_id', $lesson_id)->orderBy('section', 'asc')->get();
 
-        $instructions_data = array();
+        $instructions_html = "";
 
         if($lesson_sections){
 
             $lesson_steps = array();
-            $i = 0;
 
             foreach ($lesson_sections as $instructions) {
                 # code...
 
-                $instructions_data[$i]['section'] = $instructions->section;
-                $instructions_data[$i]['title'] = $instructions->title;
+                if($instructions->section == 1){
+                    $dsply = 'block';
+                } else {
+                    $dsply = 'none';
+                }
+
+                $instructions_html .= '<div class="lcltc1" id="step'.$instructions->section.'" style="display:'.$dsply.'">';
+                $instructions_html .= '<span class="lcltc1-title">'.$instructions->title.'</span>
+                <div class="lcltc1-contant">
+                <div class="lcltc1-mm">';
 
                 $lesson_steps = DB::table('lesson_steps')->select('step', 'instructions')->where(['lesson_id' => $lesson_id, 'section' => $instructions->section])->orderBy('step', 'asc')->get();
 
                 if($lesson_steps){
-                    $j=0;
+
+                    $bottom_step_bullet = "";
+
+                    $bottom_step_bullet .= '<div class="sub-lesson-contant-left-tab-menu">
+                    <span class="previous_btn">&laquo</span>
+                    <ul class="sub-esson-menu spread_sub_steps_clk">';
+
                     foreach ($lesson_steps as $stps) {
-                        $instructions_data[$i]['steps'][$j]['step_no'] = $stps->step;
-                        $instructions_data[$i]['steps'][$j]['instruction'] = $stps->instructions;
-                        $j++;
+
+                        if($stps->step == 1){
+                            $dslp = 'block';
+                        } else {
+                            $dslp = 'none';
+                        }
+
+                        $instructions_html .= '<div class="sub-lesson-step-contant" id="sub'.$instructions->section.'-step'.$stps->step.'" style="display:'.$dslp.'">'.$stps->instructions.'</div>';
+
+                        if($stps->step == 1){
+                            $dslp = 'class="active"';
+                        } else {
+                            $dslp = '';
+                        }
+
+                        $bottom_step_bullet .= '<li><a href="javascript:void(0)" '.$dslp.' data-step="sub'.$instructions->section.'-step'.$stps->step.'">'.$stps->step.'</a></li>';
                     }
+
+
+                    $bottom_step_bullet .= '</ul>
+                        <span class="next_btn">&raquo</span>
+                    </div>';
 
 
                 }
 
-                $i++;
+                $instructions_html .= '</div>';
+                     
+                $instructions_html .=  $bottom_step_bullet;
+
+                $instructions_html .= '</div>';
+
+                $instructions_html .= '</div>';
+
             }
+
 
         }
 
-        /*echo '<pre>';
-        print_r($instructions_data);
-        exit();*/
-
-        return view('pages.lesson', ['instructions' => $instructions_data]);
+        return response()->json(['status'=>1,  'stepsHtml'=>$instructions_html]);
 
 
     }

@@ -257,4 +257,23 @@ class UserLesson extends Controller
     }
 
 
+    public function getHistoricalData(Request $request) {
+
+        $lesson_id = ($request->get('lesson_id') != null) ? $request->get('lesson_id') : '';
+
+        $screen = ($request->get('screen') != null) ? $request->get('screen') : '';
+
+        $step = ($request->get('step') != null) ? $request->get('step') : '';
+        
+        $hData = DB::table('lesson_steps')->select('automatic_values')->where([['lesson_id', $lesson_id], ['section', $screen], ['step', $step]])->first();
+
+        if($hData) {
+            return response()->json(['status'=>1,  'hData'=>$hData]);
+        }
+
+        return response()->json(['status'=>0, 'msg'=>'Historical data not found!']);
+
+    }
+
+
 }

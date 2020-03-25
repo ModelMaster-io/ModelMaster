@@ -201,6 +201,7 @@ jQuery(document).ready(function () {
 
 				  			//if(index <= 20){		  				
 								error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick), { all:true });
+				  				//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.double), { all:true });
 					  			return false;
 					  		//}
 
@@ -343,6 +344,48 @@ jQuery(document).ready(function () {
 	
 	/* JS code for adding historical values */
 	jQuery(document).on('click', '.add-historical-values', function() {
+
+		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
+
+		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
+		
+		var parent_step_number = parseInt(parent_step.split("step").pop());
+		
+		var current_sub_step_number = parseInt(current_sub_step.text());
+
+		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
+
+		var data = {
+				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
+				'lesson_id': 1,
+				'screen': parent_step_number,
+				'step': current_sub_step_number
+		};
+
+		jQuery.ajax({
+		    type: "POST",
+		    url: '/get_historical_data',
+		    data: data,
+		    async: false,
+		    dataType: "json",
+		    success: function(historical_obj) {
+
+	    	console.log(historical_obj);
+
+	    	if(historical_obj.status == 1){
+
+    			console.log(historical_obj.hData.automatic_values);
+
+	    	}
+
+	    	//json_f_obj = JSON.parse(json_f_obj);
+	    	//json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
+	    	return false;
+
+		    },
+		    error: function(){}
+		});
+
 		var sheet = spread.getActiveSheet();
 		sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
 		sheet.setArray(8,2, [[46,48.8,56.2]]);
@@ -360,7 +403,7 @@ jQuery(document).ready(function () {
 	
 });
 
-function mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number){
+/*function mm_simple_3_statement(jsonString, parent_step, parent_step_number, current_sub_step_number){
 
 		var json_user_obj = JSON.parse(jsonString);
 
@@ -389,5 +432,5 @@ function mm_simple_3_statement(jsonString, parent_step, parent_step_number, curr
 				return mm_simple_3_statement_conditions(datatblData, json_file_obj, parent_step_number, current_sub_step_number);
 			}
 
-	}
+	}*/
 

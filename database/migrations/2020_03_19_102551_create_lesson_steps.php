@@ -20,13 +20,13 @@ class CreateLessonSteps extends Migration
             $table->integer('step');
             $table->longText('instructions');
             $table->boolean('has_automatic_values')->default(0);
-            $table->text('automaric_values');
+            $table->text('automatic_values');
             $table->json('answer')->nullable();
             $table->string('error_message');
             
             //$table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.

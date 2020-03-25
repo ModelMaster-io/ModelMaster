@@ -124,6 +124,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/get_spreadsheet','UserLesson@getTempUserLesson')->name('get_spreadsheet');
 
     Route::post('/get_lesson_steps','UserLesson@getLessonSteps')->name('get_lesson_steps');
+
+    Route::post('/get_historical_data','UserLesson@getHistoricalData')->name('get_historical_data');
     
 
 });

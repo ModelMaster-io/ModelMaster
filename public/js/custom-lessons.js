@@ -369,24 +369,40 @@ jQuery(document).ready(function () {
 		    async: false,
 		    dataType: "json",
 		    success: function(historical_obj) {
-
-	    	console.log(historical_obj);
+		    var sheet = spread.getActiveSheet();
 
 	    	if(historical_obj.status == 1){
 
-    			console.log(historical_obj.hData.automatic_values);
+    			//console.log(historical_obj.hData.automatic_values);
 
-	    	}
+	    			if(historical_obj.hData.automatic_values != ''){
 
-	    	//json_f_obj = JSON.parse(json_f_obj);
-	    	//json_file_obj = json_f_obj['sheets'].Sheet1.data.dataTable;
-	    	return false;
+		    			var hstdata = historical_obj.hData.automatic_values;
+
+		    			var automaic_data = JSON.parse(hstdata);
+
+		    			jQuery.each(automaic_data, function(row, value) {
+
+							  jQuery.each(value, function(col, data) {
+
+							  		sheet.setArray(parseInt(row), parseInt(col), automaic_data[row][col]);
+
+							  });
+						  
+						});
+
+
+
+			    	}
+
+			    }
 
 		    },
+
 		    error: function(){}
 		});
 
-		var sheet = spread.getActiveSheet();
+		/*var sheet = spread.getActiveSheet();
 		sheet.setArray(4,2, [[160,182.04,195.36],[40,39.96,48.84]]);
 		sheet.setArray(8,2, [[46,48.8,56.2]]);
 		sheet.setArray(11,2, [[80,91,102.6]]);
@@ -397,7 +413,7 @@ jQuery(document).ready(function () {
 		sheet.setArray(32,2, [[4,4.939176471,6.136976471],[150,150,150],[19,19,19],[38,37,38]]);
 		sheet.setArray(38,2, [[0.882191781,0.935890411,1.077808219],[7.176, 7.2224, 8.4862],[10, 11.3775, 12.21],[0.322, 0.3904, 0.4215]]);
 		sheet.setArray(44,2, [[0,0,0],[200, 198.019802, 196.0592099]]);
-		sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);
+		sheet.setArray(48,2, [[40.48008219,90.99650735,143.978177]]);*/
 		
 	});
 	

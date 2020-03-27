@@ -12,13 +12,10 @@
              <img src="{{ asset('admin/image/text-file.png') }}"/><textarea placeholder="Enter description"></textarea>
            </div>
            <div class="form-group form-check">
-             <img src="{{ asset('admin/image/model-admin.png') }}"/><input type="file" placeholder="lesson name">
-           </div>
-           <div class="form-group form-check">
              <img src="{{ asset('admin/image/model-admin.png') }}"/><input type="text" placeholder="Enter lesson price ">
            </div>
          </div>
-         <div class="add-lesson-info">
+         <!-- <div class="add-lesson-info">
              <div class="add-lesson-info-inner">
                  <div class="add-lesson-info-count"><span>1</span></div>
                      <div class="add-lesson-info_des">
@@ -37,7 +34,7 @@
                          This is Photoshop's version  of lorem Ipsdgin gravida nibh vel velit auctor alique aenean licitudin.
                      </div>
              </div>
-         </div>
+         </div> -->
         </div>
      </div>
 @endsection

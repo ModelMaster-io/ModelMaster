@@ -297,40 +297,6 @@ jQuery(document).ready(function () {
 		
 	});
 
-	/*var testobj = '';
-
-	//Test Json Object
-	var json_obj1 = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{"1":{"1":{"value":"FakeSoftwareCo Income Statement"}}},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
-	var json_obj2 = '{"version":"13.0.0","customList":[],"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{"1":{"1":{"value":"FakeSoftwareCo Income Statement"}}},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0}}}';
-
-	json_obj1 = JSON.parse(json_obj1);
-	json_obj2 = JSON.parse(json_obj2);
-
-
-
-	console.log('before loop');
-	console.log(json_obj1['sheets'].Sheet1.data.dataTable[1][1].value);
-	console.log('after loop');
-
-	var JSONItems = [];
-	$.get( "js/lesson_json/simple3-statement/1-2.ssjson", function( data){
-	  JSONItems = JSON.parse(data);
-	  console.log('before json read');
-	  console.log(JSONItems);
-	  console.log('after json read');
-	});
-
-	//var array1 = JSON.parse(json_obj1);
-	//console.log(array1);
-
-	var sheet = spread.getActiveSheet();
-	sheet.setText(1, 1, 'FakeSoftwareCo Income Statement');
-	sheet.setValue(2, 2, 10);
-
-	sheet.getCell(2, 2).formatter("0.00_);(0.00)");*/
-	//sheet.getText(1, 0) ;
-	 //sheet.getValue(1, 1));
-
 	/*spread.options.highlightInvalidData = true;
 	//The formula validator is valid if the formula condition returns true.
 	var dv = GC.Spread.Sheets.DataValidation.createFormulaValidator("A1>0");
@@ -338,9 +304,6 @@ jQuery(document).ready(function () {
 	dv.inputMessage("Enter a value greater than 0 in A1.");
 	dv.inputTitle("Tip");
 	spread.getActiveSheet().setDataValidator(0, 0, dv);*/
-
-
-    //console.log(sheet.getCell(1, 1).text());
 	
 	/* JS code for adding historical values */
 	jQuery(document).on('click', '.add-historical-values', function() {

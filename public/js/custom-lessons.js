@@ -167,7 +167,7 @@ jQuery(document).ready(function () {
             success: function(response) {
 
               var sheet = spread.getActiveSheet();
-
+              //var instance = new GC.Spread.Sheets.Comments.CommentManager(sheet);
               var rgt_cells = JSON.parse(response.right_cells);
 
               if(rgt_cells.length > 0){
@@ -178,8 +178,10 @@ jQuery(document).ready(function () {
 
 						  jQuery.each(rg_value, function(rw, cl) {
 
-					  			correct_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
-						  		correct_cells.setBorder(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none), { all:true });
+								sheet.comments.remove(parseInt(rw), cl);
+								//sheet.comments.add(parseInt(rw), cl, response.error_msg);
+					  			//correct_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
+						  		//correct_cells.setBorder(new GC.Spread.Sheets.LineBorder("Transparent", GC.Spread.Sheets.LineStyle.none), { all:true });
 
 						  });
 					  
@@ -197,13 +199,14 @@ jQuery(document).ready(function () {
           	  	jQuery.each(wrong_cells, function(index, rc_value) {
 
 					  jQuery.each(rc_value, function(rw, cl) {
-				  			error_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
-
-				  			//if(index <= 20){		  				
-								error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick), { all:true });
-				  				//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.double), { all:true });
-					  			return false;
-					  		//}
+					  	var comment = sheet.comments.add(parseInt(rw), cl, response.error_msg);
+					  	//comment.backColor("red");
+					  	//comment.foreColor("white");
+					  	comment.displayMode(GC.Spread.Sheets.Comments.DisplayMode.hoverShown);
+				  			//error_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
+							//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick), { all:true });
+			  				//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.double), { all:true });
+				  			return false;
 
 					  });
 				  

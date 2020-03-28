@@ -74,7 +74,7 @@ i.fa.fa-home {
 
 
 .admin-content .title button:hover,
-.admin-content .title button{
+.mm-btn-cls{
 	transition: all 0.5s ease;
 }
 .ad-nav, .admin-sidebar {
@@ -161,7 +161,8 @@ td a {
 .admin-content .col-sm-12 {
 	padding: 0;
 }
-.admin-content .title button {
+.admin-content .title button,
+.mm-btn-cls {
 	background-color: #29B473 !important;
 	padding: 8px 12px !important;
 	color: #fff !important;
@@ -248,7 +249,8 @@ select {
 	box-shadow: none!important;
 	border: 1px solid #ced4da!important;
 }
-.admin-content .title button:hover {
+.admin-content .title button:hover,
+.mm-btn-cls:hover {
 	background-color: #505260 !important;
 }
 #lesson-data th {
@@ -445,10 +447,11 @@ li.active.add-lesson {
     border-radius: 10px;
     box-shadow: 0px 0 12px #e4eae5;
     margin-bottom: 30px;
+    text-align: center;
 }
 .add-lesson-form, .add-lesson-info {
-    width: 50%;
-    float: left;
+    width: 60%;
+    /*float: left;*/
     padding: 30px;
 }
 .add-lesson-form input {
@@ -467,6 +470,7 @@ li.active.add-lesson {
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 15px;
+    margin: 0 auto;
 }
 .add-lesson-form textarea {
     overflow: auto;

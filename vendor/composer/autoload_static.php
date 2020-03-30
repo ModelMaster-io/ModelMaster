@@ -497,6 +497,7 @@ class ComposerStaticInite598db770cfd4876031e7e2c2c8467da
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Lesson' => __DIR__ . '/../..' . '/app/Lesson.php',
+        'App\\LessonSteps' => __DIR__ . '/../..' . '/app/LessonSteps.php',
         'App\\Listeners\\SendContactMail' => __DIR__ . '/../..' . '/app/Listeners/SendContactMail.php',
         'App\\Mail\\ContactUs' => __DIR__ . '/../..' . '/app/Mail/ContactUs.php',
         'App\\Mail\\ContactUsAdmin' => __DIR__ . '/../..' . '/app/Mail/ContactUsAdmin.php',

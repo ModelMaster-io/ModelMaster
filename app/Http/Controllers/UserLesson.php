@@ -8,6 +8,8 @@ use App\User;
 use Auth;
 use App\TempSaveLesson;
 use App\Lesson;
+use App\LessonSteps;
+use App\LessonStepHints;
 
 class UserLesson extends Controller
 {
@@ -18,7 +20,7 @@ class UserLesson extends Controller
     }
 
 
-    public function saveTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
+    public function saveTempUserLesson(TempSaveLesson $temp_lesson, Request $request, LessonSteps $lessonsteps) {
 
         //dd(serialize($request->get('lesson')));
 
@@ -27,7 +29,7 @@ class UserLesson extends Controller
         $step = $request->get('step');
         $curr_lesson = $request->get('lesson');
 
-        $lesson_steps = DB::table('lesson_steps')->where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->first();
+        $lesson_steps = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->first();
 
         $row_col = array();
         $right_rc = array();
@@ -179,13 +181,14 @@ class UserLesson extends Controller
 
         $lesson_id = $request->get('lesson_id');
 
-        $lesson_sections = DB::table('lesson_steps')->select('section', 'title')->distinct()->where('lesson_id', $lesson_id)->orderBy('section', 'asc')->get();
+        $lesson_sections = LessonSteps::select('section', 'title')->distinct()->where('lesson_id', $lesson_id)->orderBy('section', 'ASC')->get();
 
         $instructions_html = "";
 
         if($lesson_sections){
 
             $lesson_steps = array();
+            $hints = array();
 
             foreach ($lesson_sections as $instructions) {
                 # code...
@@ -201,7 +204,7 @@ class UserLesson extends Controller
                 <div class="lcltc1-contant">
                 <div class="lcltc1-mm">';
 
-                $lesson_steps = DB::table('lesson_steps')->select('step', 'instructions')->where(['lesson_id' => $lesson_id, 'section' => $instructions->section])->orderBy('step', 'asc')->get();
+                $lesson_steps = LessonSteps::select('step', 'instructions', 'has_automatic_values')->where(['lesson_id' => $lesson_id, 'section' => $instructions->section])->orderBy('step', 'ASC')->get();
 
                 if($lesson_steps){
 
@@ -213,13 +216,46 @@ class UserLesson extends Controller
 
                     foreach ($lesson_steps as $stps) {
 
+                        $l_step_id = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $instructions->section, 'step' => $stps->step])->pluck('id')->first();
+
+                        if (LessonStepHints::where('lesson_steps_id', '=', $l_step_id)->exists()) {
+                           $hints = LessonStepHints::select('hint')->where('lesson_steps_id',$l_step_id)->get();
+                           //$hints = $hints->getOriginal();
+                        }
+
+
                         if($stps->step == 1){
                             $dslp = 'block';
                         } else {
                             $dslp = 'none';
                         }
 
-                        $instructions_html .= '<div class="sub-lesson-step-contant" id="sub'.$instructions->section.'-step'.$stps->step.'" style="display:'.$dslp.'">'.$stps->instructions.'</div>';
+                        $instructions_html .= '<div class="sub-lesson-step-contant" id="sub'.$instructions->section.'-step'.$stps->step.'" style="display:'.$dslp.'">';
+
+                        $instructions_html .= $stps->instructions;
+
+                        if($stps->has_automatic_values == 1){
+
+                            $instructions_html .= '<p><button class="add-historical-values">Input historical Values</button></p>';
+
+                        }
+
+                        if($hints){
+
+                            $h = 1;
+
+                            foreach ($hints as $hint) {
+
+                                $instructions_html .= '<p><span class="mm-tooltip" title="'.$hint['hint'].'"><strong>Hint '.$h.'</strong></span></p>';
+
+                                $h++;
+
+                            }
+
+                        }
+
+
+                        $instructions_html .= '</div>';
 
                         if($stps->step == 1){
                             $dslp = 'class="active"';
@@ -264,8 +300,8 @@ class UserLesson extends Controller
         $screen = ($request->get('screen') != null) ? $request->get('screen') : '';
 
         $step = ($request->get('step') != null) ? $request->get('step') : '';
-        
-        $hData = DB::table('lesson_steps')->select('automatic_values')->where([['lesson_id', $lesson_id], ['section', $screen], ['step', $step]])->first();
+
+        $hData = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $screen, 'step' => $step])->pluck('automatic_values')->first();
 
         if($hData) {
             return response()->json(['status'=>1,  'hData'=>$hData]);

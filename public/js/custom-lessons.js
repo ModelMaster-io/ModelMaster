@@ -341,9 +341,9 @@ jQuery(document).ready(function () {
 
     			//console.log(historical_obj.hData.automatic_values);
 
-	    			if(historical_obj.hData.automatic_values != ''){
+	    			if(historical_obj.hData != ''){
 
-		    			var hstdata = historical_obj.hData.automatic_values;
+		    			var hstdata = historical_obj.hData;
 
 		    			var automaic_data = JSON.parse(hstdata);
 

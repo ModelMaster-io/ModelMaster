@@ -184,6 +184,9 @@ ul.dropdown-menu.icon-text {
     bottom: -10px;
     left: 0;
 }
+.sub-lesson-step-contant button{
+    top: 0 !important;
+}
 .logout_btn a, 
 .sub-lesson-step-contant button {
     background-color: #29B473 !important;

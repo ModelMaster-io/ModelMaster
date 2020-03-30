@@ -232,13 +232,13 @@ class UserLesson extends Controller
 
                         $instructions_html .= '<div class="sub-lesson-step-contant" id="sub'.$instructions->section.'-step'.$stps->step.'" style="display:'.$dslp.'">';
 
-                        $instructions_html .= $stps->instructions;
-
                         if($stps->has_automatic_values == 1){
 
                             $instructions_html .= '<p><button class="add-historical-values">Input historical Values</button></p>';
 
                         }
+
+                        $instructions_html .= $stps->instructions;
 
                         if($hints){
 

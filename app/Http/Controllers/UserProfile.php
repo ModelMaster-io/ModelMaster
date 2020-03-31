@@ -10,12 +10,15 @@ use App\User;
 use Auth;
 use Hash;
 use Image;
+use Event; 
+use App\Events\UserPasswordChanged;
+use Mail;
 
 class UserProfile extends Controller
 {
     //
 
-    public function __construct(){
+    public function __construct(){ 
         //$this->middleware('auth');
     }
 
@@ -46,6 +49,8 @@ class UserProfile extends Controller
         $user->save();
 
         //return redirect()->back()->with("success","Password changed successfully !");
+
+        event(new UserPasswordChanged($user));
 
         return response()->json(['status'=>1,  'success'=>'Password changed successfully!']);
     }

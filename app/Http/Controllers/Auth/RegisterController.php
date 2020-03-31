@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Socialite;
 use Newsletter;
+use Event; 
+use App\Events\UsersMail;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -76,6 +79,8 @@ class RegisterController extends Controller
 
         }
 
+        event(new UsersMail($data['email']));
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -115,6 +120,8 @@ class RegisterController extends Controller
         $users->password = '';
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
+
+        event(new UsersMail($user->getEmail()));
 
         if(!empty($user->getEmail())) {
 
@@ -192,6 +199,8 @@ class RegisterController extends Controller
         $users->password = '';
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
+
+        event(new UsersMail($user->getEmail()));
 
         if(!empty($user->getEmail())) {
 
@@ -272,6 +281,8 @@ class RegisterController extends Controller
         $users->password = '';
         $users->image = (isset($user->avatar_original) ? $user->avatar_original : '');
         $users->save();
+
+        event(new UsersMail($user->email));
 
         if(!empty($user->email)) {
 

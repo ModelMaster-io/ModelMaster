@@ -2,8 +2,7 @@ Hello {{$user->email}},
 <br>
 
 Your password has been changed successfully!
-<br>
-<br>
+<br><br>
 
 Thanks,<br>
 {{ config('app.name') }}

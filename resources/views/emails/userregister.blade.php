@@ -1,4 +1,4 @@
-Thank you {{$user}},
+Hello {{$user}},
 <br>
 
 Thank you for connecting with us. Now you may login in our website and create lessons.

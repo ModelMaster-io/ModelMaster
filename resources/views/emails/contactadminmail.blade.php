@@ -5,7 +5,7 @@ Hello Admin,
 <br>
 
 {{$contact->message}}
-<br>
+<br><br>
 
 Thanks,<br>
 {{ config('app.name') }}

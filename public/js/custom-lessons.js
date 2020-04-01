@@ -206,7 +206,7 @@ jQuery(document).ready(function () {
 				  			//error_cells = sheet.getCell(parseInt(rw), cl, GC.Spread.Sheets.SheetArea.viewport);
 							//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.thick), { all:true });
 			  				//error_cells.setBorder(new GC.Spread.Sheets.LineBorder("Red", GC.Spread.Sheets.LineStyle.double), { all:true });
-				  			return false;
+			  			return false;
 
 					  });
 				  

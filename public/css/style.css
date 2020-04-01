@@ -1185,6 +1185,9 @@ select.brdr_option, select.border_style_options {
     font-weight: bold;
  color: red;
 }
+div#setting-pane {
+    display: none !important;
+}
 
 
 /* End Styles for spreadsheet */

@@ -222,20 +222,20 @@ img {
 
 .button-blue,
 .button-primary {
-    background-color: #3490dc;
-    border-top: 10px solid #3490dc;
-    border-right: 18px solid #3490dc;
-    border-bottom: 10px solid #3490dc;
-    border-left: 18px solid #3490dc;
+    background-color: #29B473;
+    border-top: 10px solid #29B473;
+    border-right: 18px solid #29B473;
+    border-bottom: 10px solid #29B473;
+    border-left: 18px solid #29B473;
 }
 
 .button-green,
 .button-success {
-    background-color: #38c172;
-    border-top: 10px solid #38c172;
-    border-right: 18px solid #38c172;
-    border-bottom: 10px solid #38c172;
-    border-left: 18px solid #38c172;
+    background-color: #29B473;
+    border-top: 10px solid #29B473;
+    border-right: 18px solid #29B473;
+    border-bottom: 10px solid #29B473;
+    border-left: 18px solid #29B473;
 }
 
 .button-red,

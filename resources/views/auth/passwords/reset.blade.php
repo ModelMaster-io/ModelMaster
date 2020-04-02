@@ -55,7 +55,7 @@
 
              </div>
               <!-- <div class="button">send</div> -->
-               <button type="submit" class="button">
+               <button type="submit" class="button" style="background: #29B473">
                                     {{ __('Reset Password') }}
                                 </button>
               </form>

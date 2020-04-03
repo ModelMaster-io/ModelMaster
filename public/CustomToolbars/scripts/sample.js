@@ -8009,6 +8009,10 @@ function processTextChanged(e, data) {
 function displaySettingPane(title, $element, showCallback) {
     var $active = $("#setting-pane .pane-content > div:not(.hidden)");
 
+    if(title == 'Comment'){
+        return false;
+    }
+
     // same content do not need switch seeting pane
     if ($active[0] !== $element[0]) {
         $("#setting-pane .pane-title").text(title);

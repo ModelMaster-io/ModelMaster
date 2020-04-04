@@ -156,8 +156,6 @@ jQuery(document).ready(function () {
 				'step': current_sub_step_number
 		};
 		
-		analytics.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
-		
         jQuery.ajax({
             url: '/save_spreadsheet',
             type: 'POST',
@@ -192,6 +190,8 @@ jQuery(document).ready(function () {
 
               if(response.status == 0){
 
+              	analytics.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": false});
+
           	  	var wrong_cells = JSON.parse(response.wrong_cells);
 
           	  	var error_cells;
@@ -216,6 +216,8 @@ jQuery(document).ready(function () {
                   return false;
 
               } else {
+
+              		analytics.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
 
 
           			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){

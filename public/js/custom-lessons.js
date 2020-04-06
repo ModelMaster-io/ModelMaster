@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-	analytics.track("Opened Lesson", {"lesson": "3-Statement Model"});
+	analytics.track("Opened Lesson", {"lesson": 1});
 
 	toastr.options = {
 	  "positionClass": "toast-bottom-right"
@@ -190,7 +190,7 @@ jQuery(document).ready(function () {
 
               if(response.status == 0){
 
-              	analytics.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": false});
+              	analytics.track("Lesson Step", {"lesson": 1, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": false});
 
           	  	var wrong_cells = JSON.parse(response.wrong_cells);
 
@@ -217,7 +217,7 @@ jQuery(document).ready(function () {
 
               } else {
 
-              		analytics.track("Lesson Step", {"lesson": "3-Statement Model", "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
+              		analytics.track("Lesson Step", {"lesson": 1, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
 
 
           			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
@@ -225,7 +225,7 @@ jQuery(document).ready(function () {
 					if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
 						jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
 						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-						analytics.track("Finished Lesson", {"lesson": "3-Statement Model"});
+						analytics.track("Finished Lesson", {"lesson": 1});
 					} else {
 						jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
 					}

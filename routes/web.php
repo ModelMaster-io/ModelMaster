@@ -11,6 +11,11 @@
 |
 */
 
+# Setup our Segment tracking and
+# alias to Analytics for convenience
+//class_alias('Segment', 'Analytics');
+//Segment::init("YOUR_WRITE_KEY");
+
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {

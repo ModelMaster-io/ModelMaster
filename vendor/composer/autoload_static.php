@@ -29,6 +29,7 @@ class ComposerStaticInite598db770cfd4876031e7e2c2c8467da
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '2a9afd012ba84c341672875ae49cd5cd' => __DIR__ . '/..' . '/segmentio/analytics-php/lib/Segment.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -476,6 +477,8 @@ class ComposerStaticInite598db770cfd4876031e7e2c2c8467da
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Events\\ContactSend' => __DIR__ . '/../..' . '/app/Events/ContactSend.php',
+        'App\\Events\\UserPasswordChanged' => __DIR__ . '/../..' . '/app/Events/UserPasswordChanged.php',
+        'App\\Events\\UsersMail' => __DIR__ . '/../..' . '/app/Events/UsersMail.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -497,10 +500,16 @@ class ComposerStaticInite598db770cfd4876031e7e2c2c8467da
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Lesson' => __DIR__ . '/../..' . '/app/Lesson.php',
+        'App\\LessonStepHints' => __DIR__ . '/../..' . '/app/LessonStepHints.php',
         'App\\LessonSteps' => __DIR__ . '/../..' . '/app/LessonSteps.php',
+        'App\\Listeners\\SendChangedPasswordMail' => __DIR__ . '/../..' . '/app/Listeners/SendChangedPasswordMail.php',
         'App\\Listeners\\SendContactMail' => __DIR__ . '/../..' . '/app/Listeners/SendContactMail.php',
+        'App\\Listeners\\SendRegisterMail' => __DIR__ . '/../..' . '/app/Listeners/SendRegisterMail.php',
+        'App\\Mail\\ChangedPasswordMail' => __DIR__ . '/../..' . '/app/Mail/ChangedPasswordMail.php',
         'App\\Mail\\ContactUs' => __DIR__ . '/../..' . '/app/Mail/ContactUs.php',
         'App\\Mail\\ContactUsAdmin' => __DIR__ . '/../..' . '/app/Mail/ContactUsAdmin.php',
+        'App\\Mail\\RegisteredMail' => __DIR__ . '/../..' . '/app/Mail/RegisteredMail.php',
+        'App\\Mail\\RegisteredMailToAdmin' => __DIR__ . '/../..' . '/app/Mail/RegisteredMailToAdmin.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

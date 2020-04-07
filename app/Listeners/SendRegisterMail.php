@@ -35,7 +35,7 @@ class SendRegisterMail
         $email = $event->user;
         Mail::to($email)->send(new RegisteredMail($event->user));
 
-        $admin_email = config('app.admin_email');
-        Mail::to($admin_email)->send(new RegisteredMailToAdmin($event->user));
+        /*$admin_email = config('app.admin_email');
+        Mail::to($admin_email)->send(new RegisteredMailToAdmin($event->user));*/
     }
 }

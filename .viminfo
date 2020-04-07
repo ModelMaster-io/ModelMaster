@@ -15,7 +15,7 @@
 
 # Command Line History (newest to oldest):
 :q!
-|2,0,1585993217,,"q!"
+|2,0,1586214967,,"q!"
 
 # Search String History (newest to oldest):
 ?//;;
@@ -32,28 +32,48 @@
 # Registers:
 
 # File marks:
-'0  4  0  ~/dump.sql
-|4,48,4,0,1585993217,"~/dump.sql"
-'1  145  0  ~/dev_database.sql
-|4,49,145,0,1584879256,"~/dev_database.sql"
-'2  14  23  ~/.env
-|4,50,14,23,1584878645,"~/.env"
-'3  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
-|4,51,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
-'4  18  6  ~/public/js/custom-lessons.js
-|4,52,18,6,1582758298,"~/public/js/custom-lessons.js"
-'5  1  0  /etc/ssh/sshd_config
-|4,53,1,0,1582691104,"/etc/ssh/sshd_config"
+'0  21  0  ~/.env
+|4,48,21,0,1586214967,"~/.env"
+'1  4  0  ~/dump.sql
+|4,49,4,0,1585993217,"~/dump.sql"
+'2  145  0  ~/dev_database.sql
+|4,50,145,0,1584879256,"~/dev_database.sql"
+'3  14  23  ~/.env
+|4,51,14,23,1584878645,"~/.env"
+'4  14  23  ~/.env
+|4,52,14,23,1584878645,"~/.env"
+'5  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,53,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+'6  18  6  ~/public/js/custom-lessons.js
+|4,54,18,6,1582758298,"~/public/js/custom-lessons.js"
+'7  1  0  /etc/ssh/sshd_config
+|4,55,1,0,1582691104,"/etc/ssh/sshd_config"
 
 # Jumplist (newest first):
+-'  21  0  ~/.env
+|4,39,21,0,1586214967,"~/.env"
+-'  14  23  ~/.env
+|4,39,14,23,1586213932,"~/.env"
 -'  4  0  ~/dump.sql
 |4,39,4,0,1585993217,"~/dump.sql"
+-'  4  0  ~/dump.sql
+|4,39,4,0,1585993217,"~/dump.sql"
+-'  1  0  ~/dump.sql
+|4,39,1,0,1585993198,"~/dump.sql"
 -'  1  0  ~/dump.sql
 |4,39,1,0,1585993198,"~/dump.sql"
 -'  145  0  ~/dev_database.sql
 |4,39,145,0,1584879256,"~/dev_database.sql"
 -'  145  0  ~/dev_database.sql
 |4,39,145,0,1584879256,"~/dev_database.sql"
+-'  145  0  ~/dev_database.sql
+|4,39,145,0,1584879256,"~/dev_database.sql"
+-'  145  0  ~/dev_database.sql
+|4,39,145,0,1584879256,"~/dev_database.sql"
+-'  1  0  ~/dev_database.sql
+|4,39,1,0,1584879220,"~/dev_database.sql"
+-'  1  0  ~/dev_database.sql
+|4,39,1,0,1584879220,"~/dev_database.sql"
 -'  1  0  ~/dev_database.sql
 |4,39,1,0,1584879220,"~/dev_database.sql"
 -'  1  0  ~/dev_database.sql
@@ -74,6 +94,24 @@
 |4,39,1,0,1584878543,"~/.env"
 -'  1  0  ~/.env
 |4,39,1,0,1584878543,"~/.env"
+-'  1  0  ~/.env
+|4,39,1,0,1584878543,"~/.env"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
+-'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
+|4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
 -'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
 |4,39,1,0,1582758431,"~/public/js/lesson_json/simple3-statement/1-2.ssjson"
 -'  1  0  ~/public/js/lesson_json/simple3-statement/1-2.ssjson
@@ -122,6 +160,38 @@
 |4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
 -'  18  6  ~/public/js/custom-lessons.js
 |4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
+-'  18  6  ~/public/js/custom-lessons.js
+|4,39,18,6,1582758298,"~/public/js/custom-lessons.js"
 -'  188  4  ~/public/js/custom-lessons.js
 |4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
 -'  188  4  ~/public/js/custom-lessons.js
@@ -154,100 +224,38 @@
 |4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
 -'  188  4  ~/public/js/custom-lessons.js
 |4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  152  2  ~/public/js/custom-lessons.js
-|4,39,152,2,1582758284,"~/public/js/custom-lessons.js"
--'  142  0  ~/public/js/custom-lessons.js
-|4,39,142,0,1582758284,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
--'  1  0  ~/public/js/custom-lessons.js
-|4,39,1,0,1582758246,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
+-'  188  4  ~/public/js/custom-lessons.js
+|4,39,188,4,1582758285,"~/public/js/custom-lessons.js"
 
 # History of marks within files (newest to oldest):
+
+> ~/.env
+	*	1586214965	0
+	"	21	0
 
 > ~/dump.sql
 	*	1585993214	0
@@ -256,10 +264,6 @@
 > ~/dev_database.sql
 	*	1584879253	0
 	"	145	0
-
-> ~/.env
-	*	1584878642	0
-	"	14	23
 
 > ~/public/js/lesson_json/simple3-statement/1-2.ssjson
 	*	1582758428	0

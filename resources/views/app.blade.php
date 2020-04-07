@@ -35,6 +35,24 @@
         }
     });
 
+    @if (Auth::check())
+        var user_id = {{Auth::id()}};
+        var email = '{{Auth::user()->email}}';
+        var previous_url = '{{url()->previous()}}';
+
+        analytics.alias(user_id);
+        analytics.identify(user_id);
+
+        if(previous_url.includes('register')){
+            analytics.track('Account Created', {"user_id": user_id, "email": email});
+        }
+
+        if(previous_url.includes('login')){
+            analytics.track('Log in', {"user_id": user_id});
+        }
+
+    @endif
+
     </script>
 
     <!-- Common JS for pages -->

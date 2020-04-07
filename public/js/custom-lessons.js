@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-	analytics.track("Opened Lesson", {"lesson": 1});
+	analytics.track("Start a lesson", {"lesson": 1});
 
 	toastr.options = {
 	  "positionClass": "toast-bottom-right"
@@ -190,7 +190,7 @@ jQuery(document).ready(function () {
 
               if(response.status == 0){
 
-              	analytics.track("Lesson Step", {"lesson": 1, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": false});
+              	analytics.track("Lesson Step", {"lesson": 1, "Screen": parent_step_number, "Step": current_sub_step_number, "Correct": false});
 
           	  	var wrong_cells = JSON.parse(response.wrong_cells);
 

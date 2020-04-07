@@ -39,7 +39,14 @@ if(jQuery('#frm-contact').length > 0) {
 
               if(response.status == 1){
                   toastr.success(response.success);
-                  jQuery("#frm-contact")[0].reset()
+
+                  if (typeof response.user_id != "undefined") {    
+                    analytics.track("Sends Contact Email", {"user_id": response.user_id});
+                  } else {
+                    analytics.track("Sends Contact Email", {"email": response.email});
+                  }
+
+                  jQuery("#frm-contact")[0].reset();
               } else {
                   toastr.error(response.error);
               }

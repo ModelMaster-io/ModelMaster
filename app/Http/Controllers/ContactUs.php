@@ -9,6 +9,8 @@ use App\Contact;
 use Event; 
 use App\Events\ContactSend;
 use Mail;
+use App\User;
+use Auth;
 
 class ContactUs extends Controller
 {
@@ -33,7 +35,15 @@ class ContactUs extends Controller
 
         event(new ContactSend($contact));
 
-        return response()->json(['status'=>1,  'success'=>'Message Sent Successfully!']);
+        if (Auth::check()){
+
+            return response()->json(['status'=>1,  'success'=>'Message Sent Successfully!', 'user_id'=>Auth::id()]);
+
+        } else{
+
+            return response()->json(['status'=>1,  'success'=>'Message Sent Successfully!', 'email'=>$contact->email]);
+        }
+
 
     }
 

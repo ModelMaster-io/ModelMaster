@@ -37,11 +37,15 @@
 
     @if (Auth::check())
         var user_id = {{Auth::id()}};
-        var email = '{{Auth::user()->email}}';
+        var user_email = '{{Auth::user()->email}}';
+        var user_name = '{{Auth::user()->name}}';
         var previous_url = '{{url()->previous()}}';
 
         analytics.alias(user_id);
-        analytics.identify(user_id);
+        analytics.identify(user_id, {
+            email: user_email,
+            name: user_name
+        });
 
         if(previous_url.includes('register')){
             analytics.track('Account Created', {"user_id": user_id, "email": email});

@@ -218,6 +218,87 @@ ul.dropdown-menu.icon-text {
 .menu ul li a:hover {
     color: #237346;
 }
+
+/*new and future*/
+.newfuture_block .bottom_block {
+    width: 100%;
+    display: inline-block;
+    float: left;
+}
+.buy_now_btn {
+    background-color: #fff!important;
+        padding: 12px 27px !important;
+    color: #29B473 !important;
+    text-transform: uppercase;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    display: inline-block !important;
+    letter-spacing: 0.5px;
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    border: none!important;
+    vertical-align: top;
+    float: none;
+    border-radius: 50px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    position: absolute;
+    bottom: 30px;
+}
+a.buy_now_btn:hover {
+    background: #29B473 !important;
+    color: #fff !important;
+}
+.des_new {
+    position: absolute;
+    top: 0;
+    padding: 20px 15px;
+    color: #fff;
+    font-size: 20px;
+    height: 100%;
+}
+.des_new_title {
+    font-family: 'Conv_lato.regular',Sans-Serif;
+    font-size: 30px;
+    line-height: 37px;
+    margin-bottom: 15px;
+}
+.des_new_price {
+    font-size: 23px;
+}
+.newfuture_block .top_block {
+    width: 100%;
+    float: left;
+}
+.top_block_des {
+    position: relative;
+    padding: 15px;
+}
+.bottom_block .top_block_des {
+    width: 33%;
+    float: left;
+}
+.new_future_block_inner {
+    width: 100%;
+    float: left;
+}
+.newfuture_block {
+    width: 100%;
+    display: inline-block;
+    margin: 40px -15px 0 !important;
+}
+.top_block_des img {
+    width: 100%;
+}
+.wapper.newfuture_block_main {
+    padding: 60px 6%;
+    background: #fff !important;
+}
+
+.wapper.cart_page_main table {
+    width: 100%;
+}
+/*new and future end*/
+
 .lesson-contant {
     padding: 7px 0px 20px 0px;
     /* max-width: 1200px; */

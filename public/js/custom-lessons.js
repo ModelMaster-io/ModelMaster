@@ -1,6 +1,8 @@
 jQuery(document).ready(function () {
 
-	analytics.track("Start a lesson", {"lesson": 1});
+	var lessonid = jQuery('.lessonid').val();
+
+	analytics.track("Start a lesson", {"lesson": lessonid});
 
 	toastr.options = {
 	  "positionClass": "toast-bottom-right"
@@ -13,7 +15,7 @@ jQuery(document).ready(function () {
         type: 'POST',
         data: { 
         	"_token": jQuery('meta[name="csrf-token"]').attr('content'),
-        	"lesson_id": 1
+        	"lesson_id": lessonid
     	},
         async: false,
         success: function(response) {
@@ -151,7 +153,7 @@ jQuery(document).ready(function () {
 		var data = {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
 				'lesson': jsonString,
-				'lesson_id': 1,
+				'lesson_id': lessonid,
 				'screen': parent_step_number,
 				'step': current_sub_step_number
 		};
@@ -190,7 +192,7 @@ jQuery(document).ready(function () {
 
               if(response.status == 0){
 
-              	analytics.track("Lesson Step", {"lesson": 1, "Screen": parent_step_number, "Step": current_sub_step_number, "Correct": false});
+              	analytics.track("Lesson Step", {"lesson": lessonid, "Screen": parent_step_number, "Step": current_sub_step_number, "Correct": false});
 
           	  	var wrong_cells = JSON.parse(response.wrong_cells);
 
@@ -217,7 +219,7 @@ jQuery(document).ready(function () {
 
               } else {
 
-              		analytics.track("Lesson Step", {"lesson": 1, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
+              		analytics.track("Lesson Step", {"lesson": lessonid, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
 
 
           			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
@@ -225,7 +227,7 @@ jQuery(document).ready(function () {
 					if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
 						jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
 						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-						analytics.track("Finished Lesson", {"lesson": 1});
+						analytics.track("Finished Lesson", {"lesson": lessonid});
 					} else {
 						jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
 					}
@@ -325,7 +327,7 @@ jQuery(document).ready(function () {
 
 		var data = {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
-				'lesson_id': 1,
+				'lesson_id': lessonid,
 				'screen': parent_step_number,
 				'step': current_sub_step_number
 		};

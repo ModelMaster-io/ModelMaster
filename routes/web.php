@@ -120,9 +120,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::patch('userprofile/{user}/updateuser',  ['as' => 'userprofile.update', 'uses' => 'UserProfile@updateuser']);
 
-    Route::get('/lessons', function () {
+    /*Route::get('/lessons', function () {
         return view('pages.lesson');
-    });
+    });*/
+
+    Route::get('/lessons','UserLesson@getLessonListing')->name('get_lesson_listing');
+
+    Route::get('/lessons/single-lesson/{lesson_id}', function () {
+        return view('pages.single-lesson');
+    })->name('single-lesson');
 
     Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 

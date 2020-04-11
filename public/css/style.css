@@ -288,6 +288,7 @@ a.buy_now_btn:hover {
 }
 .top_block_des img {
     width: 100%;
+    height: 400px;
 }
 .wapper.newfuture_block_main {
     padding: 60px 6%;
@@ -2070,7 +2071,7 @@ p.cart_des {
 }
 .wapper.user_profile .sign_in_feild input[type="checkbox"] {
     top: 7px;
-    }
+}
 
 .payment-block {
     padding: 15px 15px 0 15px;
@@ -2081,10 +2082,11 @@ p.cart_des {
 .ckeckbox-confirm {
     font-size: 15px;
 }
-    .des_new_title {
-       font-size: 18px;
+.des_new_title {
+    font-size: 18px;
     line-height: 20px;
     margin-bottom: 5px;
+    padding: 0 15px 0 0;
 }
 
 .buy_now_btn {

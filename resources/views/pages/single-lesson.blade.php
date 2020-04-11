@@ -132,7 +132,7 @@
     <div class="lesson-contant">
         <div class="lesson-contant-left">
             <div class="lesson-contant-left-tab">
-
+                <input type="hidden" class="lessonid" value="{{ decrypt(Request::segment(3)) }}">
                 <div class="lesson-contant-left-tab-menu">
                     <ul class="lesson-menu spread_steps_clk">
                         <li><a href="javascript:void(0)" class="active" data-step="step1">1</a></li>

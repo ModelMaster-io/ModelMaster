@@ -38,7 +38,12 @@ class UserLesson extends Controller
         if($lesson_steps){
 
             $answer = isset($lesson_steps->answer) ? json_decode($lesson_steps->answer) : array();
-            $answer_datatable = $answer->sheets->Sheet1->data->dataTable;
+
+            /*echo '<pre>';
+            print_r($answer);
+            exit();*/
+
+            $answer_datatable = isset($answer->sheets->Sheet1) ? $answer->sheets->Sheet1->data->dataTable : $answer->sheets->data->dataTable;
 
 
             if($curr_lesson){

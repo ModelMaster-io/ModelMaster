@@ -13,7 +13,7 @@
            <div class="des_new">
         <!-- <div class="des_new_title">Simple 3-Statement<br> Model </div> -->
         <div class="des_new_title">{{$lesson->name}}</div>
-        <a href="{{ route('single-lesson', encrypt($lesson->id)) }}" class="buy_now_btn">start lesson</a>
+        <a href="{{ route('single-lesson', encrypt($lesson->id)) }}" class="buy_now_btn">{{App\LessonSteps::userLessonStatus($lesson->id)}}</a>
       </div>
     </div>
     @endforeach

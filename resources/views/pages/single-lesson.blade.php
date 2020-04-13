@@ -126,7 +126,14 @@
 
 @section('content')
 
-<div class="title">Simple 3-Statement Model</div> 
+@php
+
+    $lesson_name = App\Lesson::where(['id' => decrypt(Request::segment(3))])->pluck('name')->first();
+    $lesson_name = isset($lesson_name) ? $lesson_name : '';
+
+@endphp
+
+<div class="title">{{$lesson_name}}</div> 
 
 <div class="lesson">
     <div class="lesson-contant">

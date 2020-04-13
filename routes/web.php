@@ -88,6 +88,8 @@ Route::group(['prefix' => '/admin'], function () {
  */
 Auth::routes();
 
+Route::get('/lessons','UserLesson@getLessonListing')->name('get_lesson_listing');
+
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -123,8 +125,6 @@ Route::group(['middleware' => 'auth'], function () {
     /*Route::get('/lessons', function () {
         return view('pages.lesson');
     });*/
-
-    Route::get('/lessons','UserLesson@getLessonListing')->name('get_lesson_listing');
 
     Route::get('/lessons/single-lesson/{lesson_id}', function () {
         return view('pages.single-lesson');

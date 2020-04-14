@@ -48,7 +48,7 @@
         });
 
         if(previous_url.includes('register')){
-            analytics.track('Account Created', {"user_id": user_id, "email": email});
+            analytics.track('Account Created', {"user_id": user_id, "email": user_email});
         }
 
         if(previous_url.includes('login')){

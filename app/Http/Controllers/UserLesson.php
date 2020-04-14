@@ -103,7 +103,6 @@ class UserLesson extends Controller
 
         }
 
-
         /* If above all validations are true then execute below part */
         
         $user_id = Auth::user()->id;
@@ -320,11 +319,6 @@ class UserLesson extends Controller
     public function getLessonListing(Request $request) {
 
         $lessonlist = Lesson::select('id', 'name')->get();
-        //$new_empty_lesson = $new_empty_lesson->getOriginal();
-        
-        /*echo '<pre>';
-        print_r($new_empty_lesson);
-        exit();   */
 
         return view("pages.lesson", compact('lessonlist'));
 

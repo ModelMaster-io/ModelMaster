@@ -454,15 +454,21 @@ ul.spread_sub_steps_clk {
     font-size: 22px;
 }
 .lcltc1 {
-    padding: 11px 0px  0px 9px;
+    padding: 11px;
 }
 .sub-lesson-step-contant {
-    padding-right: 8px;
+    padding-right: 0;
     float: left;
+    width: 100%;
+}
+.sub-lesson-step-contant p {
+    margin: 0 0 10px;
+    width: 100%;
+    overflow-wrap: break-word;
 }
 .lcltc1-contant {
     width: 100%;
-    display: table;
+    /*display: table;*/
     color: #4b4b4b;
     font-size: 18px;
     line-height: 28px;
@@ -1306,10 +1312,13 @@ select.brdr_option, select.border_style_options {
 #lesson-md .table-striped tbody tr:nth-of-type(odd) {
     background-color: #FAFAFA;
 }
-#lesson-md button:focus{
+#lesson-md .profile-lesson-lnk:focus{
     outline: none;
 }
-#lesson-md button {
+.user_profile .tab-content>.tab-pane {
+    min-height: 500px;
+}
+#lesson-md .profile-lesson-lnk {
     background-color: transparent;
     padding: 6px 17px !important;
     color: #29B473 !important;

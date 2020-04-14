@@ -30,7 +30,19 @@ class LessonSteps extends Model
 
             $user_id = Auth::id();
             if (TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->exists()) {
-                $btn_val = 'continue lesson';
+
+                $tempsteps = TempSaveLesson::select('screen', 'step')->where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->first();
+
+                $max_screen = self::where('lesson_id', $lesson_id)->max('section');
+
+                $max_step = self::where(['lesson_id'=>$lesson_id, 'section'=>$max_screen])->max('step');
+
+                if($max_screen == $tempsteps->screen && $max_step == $tempsteps->step){
+                    $btn_val = 'finished lesson';
+                } else {
+                    $btn_val = 'continue lesson';
+                }
+
             }
 
         }

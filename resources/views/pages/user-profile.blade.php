@@ -175,6 +175,10 @@ jQuery(document).ready(function() {
           </li> 
           @endif
 
+          <li class="nav-item">
+            <img src="../images/lesson.png"/><a  id="lesson-tab-md" data-toggle="tab" href="#lesson-md" role="tab" aria-controls="lesson-md" aria-selected="false">my lessons</a>
+          </li>
+
         </ul>
 
       </div>
@@ -286,6 +290,21 @@ jQuery(document).ready(function() {
           </div>
         </div>
         @endif
+
+        <div class="tab-pane fade" id="lesson-md" role="tabpanel" aria-labelledby="lesson-tab-md">
+          <table class="table table-striped">
+            <tr>
+              <th>No</th>
+              <th>lesson name</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>The principles of scientific management </td>
+              <td><a href="#" class="profile-lesson-lnk">start lesson</a></td>
+            </tr>
+          </table>
+        </div>
 
     </div>
   </div>

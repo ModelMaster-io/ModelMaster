@@ -35,7 +35,7 @@
         }
     });
 
-    @if (Auth::check())
+    @if (Auth::check()) 
         var user_id = {{Auth::id()}};
         var user_email = '{{Auth::user()->email}}';
         var user_name = '{{Auth::user()->name}}';
@@ -53,6 +53,10 @@
 
         if(previous_url.includes('login')){
             analytics.track('Log in', {"user_id": user_id});
+        }
+
+        if(previous_url.includes('https://www.facebook.com') || previous_url.includes('https://www.linkedin.com') || previous_url.includes('https://accounts.google.co.in')){
+            analytics.track('Account Created', {"user_id": user_id, "email": user_email});
         }
 
     @endif

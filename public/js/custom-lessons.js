@@ -56,7 +56,8 @@ jQuery(document).ready(function () {
 		var curr = jQuery(this);
 
 		var data = {
-			"_token": jQuery('meta[name="csrf-token"]').attr('content')
+			"_token": jQuery('meta[name="csrf-token"]').attr('content'),
+			"lesson_id": lessonid
 		}
 
 		jQuery.ajax({

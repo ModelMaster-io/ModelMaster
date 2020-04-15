@@ -107,9 +107,9 @@ class UserLesson extends Controller
         
         $user_id = Auth::user()->id;
 
-        $new_empty_lesson = Lesson::where(['id' => 1])->pluck('lesson')->first();
+        $new_empty_lesson = Lesson::where(['id' => $lesson_id])->pluck('lesson')->first();
 
-        $existing_lesson = TempSaveLesson::where(['lesson_id' => 1, 'user_id' => $user_id])->pluck('lesson')->first();
+        $existing_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->pluck('lesson')->first();
 
         if($existing_lesson != ''){
             $lesson = $existing_lesson;
@@ -158,12 +158,13 @@ class UserLesson extends Controller
     public function getTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
 
         $user_id = Auth::user()->id;
+        $lesson_id = $request->get('lesson_id');
 
-        $l_id = TempSaveLesson::where(['user_id' => $user_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
+        //$l_id = TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
 
-        if($l_id != null){
+        if(TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->exists()){
 
-            $lesson = TempSaveLesson::where(['lesson_id' => $l_id, 'user_id' => $user_id])->get()->first();
+            $lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->get()->first();
 
             $temo_lsn_data = $lesson->getOriginal();
 

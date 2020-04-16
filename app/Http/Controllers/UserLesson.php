@@ -35,13 +35,22 @@ class UserLesson extends Controller
         $right_rc = array();
 
 
-        if($lesson_steps){
+        $sfpui = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->pluck('starts_from_previous_user_input')->first();
+
+        //dd($sfpui);
+
+        if($sfpui == 1){
+
+            dd($sfpui);                                                                         
+
+        } else {
+
+             if($lesson_steps){
 
             $answer = isset($lesson_steps->answer) ? json_decode($lesson_steps->answer) : array();
 
-            /*echo '<pre>';
-            print_r($answer);
-            exit();*/
+            if($answer) {
+
 
             $answer_datatable = isset($answer->sheets->Sheet1) ? $answer->sheets->Sheet1->data->dataTable : $answer->sheets->data->dataTable;
 
@@ -100,8 +109,13 @@ class UserLesson extends Controller
                 return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message]);
             }
 
+        }
+
 
         }
+
+        }
+
 
         /* If above all validations are true then execute below part */
         
@@ -161,6 +175,7 @@ class UserLesson extends Controller
         $lesson_id = $request->get('lesson_id');
 
         //$l_id = TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
+
 
         if(TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->exists()){
 

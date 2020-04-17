@@ -100,6 +100,7 @@ ul.lesson-menu li a:hover,
 .contact-socil-icon a,
 .contact-socil-icon a:hover,
 .home_learn_btn,
+.page_back_btn a:hover,
 .home_learn_btn:hover{
     transition: all 0.5s ease;
 }
@@ -188,6 +189,7 @@ ul.dropdown-menu.icon-text {
     top: 0 !important;
 }
 .logout_btn a, 
+.page_back_btn a,
 .sub-lesson-step-contant button {
     background-color: #29B473 !important;
     padding: 12px 25px !important;
@@ -247,6 +249,18 @@ ul.dropdown-menu.icon-text {
 a.buy_now_btn:hover {
     background: #29B473 !important;
     color: #fff !important;
+}
+span.page_back_btn {
+    float: left;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-left: 16px;
+}
+span.page_back_btn a {
+    font-size: 16px !important;
+    display: inline-block !important;
+    padding: 6px 13px !important;
 }
 .des_new {
     position: absolute;

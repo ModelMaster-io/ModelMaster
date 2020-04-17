@@ -1,6 +1,22 @@
-@extends('app')
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Start Segment --><script>
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+      analytics.load("O6BeWDNcs0o2YOFEfxzmThVTlpHE06Fd");
+      analytics.page();
+      }}();
+    </script><!-- End Segment -->
 
-@section('scripts_and_styles')
+<meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<title>Model Master</title>
+<link href="{{ asset('css/other_style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 <link href="https://cdn.jsdelivr.net/tipped/4.0.10/css/tipped/tipped.css" rel="stylesheet"/>
@@ -62,58 +78,6 @@
 <script src="{{ URL::asset('js/custom-lessons.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
-        //var spread, activeSheet;
-
-
-        //var spread = new GcSpread.Sheets.Spread($("#ss").get(0),{sheetCount:1});
-        //var sheet = spread.getActiveSheet();
-        //sheet.getCell(0, 0).formatter("0.00_);(0.00)");
-        
-        //sheet.getCell(1, 1).text("FakeSoftwareCo Income Statement");
-
-
-         //Set values by calling SetText method
-         //var spread = new GcSpread.Sheets.Spread($("#ss").get(0),{sheetCount:3});
-         //var sheet = spread.getActiveSheet();
-         //sheet.setText(1, 1, 'FakeSoftwareCo Income Statement');
-
-        /*window.onload = function () {
-            spread = new GC.Spread.Sheets.Workbook(document.getElementById("ss"));
-            activeSheet = spread.getActiveSheet();
-            activeSheet.setValue(1, 1, "FakeSoftwareCo Income Statement");
-            var nCondition = new GC.Spread.Sheets.ConditionalFormatting.Condition(GC.Spread.Sheets.ConditionalFormatting.ConditionType.textCondition);
-            nCondition.compareType(GC.Spread.Sheets.ConditionalFormatting.TextCompareType.contains);
-            nCondition.expected("te?t");
-            nCondition.ignoreBlank(true);
-            nCondition.ignoreCase(true);
-            nCondition.useWildCards(true);
-            var validator = new GC.Spread.Sheets.DataValidation.DefaultDataValidator(nCondition);
-            validator.type(GC.Spread.Sheets.DataValidation.CriteriaType.custom);
-            activeSheet.getCell(-1, 0, GC.Spread.Sheets.SheetArea.viewport).validator(validator);
-            activeSheet.getCell(-1, 1, GC.Spread.Sheets.SheetArea.viewport).validator(validator);
-            spread.options.highlightInvalidData = true;
-            activeSheet.bind("ValidationError", vError);
-            activeSheet.bind("LeaveCell", checkError);
-    
-        } 
-        function vError(sender, args) {
-            alert("please enter- Test");
-        }
-        function checkError(sender, args) {
-            var rowCount = activeSheet.getRowCount(), colCount = activeSheet.getColumnCount();
-            for (var i = 0; i < rowCount; i++) {
-                for (var j = 0; j < colCount; j++) {
-                    if (!sheet.isValid(i, j, sheet.getValue(i, j))) {
-                        sheet.setActiveCell(i, j);
-                    }
-                }
-            }
-           
-        }*/
-
-    </script>
-
 <style>
     #ssvp_vp, #ss_tabStrip{
         width: 100% !important;
@@ -121,10 +85,48 @@
     }
 </style>
 
-@endsection
+<script type="text/javascript">
+  
+    jQuery.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
+    @if (Auth::check()) 
+        var user_id = {{Auth::id()}};
+        var user_email = '{{Auth::user()->email}}';
+        var user_name = '{{Auth::user()->name}}';
+        var previous_url = '{{url()->previous()}}';
 
-@section('content')
+        analytics.alias(user_id);
+        analytics.identify(user_id, {
+            email: user_email,
+            name: user_name
+        });
+
+        if(previous_url.includes('register')){
+            analytics.track('Account Created', {"user_id": user_id, "email": user_email});
+        }
+
+        if(previous_url.includes('login')){
+            analytics.track('Log in', {"user_id": user_id});
+        }
+
+        if(previous_url.includes('https://www.facebook.com') || previous_url.includes('https://www.linkedin.com') || previous_url.includes('https://accounts.google.co.in')){
+            analytics.track('Account Created', {"user_id": user_id, "email": user_email});
+        }
+
+    @endif
+
+    </script>
+
+    <!-- Common JS for pages -->
+    <script src="{{ URL::asset('js/custom-script.js') }}"></script>
+
+</head>
+
+<body>
 
 @php
 
@@ -133,7 +135,7 @@
 
 @endphp
 
-<div class="title">{{$lesson_name}}</div> 
+<div class="title"><span class="page_back_btn"><a href="{{ url('/user-profile') }}">&#171; Back</a></span>{{$lesson_name}}</div> 
 
 <div class="lesson">
     <div class="lesson-contant">
@@ -5384,4 +5386,6 @@
     </div>
 </div>
 
-@endsection
+</body>
+
+</html>

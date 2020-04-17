@@ -35,11 +35,10 @@ class UserLesson extends Controller
         $right_rc = array();
 
 
-        $sfpui = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->pluck('starts_from_previous_user_input')->first();
+        $dss = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->pluck('direct_starting_screen')->first();
 
-        //dd($sfpui);
 
-        if($sfpui == 1){
+        if($dss != ''){
 
             dd($sfpui);                                                                         
 

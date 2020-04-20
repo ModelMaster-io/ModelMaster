@@ -238,7 +238,13 @@ jQuery(document).ready(function () {
 						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
 					}
 
+					var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
 
+					if(response.dss != ''){
+	          			spread1.fromJSON(JSON.parse(response['dss']));
+					} else if(response.prev_lsn != ''){
+	          			spread1.fromJSON(JSON.parse(response['prev_lsn']));
+					}
 
 					jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
 

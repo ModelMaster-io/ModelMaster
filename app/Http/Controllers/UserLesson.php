@@ -34,18 +34,28 @@ class UserLesson extends Controller
         $row_col = array();
         $right_rc = array();
 
+        $dss = '';
+        $prev_lsn = '';
 
-        $dss = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->pluck('direct_starting_screen')->first();
+        $next_step = $this->getNextLessonStep($lesson_id, $section, $step);
+
+        if($next_step != 1){
+
+            $dss = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $next_step['section'], 'step' => $next_step['step']])->pluck('direct_starting_screen')->first();    
+        }
+
+        $sfpui = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $next_step['section'], 'step' => $next_step['step']])->pluck('starts_from_previous_user_input')->first();
+
+        if($sfpui == 1){
+            $prev_sc_stp = LessonSteps::select('previous_section', 'previous_step')->where(['lesson_id' => $lesson_id, 'section' => $next_step['section'], 'step' => $next_step['step']])->first();
+
+            $prev_lsn = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $prev_sc_stp['previous_section'], 'step' => $prev_sc_stp['previous_step']])->pluck('answer')->first();
+
+        }
 
 
-        if($dss != ''){
-
-            dd($sfpui);                                                                         
-
-        } else {
-
-             if($lesson_steps){
-
+         if($lesson_steps){
+    
             $answer = isset($lesson_steps->answer) ? json_decode($lesson_steps->answer) : array();
 
             if($answer) {
@@ -58,6 +68,7 @@ class UserLesson extends Controller
 
                 $curr_answer = json_decode($curr_lesson); 
                 $curr_answer_datatable = isset($curr_answer->sheets->Sheet1->data->dataTable) ? $curr_answer->sheets->Sheet1->data->dataTable : '';
+
 
                 $row = array();
                 $col = array();
@@ -73,7 +84,7 @@ class UserLesson extends Controller
                                 $col = (int)$sub_key;
 
                                 $row_col[] = array($row=>$col);
-                                //return response()->json(['status'=>0,  'error_msg'=>$lesson_steps->error_message, 'row'=>$row, 'col'=>$col]);
+                            
     
                             } else {
 
@@ -90,9 +101,6 @@ class UserLesson extends Controller
 
                 }
 
-                /*echo '<pre>';
-                print_r(json_encode($row_col));
-                exit(); */
 
                 if(!empty($row_col)){
 
@@ -110,8 +118,6 @@ class UserLesson extends Controller
 
         }
 
-
-        }
 
         }
 
@@ -141,9 +147,6 @@ class UserLesson extends Controller
 
                 $c_lesson = json_decode($c_lesson, true);
 
-                //echo '<pre>';
-                //print_r($c_lesson);
-
                 for ($l=1; $l <= count($c_lesson['sheets']); $l++) {
 
                     if(!empty($c_lesson['sheets']['Sheet'.$l]['data']['dataTable'])){
@@ -163,7 +166,8 @@ class UserLesson extends Controller
             ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize(json_encode($lesson))]
         );
 
-        return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc)]);
+        return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
+
 
     }
 
@@ -174,7 +178,6 @@ class UserLesson extends Controller
         $lesson_id = $request->get('lesson_id');
 
         //$l_id = TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->orderBy('created_at', 'desc')->pluck('lesson_id')->first();
-
 
         if(TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->exists()){
 
@@ -192,6 +195,24 @@ class UserLesson extends Controller
             return response()->json(['status'=>0,  'msg'=>'No any spreadsheet running...']);
 
         }
+
+    }
+
+    public function getNextLessonStep($lesson_id, $section, $step){
+
+       $max_step = LessonSteps::where(['lesson_id'=>$lesson_id, 'section'=>$section])->max('step');
+
+       $max_screen = LessonSteps::where('lesson_id', $lesson_id)->max('section');
+
+       if($step < $max_step){
+            return array('section'=>$section, 'step'=>($step+1));
+       } else if (($step == $max_step) && ($section < $max_screen)){
+            return array('section'=>($section+1), 'step'=>1);
+       } else if (($step == $max_step) && ($section == $max_screen)){
+            return 1;
+       } else {
+            return 1;
+       }
 
     }
 

@@ -394,20 +394,19 @@ span.page_back_btn a {
     height: auto;
 }
 
-canvas#ssvp_vp {
-    height: calc(100vh - 329px)!important;
-}
 div#ss, div#controlPanel {
     height: auto!important;
 }
 
 .lcltc1-mm {
     overflow: auto;
-     height: calc(100vh - 250px); 
+     height: calc(100vh - 203px); 
     overflow-y: scroll;
     /*height: 638px;*/
-} 
-
+}
+canvas#ssvp_vp {
+    height: calc(100vh - 268px)!important;
+}
 ul.lesson-menu li a {
     height: 50px;
     line-height: 50px;

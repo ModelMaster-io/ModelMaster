@@ -359,7 +359,7 @@ ul.lesson-menu li a:hover {
 
 .lcltc1-contant {
     width: 100%;
-    display: table;
+    /*display: table;*/
     color: #4b4b4b;
     font-size: 22px;
     line-height: 32px;

@@ -11,7 +11,7 @@
 <meta content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <title>Model Master</title>
-<link href="{{ asset('css/other_style.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ asset('css/other_style.css') }}" rel="stylesheet" type="text/css" /> -->
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>

@@ -228,7 +228,6 @@ class UserLesson extends Controller
         if($lesson_sections){
 
             $lesson_steps = array();
-            $hints = array();
 
             foreach ($lesson_sections as $instructions) {
                 # code...
@@ -256,6 +255,8 @@ class UserLesson extends Controller
 
                     foreach ($lesson_steps as $stps) {
 
+                        $hints = array();
+
                         $l_step_id = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $instructions->section, 'step' => $stps->step])->pluck('id')->first();
 
                         if (LessonStepHints::where('lesson_steps_id', '=', $l_step_id)->exists()) {
@@ -280,7 +281,7 @@ class UserLesson extends Controller
 
                         $instructions_html .= $stps->instructions;
 
-                        if($hints){
+                        if(!empty($hints)){
 
                             $h = 1;
 

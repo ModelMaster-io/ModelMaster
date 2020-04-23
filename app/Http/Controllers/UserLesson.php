@@ -128,13 +128,26 @@ class UserLesson extends Controller
 
         $new_empty_lesson = Lesson::where(['id' => $lesson_id])->pluck('lesson')->first();
 
-        $existing_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->pluck('lesson')->first();
+        if(TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->exists()){
 
-        if($existing_lesson != ''){
+            $latest_screen = TempSaveLesson::where(['lesson_id'=> $lesson_id, 'user_id' => $user_id])->max('screen');
+
+            $latest_step = TempSaveLesson::where(['lesson_id'=>$lesson_id, 'screen'=>$latest_screen, 'user_id' => $user_id])->max('step');
+
+            $existing_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $latest_screen, 'step' => $latest_step])->pluck('lesson')->first();
+
             $lesson = $existing_lesson;
+
         } else {
             $lesson = $new_empty_lesson;
         }
+
+        
+        /*if($existing_lesson != ''){
+            $lesson = $existing_lesson;
+        } else {
+            $lesson = $new_empty_lesson;
+        }*/
 
 
         if($lesson != ''){
@@ -159,14 +172,33 @@ class UserLesson extends Controller
 
             
         }
+ 
+        $temp_lesson_save = TempSaveLesson::firstOrCreate(
+                                [
+                                'user_id' => Auth::user()->id, 
+                                'lesson_id' => $request->get('lesson_id'),
+                                'screen' => $request->get('screen'),
+                                'step' => $request->get('step'),
+                                'lesson' => serialize(json_encode($lesson))
+                                ]
+                            );
 
 
-        $temp_lesson_save = TempSaveLesson::updateOrCreate(
-            ['user_id' => Auth::user()->id, 'lesson_id' => $request->get('lesson_id')],
-            ['screen' => $request->get('screen'), 'step' => $request->get('step'), 'lesson' => serialize(json_encode($lesson))]
-        );
+        $max_screen = LessonSteps::where('lesson_id', $request->get('lesson_id'))->max('section');
 
-        return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
+        $max_step = LessonSteps::where(['lesson_id'=>$request->get('lesson_id'), 'section'=>$max_screen])->max('step');
+
+
+
+        if($max_screen == $temp_lesson_save['screen'] && $max_step == $temp_lesson_save['step']){
+
+            return response()->json(['status'=>2,  'success'=>'Your curent Lesson is Completed!']);
+
+        } else {
+
+            return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
+        
+        }
 
 
     }
@@ -181,7 +213,11 @@ class UserLesson extends Controller
 
         if(TempSaveLesson::where(['user_id' => $user_id, 'lesson_id' => $lesson_id])->exists()){
 
-            $lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id])->get()->first();
+            $latest_screen = TempSaveLesson::where(['lesson_id'=> $lesson_id, 'user_id' => $user_id])->max('screen');
+
+            $latest_step = TempSaveLesson::where(['lesson_id'=>$lesson_id, 'screen'=>$latest_screen, 'user_id' => $user_id])->max('step');
+
+            $lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $latest_screen, 'step' => $latest_step])->get()->first();
 
             $temo_lsn_data = $lesson->getOriginal();
 

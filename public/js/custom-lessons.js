@@ -167,6 +167,13 @@ jQuery(document).ready(function () {
             beforeSend: function(){},
             success: function(response) {
 
+          	if(response.status == 2){
+
+          		toastr.success(response.success);
+          		jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
+          		jQuery('#'+parent_step+' .next_btn').css({'pointer-events': 'none','background': '#343642'});
+          	} else {
+
               var sheet = spread.getActiveSheet();
               //var instance = new GC.Spread.Sheets.Comments.CommentManager(sheet);
               var rgt_cells = JSON.parse(response.right_cells);
@@ -253,6 +260,8 @@ jQuery(document).ready(function () {
 					var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
 
               }
+
+          }
 
             },
             error: function (jqXHR, textStatus, errorThrown) {

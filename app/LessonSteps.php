@@ -42,7 +42,7 @@ class LessonSteps extends Model
                 $max_step = self::where(['lesson_id'=>$lesson_id, 'section'=>$max_screen])->max('step');
 
                 if($max_screen == $latest_screen && $max_step == $latest_step){
-                    $btn_val = 'finished lesson';
+                    $btn_val = 'lesson finished';
                 } else {
                     $btn_val = 'continue lesson';
                 }

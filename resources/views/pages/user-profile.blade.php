@@ -6,6 +6,7 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js" integrity="sha256-LJkWYMcB83+zN8VO3EnSoNYHiBo93miOF47ZfsPSNDQ=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 
@@ -293,16 +294,43 @@ jQuery(document).ready(function() {
 
         <div class="tab-pane fade" id="lesson-md" role="tabpanel" aria-labelledby="lesson-tab-md">
           <table class="table table-striped">
+
+            <thead>
+
             <tr>
               <th>No</th>
               <th>lesson name</th>
-              <th></th>
+              <th>Status</th>
             </tr>
+
+            </thead>
+
+            <tbody class="user-lsn-lst">
+
+            @if(\App\User::getUserLessonsExist($user_id))
+
+            @foreach(\App\User::getUserLessonsList($user_id) as $key => $lesson_id)
+
             <tr>
-              <td>1</td>
-              <td>The principles of scientific management </td>
-              <td><a href="#" class="profile-lesson-lnk">start lesson</a></td>
+              <td>{{$key+1}}</td>
+              <td>
+              {{$lesson_name = \App\Lesson::select('name')->where('id', $lesson_id)->pluck('name')->first()}}
+               </td>
+              <td><a href="{{ route('single-lesson', encrypt($lesson_id)) }}" class="profile-lesson-lnk">{{App\LessonSteps::userLessonStatus($lesson_id)}}</a></a></td>
             </tr>
+
+            @endforeach
+
+            @else
+
+            <tr>
+              <td></td><td>No Lesson Found!</td><td></td>
+            </tr>
+            
+            @endif
+
+            </tbody>
+
           </table>
         </div>
 

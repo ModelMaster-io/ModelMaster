@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
 <div class="wapper newfuture_block_main">
-  <div class="title_main">New & Future Lessons</div>
-  <p> This is photoshop's version of rem ipsum geaida nibha<br>  velit autor aliquet aenean sollicitudin.</p>
+  <div class="title_main">Lessons</div>
+  <p>New lessons to be added every few weeks</p>
 
 <div class="newfuture_block">
   <div class="new_future_block_inner">

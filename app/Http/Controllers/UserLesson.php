@@ -204,6 +204,24 @@ class UserLesson extends Controller
     }
 
 
+    public function getUserPrevLessonStep(TempSaveLesson $temp_lesson, Request $request) {
+
+        $user_id = Auth::user()->id;
+        $lesson_id = $request->get('lesson_id');
+        $screen = $request->get('screen');
+        $step = $request->get('step');
+
+        $lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $screen, 'step' => $step])->get()->first();
+
+        $prev_lsn_data = $lesson->getOriginal();
+
+        $prevSpreadsheetData = isset($prev_lsn_data['lesson']) ? unserialize($prev_lsn_data['lesson']) : array();
+
+        return response()->json(['status'=>1, 'prevSpreadsheetData'=>$prevSpreadsheetData, 'screen' => $screen, 'step' => $step]);
+
+    }
+
+
     public function getTempUserLesson(TempSaveLesson $temp_lesson, Request $request) {
 
         $user_id = Auth::user()->id;

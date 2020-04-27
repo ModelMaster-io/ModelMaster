@@ -284,6 +284,32 @@ jQuery(document).ready(function () {
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
 
+		/* Commented code working on */
+		/*var data = {
+				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
+				'lesson_id': lessonid,
+				'screen': parent_step,
+				'step': current_sub_step
+		};
+
+		jQuery.ajax({
+            url: '/get_user_backward_step',
+            type: 'POST',
+            data: data,
+            async: false,
+            beforeSend: function(){},
+            success: function(response) {
+
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            },
+            complete: function(){
+            } 
+
+        });*/
+
 		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:nth-child(1)').find('a').hasClass('active')){
 
 			if(jQuery('.spread_steps_clk li:nth-child(1)').find('a').hasClass('active')){

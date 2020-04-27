@@ -30,6 +30,8 @@ function readURL(input) {
   
 jQuery(document).ready(function() {
 
+  jQuery(".user-lsn-lst").niceScroll();
+
   jQuery("#frm_changeuserpassword").validate({
         rules: {
             current_password: {

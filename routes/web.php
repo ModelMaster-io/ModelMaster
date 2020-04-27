@@ -130,12 +130,19 @@ Route::group(['middleware' => 'auth'], function () {
         return view('pages.single-lesson');
     })->name('single-lesson');
 
+    /*Save user spreadsheet progress*/
     Route::post('/save_spreadsheet','UserLesson@saveTempUserLesson')->name('save_spreadsheet');
 
+    /*Get user spreadsheet previous step data*/
+    Route::post('/get_user_backward_step','UserLesson@getUserPrevLessonStep')->name('get_user_backward_step');
+
+    /*Get User spreadsheet progress*/
     Route::post('/get_spreadsheet','UserLesson@getTempUserLesson')->name('get_spreadsheet');
 
+    /*Fetch lesson steps and instructions*/
     Route::post('/get_lesson_steps','UserLesson@getLessonSteps')->name('get_lesson_steps');
 
+    /*Get Historical data*/
     Route::post('/get_historical_data','UserLesson@getHistoricalData')->name('get_historical_data');
     
 

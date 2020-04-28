@@ -211,13 +211,17 @@ class UserLesson extends Controller
         $screen = $request->get('screen');
         $step = $request->get('step');
 
-        $lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $screen, 'step' => $step])->get()->first();
+        $prvstp = $this->getPrevLessonStep($lesson_id, $screen, $step);
 
-        $prev_lsn_data = $lesson->getOriginal();
+        $prev_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $prvstp['section'], 'step' => $prvstp['step']])->pluck('lesson')->first();
 
-        $prevSpreadsheetData = isset($prev_lsn_data['lesson']) ? unserialize($prev_lsn_data['lesson']) : array();
+        if($prev_lesson != null){
+            return response()->json(['status'=>1, 'prevSpreadsheetData'=>unserialize($prev_lesson)]);
+        } else {
+            return response()->json(['status'=>0, 'msg'=>'Something goes wrong!']);
+        }
 
-        return response()->json(['status'=>1, 'prevSpreadsheetData'=>$prevSpreadsheetData, 'screen' => $screen, 'step' => $step]);
+        
 
     }
 
@@ -267,6 +271,20 @@ class UserLesson extends Controller
        } else {
             return 1;
        }
+
+    }
+
+
+    public function getPrevLessonStep($lesson_id, $section, $step){
+
+        if($step > 1){
+            $step = $step-1;
+        } else if ($section > 1 && $step == 1){
+            $section = $section-1;
+            $step = LessonSteps::where(['lesson_id'=>$lesson_id, 'section'=>$section])->max('step');
+        }
+
+        return array('section' => $section, 'step' => $step);
 
     }
 

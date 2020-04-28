@@ -279,55 +279,75 @@ jQuery(document).ready(function () {
 	
 	jQuery(document).on('click', '.previous_btn', function() {
 
+		var curr = jQuery(this);
 
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
 
+		var parent_step_number = parseInt(parent_step.split("step").pop());
+		
+		var current_sub_step_number = parseInt(current_sub_step.text());
+
 		/* Commented code working on */
-		/*var data = {
+		var l_data = {
 				"_token": jQuery('meta[name="csrf-token"]').attr('content'),
 				'lesson_id': lessonid,
-				'screen': parent_step,
-				'step': current_sub_step
+				'screen': parent_step_number,
+				'step': current_sub_step_number
 		};
 
 		jQuery.ajax({
             url: '/get_user_backward_step',
             type: 'POST',
-            data: data,
+            data: l_data,
             async: false,
             beforeSend: function(){},
-            success: function(response) {
+            success: function(res) {
 
+            	var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+            	if(res.status == 1){
 
+            		console.log(res.prevSpreadsheetData);
+
+            		spread1.fromJSON(JSON.parse(res.prevSpreadsheetData));
+
+					if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:nth-child(1)').find('a').hasClass('active')){
+
+						if(jQuery('.spread_steps_clk li:nth-child(1)').find('a').hasClass('active')){
+							jQuery('#'+parent_step+' .previous_btn').attr('disabled', 'disabled');
+							jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+						} else {
+							//prev_sec_stp = jQuery('#'+parent_step).prev('.lcltc1').find('.spread_sub_steps_clk li:last-child').find('a').data('step');
+							jQuery('.spread_steps_clk li .active').closest('li').prev('li').find('a').trigger('click');
+							jQuery('#'+parent_step).prev('.lcltc1').find('.spread_sub_steps_clk li:last-child').find('a').trigger('click');
+						}
+
+					} else {
+						jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+					}
+
+					//prev_sec_stp = jQuery(current_sub_step).closest('li').prev('li').find('a').data('step');
+					jQuery(current_sub_step).closest('li').prev('li').find('a').trigger('click');
+
+					jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+
+            	} else if(res.status == 0){
+
+            		toastr.error(response.msg);
+
+            	}
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
             },
             complete: function(){
-            } 
+            }
 
-        });*/
+        });
 
-		if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:nth-child(1)').find('a').hasClass('active')){
-
-			if(jQuery('.spread_steps_clk li:nth-child(1)').find('a').hasClass('active')){
-				jQuery('#'+parent_step+' .previous_btn').attr('disabled', 'disabled');
-				jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
-			} else {
-				jQuery('.spread_steps_clk li .active').closest('li').prev('li').find('a').trigger('click');
-				jQuery('#'+parent_step).prev('.lcltc1').find('.spread_sub_steps_clk li:last-child').find('a').trigger('click');
-			}
-
-		} else {
-			jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
-			jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-		}
-
-		jQuery(current_sub_step).closest('li').prev('li').find('a').trigger('click');
-
-		jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+        //var prev_sec_stp = '';
 
 	});
 

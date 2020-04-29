@@ -4,6 +4,12 @@ jQuery(document).ready(function () {
 
 	analytics.track("Start a lesson", {"lesson": lessonid});
 
+	/*Remove local storage data when lesson page load*/
+	localStorage.removeItem("mm_forward_step_recent_data");
+    localStorage.removeItem("mm_user_id");
+    localStorage.removeItem("mm_lesson_id");
+    localStorage.removeItem("mm_has_backward");
+
 	toastr.options = {
 	  "positionClass": "toast-bottom-right"
 	}
@@ -149,6 +155,10 @@ jQuery(document).ready(function () {
 		
 		var current_sub_step_number = parseInt(current_sub_step.text());
 
+		var is_backward_step = 0;
+
+		is_backward_step = localStorage.getItem("mm_has_backward");
+
 		//var emptyjson = '{"version":"13.0.4","customList":[],"sheetCount":2,"sheets":{"Sheet1":{"name":"Sheet1","activeRow":1,"activeCol":1,"theme":"Office","data":{"dataTable":{},"defaultDataNode":{"style":{"themeFont":"Body"}}},"rowHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"colHeaderData":{"defaultDataNode":{"style":{"themeFont":"Body"}}},"columns":[null,{"size":212}],"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":1,"rowCount":1,"col":1,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"printInfo":{"paperSize":{"width":850,"height":1100,"kind":1}},"index":0},"Sheet2":{"name":"Sheet2","theme":"Office","data":{"dataTable":{}},"rowHeaderData":{},"colHeaderData":{},"leftCellIndex":0,"topCellIndex":0,"selections":{"0":{"row":0,"rowCount":1,"col":0,"colCount":1},"length":1},"cellStates":{},"outlineColumnOptions":{},"autoMergeRangeInfos":[],"index":1}}}';
 
 		var data = {
@@ -156,7 +166,8 @@ jQuery(document).ready(function () {
 				'lesson': jsonString,
 				'lesson_id': lessonid,
 				'screen': parent_step_number,
-				'step': current_sub_step_number
+				'step': current_sub_step_number,
+				'is_backward_step': is_backward_step
 		};
 		
         jQuery.ajax({
@@ -172,6 +183,12 @@ jQuery(document).ready(function () {
           		toastr.success(response.success);
           		jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
           		jQuery('#'+parent_step+' .next_btn').css({'pointer-events': 'none','background': '#343642'});
+          	} else if(response.status == 3){
+
+          		if(response.lesson == jsonString){
+
+          		}
+
           	} else {
 
               var sheet = spread.getActiveSheet();
@@ -281,6 +298,21 @@ jQuery(document).ready(function () {
 
 		var curr = jQuery(this);
 
+		var serializationOption = {
+	       ignoreStyle: false, // indicate to ignore the style when convert workbook to json, default value is false
+	       ignoreFormula: false, // indicate to ignore the formula when convert workbook to json, default value is false
+	       rowHeadersAsFrozenColumns: false, // indicate to treat the row headers as frozen columns when convert workbook to json, default value is false
+	       columnHeadersAsFrozenRows: false // indicate to treat the column headers as frozen rows when convert workbook to json, default value is false
+	    };
+
+	    var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+	    var jsonString = JSON.stringify(spread1.toJSON(serializationOption));
+
+	    localStorage.setItem("mm_forward_step_recent_data", jsonString);
+	    localStorage.setItem("mm_user_id", user_id);
+	    localStorage.setItem("mm_lesson_id", lessonid);
+	    localStorage.setItem("mm_has_backward", 1);
+
 		var parent_step = jQuery('.spread_steps_clk li a.active').data('step');
 
 		var current_sub_step = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active');
@@ -307,8 +339,6 @@ jQuery(document).ready(function () {
 
             	var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
             	if(res.status == 1){
-
-            		console.log(res.prevSpreadsheetData);
 
             		spread1.fromJSON(JSON.parse(res.prevSpreadsheetData));
 

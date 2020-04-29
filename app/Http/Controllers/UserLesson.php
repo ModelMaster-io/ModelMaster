@@ -28,6 +28,7 @@ class UserLesson extends Controller
         $section = $request->get('screen');
         $step = $request->get('step');
         $curr_lesson = $request->get('lesson');
+        $is_backward_step = $request->get('is_backward_step');
 
         $lesson_steps = LessonSteps::where(['lesson_id' => $lesson_id, 'section' => $section, 'step' => $step])->first();
 
@@ -122,9 +123,18 @@ class UserLesson extends Controller
         }
 
 
-        /* If above all validations are true then execute below part */
-        
+
         $user_id = Auth::user()->id;
+
+        if($is_backward_step == 1){
+
+                $same_existing_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $section, 'step' => $step])->pluck('lesson')->first();
+
+                return response()->json(['status'=>3,  'success'=>'Spreadsheet data fetch successfully', 'lesson'=>unserialize($same_existing_lesson)]);
+
+        } else {
+
+        /* If above all validations are true then execute below part */
 
         $new_empty_lesson = Lesson::where(['id' => $lesson_id])->pluck('lesson')->first();
 
@@ -199,6 +209,9 @@ class UserLesson extends Controller
             return response()->json(['status'=>1,  'success'=>'Lesson Save Successfully!', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
         
         }
+
+
+    }
 
 
     }

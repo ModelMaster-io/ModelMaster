@@ -183,12 +183,7 @@ jQuery(document).ready(function () {
           		toastr.success(response.success);
           		jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
           		jQuery('#'+parent_step+' .next_btn').css({'pointer-events': 'none','background': '#343642'});
-          	} else if(response.status == 3){
-
-          		if(response.lesson == jsonString){
-
-          		}
-
+          	
           	} else {
 
               var sheet = spread.getActiveSheet();
@@ -242,43 +237,61 @@ jQuery(document).ready(function () {
                   toastr.error(response.error_msg);
                   return false;
 
-              } else {
+	              } else {
 
-              		analytics.track("Lesson Step", {"lesson": lessonid, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
+	              		analytics.track("Lesson Step", {"lesson": lessonid, "Parent Step": parent_step_number, "Sub-Step": current_sub_step_number, "Correct": true});
 
 
-          			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
+	          			if(jQuery('#'+parent_step+' .spread_sub_steps_clk li:last-child').find('a').hasClass('active')){
 
-					if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
-						jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
-						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-						analytics.track("Finished Lesson", {"lesson": lessonid});
-					} else {
-						jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
-					}
-				
-					} else {
-						jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
-						jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
-					}
+						if(jQuery('.spread_steps_clk li:last-child').find('a').hasClass('active')){
+							jQuery('#'+parent_step+' .next_btn').attr('disabled', 'disabled');
+							jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+							analytics.track("Finished Lesson", {"lesson": lessonid});
+						} else {
+							jQuery('.spread_steps_clk li .active').closest('li').next('li').find('a').trigger('click');
+						}
+					
+						} else {
+							jQuery('#'+parent_step+' .next_btn').removeAttr('disabled');
+							jQuery('#'+parent_step+' .previous_btn').removeAttr('disabled');
+						}
 
-					var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+						var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
 
-					if(response.dss != ''){
-	          			spread1.fromJSON(JSON.parse(response['dss']));
-					} else if(response.prev_lsn != ''){
-	          			spread1.fromJSON(JSON.parse(response['prev_lsn']));
-					}
+						if(response.status == 3){
+			          		//console.log('enter in 3');
+			          		//var dbjson = JSON.parse(response.lesson);
+			          		//var curjson = JSON.parse(jsonString);
+			          		
+			          		//if(JSON.stringify(dbjson['sheets'].Sheet1.data.dataTable) == JSON.stringify(curjson['sheets'].Sheet1.data.dataTable)){
+			          			//console.log('enter in compare');
+			          			var spread1 = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+			          			spread1.fromJSON(JSON.parse(localStorage.getItem("mm_forward_step_recent_data")));
 
-					jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
+			          			/*Remove local storage data when lesson page load*/
+								localStorage.removeItem("mm_forward_step_recent_data");
+							    localStorage.removeItem("mm_user_id");
+							    localStorage.removeItem("mm_lesson_id");
+							    localStorage.removeItem("mm_has_backward");
+			          		//}
+			          	} else {
+			          		if(response.dss != ''){
+		          				spread1.fromJSON(JSON.parse(response['dss']));
+							} else if(response.prev_lsn != ''){
+			          			spread1.fromJSON(JSON.parse(response['prev_lsn']));
+							}
+			          	}
 
-					jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
+						jQuery(current_sub_step).closest('li').next('li').find('a').trigger('click');
 
-					var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
+						jQuery(".lcltc1-mm").getNiceScroll().show().onResize();
 
-              }
+						var current_sub_step_data = jQuery('#'+parent_step+' .spread_sub_steps_clk li a.active').data('step');
 
-          }
+	              }
+
+	          }
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -511,4 +524,3 @@ jQuery(document).ready(function () {
 			}
 
 	}*/
-

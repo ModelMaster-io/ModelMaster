@@ -128,11 +128,54 @@ class UserLesson extends Controller
 
         if($is_backward_step == 1){
 
+                //Code for existing database lesson
                 $same_existing_lesson = TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $section, 'step' => $step])->pluck('lesson')->first();
 
-                return response()->json(['status'=>3,  'success'=>'Spreadsheet data fetch successfully', 'lesson'=>unserialize($same_existing_lesson)]);
+                $same_existing_lesson = json_decode(unserialize($same_existing_lesson));
 
-        } else {
+                $same_existing_lesson = isset($same_existing_lesson->sheets->Sheet1->data->dataTable) ? $same_existing_lesson->sheets->Sheet1->data->dataTable : '';
+
+                $same_existing_lesson = json_encode($same_existing_lesson);
+
+
+                //Code for current submitted lesson
+                $curr_lesson = json_decode($curr_lesson);
+
+                $curr_lesson = isset($curr_lesson->sheets->Sheet1->data->dataTable) ? $curr_lesson->sheets->Sheet1->data->dataTable : '';
+
+                $curr_lesson = json_encode($curr_lesson);
+
+                //Compare both json value
+                if($curr_lesson == $same_existing_lesson) {
+
+                    return response()->json(['status'=>3,  'success'=>'Spreadsheet data fetch successfully', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
+
+                } else {
+
+                    //Code for delete next steps when user made any change in backward step
+                    $max_scrn = TempSaveLesson::where(['lesson_id'=> $lesson_id, 'user_id' => $user_id])->max('screen');
+
+                    for($m = $section; $m<=$max_scrn; $m++){
+
+                        $ttl_stp = TempSaveLesson::where(['lesson_id'=> $lesson_id, 'user_id' => $user_id, 'screen' => $m])->max('step');
+
+                        $stp = $step;
+
+                        if($m > $section){
+                            $stp = 1;
+                        }
+
+                        for($s = $stp; $s<=$ttl_stp; $s++){
+                            $res=TempSaveLesson::where(['lesson_id' => $lesson_id, 'user_id' => $user_id, 'screen' => $m, 'step' => $s])->delete();
+                        }
+
+                    }
+
+                }
+
+        }
+
+        // else {
 
         /* If above all validations are true then execute below part */
 
@@ -202,7 +245,7 @@ class UserLesson extends Controller
 
         if($max_screen == $temp_lesson_save['screen'] && $max_step == $temp_lesson_save['step']){
 
-            return response()->json(['status'=>2,  'success'=>'Your curent Lesson is Completed!']);
+            return response()->json(['status'=>2,  'success'=>'Your curent Lesson is Completed!', 'right_cells'=>json_encode($right_rc), 'dss'=>$dss, 'prev_lsn'=>$prev_lsn]);
 
         } else {
 
@@ -211,7 +254,7 @@ class UserLesson extends Controller
         }
 
 
-    }
+    // }
 
 
     }

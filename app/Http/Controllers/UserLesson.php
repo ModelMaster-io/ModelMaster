@@ -226,14 +226,14 @@ class UserLesson extends Controller
             
         }
  
-        $temp_lesson_save = TempSaveLesson::firstOrCreate(
+        $temp_lesson_save = TempSaveLesson::updateOrCreate(
                                 [
                                 'user_id' => Auth::user()->id, 
                                 'lesson_id' => $request->get('lesson_id'),
                                 'screen' => $request->get('screen'),
                                 'step' => $request->get('step'),
-                                'lesson' => serialize(json_encode($lesson))
-                                ]
+                                ],
+                                ['lesson' => serialize(json_encode($lesson))]
                             );
 
 

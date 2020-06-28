@@ -153,7 +153,7 @@ jQuery(document).ready(function () {
 		
 		var parent_step_number = parseInt(parent_step.split("step").pop());
 		
-		var current_sub_step_number = parseInt(current_sub_step.text());
+		var current_sub_step_number = parseInt(current_sub_step[0].firstChild.data);
 
 		var is_backward_step = 0;
 

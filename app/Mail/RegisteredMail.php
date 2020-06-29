@@ -30,6 +30,10 @@ class RegisteredMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.userregister',  compact('user'));
+        if(isset($user) && !empty($user)){
+            return $this->markdown('emails.userregister',  compact('user'));
+        } else {
+            return $this->markdown('emails.userregister',  [$this->user]);
+        }
     }
 }

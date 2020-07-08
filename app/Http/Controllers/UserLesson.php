@@ -77,13 +77,14 @@ class UserLesson extends Controller
 
                     $row = array();
                     $col = array();
+                    $epsilon = 0.0001;
                     foreach ($answer_datatable as $key => $value) {
 
                         foreach ($value as $sub_key => $sub_value) {
 
                             if (isset($sub_value->value)) {
 
-                                if (!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || (str_replace("\n", "", $sub_value->value) != str_replace("\n", "", $curr_answer_datatable->$key->$sub_key->value))) {
+                                if (!isset($curr_answer_datatable->$key) || !isset($curr_answer_datatable->$key->$sub_key) || !isset($curr_answer_datatable->$key->$sub_key->value) || abs((float)str_replace("\n", "", $sub_value->value) - (float)str_replace("\n", "", $curr_answer_datatable->$key->$sub_key->value)) > $epsilon) {
 
                                     $row = (int) $key;
                                     $col = (int) $sub_key;
